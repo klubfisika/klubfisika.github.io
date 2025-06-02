@@ -10,7 +10,6 @@ import qwikdev from '@qwikdev/astro';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://klubfisika.github.io',
-  base: '/',
   integrations: [mdx(), sitemap(), qwikdev()],
 
   vite: {
