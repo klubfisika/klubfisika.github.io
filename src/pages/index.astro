@@ -1,255 +1,63 @@
 ---
-import "../styles/global.css";
+import "../styles/design-system.css";
 import BaseHead from "../components/BaseHead.astro";
+import Navigation from "../components/Navigation.astro";
+import Hero from "../components/sections/Hero.astro";
+import About from "../components/sections/About.astro";
+import VisionMission from "../components/sections/VisionMission.astro";
+import Programs from "../components/sections/Programs.astro";
+import Gallery from "../components/sections/Gallery.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import CTA from "../components/sections/CTA.astro";
+import Footer from "../components/sections/Footer.astro";
+import DarkModeToggle from "../components/ui/DarkModeToggle.astro";
+import FloatingWhatsApp from "../components/ui/FloatingWhatsApp.astro";
+import ScrollProgress from "../components/ui/ScrollProgress.astro";
+import BackToTop from "../components/ui/BackToTop.astro";
+import TestingChecklist from "../components/ui/TestingChecklist.astro";
+import ResponsiveTest from "../components/ui/ResponsiveTest.astro";
+import GoogleAnalytics from "../components/analytics/GoogleAnalytics.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
-<html lang="en">
+<html lang="id">
     <head>
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+        <!-- Analytics - Replace with actual GA4 ID -->
+        <!-- <GoogleAnalytics id="G-XXXXXXXXXX" /> -->
+        
+        <!-- Prevent FOUC (Flash of Unstyled Content) -->
+        <script is:inline>
+          if (localStorage.theme === 'dark' || 
+              (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          }
+        </script>
     </head>
-    <body class="bg-gray-900 text-white overflow-x-hidden">
-        <!-- CTA Section -->
-        <section
-            class="min-h-screen flex items-center justify-center py-20 gradient-bg relative overflow-hidden"
-        >
-            <div class="absolute inset-0 bg-black/20"></div>
-            <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-200">
-                    Bergabunglah dalam <span
-                        class="text-white text-5xl md:text-6xl">Revolusi</span
-                    >
-                    <br />
-                    <span class="text-yellow-300">Research Indonesia</span>
-                </h2>
-                <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-                    Jadilah bagian dari komunitas peneliti dan inovator yang
-                    akan mengubah cara kita berkolaborasi dan berbagi
-                    pengetahuan di era digital.
-                </p>
-
-                <a
-                    href="http://47.84.35.77/wp/portal/?fcom_action=auth"
-                    class="inline-block bg-white text-gray-900 px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 pulse-glow shadow-2xl"
-                >
-                    🚀 Mulai Journey Anda Sekarang
-                </a>
-
-                <div class="mt-8 text-sm text-gray-300">
-                    Platform Beta • Web 3.0 Ready • Made with 🥼🔬🧬🧫🧪 for
-                    Indonesia
-                </div>
-
-                <a
-                    href="/about"
-                    class="mt-4 inline-block bg-purple-600 text-gray-200 px-4 py-2 rounded-full font-bold text-sm hover:bg-purple-500 transform hover:scale-105"
-                >
-                    Klub Fisika Indonesia
-                </a>
-            </div>
-        </section>
+    <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">
+        <!-- UI Components -->
+        <ScrollProgress />
+        <Navigation />
+        <DarkModeToggle />
+        <FloatingWhatsApp 
+          number="+6281234567890"
+          message="Halo! Saya tertarik bergabung dengan KF13 - Klub Fisika Indonesia"
+        />
+        <BackToTop threshold={300} />
+        
+        <!-- Development Testing Tools -->
+        <TestingChecklist />
+        <ResponsiveTest />
+        
+        <main class="pt-20"> <!-- Account for fixed navigation -->
+          <Hero />
+          <About />
+          <VisionMission />
+          <Programs />
+          <Gallery />
+          <FAQ />
+          <CTA />
+          <Footer />
+        </main>
     </body>
 </html>
-
-<style>
-    /* Custom CSS */
-    .gradient-bg {
-        background: linear-gradient(
-            135deg,
-            #667eea 0%,
-            #764ba2 25%,
-            #f093fb 50%,
-            #f5576c 75%,
-            #4facfe 100%
-        );
-        background-size: 400% 400%;
-        animation: gradientShift 15s ease infinite;
-    }
-
-    @keyframes gradientShift {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
-    }
-
-    .hero-text {
-        background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-size: 300% 300%;
-        animation: gradientShift 8s ease infinite;
-    }
-
-    .floating {
-        animation: float 6s ease-in-out infinite;
-    }
-
-    .floating-delay {
-        animation: float 6s ease-in-out infinite;
-        animation-delay: -3s;
-    }
-
-    @keyframes float {
-        0%,
-        100% {
-            transform: translateY(0px) rotate(0deg);
-        }
-        33% {
-            transform: translateY(-20px) rotate(120deg);
-        }
-        66% {
-            transform: translateY(10px) rotate(240deg);
-        }
-    }
-
-    .card-gradient {
-        background: linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0.1) 0%,
-            rgba(255, 255, 255, 0.05) 100%
-        );
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.3s ease;
-    }
-
-    .card-gradient:hover {
-        background: linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0.15) 0%,
-            rgba(255, 255, 255, 0.08) 100%
-        );
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .pulse-glow {
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        animation: pulseGlow 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes pulseGlow {
-        from {
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-        to {
-            box-shadow:
-                0 0 30px rgba(255, 255, 255, 0.8),
-                0 0 40px rgba(102, 126, 234, 0.3);
-        }
-    }
-
-    .navbar-blur {
-        transition: all 0.3s ease;
-    }
-
-    .section-fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s ease;
-    }
-
-    .section-fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* Smooth scroll */
-    html {
-        scroll-behavior: smooth;
-    }
-
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: #1f2937;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(135deg, #764ba2, #f093fb);
-    }
-</style>
-<script>
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                });
-            }
-        });
-    });
-
-    // Add scroll effect to navbar
-    window.addEventListener("scroll", () => {
-        const navbar = document.querySelector("nav");
-        if (navbar && window.scrollY > 100) {
-            navbar.classList.add("bg-gray-900");
-            navbar.classList.remove("bg-gray-900/80");
-        } else if (navbar) {
-            navbar.classList.remove("bg-gray-900");
-            navbar.classList.add("bg-gray-900/80");
-        }
-    });
-
-    // Mobile menu toggle
-    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener("click", () => {
-            if (mobileMenu) {
-                mobileMenu.classList.toggle("hidden");
-            }
-        });
-    }
-
-    // Section fade-in animation on scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -100px 0px",
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll(".section-fade-in").forEach((section) => {
-        observer.observe(section);
-    });
-
-    // Add parallax effect to floating elements
-    window.addEventListener("scroll", () => {
-        const scrolled = window.pageYOffset;
-        const parallax = scrolled * 0.5;
-
-        document
-            .querySelectorAll(".floating, .floating-delay")
-            .forEach((element) => {
-                element.style.transform = `translateY(${parallax}px)`;
-            });
-    });
-</script>
