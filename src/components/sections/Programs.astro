@@ -1,0 +1,89 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import ProgramCard from '../ui/ProgramCard.astro';
+---
+
+<section class="py-20 bg-white" id="program">
+  <div class="max-w-6xl mx-auto px-6">
+    <SectionHeader title="PROGRAM & AKTIVITAS" subtitle="Apa yang benar-benar dilakukan KF13" className="mb-16" />
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <ProgramCard 
+        icon="💬"
+        title="DISKUSI"
+        description="Sesi diskusi berkala untuk membahas konsep fisika, fenomena alam, dan penerapan fisika dalam teknologi"
+        bgColor="bg-pink"
+        rotation="-rotate-2"
+      />
+      
+      <ProgramCard 
+        icon="🔬"
+        title="EKSPERIMEN"
+        description="Kegiatan eksperimen fisika yang dirancang agar mudah diakses, aplikatif, dan mendorong pemahaman konseptual"
+        bgColor="bg-blue"
+        rotation="rotate-1"
+      />
+      
+      <ProgramCard 
+        icon="🚀"
+        title="PROYEK"
+        description="Anggota bekerja sama dalam proyek fisika, seperti pembuatan alat sederhana, media pembelajaran, atau riset mini"
+        bgColor="bg-accent"
+        rotation="-rotate-1"
+      />
+      
+      <ProgramCard 
+        icon="🎯"
+        title="EVENT"
+        description="Workshop, kelas terbuka, dan seminar fisika untuk memperluas wawasan dan jejaring"
+        bgColor="bg-secondary"
+        rotation="rotate-2"
+      />
+    </div>
+
+    <!-- Why Join Section -->
+    <div class="mt-20">
+      <div class="bg-primary border-4 border-dark p-8 transform rotate-1 shadow-brutal">
+        <h3 class="text-3xl font-black uppercase text-dark mb-6 text-center">KENAPA KF13?</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="text-3xl mb-2">📚</div>
+            <h4 class="font-bold text-dark mb-2">BELAJAR AKTIF</h4>
+            <p class="text-dark text-sm">Diskusi konsep fisika secara interaktif dan aplikatif</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-3xl mb-2">⚗️</div>
+            <h4 class="font-bold text-dark mb-2">EKSPERIMEN NYATA</h4>
+            <p class="text-dark text-sm">Praktikum dan proyek fisika sederhana hingga terapan</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-3xl mb-2">🤝</div>
+            <h4 class="font-bold text-dark mb-2">KOMUNITAS POSITIF</h4>
+            <p class="text-dark text-sm">Bertemu teman belajar dengan minat yang sama</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-3xl mb-2">🧠</div>
+            <h4 class="font-bold text-dark mb-2">PENGEMBANGAN DIRI</h4>
+            <p class="text-dark text-sm">Melatih berpikir kritis, problem solving, dan kolaborasi</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-3xl mb-2">🌐</div>
+            <h4 class="font-bold text-dark mb-2">AKSES JEJARING</h4>
+            <p class="text-dark text-sm">Terhubung dengan komunitas dan mentor fisika</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-3xl mb-2">🎓</div>
+            <h4 class="font-bold text-dark mb-2">UNTUK SEMUA</h4>
+            <p class="text-dark text-sm">Tidak diperlukan kemampuan tingkat lanjut</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

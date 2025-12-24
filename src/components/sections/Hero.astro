@@ -1,0 +1,53 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section class="bg-gradient-to-br from-purple-200 via-yellow-100 to-green-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-600 min-h-screen flex items-center relative overflow-hidden transition-colors">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-10 dark:opacity-20">
+    <div class="absolute top-20 left-20 w-32 h-32 bg-dark dark:bg-light transform rotate-45"></div>
+    <div class="absolute top-40 right-32 w-24 h-24 bg-dark dark:bg-light transform rotate-12"></div>
+    <div class="absolute bottom-32 left-1/3 w-20 h-20 bg-dark dark:bg-light transform -rotate-12"></div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <!-- Main Headline -->
+    <h1 class="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight text-dark dark:text-light transform -rotate-1 mb-8">
+      RUANG BERTUMBUH<br/>
+      <span class="text-primary dark:text-primary-dark">FISIKA</span> INDONESIA
+    </h1>
+
+    <!-- Value Statement Box -->
+    <div class="bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal mt-8 mb-8 max-w-2xl">
+      <p class="text-xl md:text-2xl font-bold text-dark dark:text-light mb-4">
+        Belajar • Eksperimen • Kolaborasi • Fun! 🧪⚡
+      </p>
+      <p class="text-dark dark:text-light font-semibold">
+        KF13 adalah komunitas pembelajaran dan eksplorasi fisika yang mendorong generasi muda untuk memahami sains secara mendalam, aplikatif, dan kolaboratif.
+      </p>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 items-start">
+      <Button variant="primary" size="lg" href="#gabung" className="bounce-fun">
+        🚀 GABUNG KF13
+      </Button>
+      <Button variant="secondary" size="lg" href="#program" className="transform rotate-1 hover:rotate-0">
+        📚 LIHAT PROGRAM
+      </Button>
+    </div>
+
+    <!-- Floating Elements -->
+    <div class="absolute top-1/4 right-10 hidden lg:block">
+      <div class="w-16 h-16 bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light flex items-center justify-center text-2xl transform rotate-12 wobble">
+        ⚛️
+      </div>
+    </div>
+    
+    <div class="absolute bottom-1/6 right-10 hidden lg:block">
+      <div class="w-12 h-12 bg-pink dark:bg-purple-600 border-4 border-dark dark:border-light flex items-center justify-center text-xl transform -rotate-45 wobble">
+        🔭
+      </div>
+    </div>
+  </div>
+</section>

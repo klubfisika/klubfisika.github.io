@@ -1,0 +1,126 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+---
+
+<section class="py-20 bg-surface dark:bg-slate-800 transition-colors" id="faq">
+  <div class="max-w-4xl mx-auto px-6">
+    <SectionHeader title="FAQ" subtitle="Pertanyaan yang sering ditanyakan" className="mb-16" />
+    
+    <div class="space-y-4">
+      {[
+        {
+          question: "Apakah pemula boleh bergabung?",
+          answer: "Tentu saja! KF13 terbuka untuk semua level. Yang terpenting adalah rasa ingin tahu dan semangat belajar fisika.",
+          bg: "bg-pink",
+          rotation: "-rotate-1"
+        },
+        {
+          question: "Apakah ada biaya untuk bergabung?",
+          answer: "Tidak ada biaya sama sekali. KF13 adalah komunitas gratis yang fokus pada pembelajaran dan berbagi pengetahuan.",
+          bg: "bg-blue", 
+          rotation: "rotate-2"
+        },
+        {
+          question: "Seberapa sering kegiatan dilakukan?",
+          answer: "Kegiatan rutin dilakukan mingguan untuk diskusi, dan bulanan untuk eksperimen atau workshop khusus.",
+          bg: "bg-accent",
+          rotation: "-rotate-2"
+        },
+        {
+          question: "Apa saja yang diperlukan untuk bergabung?",
+          answer: "Hanya perlu minat pada fisika dan akses internet. Semua materi pembelajaran akan disediakan oleh komunitas.",
+          bg: "bg-secondary",
+          rotation: "rotate-1"
+        },
+        {
+          question: "Bagaimana cara mengikuti eksperimen?",
+          answer: "Eksperimen dirancang dengan alat-alat sederhana yang mudah didapat. Panduan lengkap akan diberikan sebelum kegiatan.",
+          bg: "bg-primary",
+          rotation: "-rotate-1"
+        },
+        {
+          question: "Apakah ada sertifikat atau pengakuan?",
+          answer: "Fokus kami pada pembelajaran, bukan sertifikat. Namun kontribusi aktif akan mendapat pengakuan dari komunitas.",
+          bg: "bg-pink",
+          rotation: "rotate-2"
+        }
+      ].map((faq, index) => (
+        <div class={`${faq.bg} dark:bg-slate-700 border-4 border-dark dark:border-light transform ${faq.rotation} hover:rotate-0 transition-all shadow-brutal-sm faq-item`}>
+          <button 
+            class="w-full p-6 text-left focus:outline-none focus:ring-3 focus:ring-accent faq-trigger"
+            aria-expanded="false"
+          >
+            <div class="flex justify-between items-center">
+              <h3 class="text-lg font-black uppercase text-dark dark:text-light pr-4">
+                {faq.question}
+              </h3>
+              <span class="text-2xl font-black text-dark dark:text-light faq-icon transition-transform">+</span>
+            </div>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <div class="px-6 pb-6">
+              <p class="text-dark dark:text-light font-semibold leading-relaxed">
+                {faq.answer}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Additional Help -->
+    <div class="mt-12 text-center">
+      <div class="bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-6 transform rotate-1 inline-block shadow-brutal">
+        <p class="text-dark dark:text-light font-semibold mb-4">
+          💡 <strong>Masih ada pertanyaan lain?</strong>
+        </p>
+        <p class="text-sm text-dark dark:text-light">
+          Jangan ragu untuk menghubungi kami melalui email atau media sosial!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const trigger = item.querySelector('.faq-trigger');
+    const content = item.querySelector('.faq-content');
+    const icon = item.querySelector('.faq-icon');
+    
+    trigger?.addEventListener('click', () => {
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+      
+      // Close all other FAQ items
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          const otherTrigger = otherItem.querySelector('.faq-trigger');
+          const otherContent = otherItem.querySelector('.faq-content');
+          const otherIcon = otherItem.querySelector('.faq-icon');
+          
+          otherTrigger?.setAttribute('aria-expanded', 'false');
+          otherContent?.style.setProperty('max-height', '0px');
+          otherIcon?.style.setProperty('transform', 'rotate(0deg)');
+          if (otherIcon) otherIcon.textContent = '+';
+        }
+      });
+      
+      // Toggle current item
+      if (isExpanded) {
+        trigger.setAttribute('aria-expanded', 'false');
+        content?.style.setProperty('max-height', '0px');
+        icon?.style.setProperty('transform', 'rotate(0deg)');
+        if (icon) icon.textContent = '+';
+      } else {
+        trigger.setAttribute('aria-expanded', 'true');
+        content?.style.setProperty('max-height', content.scrollHeight + 'px');
+        icon?.style.setProperty('transform', 'rotate(45deg)');
+        if (icon) icon.textContent = '×';
+      }
+    });
+  });
+});
+</script>

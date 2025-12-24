@@ -1,0 +1,91 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+---
+
+<section class="py-20 bg-white dark:bg-slate-700 transition-colors">
+  <div class="max-w-6xl mx-auto px-6">
+    <SectionHeader title="VISI & MISI" subtitle="Arah dan prinsip KF13" className="mb-16" />
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- Visi -->
+      <div class="space-y-8">
+        <div class="bg-primary border-4 border-dark dark:border-light p-8 transform -rotate-1 shadow-brutal">
+          <div class="text-center">
+            <div class="text-5xl mb-4">🎯</div>
+            <h3 class="text-2xl font-black uppercase text-dark dark:text-light mb-4">VISI</h3>
+            <p class="text-lg font-semibold text-dark dark:text-light leading-relaxed">
+              Menjadi komunitas fisika yang berkontribusi nyata dalam pengembangan generasi muda yang kritis, ilmiah, dan inovatif.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Misi -->
+      <div class="space-y-6">
+        <div class="bg-secondary border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal-sm">
+          <h3 class="text-2xl font-black uppercase text-dark dark:text-light mb-4 text-center">MISI</h3>
+        </div>
+        
+        <div class="space-y-4">
+          {[
+            {
+              icon: "📚",
+              text: "Menyediakan ruang pembelajaran fisika yang aktif dan kolaboratif",
+              bg: "bg-pink",
+              rotation: "-rotate-1"
+            },
+            {
+              icon: "🔬",
+              text: "Mendorong eksplorasi, eksperimen, dan proyek fisika terapan",
+              bg: "bg-blue",
+              rotation: "rotate-2"
+            },
+            {
+              icon: "🧠",
+              text: "Menumbuhkan budaya berpikir ilmiah dan rasa ingin tahu",
+              bg: "bg-accent",
+              rotation: "-rotate-2"
+            },
+            {
+              icon: "🌐",
+              text: "Membuka akses jejaring sains yang lebih luas",
+              bg: "bg-surface",
+              rotation: "rotate-1"
+            }
+          ].map((misi, index) => (
+            <div class={`${misi.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-4 transform ${misi.rotation} shadow-brutal-sm hover:rotate-0 transition-transform`}>
+              <div class="flex items-center gap-4">
+                <div class="text-2xl">{misi.icon}</div>
+                <p class="font-semibold text-dark dark:text-light">{misi.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Nilai Inti -->
+    <div class="mt-20">
+      <div class="text-center mb-12">
+        <div class="bg-accent border-4 border-dark dark:border-light p-4 transform rotate-1 inline-block shadow-brutal-sm">
+          <h3 class="text-2xl font-black uppercase text-dark dark:text-light m-0">NILAI INTI</h3>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        {[
+          { icon: "🔬", label: "ILMIAH", bg: "bg-primary" },
+          { icon: "🚀", label: "EKSPLORATIF", bg: "bg-secondary" },
+          { icon: "🤝", label: "KOLABORATIF", bg: "bg-accent" },
+          { icon: "🌈", label: "INKLUSIF", bg: "bg-pink" },
+          { icon: "⚖️", label: "BERINTEGRITAS", bg: "bg-blue" }
+        ].map((nilai, index) => (
+          <div class={`${nilai.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 text-center transform ${index % 2 === 0 ? 'rotate-2' : '-rotate-2'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
+            <div class="text-3xl mb-2">{nilai.icon}</div>
+            <div class="font-black text-sm text-dark dark:text-light">{nilai.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

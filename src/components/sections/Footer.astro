@@ -1,0 +1,94 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import ContactForm from '../ui/ContactForm.astro';
+---
+
+<section class="py-20 bg-white dark:bg-gray-800 transition-colors" id="kontak">
+  <div class="max-w-6xl mx-auto px-6">
+    <SectionHeader title="KONTAK & MEDIA SOSIAL" className="mb-16" />
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- Contact Form -->
+      <div>
+        <ContactForm />
+      </div>
+
+      <!-- Contact Info & Social Media -->
+      <div class="space-y-8">
+        <div class="bg-primary dark:bg-primary-dark border-4 border-dark dark:border-light p-8 transform -rotate-1 shadow-brutal">
+          <h3 class="text-2xl font-black uppercase text-dark dark:text-light mb-6">INFO KONTAK</h3>
+          
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-secondary dark:bg-secondary-dark border-2 border-dark dark:border-light flex items-center justify-center">
+                <span class="text-xl">📧</span>
+              </div>
+              <div>
+                <p class="font-bold text-dark dark:text-light">Email Resmi</p>
+                <p class="text-dark dark:text-light">info@klubfisika.org</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-accent dark:bg-accent-dark border-2 border-dark dark:border-light flex items-center justify-center">
+                <span class="text-xl">💬</span>
+              </div>
+              <div>
+                <p class="font-bold text-dark dark:text-light">WhatsApp Admin</p>
+                <p class="text-dark dark:text-light">+62 812-3456-7890</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-pink dark:bg-purple-600 border-2 border-dark dark:border-light flex items-center justify-center">
+                <span class="text-xl">🌐</span>
+              </div>
+              <div>
+                <p class="font-bold text-dark dark:text-light">Website</p>
+                <p class="text-dark dark:text-light">klubfisika.github.io</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Media -->
+        <div class="bg-secondary dark:bg-secondary-dark border-4 border-dark dark:border-light p-8 transform rotate-1 shadow-brutal">
+          <h3 class="text-2xl font-black uppercase text-dark dark:text-light mb-6">MEDIA SOSIAL</h3>
+          
+          <div class="grid grid-cols-2 gap-4">
+            {[
+              { name: "Instagram", icon: "📸", handle: "@kf13_indonesia", bg: "bg-pink" },
+              { name: "Twitter", icon: "🐦", handle: "@KF13Indonesia", bg: "bg-blue" },
+              { name: "YouTube", icon: "📺", handle: "KF13 Indonesia", bg: "bg-accent" },
+              { name: "Discord", icon: "💬", handle: "KF13 Community", bg: "bg-surface" }
+            ].map((social, index) => (
+              <div class={`${social.bg} dark:bg-slate-600 border-2 border-dark dark:border-light p-4 text-center transform ${index % 2 === 0 ? 'rotate-2' : '-rotate-2'} hover:rotate-0 transition-transform`}>
+                <div class="text-2xl mb-2">{social.icon}</div>
+                <p class="font-bold text-xs text-dark dark:text-light">{social.name}</p>
+                <p class="text-xs text-dark dark:text-light">{social.handle}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-16 pt-8 border-t-4 border-dark dark:border-light">
+      <div class="text-center">
+        <div class="bg-surface dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform rotate-1 inline-block shadow-brutal-sm">
+          <p class="font-bold text-dark dark:text-light mb-2">
+            KF13 - Klub Fisika Indonesia
+          </p>
+          <p class="text-sm text-dark dark:text-light">
+            Belajar dan memahami fisika bukan tentang siapa yang paling cepat,<br/>
+            tetapi siapa yang terus ingin tahu dan bertumbuh.
+          </p>
+          <p class="text-xs text-dark dark:text-light mt-4 opacity-75">
+            © 2024 KF13. Made with 🥼🔬🧬🧫🧪 for Indonesia
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
