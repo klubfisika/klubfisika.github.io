@@ -1,0 +1,65 @@
+---
+---
+<div class="fixed top-4 right-4 z-50 bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light p-3 shadow-brutal max-w-xs">
+  <h4 class="font-black text-dark dark:text-light text-sm mb-2">📱 RESPONSIVE TEST</h4>
+  
+  <div class="space-y-1 text-xs">
+    <div class="flex justify-between">
+      <span class="text-dark dark:text-light">Mobile:</span>
+      <span id="mobile-status" class="text-dark dark:text-light">❓</span>
+    </div>
+    <div class="flex justify-between">
+      <span class="text-dark dark:text-light">Tablet:</span>
+      <span id="tablet-status" class="text-dark dark:text-light">❓</span>
+    </div>
+    <div class="flex justify-between">
+      <span class="text-dark dark:text-light">Desktop:</span>
+      <span id="desktop-status" class="text-dark dark:text-light">❓</span>
+    </div>
+  </div>
+  
+  <div class="mt-2 text-xs text-dark dark:text-light">
+    <span id="current-size">Loading...</span>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const mobileStatus = document.getElementById('mobile-status');
+  const tabletStatus = document.getElementById('tablet-status');
+  const desktopStatus = document.getElementById('desktop-status');
+  const currentSize = document.getElementById('current-size');
+  
+  const updateResponsiveStatus = () => {
+    const width = window.innerWidth;
+    
+    // Update current size
+    currentSize.textContent = `${width}px`;
+    
+    // Reset all statuses
+    mobileStatus.textContent = '❌';
+    tabletStatus.textContent = '❌';
+    desktopStatus.textContent = '❌';
+    
+    // Check breakpoints
+    if (width < 768) {
+      mobileStatus.textContent = '✅';
+    } else if (width < 1024) {
+      tabletStatus.textContent = '✅';
+    } else {
+      desktopStatus.textContent = '✅';
+    }
+  };
+  
+  // Initial check
+  updateResponsiveStatus();
+  
+  // Update on resize
+  window.addEventListener('resize', updateResponsiveStatus);
+  
+  // Auto-hide after 20 seconds
+  setTimeout(() => {
+    document.querySelector('.fixed.top-4.right-4')?.style.setProperty('display', 'none');
+  }, 20000);
+});
+</script>

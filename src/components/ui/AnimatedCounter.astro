@@ -1,0 +1,74 @@
+---
+interface Props {
+  target: number;
+  label: string;
+  duration?: number;
+  prefix?: string;
+  suffix?: string;
+  className?: string;
+}
+
+const { 
+  target, 
+  label, 
+  duration = 2000,
+  prefix = "",
+  suffix = "",
+  className = ""
+} = Astro.props;
+---
+
+<div class={`text-center ${className}`}>
+  <div 
+    class="text-4xl md:text-5xl font-black text-dark dark:text-light mb-2"
+    data-counter-target={target}
+    data-counter-duration={duration}
+    data-counter-prefix={prefix}
+    data-counter-suffix={suffix}
+  >
+    {prefix}0{suffix}
+  </div>
+  <p class="text-sm font-bold text-dark dark:text-light uppercase tracking-wide">
+    {label}
+  </p>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const counters = document.querySelectorAll('[data-counter-target]');
+  
+  const animateCounter = (element) => {
+    const target = parseInt(element.dataset.counterTarget);
+    const duration = parseInt(element.dataset.counterDuration);
+    const prefix = element.dataset.counterPrefix || '';
+    const suffix = element.dataset.counterSuffix || '';
+    
+    let start = 0;
+    const increment = target / (duration / 16); // 60fps
+    
+    const updateCounter = () => {
+      start += increment;
+      if (start < target) {
+        element.textContent = prefix + Math.floor(start) + suffix;
+        requestAnimationFrame(updateCounter);
+      } else {
+        element.textContent = prefix + target + suffix;
+      }
+    };
+    
+    updateCounter();
+  };
+  
+  // Intersection Observer for triggering animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.animated) {
+        entry.target.dataset.animated = 'true';
+        animateCounter(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  counters.forEach(counter => observer.observe(counter));
+});
+</script>

@@ -1,0 +1,41 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'accent';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  className?: string;
+}
+
+const { 
+  variant = 'primary', 
+  size = 'md', 
+  href, 
+  className = "" 
+} = Astro.props;
+
+const baseClasses = "btn-brutal inline-block text-center font-black uppercase transition-all";
+
+const variantClasses = {
+  primary: "bg-accent text-dark",
+  secondary: "bg-blue text-dark", 
+  accent: "bg-pink text-dark"
+};
+
+const sizeClasses = {
+  sm: "px-4 py-2 text-sm",
+  md: "px-6 py-3 text-base",
+  lg: "px-8 py-4 text-xl"
+};
+
+const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+---
+
+{href ? (
+  <a href={href} class={classes}>
+    <slot />
+  </a>
+) : (
+  <button class={classes}>
+    <slot />
+  </button>
+)}

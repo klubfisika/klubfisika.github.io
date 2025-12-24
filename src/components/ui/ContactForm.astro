@@ -1,0 +1,136 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<div class="bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-8 transform rotate-1 shadow-brutal">
+  <h3 class="text-2xl font-black uppercase text-dark dark:text-light mb-6 text-center">HUBUNGI KAMI</h3>
+  
+  <form id="contact-form" class="space-y-4">
+    <div>
+      <label for="name" class="block font-bold text-dark dark:text-light mb-2">Nama *</label>
+      <input 
+        type="text" 
+        id="name" 
+        name="name" 
+        required
+        class="w-full p-3 border-4 border-dark dark:border-light bg-surface dark:bg-slate-600 text-dark dark:text-light font-semibold focus:outline-none focus:ring-3 focus:ring-accent"
+        placeholder="Nama lengkap Anda"
+      />
+    </div>
+    
+    <div>
+      <label for="email" class="block font-bold text-dark dark:text-light mb-2">Email *</label>
+      <input 
+        type="email" 
+        id="email" 
+        name="email" 
+        required
+        class="w-full p-3 border-4 border-dark dark:border-light bg-surface dark:bg-slate-600 text-dark dark:text-light font-semibold focus:outline-none focus:ring-3 focus:ring-accent"
+        placeholder="email@example.com"
+      />
+    </div>
+    
+    <div>
+      <label for="phone" class="block font-bold text-dark dark:text-light mb-2">WhatsApp</label>
+      <input 
+        type="tel" 
+        id="phone" 
+        name="phone"
+        class="w-full p-3 border-4 border-dark dark:border-light bg-surface dark:bg-slate-600 text-dark dark:text-light font-semibold focus:outline-none focus:ring-3 focus:ring-accent"
+        placeholder="+62 812-3456-7890"
+      />
+    </div>
+    
+    <div>
+      <label for="message" class="block font-bold text-dark dark:text-light mb-2">Pesan *</label>
+      <textarea 
+        id="message" 
+        name="message" 
+        required
+        rows="4"
+        class="w-full p-3 border-4 border-dark dark:border-light bg-surface dark:bg-slate-600 text-dark dark:text-light font-semibold focus:outline-none focus:ring-3 focus:ring-accent resize-none"
+        placeholder="Ceritakan minat Anda pada fisika atau pertanyaan tentang KF13..."
+      ></textarea>
+    </div>
+    
+    <div class="text-center pt-4">
+      <Button variant="primary" size="lg" className="w-full" id="submit-btn">
+        <span id="submit-text">📧 KIRIM PESAN</span>
+        <span id="submit-loading" class="hidden">
+          <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-current inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          MENGIRIM...
+        </span>
+      </Button>
+    </div>
+  </form>
+  
+  <div id="form-status" class="mt-4 text-center hidden">
+    <div id="success-message" class="bg-accent dark:bg-accent-dark border-2 border-dark dark:border-light p-3 text-dark dark:text-light font-bold hidden">
+      ✅ Pesan berhasil dikirim! Kami akan segera menghubungi Anda.
+    </div>
+    <div id="error-message" class="bg-pink dark:bg-pink-dark border-2 border-dark dark:border-light p-3 text-dark dark:text-light font-bold hidden">
+      ❌ Terjadi kesalahan. Silakan coba lagi atau hubungi kami via WhatsApp.
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contact-form');
+  const successMsg = document.getElementById('success-message');
+  const errorMsg = document.getElementById('error-message');
+  const formStatus = document.getElementById('form-status');
+  
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const submitBtn = document.getElementById('submit-btn');
+    const submitText = document.getElementById('submit-text');
+    const submitLoading = document.getElementById('submit-loading');
+    
+    // Show loading state
+    submitBtn?.setAttribute('disabled', 'true');
+    submitText?.classList.add('hidden');
+    submitLoading?.classList.remove('hidden');
+    
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Show success message
+      formStatus.classList.remove('hidden');
+      successMsg.classList.remove('hidden');
+      errorMsg.classList.add('hidden');
+      
+      // Reset form
+      form.reset();
+      
+      // Hide message after 5 seconds
+      setTimeout(() => {
+        formStatus.classList.add('hidden');
+      }, 5000);
+      
+    } catch (error) {
+      // Show error message
+      formStatus.classList.remove('hidden');
+      errorMsg.classList.remove('hidden');
+      successMsg.classList.add('hidden');
+      
+      setTimeout(() => {
+        formStatus.classList.add('hidden');
+      }, 5000);
+    } finally {
+      // Reset button state
+      submitBtn?.removeAttribute('disabled');
+      submitText?.classList.remove('hidden');
+      submitLoading?.classList.add('hidden');
+    }
+  });
+});
+</script>

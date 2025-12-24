@@ -1,0 +1,25 @@
+---
+interface Props {
+  icon?: string;
+  title: string;
+  description: string;
+  bgColor?: string;
+  rotation?: string;
+  className?: string;
+}
+
+const { 
+  icon = "🔬", 
+  title, 
+  description, 
+  bgColor = "bg-pink", 
+  rotation = "-rotate-2",
+  className = ""
+} = Astro.props;
+---
+
+<div class={`${bgColor} card-brutal p-6 transform ${rotation} hover:rotate-0 ${className}`}>
+  <div class="text-4xl mb-4">{icon}</div>
+  <h3 class="text-2xl font-black uppercase text-dark mb-3">{title}</h3>
+  <p class="text-dark font-semibold">{description}</p>
+</div>

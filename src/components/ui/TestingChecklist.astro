@@ -1,0 +1,62 @@
+---
+---
+<div class="fixed bottom-4 left-4 z-50 bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-4 shadow-brutal max-w-sm">
+  <h3 class="font-black text-dark dark:text-light mb-3">🧪 TESTING CHECKLIST</h3>
+  
+  <div class="space-y-2 text-sm">
+    <div class="flex items-center gap-2">
+      <input type="checkbox" id="test-faq" class="w-4 h-4">
+      <label for="test-faq" class="text-dark dark:text-light">FAQ Accordion</label>
+    </div>
+    
+    <div class="flex items-center gap-2">
+      <input type="checkbox" id="test-counters" class="w-4 h-4">
+      <label for="test-counters" class="text-dark dark:text-light">Animated Counters</label>
+    </div>
+    
+    <div class="flex items-center gap-2">
+      <input type="checkbox" id="test-form" class="w-4 h-4">
+      <label for="test-form" class="text-dark dark:text-light">Contact Form</label>
+    </div>
+    
+    <div class="flex items-center gap-2">
+      <input type="checkbox" id="test-whatsapp" class="w-4 h-4">
+      <label for="test-whatsapp" class="text-dark dark:text-light">WhatsApp Button</label>
+    </div>
+    
+    <div class="flex items-center gap-2">
+      <input type="checkbox" id="test-navigation" class="w-4 h-4">
+      <label for="test-navigation" class="text-dark dark:text-light">Navigation Scroll</label>
+    </div>
+    
+    <div class="flex items-center gap-2">
+      <input type="checkbox" id="test-darkmode" class="w-4 h-4">
+      <label for="test-darkmode" class="text-dark dark:text-light">Dark Mode Toggle</label>
+    </div>
+    
+    <div class="flex items-center gap-2">
+      <input type="checkbox" id="test-mobile" class="w-4 h-4">
+      <label for="test-mobile" class="text-dark dark:text-light">Mobile Responsive</label>
+    </div>
+  </div>
+  
+  <button id="hide-checklist" class="mt-3 text-xs bg-secondary dark:bg-secondary-dark text-dark dark:text-light px-2 py-1 border-2 border-dark dark:border-light">
+    Hide
+  </button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const hideBtn = document.getElementById('hide-checklist');
+  const checklist = hideBtn?.closest('div');
+  
+  hideBtn?.addEventListener('click', () => {
+    checklist?.style.setProperty('display', 'none');
+  });
+  
+  // Auto-hide after 30 seconds
+  setTimeout(() => {
+    checklist?.style.setProperty('display', 'none');
+  }, 30000);
+});
+</script>

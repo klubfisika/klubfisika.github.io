@@ -1,0 +1,42 @@
+---
+interface Props {
+  color?: string;
+  height?: string;
+}
+
+const { 
+  color = "var(--color-primary)", 
+  height = "4px" 
+} = Astro.props;
+---
+
+<div 
+  id="scroll-progress" 
+  class="fixed top-0 left-0 z-50 transition-all duration-300"
+  style={`height: ${height}; background: ${color}; width: 0%;`}
+></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const progressBar = document.getElementById('scroll-progress');
+  
+  const updateScrollProgress = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    
+    if (progressBar) {
+      progressBar.style.width = `${Math.min(scrollPercent, 100)}%`;
+    }
+  };
+  
+  // Update on scroll
+  window.addEventListener('scroll', updateScrollProgress);
+  
+  // Update on resize
+  window.addEventListener('resize', updateScrollProgress);
+  
+  // Initial update
+  updateScrollProgress();
+});
+</script>
