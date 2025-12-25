@@ -1,0 +1,49 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'accent' | 'surface' | 'dark';
+  size?: 'sm' | 'md' | 'lg';
+  rotation?: 'left' | 'right' | 'none';
+  urgent?: boolean;
+  className?: string;
+}
+
+const { 
+  variant = 'primary',
+  size = 'md', 
+  rotation = 'none',
+  urgent = false,
+  className = ""
+} = Astro.props;
+
+const variantClasses = {
+  primary: 'btn-primary',
+  secondary: 'btn-secondary', 
+  accent: 'btn-accent',
+  surface: 'bg-surface dark:bg-surface-dark text-dark dark:text-light',
+  dark: 'bg-dark dark:bg-light text-on-dark dark:text-on-light'
+};
+
+const sizeClasses = {
+  sm: 'p-4',
+  md: 'p-6',
+  lg: 'p-8'
+};
+
+const rotationClasses = {
+  left: 'transform -rotate-1 hover:rotate-0',
+  right: 'transform rotate-1 hover:rotate-0', 
+  none: ''
+};
+
+const cardClasses = `${variantClasses[variant]} ${sizeClasses[size]} ${rotationClasses[rotation]} border-4 border-dark dark:border-light shadow-brutal-sm transition-transform hover:scale-105 relative ${className}`;
+---
+
+<div class={cardClasses}>
+  {urgent && (
+    <div class="absolute -top-3 -right-3 bg-red-500 border-2 border-dark dark:border-light px-2 py-1 transform rotate-12">
+      <span class="text-xs font-black text-white">URGENT!</span>
+    </div>
+  )}
+  
+  <slot />
+</div>
