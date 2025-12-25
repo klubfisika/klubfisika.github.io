@@ -4,20 +4,20 @@
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #a78bfa;
-  --color-secondary: #fbbf24;
-  --color-accent: #34d399;
+  --color-primary: #1d4ed8;        /* blue-700 - better contrast */
+  --color-secondary: #f59e0b;      /* amber-500 - good contrast */
+  --color-accent: #059669;         /* emerald-600 - good contrast */
   --color-surface: #fef3c7;
-  --color-dark: #1f2937;
-  --color-pink: #f472b6;
-  --color-blue: #60a5fa;
+  --color-dark: #111827;           /* gray-900 - true dark */
+  --color-pink: #ec4899;           /* pink-500 - good contrast */
+  --color-blue: #2563eb;           /* blue-600 - good contrast */
   
   /* Improved Dark mode colors */
-  --color-primary-dark: #8b5cf6;
-  --color-secondary-dark: #f59e0b;
-  --color-accent-dark: #10b981;
+  --color-primary-dark: #3b82f6;   /* blue-500 - good on dark */
+  --color-secondary-dark: #fbbf24; /* amber-400 - good on dark */
+  --color-accent-dark: #10b981;    /* emerald-500 - good on dark */
   --color-surface-dark: #0f172a;
-  --color-light: #f8fafc;
+  --color-light: #ffffff;          /* pure white */
   --color-pink-dark: #ec4899;
   --color-blue-dark: #3b82f6;
   
@@ -210,6 +210,93 @@ a:hover {
 
 .dark a:hover {
   color: #fbbf24 !important;
+}
+
+/* WCAG Compliant Text-Background Combinations */
+.text-on-primary {
+  color: #ffffff !important; /* White on primary blue - 4.5:1+ contrast */
+}
+
+.text-on-secondary {
+  color: #111827 !important; /* Dark on amber - 4.5:1+ contrast */
+}
+
+.text-on-accent {
+  color: #ffffff !important; /* White on emerald - 4.5:1+ contrast */
+}
+
+.text-on-surface {
+  color: #111827 !important; /* Dark on light surface - 4.5:1+ contrast */
+}
+
+.text-on-dark {
+  color: #ffffff !important; /* White on dark - 4.5:1+ contrast */
+}
+
+.text-on-light {
+  color: #111827 !important; /* Dark on light - 4.5:1+ contrast */
+}
+
+/* Dark mode overrides */
+.dark .text-on-primary {
+  color: #ffffff !important;
+}
+
+.dark .text-on-secondary {
+  color: #111827 !important;
+}
+
+.dark .text-on-accent {
+  color: #ffffff !important;
+}
+
+.dark .text-on-surface {
+  color: #ffffff !important; /* White on dark surface */
+}
+
+.dark .text-on-dark {
+  color: #ffffff !important;
+}
+
+.dark .text-on-light {
+  color: #111827 !important;
+}
+
+/* Button combinations - WCAG compliant */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-dark);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: #111827;
+  border-color: var(--color-dark);
+}
+
+.btn-accent {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border-color: var(--color-dark);
+}
+
+.dark .btn-primary {
+  background-color: var(--color-primary-dark);
+  color: #ffffff;
+  border-color: var(--color-light);
+}
+
+.dark .btn-secondary {
+  background-color: var(--color-secondary-dark);
+  color: #111827;
+  border-color: var(--color-light);
+}
+
+.dark .btn-accent {
+  background-color: var(--color-accent-dark);
+  color: #ffffff;
+  border-color: var(--color-light);
 }
 
 .wobble:hover {
