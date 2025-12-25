@@ -61,7 +61,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 description: "Chat langsung dengan admin KF13 untuk info cepat",
                                 action: "Chat Sekarang",
                                 link: "https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20ingin%20bertanya%20tentang%20klub%20fisika",
-                                bg: "bg-green-500",
+                                bg: "btn-accent",
                                 urgent: true
                             },
                             {
@@ -71,7 +71,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 description: "Untuk pertanyaan formal, kerjasama, dan proposal",
                                 action: "Kirim Email",
                                 link: "mailto:info@klubfisika.org",
-                                bg: "bg-blue",
+                                bg: "btn-primary",
                                 urgent: false
                             },
                             {
@@ -81,7 +81,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 description: "Follow untuk update kegiatan dan konten edukatif",
                                 action: "Follow IG",
                                 link: "https://instagram.com/klubfisika13",
-                                bg: "bg-pink",
+                                bg: "btn-secondary",
                                 urgent: false
                             },
                             {
@@ -91,7 +91,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 description: "Video pembelajaran dan dokumentasi kegiatan",
                                 action: "Subscribe",
                                 link: "https://youtube.com/@klubfisika13",
-                                bg: "bg-red-500",
+                                bg: "btn-primary",
                                 urgent: false
                             },
                             {
@@ -101,7 +101,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 description: "Diskusi fisika dan sharing materi pembelajaran",
                                 action: "Join Group",
                                 link: "https://t.me/klubfisika13",
-                                bg: "bg-accent",
+                                bg: "btn-accent",
                                 urgent: false
                             },
                             {
@@ -111,7 +111,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 description: "Akses materi pembelajaran dan project open source",
                                 action: "View Repo",
                                 link: "https://github.com/klubfisika",
-                                bg: "bg-gray-600",
+                                bg: "bg-gray-600 text-on-dark",
                                 urgent: false
                             }
                         ].map((contact, index) => (
@@ -124,13 +124,13 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 
                                 <div class="text-center mb-4">
                                     <div class="text-4xl mb-3">{contact.icon}</div>
-                                    <h3 class="text-lg font-black uppercase text-white mb-2">
+                                    <h3 class="text-lg font-black uppercase text-on-primary mb-2">
                                         {contact.title}
                                     </h3>
-                                    <p class="text-white/90 font-bold text-sm">{contact.info}</p>
+                                    <p class="text-on-primary opacity-90 font-bold text-sm">{contact.info}</p>
                                 </div>
                                 
-                                <p class="text-white/80 text-sm text-center mb-6 leading-relaxed">
+                                <p class="text-on-primary opacity-80 text-sm text-center mb-6 leading-relaxed">
                                     {contact.description}
                                 </p>
                                 
@@ -138,7 +138,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                     href={contact.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="bg-white text-dark px-4 py-3 font-black border-2 border-dark hover:scale-105 transition-transform w-full block text-center text-sm"
+                                    class="bg-white text-on-light px-4 py-3 font-black border-2 border-dark hover:scale-105 transition-transform w-full block text-center text-sm"
                                 >
                                     {contact.action}
                                 </a>
@@ -257,19 +257,19 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                             {
                                 question: "Kapan waktu terbaik untuk berkunjung?",
                                 answer: "Sanggar buka Senin-Jumat (15:00-20:00) dan weekend (09:00-17:00). Konfirmasi dulu via WhatsApp untuk memastikan ada kegiatan.",
-                                bg: "bg-accent"
+                                bg: "btn-accent"
                             },
                             {
                                 question: "Apa saja kegiatan rutin KF13?",
                                 answer: "Workshop mingguan, diskusi fisika, eksperimen praktis, kompetisi, dan project kolaboratif. Cek halaman Events untuk jadwal terbaru!",
-                                bg: "bg-pink"
+                                bg: "btn-secondary"
                             }
                         ].map((faq, index) => (
                             <div class={`${faq.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} shadow-brutal-sm`}>
-                                <h4 class="text-lg font-black uppercase text-white mb-3">
+                                <h4 class="text-lg font-black uppercase text-on-primary mb-3">
                                     ❓ {faq.question}
                                 </h4>
-                                <p class="text-white/90 font-semibold leading-relaxed">
+                                <p class="text-on-primary opacity-90 font-semibold leading-relaxed">
                                     {faq.answer}
                                 </p>
                             </div>
@@ -277,7 +277,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                     </div>
                     
                     <div class="text-center mt-12">
-                        <div class="bg-secondary dark:bg-secondary-dark border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal inline-block">
+                        <div class="btn-secondary border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal inline-block">
                             <p class="text-dark dark:text-light font-bold mb-4">
                                 Masih ada pertanyaan lain?
                             </p>
@@ -285,7 +285,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20punya%20pertanyaan%20tentang%20klub%20fisika"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="bg-primary dark:bg-primary-dark border-2 border-dark dark:border-light px-6 py-3 font-black text-white hover:scale-105 transition-transform inline-block"
+                                class="btn-primary border-2 border-dark dark:border-light px-6 py-3 font-black hover:scale-105 transition-transform inline-block"
                             >
                                 💬 TANYA LANGSUNG
                             </a>
