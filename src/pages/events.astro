@@ -1,0 +1,280 @@
+---
+import "../styles/design-system.css";
+import BaseHead from "../components/BaseHead.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/sections/Footer.astro";
+import FloatingActions from "../components/ui/FloatingActions.astro";
+import ScrollProgress from "../components/ui/ScrollProgress.astro";
+import BackToTop from "../components/ui/BackToTop.astro";
+import SectionHeader from "../components/ui/SectionHeader.astro";
+---
+
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+    <head>
+        <BaseHead 
+            title="Events & Kegiatan - KF13 Klub Fisika Indonesia" 
+            description="Jadwal workshop, seminar, kompetisi, dan kegiatan fisika KF13. Bergabunglah dalam event pembelajaran fisika yang seru!"
+        />
+        <script>
+          if (localStorage.theme === 'dark' || 
+              (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          }
+        </script>
+    </head>
+    <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">
+        <ScrollProgress />
+        <Navigation />
+        <FloatingActions />
+        <BackToTop threshold={300} />
+        
+        <main class="pt-20">
+            <!-- Hero Section -->
+            <section class="bg-gradient-to-br from-yellow-200 via-green-100 to-blue-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-600 py-20 transition-colors">
+                <div class="max-w-6xl mx-auto px-6 text-center">
+                    <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-dark dark:text-light transform -rotate-1 mb-8">
+                        EVENTS & <span class="text-secondary dark:text-secondary-dark">KEGIATAN</span>
+                    </h1>
+                    <div class="bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal max-w-2xl mx-auto">
+                        <p class="text-xl font-bold text-dark dark:text-light mb-4">
+                            🎯 Agenda Pembelajaran Fisika yang Seru!
+                        </p>
+                        <p class="text-dark dark:text-light font-semibold">
+                            Workshop, seminar, kompetisi, dan kegiatan fisika yang dirancang untuk mengasah kemampuan 
+                            dan memperluas wawasan anggota KF13.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upcoming Events -->
+            <section class="py-20 bg-white dark:bg-slate-700 transition-colors">
+                <div class="max-w-6xl mx-auto px-6">
+                    <SectionHeader title="EVENT MENDATANG" subtitle="Jangan sampai terlewat!" className="mb-16" />
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        {[
+                            {
+                                title: "Workshop Fisika Kuantum untuk Pemula",
+                                date: "Sabtu, 30 Desember 2024",
+                                time: "14:00 - 17:00 WIB",
+                                location: "Online via Zoom",
+                                speaker: "Dr. Sarah Quantum",
+                                description: "Memahami konsep dasar fisika kuantum dengan pendekatan yang mudah dipahami",
+                                capacity: "50 peserta",
+                                price: "GRATIS",
+                                status: "Pendaftaran Dibuka",
+                                bg: "bg-purple-500",
+                                urgent: true
+                            },
+                            {
+                                title: "Eksperimen Gelombang Bunyi",
+                                date: "Minggu, 5 Januari 2025",
+                                time: "15:00 - 18:00 WIB",
+                                location: "Lab Fisika UGM",
+                                speaker: "Budi Eksperimen",
+                                description: "Praktikum langsung mengukur kecepatan gelombang bunyi dengan alat sederhana",
+                                capacity: "20 peserta",
+                                price: "Rp 25.000 (biaya alat)",
+                                status: "Tersedia 8 Slot",
+                                bg: "bg-blue",
+                                urgent: false
+                            },
+                            {
+                                title: "Seminar Fisika Modern & Teknologi",
+                                date: "Sabtu, 11 Januari 2025",
+                                time: "13:00 - 16:00 WIB",
+                                location: "Auditorium UNY",
+                                speaker: "Prof. Dr. Ahmad Fisika",
+                                description: "Aplikasi fisika modern dalam teknologi masa depan dan industri 4.0",
+                                capacity: "100 peserta",
+                                price: "GRATIS",
+                                status: "Pendaftaran Segera",
+                                bg: "bg-green-500",
+                                urgent: false
+                            },
+                            {
+                                title: "Kompetisi Fisika KF13 Cup 2025",
+                                date: "Sabtu-Minggu, 18-19 Januari 2025",
+                                time: "08:00 - 17:00 WIB",
+                                location: "Kampus UIN Sunan Kalijaga",
+                                speaker: "Tim Juri KF13",
+                                description: "Kompetisi fisika tingkat SMA/SMK se-DIY dengan hadiah menarik",
+                                capacity: "200 peserta (50 tim)",
+                                price: "Rp 50.000/tim",
+                                status: "Early Bird 40% Off",
+                                bg: "bg-orange-500",
+                                urgent: true
+                            }
+                        ].map((event, index) => (
+                            <div class={`${event.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm relative`}>
+                                {event.urgent && (
+                                    <div class="absolute -top-3 -right-3 bg-red-500 border-2 border-dark dark:border-light px-3 py-1 transform rotate-12">
+                                        <span class="text-xs font-black text-white">URGENT!</span>
+                                    </div>
+                                )}
+                                
+                                <div class="mb-4">
+                                    <span class="bg-white text-dark px-3 py-1 text-xs font-bold border-2 border-dark">
+                                        {event.status.toUpperCase()}
+                                    </span>
+                                </div>
+                                
+                                <h3 class="text-xl font-black uppercase text-white mb-4 leading-tight">
+                                    {event.title}
+                                </h3>
+                                
+                                <div class="space-y-2 text-white/90 text-sm mb-4">
+                                    <div class="flex items-center gap-2">
+                                        <span>📅</span>
+                                        <span class="font-bold">{event.date}</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span>⏰</span>
+                                        <span>{event.time}</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span>📍</span>
+                                        <span>{event.location}</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span>👨‍🏫</span>
+                                        <span>{event.speaker}</span>
+                                    </div>
+                                </div>
+                                
+                                <p class="text-white/90 text-sm leading-relaxed mb-4">
+                                    {event.description}
+                                </p>
+                                
+                                <div class="bg-white/20 border-2 border-white p-3 rounded mb-4">
+                                    <div class="flex justify-between items-center text-white text-xs">
+                                        <span>👥 {event.capacity}</span>
+                                        <span class="font-bold">{event.price}</span>
+                                    </div>
+                                </div>
+                                
+                                <button class="bg-white text-dark px-6 py-3 font-black border-2 border-dark hover:scale-105 transition-transform w-full">
+                                    📝 DAFTAR SEKARANG
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Past Events -->
+            <section class="py-20 bg-surface dark:bg-slate-800 transition-colors">
+                <div class="max-w-6xl mx-auto px-6">
+                    <SectionHeader title="EVENT SEBELUMNYA" subtitle="Dokumentasi kegiatan yang telah berlangsung" className="mb-16" />
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            {
+                                title: "Workshop Roket Air",
+                                date: "15 Desember 2024",
+                                participants: "25 peserta",
+                                success: "98% satisfaction rate",
+                                image: "rocket-workshop.jpg",
+                                bg: "bg-accent"
+                            },
+                            {
+                                title: "Seminar Astronomi",
+                                date: "8 Desember 2024", 
+                                participants: "80 peserta",
+                                success: "15 follow-up projects",
+                                image: "lunar-eclipse.jpg",
+                                bg: "bg-blue"
+                            },
+                            {
+                                title: "Kompetisi Fisika Internal",
+                                date: "1 Desember 2024",
+                                participants: "40 peserta",
+                                success: "12 tim finalis",
+                                image: "physics-competition.jpg",
+                                bg: "bg-pink"
+                            }
+                        ].map((event, index) => (
+                            <div class={`${event.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? '-rotate-1' : 'rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
+                                <div class="text-center mb-4">
+                                    <div class="w-16 h-16 bg-white border-2 border-dark dark:border-light rounded-full mx-auto mb-3 flex items-center justify-center">
+                                        <span class="text-2xl">✅</span>
+                                    </div>
+                                    <h3 class="text-lg font-black uppercase text-white mb-2">
+                                        {event.title}
+                                    </h3>
+                                    <p class="text-white/80 text-sm">{event.date}</p>
+                                </div>
+                                
+                                <div class="space-y-2 text-white/90 text-sm">
+                                    <div>👥 {event.participants}</div>
+                                    <div>🎯 {event.success}</div>
+                                </div>
+                                
+                                <button class="bg-white/20 border-2 border-white text-white px-4 py-2 font-bold text-sm hover:scale-105 transition-transform w-full mt-4">
+                                    📸 LIHAT DOKUMENTASI
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Event Registration CTA -->
+            <section class="py-20 bg-white dark:bg-slate-700 transition-colors">
+                <div class="max-w-4xl mx-auto px-6 text-center">
+                    <div class="bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light p-8 transform -rotate-1 shadow-brutal">
+                        <h2 class="text-3xl font-black uppercase text-dark dark:text-light mb-6">
+                            🎪 BUAT EVENT BERSAMA KF13
+                        </h2>
+                        <p class="text-lg font-semibold text-dark dark:text-light mb-8">
+                            Punya ide workshop atau seminar fisika? Ingin berkolaborasi mengadakan event edukatif? 
+                            Mari wujudkan bersama KF13!
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a 
+                                href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20ingin%20mengusulkan%20event%20fisika"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="bg-primary dark:bg-primary-dark border-3 border-dark dark:border-light px-8 py-4 font-black text-white hover:scale-105 transition-transform"
+                            >
+                                💡 USULKAN EVENT
+                            </a>
+                            <a 
+                                href="mailto:events@klubfisika.org"
+                                class="bg-secondary dark:bg-secondary-dark border-3 border-dark dark:border-light px-8 py-4 font-black text-dark dark:text-light hover:scale-105 transition-transform"
+                            >
+                                📧 EMAIL PROPOSAL
+                            </a>
+                        </div>
+                        
+                        <p class="text-sm text-dark dark:text-light mt-6 opacity-75">
+                            Kami terbuka untuk kolaborasi dengan sekolah, universitas, dan organisasi lainnya
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <Footer />
+
+        <script>
+            // Event registration functionality
+            document.addEventListener('DOMContentLoaded', () => {
+                const registerButtons = document.querySelectorAll('button:contains("DAFTAR SEKARANG")');
+                
+                registerButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        // Simple registration flow
+                        const eventTitle = button.closest('div').querySelector('h3').textContent;
+                        const whatsappMessage = `Halo KF13! Saya ingin mendaftar untuk event: ${eventTitle}`;
+                        const whatsappUrl = `https://wa.me/6282225009253?text=${encodeURIComponent(whatsappMessage)}`;
+                        window.open(whatsappUrl, '_blank');
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
