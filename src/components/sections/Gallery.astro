@@ -1,5 +1,14 @@
 ---
 import SectionHeader from '../ui/SectionHeader.astro';
+import { Image } from 'astro:assets';
+
+// Import gallery images with clean aliases
+import experimentWave from '@assets/gallery/experiment-wave.jpg';
+import rocketWorkshop from '@assets/gallery/rocket-workshop.jpg';
+import quantumDiscussion from '@assets/gallery/quantum-discussion.jpg';
+import lunarEclipse from '@assets/gallery/lunar-eclipse.jpg';
+import physicsCompetition from '@assets/gallery/physics-competition.jpg';
+import projectPresentation from '@assets/gallery/project-presentation.jpg';
 ---
 
 <section class="py-20 bg-white dark:bg-slate-700 transition-colors" id="galeri">
@@ -7,52 +16,71 @@ import SectionHeader from '../ui/SectionHeader.astro';
     <SectionHeader title="GALERI KEGIATAN" subtitle="Dokumentasi aktivitas KF13" className="mb-16" />
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Placeholder Gallery Items -->
+      <!-- Real Activity Photos -->
       {[
         {
-          title: "Eksperimen Gelombang",
-          desc: "Praktikum gelombang bunyi menggunakan alat sederhana",
-          emoji: "🌊",
-          bg: "bg-blue"
-        },
-        {
-          title: "Diskusi Fisika Kuantum", 
-          desc: "Sesi diskusi mendalam tentang mekanika kuantum",
-          emoji: "⚛️",
-          bg: "bg-primary"
+          title: "Eksperimen Gelombang Bunyi",
+          desc: "Praktikum mengukur kecepatan gelombang bunyi menggunakan tabung resonansi",
+          image: experimentWave,
+          date: "November 2024"
         },
         {
           title: "Workshop Roket Air",
-          desc: "Membuat dan meluncurkan roket air bersama",
-          emoji: "🚀", 
-          bg: "bg-accent"
+          desc: "Membuat dan meluncurkan roket air untuk memahami hukum Newton",
+          image: rocketWorkshop, 
+          date: "Oktober 2024"
         },
         {
-          title: "Pengamatan Astronomi",
-          desc: "Observasi benda langit dengan teleskop sederhana",
-          emoji: "🔭",
-          bg: "bg-secondary"
+          title: "Diskusi Fisika Kuantum",
+          desc: "Sesi diskusi mendalam tentang interpretasi mekanika kuantum",
+          image: quantumDiscussion,
+          date: "September 2024"
         },
         {
-          title: "Kompetisi Fisika",
-          desc: "Lomba pemecahan masalah fisika tingkat komunitas",
-          emoji: "🏆",
-          bg: "bg-pink"
+          title: "Pengamatan Gerhana Bulan",
+          desc: "Observasi gerhana bulan total dengan teleskop sederhana",
+          image: lunarEclipse,
+          date: "Agustus 2024"
         },
         {
-          title: "Presentasi Proyek",
-          desc: "Anggota mempresentasikan hasil penelitian mini",
-          emoji: "📊",
-          bg: "bg-surface"
+          title: "Kompetisi Fisika Internal",
+          desc: "Lomba pemecahan masalah fisika tingkat komunitas KF13",
+          image: physicsCompetition,
+          date: "Juli 2024"
+        },
+        {
+          title: "Presentasi Proyek Akhir",
+          desc: "Anggota mempresentasikan hasil penelitian mini semester ini",
+          image: projectPresentation,
+          date: "Juni 2024"
         }
       ].map((item, index) => (
-        <div class={`${item.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 3 === 0 ? 'rotate-2' : index % 3 === 1 ? '-rotate-1' : 'rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
-          <div class="text-center">
-            <div class="text-5xl mb-4">{item.emoji}</div>
-            <h3 class="text-lg font-black uppercase text-dark dark:text-light mb-3">
-              {item.title}
-            </h3>
-            <p class="text-sm font-semibold text-dark dark:text-light">
+        <div class={`bg-surface dark:bg-slate-600 border-4 border-dark dark:border-light transform ${index % 3 === 0 ? 'rotate-2' : index % 3 === 1 ? '-rotate-1' : 'rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm overflow-hidden`}>
+          <!-- Image -->
+          <div class="h-48 overflow-hidden">
+            <Image 
+              src={item.image}
+              alt={item.title}
+              width={400}
+              height={300}
+              format="webp"
+              quality={80}
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </div>
+          
+          <!-- Content -->
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-lg font-black uppercase text-dark dark:text-light leading-tight">
+                {item.title}
+              </h3>
+              <span class="text-xs bg-accent dark:bg-accent-dark text-dark dark:text-light px-2 py-1 border border-dark dark:border-light font-bold">
+                {item.date}
+              </span>
+            </div>
+            <p class="text-sm font-semibold text-dark dark:text-light leading-relaxed">
               {item.desc}
             </p>
           </div>
@@ -60,13 +88,30 @@ import SectionHeader from '../ui/SectionHeader.astro';
       ))}
     </div>
 
-    <!-- Coming Soon Notice -->
-    <div class="mt-12 text-center">
-      <div class="bg-accent dark:bg-green-700 border-4 border-dark dark:border-light p-6 transform -rotate-1 inline-block shadow-brutal">
-        <p class="text-dark dark:text-light font-bold">
-          📸 <strong>Foto dan video kegiatan akan segera ditambahkan!</strong><br/>
-          <span class="text-sm">Follow media sosial kami untuk update terbaru</span>
+    <!-- Gallery CTA -->
+    <div class="mt-16 text-center">
+      <div class="bg-pink dark:bg-purple-600 border-4 border-dark dark:border-light p-6 transform -rotate-1 inline-block shadow-brutal">
+        <p class="text-dark dark:text-light font-bold mb-4">
+          📸 <strong>Lihat lebih banyak foto kegiatan kami!</strong>
         </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="https://instagram.com/kf13_indonesia"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-secondary dark:bg-secondary-dark border-2 border-dark dark:border-light px-4 py-2 font-bold text-dark dark:text-light hover:scale-105 transition-transform"
+          >
+            📸 Instagram
+          </a>
+          <a 
+            href="https://youtube.com/@KF13Indonesia"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-blue dark:bg-blue-dark border-2 border-dark dark:border-light px-4 py-2 font-bold text-dark dark:text-light hover:scale-105 transition-transform"
+          >
+            📺 YouTube
+          </a>
+        </div>
       </div>
     </div>
   </div>
