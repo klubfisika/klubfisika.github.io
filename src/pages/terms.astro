@@ -8,6 +8,9 @@ import BackToTop from "../components/ui/BackToTop.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
 import BrutalCard from "../components/ui/BrutalCard.astro";
 import GradientSection from "../components/ui/GradientSection.astro";
+import Heading from "../components/ui/Heading.astro";
+import Text from "../components/ui/Text.astro";
+import BrutalSection from "../components/ui/BrutalSection.astro";
 ---
 
 <!doctype html>
@@ -29,65 +32,65 @@ import GradientSection from "../components/ui/GradientSection.astro";
             <!-- Hero Section -->
             <GradientSection variant="blue-purple">
                 <div class="max-w-4xl mx-auto px-6 text-center">
-                    <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tight text-dark dark:text-light transform -rotate-1 mb-8">
+                    <Heading level={1} size="3xl" class="uppercase tracking-tight transform -rotate-1 mb-8">
                         SYARAT & <span class="text-primary dark:text-primary-dark">KETENTUAN</span>
-                    </h1>
-                    <div class="bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal">
-                        <p class="text-lg font-bold text-dark dark:text-light mb-4">
+                    </Heading>
+                    <BrutalCard variant="white" class="transform rotate-1">
+                        <Text size="lg" class="font-bold mb-4">
                             📋 Panduan Resmi KF13 Klub Fisika Indonesia
-                        </p>
-                        <p class="text-dark dark:text-light font-semibold">
+                        </Text>
+                        <Text class="font-semibold mb-4">
                             Syarat dan ketentuan penggunaan layanan, kebijakan privasi, dan panduan komunitas yang berlaku untuk semua anggota dan pengunjung.
-                        </p>
-                        <p class="text-sm text-dark dark:text-light mt-4 opacity-75">
+                        </Text>
+                        <Text size="sm" class="opacity-75">
                             Terakhir diperbarui: 25 Desember 2025
-                        </p>
-                    </div>
+                        </Text>
+                    </BrutalCard>
                 </div>
-            </section>
+            </GradientSection>
 
             <!-- Terms of Service -->
-            <section class="py-20 bg-white dark:bg-slate-700 transition-colors">
+            <BrutalSection background="white" padding="lg">
                 <div class="max-w-4xl mx-auto px-6">
                     <SectionHeader title="SYARAT LAYANAN" subtitle="Ketentuan penggunaan layanan KF13" className="mb-16" />
                     
                     <div class="space-y-8">
-                        <div class="bg-surface dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal-sm">
-                            <h3 class="text-xl font-black uppercase text-dark dark:text-light mb-4">1. PENERIMAAN SYARAT</h3>
-                            <p class="text-dark dark:text-light leading-relaxed mb-4">
+                        <BrutalCard variant="surface" class="transform rotate-1">
+                            <Heading level={3} size="lg" class="uppercase mb-4">1. PENERIMAAN SYARAT</Heading>
+                            <Text class="leading-relaxed mb-4">
                                 Dengan mengakses dan menggunakan layanan KF13 Klub Fisika Indonesia, Anda menyetujui untuk terikat oleh syarat dan ketentuan ini. 
                                 Jika Anda tidak setuju dengan syarat ini, mohon untuk tidak menggunakan layanan kami.
-                            </p>
-                            <ul class="list-disc list-inside text-dark dark:text-light space-y-2 text-sm">
+                            </Text>
+                            <ul class="list-disc list-inside space-y-2 text-sm text-dark dark:text-light">
                                 <li>Layanan tersedia untuk pelajar, mahasiswa, dan pendidik fisika</li>
                                 <li>Pengguna harus berusia minimal 13 tahun atau memiliki izin orang tua</li>
                                 <li>Akun harus menggunakan identitas yang benar dan valid</li>
                             </ul>
-                        </div>
+                        </BrutalCard>
 
-                        <div class="bg-blue dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal-sm">
-                            <h3 class="text-xl font-black uppercase text-white mb-4">2. LAYANAN KOMUNITAS</h3>
-                            <p class="text-white leading-relaxed mb-4">
+                        <BrutalCard variant="primary" class="transform -rotate-1">
+                            <Heading level={3} size="lg" class="uppercase mb-4 text-white">2. LAYANAN KOMUNITAS</Heading>
+                            <Text class="leading-relaxed mb-4 text-white">
                                 KF13 menyediakan platform pembelajaran fisika, diskusi ilmiah, dan kegiatan edukatif. 
                                 Semua layanan bersifat gratis dan berbasis komunitas.
-                            </p>
-                            <ul class="list-disc list-inside text-white space-y-2 text-sm">
+                            </Text>
+                            <ul class="list-disc list-inside space-y-2 text-sm text-white">
                                 <li>Diskusi fisika dan sains terbuka untuk semua anggota</li>
                                 <li>Eksperimen dan workshop sesuai kapasitas dan jadwal</li>
                                 <li>Materi pembelajaran dapat digunakan untuk tujuan edukatif</li>
                                 <li>Tidak ada jaminan ketersediaan layanan 24/7</li>
                             </ul>
-                        </div>
+                        </BrutalCard>
 
-                        <div class="bg-accent dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal-sm">
-                            <h3 class="text-xl font-black uppercase text-dark dark:text-light mb-4">3. KODE ETIK ANGGOTA</h3>
-                            <p class="text-dark dark:text-light leading-relaxed mb-4">
+                        <BrutalCard variant="accent" class="transform rotate-1">
+                            <Heading level={3} size="lg" class="uppercase mb-4">3. KODE ETIK ANGGOTA</Heading>
+                            <Text class="leading-relaxed mb-4">
                                 Sebagai komunitas pembelajaran, kami menjunjung tinggi nilai-nilai ilmiah, etika, dan saling menghormati.
-                            </p>
+                            </Text>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                                 <div>
-                                    <p class="font-bold text-dark dark:text-light mb-2">✅ DIPERBOLEHKAN:</p>
-                                    <ul class="list-disc list-inside text-dark dark:text-light space-y-1">
+                                    <Text class="font-bold mb-2">✅ DIPERBOLEHKAN:</Text>
+                                    <ul class="list-disc list-inside space-y-1 text-dark dark:text-light">
                                         <li>Diskusi ilmiah yang konstruktif</li>
                                         <li>Berbagi pengetahuan dan pengalaman</li>
                                         <li>Bertanya dan meminta bantuan</li>
@@ -95,8 +98,8 @@ import GradientSection from "../components/ui/GradientSection.astro";
                                     </ul>
                                 </div>
                                 <div>
-                                    <p class="font-bold text-dark dark:text-light mb-2">❌ TIDAK DIPERBOLEHKAN:</p>
-                                    <ul class="list-disc list-inside text-dark dark:text-light space-y-1">
+                                    <Text class="font-bold mb-2">❌ TIDAK DIPERBOLEHKAN:</Text>
+                                    <ul class="list-disc list-inside space-y-1 text-dark dark:text-light">
                                         <li>Konten SARA, politik, atau pornografi</li>
                                         <li>Spam, iklan, atau promosi berlebihan</li>
                                         <li>Plagiarisme atau pelanggaran hak cipta</li>
@@ -104,10 +107,10 @@ import GradientSection from "../components/ui/GradientSection.astro";
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </BrutalCard>
                     </div>
                 </div>
-            </section>
+            </BrutalSection>
 
             <!-- Privacy Policy -->
             <section class="py-20 bg-surface dark:bg-slate-800 transition-colors">
