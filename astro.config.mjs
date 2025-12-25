@@ -10,6 +10,12 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), qwikdev()],
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        '@': '/src',
+        '@assets': '/src/assets'
+      }
+    }
   },
   image: {
     domains: ['localhost'],
