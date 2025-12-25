@@ -17,10 +17,6 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
             description="Jadwal workshop, seminar, kompetisi, dan kegiatan fisika KF13. Bergabunglah dalam event pembelajaran fisika yang seru!"
         />
         <script>
-          if (localStorage.theme === 'dark' || 
-              (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-          }
         </script>
     </head>
     <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">

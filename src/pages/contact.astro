@@ -17,10 +17,6 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
             description="Hubungi KF13 dan kunjungi Sanggar Fisika kami di Yogyakarta. Alamat lengkap, kontak WhatsApp, email, dan media sosial."
         />
         <script>
-          if (localStorage.theme === 'dark' || 
-              (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-          }
         </script>
     </head>
     <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">
@@ -117,8 +113,8 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                         ].map((contact, index) => (
                             <div class={`${contact.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm relative`}>
                                 {contact.urgent && (
-                                    <div class="absolute -top-3 -right-3 bg-yellow-400 border-2 border-dark dark:border-light px-2 py-1 transform rotate-12">
-                                        <span class="text-xs font-black text-dark">FAST!</span>
+                                    <div class="absolute -top-3 -right-3 bg-red-500 border-2 border-dark dark:border-light px-2 py-1 transform rotate-12">
+                                        <span class="text-xs font-black text-white">FAST!</span>
                                     </div>
                                 )}
                                 

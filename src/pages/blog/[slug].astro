@@ -165,10 +165,6 @@ const { post } = Astro.props;
             description={post.excerpt}
         />
         <script>
-          if (localStorage.theme === 'dark' || 
-              (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-          }
         </script>
     </head>
     <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">

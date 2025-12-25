@@ -19,10 +19,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         />
         <script>
           // Dark mode initialization
-          if (localStorage.theme === 'dark' || 
-              (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-          }
         </script>
     </head>
     <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">
@@ -104,7 +100,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
                                 icon: "💻"
                             }
                         ].map((campus, index) => (
-                            <div class={`${campus.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-2' : '-rotate-2'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
+                            <div class={`${campus.bg} border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-2' : '-rotate-2'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
                                 <div class="text-center mb-4">
                                     <div class="text-4xl mb-2">{campus.icon}</div>
                                     <h3 class="text-xl font-black uppercase text-on-primary mb-1">{campus.abbr}</h3>
@@ -118,7 +114,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
                                 </div>
                                 
                                 <div class="text-center">
-                                    <span class="bg-white text-on-light px-3 py-1 text-xs font-bold border-2 border-dark">
+                                    <span class="bg-white dark:bg-slate-800 text-on-light dark:text-on-dark px-3 py-1 text-xs font-bold border-2 border-dark dark:border-light">
                                         {campus.members}
                                     </span>
                                 </div>
@@ -128,7 +124,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
                     
                     <!-- Disclaimer -->
                     <div class="mt-12 text-center">
-                        <div class="bg-yellow-100 dark:bg-yellow-900 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal max-w-3xl mx-auto">
+                        <div class="bg-blue-100 dark:bg-slate-700 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal max-w-3xl mx-auto">
                             <p class="text-sm font-bold text-dark dark:text-light">
                                 ℹ️ <strong>Catatan:</strong> KF13 dibangun berbasis solidaritas anggota yang bersekolah di berbagai kampus. 
                                 Beberapa kerjasama resmi sedang dalam proses, namun belum dapat dipublikasikan sepenuhnya.
