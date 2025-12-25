@@ -1,0 +1,65 @@
+---
+interface Props {
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  speaker: string;
+  description: string;
+  capacity: string;
+  price: string;
+  status: string;
+  urgent?: boolean;
+  variant?: 'primary' | 'secondary' | 'accent';
+  className?: string;
+}
+
+const { 
+  title,
+  date,
+  time,
+  location,
+  speaker,
+  description,
+  capacity,
+  price,
+  status,
+  urgent = false,
+  variant = 'primary',
+  className = ""
+} = Astro.props;
+---
+
+<BrutalCard variant={variant} rotation="right" urgent={urgent} className={className}>
+  <div class="mb-4">
+    <Badge variant="light" size="sm">
+      {status.toUpperCase()}
+    </Badge>
+  </div>
+  
+  <h3 class="text-xl font-black uppercase text-on-primary mb-4 leading-tight">
+    {title}
+  </h3>
+  
+  <div class="space-y-2 text-on-primary opacity-90 text-sm mb-4">
+    <ContactInfo icon="📅" value={date} size="sm" />
+    <ContactInfo icon="⏰" value={time} size="sm" />
+    <ContactInfo icon="📍" value={location} size="sm" />
+    <ContactInfo icon="👨🏫" value={speaker} size="sm" />
+  </div>
+  
+  <p class="text-on-primary opacity-90 text-sm leading-relaxed mb-4">
+    {description}
+  </p>
+  
+  <div class="bg-white/20 border-2 border-white p-3 rounded mb-4">
+    <FlexRow justify="between" className="text-on-primary text-xs">
+      <span>👥 {capacity}</span>
+      <span class="font-bold">{price}</span>
+    </FlexRow>
+  </div>
+  
+  <BrutalButton variant="surface" size="md" className="w-full">
+    📝 DAFTAR SEKARANG
+  </BrutalButton>
+</BrutalCard>

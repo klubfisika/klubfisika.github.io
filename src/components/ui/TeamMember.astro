@@ -2,67 +2,69 @@
 interface Props {
   name: string;
   role: string;
-  photo?: string;
   bio?: string;
-  email?: string;
-  linkedin?: string;
+  avatar?: string;
+  social?: {
+    instagram?: string;
+    linkedin?: string;
+    github?: string;
+  };
+  variant?: 'primary' | 'secondary' | 'accent';
   className?: string;
 }
 
 const { 
-  name, 
-  role, 
-  photo = "/placeholder-avatar.jpg", 
-  bio, 
-  email, 
-  linkedin,
+  name,
+  role,
+  bio,
+  avatar,
+  social,
+  variant = 'primary',
   className = ""
 } = Astro.props;
 ---
 
-<div class={`bg-white dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform hover:rotate-0 transition-transform shadow-brutal-sm ${className}`}>
-  <div class="text-center">
-    <!-- Photo -->
-    <div class="w-24 h-24 mx-auto mb-4 border-4 border-dark dark:border-light overflow-hidden">
-      <img 
-        src={photo} 
-        alt={`${name} - ${role}`}
-        class="w-full h-full object-cover"
-        loading="lazy"
-      />
+<HoverScale>
+  <BrutalCard variant={variant} rotation="left" className={`text-center ${className}`}>
+    <div class="mb-4">
+      {avatar ? (
+        <div class="w-20 h-20 bg-white border-2 border-dark dark:border-light rounded-full mx-auto mb-3 overflow-hidden">
+          <img src={avatar} alt={name} class="w-full h-full object-cover" />
+        </div>
+      ) : (
+        <div class="w-20 h-20 bg-white border-2 border-dark dark:border-light rounded-full mx-auto mb-3 flex items-center justify-center">
+          <span class="text-3xl">👨‍🔬</span>
+        </div>
+      )}
+      
+      <h3 class="text-lg font-black uppercase text-on-primary mb-1">{name}</h3>
+      <p class="text-sm font-bold text-on-primary opacity-90">{role}</p>
     </div>
     
-    <!-- Name & Role -->
-    <h3 class="text-lg font-black uppercase text-dark dark:text-light mb-2">{name}</h3>
-    <p class="text-sm font-bold text-dark dark:text-light mb-3 opacity-75">{role}</p>
-    
-    <!-- Bio -->
     {bio && (
-      <p class="text-xs text-dark dark:text-light mb-4 leading-relaxed">{bio}</p>
+      <p class="text-xs text-on-primary opacity-80 leading-relaxed mb-4">
+        {bio}
+      </p>
     )}
     
-    <!-- Contact Links -->
-    <div class="flex justify-center gap-2">
-      {email && (
-        <a 
-          href={`mailto:${email}`}
-          class="w-8 h-8 bg-secondary dark:bg-secondary-dark border-2 border-dark dark:border-light flex items-center justify-center text-xs hover:scale-110 transition-transform"
-          aria-label={`Email ${name}`}
-        >
-          📧
-        </a>
-      )}
-      {linkedin && (
-        <a 
-          href={linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-8 h-8 bg-blue dark:bg-blue-dark border-2 border-dark dark:border-light flex items-center justify-center text-xs hover:scale-110 transition-transform"
-          aria-label={`${name} LinkedIn`}
-        >
-          💼
-        </a>
-      )}
-    </div>
-  </div>
-</div>
+    {social && (
+      <FlexRow justify="center" gap="2">
+        {social.instagram && (
+          <a href={social.instagram} target="_blank" rel="noopener noreferrer" class="text-on-primary hover:scale-110 transition-transform">
+            📸
+          </a>
+        )}
+        {social.linkedin && (
+          <a href={social.linkedin} target="_blank" rel="noopener noreferrer" class="text-on-primary hover:scale-110 transition-transform">
+            💼
+          </a>
+        )}
+        {social.github && (
+          <a href={social.github} target="_blank" rel="noopener noreferrer" class="text-on-primary hover:scale-110 transition-transform">
+            💻
+          </a>
+        )}
+      </FlexRow>
+    )}
+  </BrutalCard>
+</HoverScale>

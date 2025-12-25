@@ -1,0 +1,57 @@
+---
+interface Props {
+  links: Array<{
+    name: string;
+    icon: string;
+    url: string;
+    handle?: string;
+  }>;
+  layout?: 'horizontal' | 'vertical' | 'grid';
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+}
+
+const { 
+  links,
+  layout = 'horizontal',
+  size = 'md',
+  className = ""
+} = Astro.props;
+
+const layoutClasses = {
+  horizontal: 'flex flex-wrap gap-4',
+  vertical: 'flex flex-col gap-3',
+  grid: 'grid grid-cols-2 md:grid-cols-3 gap-4'
+};
+
+const sizeClasses = {
+  sm: 'p-2 text-sm',
+  md: 'p-4 text-base',
+  lg: 'p-6 text-lg'
+};
+---
+
+<div class={`${layoutClasses[layout]} ${className}`}>
+  {links.map((social, index) => (
+    <HoverScale>
+      <BrutalCard 
+        variant={index % 3 === 0 ? 'primary' : index % 3 === 1 ? 'secondary' : 'accent'}
+        size={size}
+        className="text-center"
+      >
+        <a 
+          href={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block"
+        >
+          <div class="text-2xl mb-2">{social.icon}</div>
+          <p class="font-bold text-xs text-on-primary">{social.name}</p>
+          {social.handle && (
+            <p class="text-xs text-on-primary opacity-90">{social.handle}</p>
+          )}
+        </a>
+      </BrutalCard>
+    </HoverScale>
+  ))}
+</div>

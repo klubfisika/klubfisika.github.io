@@ -1,0 +1,31 @@
+---
+interface Props {
+  scale?: '105' | '110' | '125';
+  duration?: 'fast' | 'normal' | 'slow';
+  className?: string;
+}
+
+const { 
+  scale = '105',
+  duration = 'normal',
+  className = ""
+} = Astro.props;
+
+const scaleClasses = {
+  '105': 'hover:scale-105',
+  '110': 'hover:scale-110', 
+  '125': 'hover:scale-125'
+};
+
+const durationClasses = {
+  fast: 'transition-transform duration-150',
+  normal: 'transition-transform',
+  slow: 'transition-transform duration-500'
+};
+
+const hoverClasses = `${scaleClasses[scale]} ${durationClasses[duration]} ${className}`;
+---
+
+<div class={hoverClasses}>
+  <slot />
+</div>

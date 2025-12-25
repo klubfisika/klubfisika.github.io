@@ -1,0 +1,41 @@
+---
+interface Props {
+  type?: 'text' | 'email' | 'password' | 'tel' | 'url';
+  placeholder?: string;
+  required?: boolean;
+  name?: string;
+  id?: string;
+  value?: string;
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+}
+
+const { 
+  type = 'text',
+  placeholder,
+  required = false,
+  name,
+  id,
+  value,
+  size = 'md',
+  className = ""
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'px-3 py-2 text-sm',
+  md: 'px-4 py-3 text-base',
+  lg: 'px-6 py-4 text-lg'
+};
+
+const inputClasses = `${sizeClasses[size]} border-4 border-dark dark:border-light bg-white dark:bg-slate-800 text-dark dark:text-light font-bold focus:outline-none focus:ring-4 focus:ring-accent transition-all ${className}`;
+---
+
+<input 
+  type={type}
+  placeholder={placeholder}
+  required={required}
+  name={name}
+  id={id}
+  value={value}
+  class={inputClasses}
+/>

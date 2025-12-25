@@ -1,0 +1,32 @@
+---
+interface Props {
+  label?: string;
+  required?: boolean;
+  error?: string;
+  className?: string;
+}
+
+const { 
+  label,
+  required = false,
+  error,
+  className = ""
+} = Astro.props;
+---
+
+<div class={`mb-6 ${className}`}>
+  {label && (
+    <label class="block text-sm font-black text-dark dark:text-light mb-2">
+      {label}
+      {required && <span class="text-red-500 ml-1">*</span>}
+    </label>
+  )}
+  
+  <slot />
+  
+  {error && (
+    <p class="mt-2 text-sm font-bold text-red-500">
+      ⚠️ {error}
+    </p>
+  )}
+</div>

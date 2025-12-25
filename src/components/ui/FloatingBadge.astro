@@ -1,0 +1,43 @@
+---
+interface Props {
+  text: string;
+  position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+  variant?: 'urgent' | 'new' | 'hot' | 'info';
+  rotation?: 'left' | 'right' | 'none';
+  className?: string;
+}
+
+const { 
+  text,
+  position = 'top-right',
+  variant = 'urgent',
+  rotation = 'right',
+  className = ""
+} = Astro.props;
+
+const positionClasses = {
+  'top-right': 'absolute -top-3 -right-3',
+  'top-left': 'absolute -top-3 -left-3',
+  'bottom-right': 'absolute -bottom-3 -right-3',
+  'bottom-left': 'absolute -bottom-3 -left-3'
+};
+
+const variantClasses = {
+  urgent: 'bg-red-500 text-white',
+  new: 'bg-green-500 text-white',
+  hot: 'bg-orange-500 text-white',
+  info: 'bg-blue-500 text-white'
+};
+
+const rotationClasses = {
+  left: 'transform -rotate-12',
+  right: 'transform rotate-12',
+  none: ''
+};
+
+const badgeClasses = `${positionClasses[position]} ${variantClasses[variant]} ${rotationClasses[rotation]} border-2 border-dark dark:border-light px-2 py-1 ${className}`;
+---
+
+<div class={badgeClasses}>
+  <span class="text-xs font-black">{text}</span>
+</div>

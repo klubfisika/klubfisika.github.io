@@ -1,0 +1,55 @@
+---
+interface Props {
+  title: string;
+  excerpt: string;
+  category: string;
+  author: string;
+  date: string;
+  readTime: string;
+  href: string;
+  variant?: 'primary' | 'secondary' | 'accent';
+  className?: string;
+}
+
+const { 
+  title,
+  excerpt,
+  category,
+  author,
+  date,
+  readTime,
+  href,
+  variant = 'primary',
+  className = ""
+} = Astro.props;
+---
+
+<HoverScale>
+  <BrutalCard variant={variant} rotation="left" className={className}>
+    <div class="mb-4">
+      <Badge variant="light" size="sm">
+        {category.toUpperCase()}
+      </Badge>
+    </div>
+    
+    <a href={href} class="block hover:scale-105 transition-transform">
+      <h3 class="text-lg font-black uppercase text-on-primary mb-3 leading-tight">
+        {title}
+      </h3>
+    </a>
+    
+    <p class="text-on-primary opacity-90 text-sm leading-relaxed mb-4">
+      {excerpt}
+    </p>
+    
+    <FlexRow gap="2" className="text-on-primary opacity-80 text-xs mb-4">
+      <ContactInfo icon="👨🏫" value={author} size="sm" />
+      <ContactInfo icon="📅" value={date} size="sm" />
+      <ContactInfo icon="⏱️" value={`${readTime} baca`} size="sm" />
+    </FlexRow>
+    
+    <BrutalButton href={href} variant={variant} size="sm" className="w-full">
+      BACA SELENGKAPNYA
+    </BrutalButton>
+  </BrutalCard>
+</HoverScale>

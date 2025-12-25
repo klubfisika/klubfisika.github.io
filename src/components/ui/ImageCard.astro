@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: any;
+  alt: string;
+  title?: string;
+  description?: string;
+  overlay?: boolean;
+  aspectRatio?: 'square' | 'video' | 'wide';
+  className?: string;
+}
+
+const { 
+  src,
+  alt,
+  title,
+  description,
+  overlay = false,
+  aspectRatio = 'video',
+  className = ""
+} = Astro.props;
+
+const aspectClasses = {
+  square: 'aspect-square',
+  video: 'aspect-video',
+  wide: 'aspect-[21/9]'
+};
+---
+
+<BrutalBorder className={`overflow-hidden ${className}`}>
+  <div class={`relative ${aspectClasses[aspectRatio]}`}>
+    <Image 
+      src={src}
+      alt={alt}
+      format="webp"
+      quality={80}
+      class="w-full h-full object-cover"
+    />
+    
+    {overlay && (title || description) && (
+      <div class="absolute inset-0 bg-dark/50 opacity-0 hover:opacity-100 transition-opacity flex items-end">
+        <div class="p-4 text-white">
+          {title && <h3 class="font-black text-lg mb-2">{title}</h3>}
+          {description && <p class="text-sm">{description}</p>}
+        </div>
+      </div>
+    )}
+  </div>
+</BrutalBorder>
