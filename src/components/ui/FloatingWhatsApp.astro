@@ -17,7 +17,7 @@ const whatsappUrl = `https://wa.me/${number.replace(/[^0-9]/g, '')}?text=${encod
     href={whatsappUrl}
     target="_blank"
     rel="noopener noreferrer"
-    class="flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-brutal hover:shadow-brutal-hover transition-all transform hover:scale-110 bounce-fun"
+    class="flex items-center justify-center w-14 h-14 btn-accent hover:opacity-90 rounded-full shadow-brutal hover:shadow-brutal-hover transition-all transform hover:scale-110 bounce-fun"
     aria-label="Chat via WhatsApp"
   >
     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
@@ -26,7 +26,7 @@ const whatsappUrl = `https://wa.me/${number.replace(/[^0-9]/g, '')}?text=${encod
   </a>
   
   <!-- Tooltip -->
-  <div id="whatsapp-tooltip" class="absolute bottom-16 right-0 bg-dark dark:bg-light text-light dark:text-dark px-3 py-2 rounded-lg text-sm font-semibold whitespace-nowrap opacity-0 transform translate-y-2 transition-all duration-300 pointer-events-none">
+  <div id="whatsapp-tooltip" class="absolute bottom-16 right-0 bg-dark dark:bg-light text-on-dark dark:text-on-light px-3 py-2 rounded-lg text-sm font-semibold whitespace-nowrap opacity-0 transform translate-y-2 transition-all duration-300 pointer-events-none">
     Chat via WhatsApp
     <div class="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-dark dark:border-t-light"></div>
   </div>

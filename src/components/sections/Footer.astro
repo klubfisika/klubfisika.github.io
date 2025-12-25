@@ -77,12 +77,12 @@ import ContactForm from '../ui/ContactForm.astro';
           
           <div class="grid grid-cols-2 gap-4">
             {[
-              { name: "Instagram", icon: "📸", handle: "@kf13_indonesia", bg: "bg-pink", url: "https://instagram.com/kf13_indonesia" },
-              { name: "YouTube", icon: "📺", handle: "KF13 Indonesia", bg: "bg-red-500", url: "https://youtube.com/@KF13Indonesia" },
-              { name: "Telegram", icon: "✈️", handle: "@kf13indonesia", bg: "bg-blue", url: "https://t.me/kf13indonesia" },
-              { name: "Discord", icon: "🎮", handle: "KF13 Community", bg: "bg-purple-600", url: "https://discord.gg/kf13indonesia" },
-              { name: "GitHub", icon: "💻", handle: "klubfisika", bg: "bg-gray-800", url: "https://github.com/klubfisika" },
-              { name: "Email", icon: "📧", handle: "info@klubfisika.org", bg: "bg-green-600", url: "mailto:info@klubfisika.org" }
+              { name: "Instagram", icon: "📸", handle: "@kf13_indonesia", bg: "btn-secondary", url: "https://instagram.com/kf13_indonesia" },
+              { name: "YouTube", icon: "📺", handle: "KF13 Indonesia", bg: "btn-primary", url: "https://youtube.com/@KF13Indonesia" },
+              { name: "Telegram", icon: "✈️", handle: "@kf13indonesia", bg: "btn-accent", url: "https://t.me/kf13indonesia" },
+              { name: "Discord", icon: "🎮", handle: "KF13 Community", bg: "btn-primary", url: "https://discord.gg/kf13indonesia" },
+              { name: "GitHub", icon: "💻", handle: "klubfisika", bg: "bg-gray-800 text-on-dark", url: "https://github.com/klubfisika" },
+              { name: "Email", icon: "📧", handle: "info@klubfisika.org", bg: "btn-accent", url: "mailto:info@klubfisika.org" }
             ].map((social, index) => (
               <a 
                 href={social.url}
@@ -91,8 +91,8 @@ import ContactForm from '../ui/ContactForm.astro';
                 class={`${social.bg} dark:bg-slate-600 border-2 border-dark dark:border-light p-4 text-center transform ${index % 2 === 0 ? 'rotate-2' : '-rotate-2'} hover:rotate-0 transition-transform hover:scale-105`}
               >
                 <div class="text-2xl mb-2">{social.icon}</div>
-                <p class="font-bold text-xs text-light">{social.name}</p>
-                <p class="text-xs text-light">{social.handle}</p>
+                <p class="font-bold text-xs text-on-primary">{social.name}</p>
+                <p class="text-xs text-on-primary opacity-90">{social.handle}</p>
               </a>
             ))}
           </div>
