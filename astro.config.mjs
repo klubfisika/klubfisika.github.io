@@ -11,4 +11,9 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  image: {
+    domains: ['localhost'],
+    formats: ['webp', 'avif', 'jpeg'],
+    quality: 80
+  }
 });
