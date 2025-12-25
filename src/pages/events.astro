@@ -8,6 +8,8 @@ import ScrollProgress from "../components/ui/ScrollProgress.astro";
 import BackToTop from "../components/ui/BackToTop.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
 import BrutalCard from "../components/ui/BrutalCard.astro";
+import BrutalSection from "../components/ui/BrutalSection.astro";
+import BrutalGrid from "../components/ui/BrutalGrid.astro";
 ---
 
 <!doctype html>
@@ -46,11 +48,10 @@ import BrutalCard from "../components/ui/BrutalCard.astro";
             </section>
 
             <!-- Upcoming Events -->
-            <section class="py-20 bg-white dark:bg-slate-700 transition-colors">
-                <div class="max-w-6xl mx-auto px-6">
-                    <SectionHeader title="EVENT MENDATANG" subtitle="Jangan sampai terlewat!" className="mb-16" />
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <BrutalSection background="white" id="upcoming-events">
+                <SectionHeader title="EVENT MENDATANG" subtitle="Jangan sampai terlewat!" className="mb-16" />
+                
+                <BrutalGrid cols="1" colsLg="2" gap="8">
                         {[
                             {
                                 title: "Workshop Fisika Kuantum untuk Pemula",

@@ -1,0 +1,51 @@
+---
+interface Props {
+  background?: 'white' | 'surface' | 'dark' | 'gradient';
+  padding?: 'sm' | 'md' | 'lg' | 'xl';
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '4xl' | '6xl' | 'full';
+  id?: string;
+  className?: string;
+}
+
+const { 
+  background = 'white',
+  padding = 'lg',
+  maxWidth = '6xl',
+  id,
+  className = ""
+} = Astro.props;
+
+const backgroundClasses = {
+  white: 'bg-white dark:bg-slate-700',
+  surface: 'bg-surface dark:bg-surface-dark',
+  dark: 'bg-dark dark:bg-light text-on-dark dark:text-on-light',
+  gradient: 'bg-gradient-to-br from-yellow-200 via-green-100 to-blue-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-600'
+};
+
+const paddingClasses = {
+  sm: 'py-12',
+  md: 'py-16', 
+  lg: 'py-20',
+  xl: 'py-24'
+};
+
+const maxWidthClasses = {
+  sm: 'max-w-sm',
+  md: 'max-w-md',
+  lg: 'max-w-lg',
+  xl: 'max-w-xl',
+  '2xl': 'max-w-2xl',
+  '4xl': 'max-w-4xl',
+  '6xl': 'max-w-6xl',
+  full: 'max-w-full'
+};
+
+const sectionClasses = `${backgroundClasses[background]} ${paddingClasses[padding]} transition-colors ${className}`;
+const containerClasses = `${maxWidthClasses[maxWidth]} mx-auto px-6`;
+---
+
+<section class={sectionClasses} id={id}>
+  <div class={containerClasses}>
+    <slot />
+  </div>
+</section>

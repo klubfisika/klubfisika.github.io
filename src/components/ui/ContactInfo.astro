@@ -1,0 +1,43 @@
+---
+interface Props {
+  icon: string;
+  label?: string;
+  value: string;
+  href?: string;
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+}
+
+const { 
+  icon,
+  label,
+  value,
+  href,
+  size = 'md',
+  className = ""
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'text-xs',
+  md: 'text-sm',
+  lg: 'text-base'
+};
+
+const content = (
+  <div class={`flex items-center gap-2 ${sizeClasses[size]} ${className}`}>
+    <span class="text-lg">{icon}</span>
+    <div>
+      {label && <div class="font-bold text-dark dark:text-light">{label}</div>}
+      <div class="text-dark dark:text-light opacity-90">{value}</div>
+    </div>
+  </div>
+);
+---
+
+{href ? (
+  <a href={href} target="_blank" rel="noopener noreferrer" class="hover:scale-105 transition-transform">
+    {content}
+  </a>
+) : (
+  content
+)}

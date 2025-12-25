@@ -1,0 +1,43 @@
+---
+interface Props {
+  value: string;
+  label: string;
+  icon?: string;
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+}
+
+const { 
+  value,
+  label,
+  icon,
+  size = 'md',
+  className = ""
+} = Astro.props;
+
+const sizeClasses = {
+  sm: {
+    value: 'text-lg font-black',
+    label: 'text-xs font-bold',
+    icon: 'text-xl'
+  },
+  md: {
+    value: 'text-2xl font-black',
+    label: 'text-xs font-bold', 
+    icon: 'text-2xl'
+  },
+  lg: {
+    value: 'text-4xl font-black',
+    label: 'text-sm font-bold',
+    icon: 'text-3xl'
+  }
+};
+---
+
+<div class={`text-center ${className}`}>
+  {icon && (
+    <div class={`${sizeClasses[size].icon} mb-2`}>{icon}</div>
+  )}
+  <div class={`${sizeClasses[size].value} text-blue-600 dark:text-blue-300`}>{value}</div>
+  <div class={`${sizeClasses[size].label} text-dark dark:text-light`}>{label}</div>
+</div>

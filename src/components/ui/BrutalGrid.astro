@@ -1,0 +1,40 @@
+---
+interface Props {
+  cols?: '1' | '2' | '3' | '4' | '5' | '6';
+  colsMd?: '1' | '2' | '3' | '4' | '5' | '6';
+  colsLg?: '1' | '2' | '3' | '4' | '5' | '6';
+  gap?: '2' | '4' | '6' | '8' | '12';
+  className?: string;
+}
+
+const { 
+  cols = '1',
+  colsMd = '2',
+  colsLg = '3',
+  gap = '8',
+  className = ""
+} = Astro.props;
+
+const colsClasses = {
+  '1': 'grid-cols-1',
+  '2': 'grid-cols-2', 
+  '3': 'grid-cols-3',
+  '4': 'grid-cols-4',
+  '5': 'grid-cols-5',
+  '6': 'grid-cols-6'
+};
+
+const gapClasses = {
+  '2': 'gap-2',
+  '4': 'gap-4',
+  '6': 'gap-6', 
+  '8': 'gap-8',
+  '12': 'gap-12'
+};
+
+const gridClasses = `grid ${colsClasses[cols]} md:${colsClasses[colsMd]} lg:${colsClasses[colsLg]} ${gapClasses[gap]} ${className}`;
+---
+
+<div class={gridClasses}>
+  <slot />
+</div>

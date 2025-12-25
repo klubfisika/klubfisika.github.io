@@ -1,0 +1,48 @@
+---
+interface Props {
+  align?: 'start' | 'center' | 'end' | 'stretch';
+  justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
+  gap?: '1' | '2' | '3' | '4' | '6' | '8';
+  wrap?: boolean;
+  className?: string;
+}
+
+const { 
+  align = 'center',
+  justify = 'start',
+  gap = '2',
+  wrap = false,
+  className = ""
+} = Astro.props;
+
+const alignClasses = {
+  start: 'items-start',
+  center: 'items-center',
+  end: 'items-end',
+  stretch: 'items-stretch'
+};
+
+const justifyClasses = {
+  start: 'justify-start',
+  center: 'justify-center', 
+  end: 'justify-end',
+  between: 'justify-between',
+  around: 'justify-around',
+  evenly: 'justify-evenly'
+};
+
+const gapClasses = {
+  '1': 'gap-1',
+  '2': 'gap-2',
+  '3': 'gap-3',
+  '4': 'gap-4',
+  '6': 'gap-6',
+  '8': 'gap-8'
+};
+
+const flexClasses = `flex ${alignClasses[align]} ${justifyClasses[justify]} ${gapClasses[gap]} ${wrap ? 'flex-wrap' : ''} ${className}`;
+---
+
+<div class={flexClasses}>
+  <slot />
+</div>
