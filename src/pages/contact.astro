@@ -7,6 +7,7 @@ import FloatingActions from "../components/ui/FloatingActions.astro";
 import ScrollProgress from "../components/ui/ScrollProgress.astro";
 import BackToTop from "../components/ui/BackToTop.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
+import BrutalCard from "../components/ui/BrutalCard.astro";
 ---
 
 <!doctype html>
@@ -111,12 +112,11 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 urgent: false
                             }
                         ].map((contact, index) => (
-                            <div class={`${contact.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm relative`}>
-                                {contact.urgent && (
-                                    <div class="absolute -top-3 -right-3 bg-red-500 border-2 border-dark dark:border-light px-2 py-1 transform rotate-12">
-                                        <span class="text-xs font-black text-white">FAST!</span>
-                                    </div>
-                                )}
+                            <BrutalCard 
+                                variant={contact.bg === 'btn-primary' ? 'primary' : contact.bg === 'btn-secondary' ? 'secondary' : 'accent'}
+                                rotation={index % 2 === 0 ? 'right' : 'left'}
+                                urgent={contact.urgent}
+                            >
                                 
                                 <div class="text-center mb-4">
                                     <div class="text-4xl mb-3">{contact.icon}</div>
@@ -138,7 +138,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 >
                                     {contact.action}
                                 </a>
-                            </div>
+                            </BrutalCard>
                         ))}
                     </div>
                 </div>
