@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"astro dev\"",
     "build": "astro build",
-    "build:tina": "tinacms build && astro build",
+    "build:tina": "./build-with-tina.sh",
     "preview": "astro preview",
     "astro": "astro",
     "test": "playwright test",
