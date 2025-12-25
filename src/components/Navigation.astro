@@ -8,16 +8,18 @@ import IconContainer from './ui/IconContainer.astro';
     <div class="flex items-center justify-between">
       <!-- Logo/Brand -->
       <a href="/" class="flex items-center gap-3 hover:scale-105 transition-transform">
-        <IconContainer variant="solid" class="bg-white border-2 border-dark dark:border-light transform rotate-12 overflow-hidden">
-          <Image 
-            src={kf13Logo}
-            alt="KF13 Logo"
-            width={32}
-            height={32}
-            format="webp"
-            quality={90}
-            class="w-8 h-8 object-contain"
-          />
+        <IconContainer variant="solid" class="!bg-white border-2 border-dark dark:border-light transform rotate-12 overflow-hidden">
+          <div class="w-full h-full bg-white flex items-center justify-center">
+            <Image 
+              src={kf13Logo}
+              alt="KF13 Logo"
+              width={32}
+              height={32}
+              format="webp"
+              quality={90}
+              class="w-8 h-8 object-contain"
+            />
+          </div>
         </IconContainer>
         <div>
           <h1 class="font-black text-lg text-dark dark:text-light">KF13</h1>
