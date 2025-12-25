@@ -1,48 +1,49 @@
 ---
+import FloatingButton from "./FloatingButton.astro";
+import Tooltip from "./Tooltip.astro";
 ---
 
-<div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+<div class="fixed bottom-6 right-6 z-50 flex flex-col gap-2">
   <!-- WhatsApp Contact -->
-  <a 
-    href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20ingin%20bergabung%20dengan%20komunitas"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="w-14 h-14 btn-accent border-3 border-dark dark:border-light rounded-full flex items-center justify-center shadow-brutal hover:scale-110 transition-all group"
-    aria-label="Hubungi Admin WhatsApp"
-  >
-    <span class="text-2xl text-on-primary">💬</span>
-    <div class="absolute right-16 top-1/2 -translate-y-1/2 bg-dark dark:bg-light text-on-dark dark:text-on-light px-3 py-2 rounded border-2 border-dark dark:border-light text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-      Chat Admin
-    </div>
-  </a>
+  <Tooltip content="Chat Admin" position="left">
+    <a 
+      href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20ingin%20bergabung%20dengan%20komunitas"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Hubungi Admin WhatsApp"
+    >
+      <FloatingButton variant="accent">
+        <span class="text-2xl text-on-primary">💬</span>
+      </FloatingButton>
+    </a>
+  </Tooltip>
 
   <!-- Debug Panel Toggle (Development Only) -->
   {import.meta.env.DEV && (
-    <button 
-      id="debug-toggle"
-      class="w-14 h-14 btn-primary border-3 border-dark dark:border-light rounded-full flex items-center justify-center shadow-brutal hover:scale-110 transition-all group"
-      aria-label="Toggle Debug Panel"
-    >
-      <span class="text-2xl text-on-primary">🐛</span>
-      <div class="absolute right-16 top-1/2 -translate-y-1/2 bg-dark dark:bg-light text-on-dark dark:text-on-light px-3 py-2 rounded border-2 border-dark dark:border-light text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-        Debug Panel (DEV)
-      </div>
-    </button>
+    <Tooltip content="Debug Panel (DEV)" position="left">
+      <button 
+        id="debug-toggle"
+        aria-label="Toggle Debug Panel"
+      >
+        <FloatingButton variant="primary">
+          <span class="text-2xl text-on-primary">🐛</span>
+        </FloatingButton>
+      </button>
+    </Tooltip>
   )}
 
   <!-- Theme Toggle -->
-  <button 
-    data-theme-toggle
-    class="w-14 h-14 bg-surface dark:bg-slate-600 hover:bg-accent dark:hover:bg-purple-600 border-3 border-dark dark:border-light rounded-full flex items-center justify-center shadow-brutal hover:scale-110 transition-all group"
-    aria-label="Toggle Dark Mode"
-  >
-    <span class="text-2xl dark:hidden">🌙</span>
-    <span class="text-2xl hidden dark:inline">☀️</span>
-    <div class="absolute right-16 top-1/2 -translate-y-1/2 bg-dark dark:bg-light text-on-dark dark:text-on-light px-3 py-2 rounded border-2 border-dark dark:border-light text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-      <span class="dark:hidden">Dark Mode</span>
-      <span class="hidden dark:inline">Light Mode</span>
-    </div>
-  </button>
+  <Tooltip content="Toggle Theme" position="left">
+    <button 
+      data-theme-toggle
+      aria-label="Toggle Dark Mode"
+    >
+      <FloatingButton variant="surface">
+        <span class="text-2xl dark:hidden">🌙</span>
+        <span class="text-2xl hidden dark:inline">☀️</span>
+      </FloatingButton>
+    </button>
+  </Tooltip>
 </div>
 
 <!-- Debug Panel Modal (Development Only) -->

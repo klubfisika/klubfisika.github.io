@@ -1,13 +1,14 @@
 ---
 import { Image } from 'astro:assets';
 import kf13Logo from '@assets/images/kf13-logo.png';
+import IconContainer from './ui/IconContainer.astro';
 ---
 <nav class="fixed top-0 left-0 right-0 z-40 bg-surface/90 dark:bg-surface-dark/90 backdrop-blur-md border-b-4 border-dark dark:border-light transition-colors">
   <div class="max-w-6xl mx-auto px-6 py-4">
     <div class="flex items-center justify-between">
       <!-- Logo/Brand -->
       <a href="/" class="flex items-center gap-3 hover:scale-105 transition-transform">
-        <div class="w-10 h-10 bg-white border-2 border-dark dark:border-light flex items-center justify-center transform rotate-12 overflow-hidden">
+        <IconContainer variant="solid" class="bg-white border-2 border-dark dark:border-light transform rotate-12 overflow-hidden">
           <Image 
             src={kf13Logo}
             alt="KF13 Logo"
@@ -17,7 +18,7 @@ import kf13Logo from '@assets/images/kf13-logo.png';
             quality={90}
             class="w-8 h-8 object-contain"
           />
-        </div>
+        </IconContainer>
         <div>
           <h1 class="font-black text-lg text-dark dark:text-light">KF13</h1>
           <p class="text-xs font-semibold text-dark dark:text-light opacity-75">Klub Fisika Indonesia</p>

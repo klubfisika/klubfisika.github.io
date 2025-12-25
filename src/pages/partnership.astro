@@ -7,6 +7,8 @@ import FloatingActions from "../components/ui/FloatingActions.astro";
 import ScrollProgress from "../components/ui/ScrollProgress.astro";
 import BackToTop from "../components/ui/BackToTop.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
+import BrutalCard from "../components/ui/BrutalCard.astro";
+import GradientSection from "../components/ui/GradientSection.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
@@ -30,7 +32,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         
         <main class="pt-20">
             <!-- Hero Section -->
-            <section class="bg-gradient-to-br from-purple-200 via-yellow-100 to-green-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-600 py-20 transition-colors">
+            <GradientSection variant="purple-green">
                 <div class="max-w-6xl mx-auto px-6 text-center">
                     <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-dark dark:text-light transform -rotate-1 mb-8">
                         MITRA & <span class="text-primary dark:text-primary-dark">KEMITRAAN</span>
@@ -260,7 +262,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
             </section>
 
             <!-- Partnership CTA -->
-            <section class="py-20 bg-gradient-to-br from-green-200 via-blue-100 to-purple-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-600 transition-colors">
+            <GradientSection variant="green-blue">
                 <div class="max-w-4xl mx-auto px-6 text-center">
                     <div class="bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-8 transform -rotate-1 shadow-brutal">
                         <h2 class="text-3xl md:text-4xl font-black uppercase text-dark dark:text-light mb-6">

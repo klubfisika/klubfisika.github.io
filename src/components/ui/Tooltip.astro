@@ -12,17 +12,17 @@ const {
 } = Astro.props;
 
 const positionClasses = {
-  top: 'bottom-full right-0 mb-2',
-  bottom: 'top-full right-0 mt-2',
+  top: 'bottom-full left-1/2 -translate-x-1/2 mb-2',
+  bottom: 'top-full left-1/2 -translate-x-1/2 mt-2',
   left: 'right-full top-1/2 -translate-y-1/2 mr-2',
   right: 'left-full top-1/2 -translate-y-1/2 ml-2'
 };
 
 const arrowClasses = {
-  top: 'top-full right-4 border-t-dark dark:border-t-light',
-  bottom: 'bottom-full right-4 border-b-dark dark:border-b-light',
-  left: 'left-full top-1/2 -translate-y-1/2 border-l-dark dark:border-l-light',
-  right: 'right-full top-1/2 -translate-y-1/2 border-r-dark dark:border-r-light'
+  top: 'top-full left-1/2 -translate-x-1/2 border-l-4 border-r-4 border-t-4 border-transparent border-t-dark dark:border-t-light',
+  bottom: 'bottom-full left-1/2 -translate-x-1/2 border-l-4 border-r-4 border-b-4 border-transparent border-b-dark dark:border-b-light',
+  left: 'left-full top-1/2 -translate-y-1/2 border-t-4 border-b-4 border-l-4 border-transparent border-l-dark dark:border-l-light',
+  right: 'right-full top-1/2 -translate-y-1/2 border-t-4 border-b-4 border-r-4 border-transparent border-r-dark dark:border-r-light'
 };
 ---
 
@@ -32,6 +32,6 @@ const arrowClasses = {
   <!-- Tooltip -->
   <div class={`absolute ${positionClasses[position]} bg-dark dark:bg-light text-on-dark dark:text-on-light px-3 py-2 rounded border-2 border-dark dark:border-light text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50`}>
     {content}
-    <div class={`absolute w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent ${arrowClasses[position]}`}></div>
+    <div class={`absolute w-0 h-0 ${arrowClasses[position]}`}></div>
   </div>
 </div>

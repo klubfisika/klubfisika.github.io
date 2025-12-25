@@ -1,0 +1,30 @@
+---
+export interface Props {
+  variant?: 'blue-purple' | 'purple-green' | 'green-blue' | 'yellow-blue' | 'blue-pink';
+  padding?: 'sm' | 'md' | 'lg' | 'xl';
+  class?: string;
+}
+
+const { variant = 'blue-purple', padding = 'lg', class: className = '', ...props } = Astro.props;
+
+const variantClasses = {
+  'blue-purple': 'from-blue-200 via-purple-100 to-pink-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-600',
+  'purple-green': 'from-purple-200 via-yellow-100 to-green-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-600',
+  'green-blue': 'from-green-200 via-blue-100 to-purple-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-600',
+  'yellow-blue': 'from-yellow-200 via-green-100 to-blue-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-600',
+  'blue-pink': 'from-blue-200 via-purple-100 to-pink-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-600'
+};
+
+const paddingClasses = {
+  sm: 'py-10',
+  md: 'py-16', 
+  lg: 'py-20',
+  xl: 'py-24'
+};
+
+const baseClasses = `bg-gradient-to-br transition-colors ${variantClasses[variant]} ${paddingClasses[padding]} ${className}`;
+---
+
+<section class={baseClasses} {...props}>
+  <slot />
+</section>

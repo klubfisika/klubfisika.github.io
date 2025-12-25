@@ -1,0 +1,45 @@
+---
+export interface Props {
+  href?: string;
+  size?: 'sm' | 'md' | 'lg';
+  variant?: 'white' | 'primary' | 'accent';
+  class?: string;
+}
+
+const { href, size = 'md', variant = 'white', class: className = '', ...props } = Astro.props;
+
+const sizeClasses = {
+  sm: 'px-6 py-3 text-base',
+  md: 'px-8 py-4 text-lg',
+  lg: 'px-10 py-5 text-xl'
+};
+
+const variantClasses = {
+  white: 'bg-white text-gray-900 hover:bg-gray-100',
+  primary: 'btn-primary',
+  accent: 'btn-accent'
+};
+
+const baseClasses = `inline-block rounded-full font-bold transform hover:scale-105 transition-all duration-300 pulse-glow shadow-2xl ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
+
+const Element = href ? 'a' : 'button';
+---
+
+<Element href={href} class={baseClasses} {...props}>
+  <slot />
+</Element>
+
+<style>
+  .pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+    }
+  }
+</style>

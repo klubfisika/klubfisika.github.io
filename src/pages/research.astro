@@ -2,6 +2,9 @@
 import "../styles/global.css";
 import BaseHead from "../components/BaseHead.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import PulseButton from "../components/ui/PulseButton.astro";
+import Heading from "../components/ui/Heading.astro";
+import Text from "../components/ui/Text.astro";
 ---
 
 <html lang="en">
@@ -15,25 +18,26 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         >
             <div class="absolute inset-0 bg-black/20"></div>
             <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-200">
+                <Heading level={2} size="3xl" class="mb-6 text-gray-200">
                     Bergabunglah dalam <span
                         class="text-on-dark text-5xl md:text-6xl">Revolusi</span
                     >
                     <br />
                     <span class="text-yellow-300">Research Indonesia</span>
-                </h2>
-                <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+                </Heading>
+                <Text size="lg" class="text-gray-200 mb-8 max-w-2xl mx-auto">
                     Jadilah bagian dari komunitas peneliti dan inovator yang
                     akan mengubah cara kita berkolaborasi dan berbagi
                     pengetahuan di era digital.
-                </p>
+                </Text>
 
-                <a
+                <PulseButton
                     href="http://47.84.35.77/wp/portal/?fcom_action=auth"
-                    class="inline-block bg-white text-gray-900 px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 pulse-glow shadow-2xl"
+                    size="lg"
+                    variant="white"
                 >
                     🚀 Mulai Journey Anda Sekarang
-                </a>
+                </PulseButton>
 
                 <div class="mt-8 text-sm text-gray-300">
                     Platform Beta • Web 3.0 Ready • Made with 🥼🔬🧬🧫🧪 for

@@ -1,127 +1,27 @@
 ---
-import SectionHeader from '../ui/SectionHeader.astro';
-import ContactForm from '../ui/ContactForm.astro';
 ---
 
-<section class="py-20 bg-white dark:bg-gray-800 transition-colors" id="kontak">
+<!-- Footer -->
+<footer class="py-16 bg-white dark:bg-gray-800 border-t-4 border-dark dark:border-light transition-colors">
   <div class="max-w-6xl mx-auto px-6">
-    <SectionHeader title="KONTAK & MEDIA SOSIAL" className="mb-16" />
-    
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-      <!-- Contact Form -->
-      <div>
-        <ContactForm />
-      </div>
-
-      <!-- Contact Info & Social Media -->
-      <div class="space-y-8">
-        <div class="bg-primary dark:bg-primary-dark border-4 border-dark dark:border-light p-8 transform -rotate-1 shadow-brutal">
-          <h3 class="text-2xl font-black uppercase text-dark dark:text-light mb-6">INFO KONTAK</h3>
-          
-          <div class="space-y-4">
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-secondary dark:bg-secondary-dark border-2 border-dark dark:border-light flex items-center justify-center">
-                <span class="text-xl">📧</span>
-              </div>
-              <div>
-                <p class="font-bold text-dark dark:text-light">Email Resmi</p>
-                <p class="text-dark dark:text-light">info@klubfisika.org</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-accent dark:bg-accent-dark border-2 border-dark dark:border-light flex items-center justify-center">
-                <span class="text-xl">💬</span>
-              </div>
-              <div>
-                <p class="font-bold text-dark dark:text-light">WhatsApp Admin</p>
-                <p class="text-dark dark:text-light">+62 822-2500-9253</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-pink dark:bg-purple-600 border-2 border-dark dark:border-light flex items-center justify-center">
-                <span class="text-xl">🌐</span>
-              </div>
-              <div>
-                <p class="font-bold text-dark dark:text-light">Website</p>
-                <p class="text-dark dark:text-light">klubfisika.github.io</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-blue dark:bg-blue-dark border-2 border-dark dark:border-light flex items-center justify-center">
-                <span class="text-xl">📍</span>
-              </div>
-              <div>
-                <p class="font-bold text-dark dark:text-light">Alamat</p>
-                <p class="text-dark dark:text-light">Yogyakarta, Indonesia</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-accent dark:bg-accent-dark border-2 border-dark dark:border-light flex items-center justify-center">
-                <span class="text-xl">⏰</span>
-              </div>
-              <div>
-                <p class="font-bold text-dark dark:text-light">Jam Operasional</p>
-                <p class="text-dark dark:text-light">Senin-Jumat, 09:00-17:00 WIB</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Social Media -->
-        <div class="bg-secondary dark:bg-secondary-dark border-4 border-dark dark:border-light p-8 transform rotate-1 shadow-brutal">
-          <h3 class="text-2xl font-black uppercase text-dark dark:text-light mb-6">MEDIA SOSIAL</h3>
-          
-          <div class="grid grid-cols-2 gap-4">
-            {[
-              { name: "Instagram", icon: "📸", handle: "@kf13_indonesia", bg: "btn-secondary", url: "https://instagram.com/kf13_indonesia" },
-              { name: "YouTube", icon: "📺", handle: "KF13 Indonesia", bg: "btn-primary", url: "https://youtube.com/@KF13Indonesia" },
-              { name: "Telegram", icon: "✈️", handle: "@kf13indonesia", bg: "btn-accent", url: "https://t.me/kf13indonesia" },
-              { name: "Discord", icon: "🎮", handle: "KF13 Community", bg: "btn-primary", url: "https://discord.gg/kf13indonesia" },
-              { name: "GitHub", icon: "💻", handle: "klubfisika", bg: "bg-gray-800 text-on-dark", url: "https://github.com/klubfisika" },
-              { name: "Email", icon: "📧", handle: "info@klubfisika.org", bg: "btn-accent", url: "mailto:info@klubfisika.org" }
-            ].map((social, index) => (
-              <a 
-                href={social.url}
-                target={social.name === "Email" ? "_self" : "_blank"}
-                rel={social.name === "Email" ? "" : "noopener noreferrer"}
-                class={`${social.bg} dark:bg-slate-600 border-2 border-dark dark:border-light p-4 text-center transform ${index % 2 === 0 ? 'rotate-2' : '-rotate-2'} hover:rotate-0 transition-transform hover:scale-105`}
-              >
-                <div class="text-2xl mb-2">{social.icon}</div>
-                <p class="font-bold text-xs text-on-primary">{social.name}</p>
-                <p class="text-xs text-on-primary opacity-90">{social.handle}</p>
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="mt-16 pt-8 border-t-4 border-dark dark:border-light">
-      <div class="text-center">
-        <div class="bg-surface dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform rotate-1 inline-block shadow-brutal-sm">
-          <p class="font-bold text-dark dark:text-light mb-2">
-            🔬 KF13 - Klub Fisika Indonesia
+    <div class="text-center">
+      <div class="bg-surface dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform rotate-1 inline-block shadow-brutal-sm">
+        <p class="font-bold text-dark dark:text-light mb-2">
+          🔬 KF13 - Klub Fisika Indonesia
+        </p>
+        <p class="text-sm text-dark dark:text-light mb-3">
+          Komunitas belajar fisika berbasis Yogyakarta yang menginspirasi generasi muda Indonesia<br/>
+          untuk memahami alam semesta melalui sains dan eksperimen sejak 2013.
+        </p>
+        <div class="text-xs text-dark dark:text-light opacity-75 space-y-1">
+          <p>📍 Yogyakarta, Indonesia | 📧 info@klubfisika.org</p>
+          <p class="mt-3">© 2024 KF13. Made with 🥼🔬🧬🧫🧪 for Indonesia</p>
+          <p class="mt-1">
+            <a href="/terms" class="hover:underline">Syarat & Ketentuan</a> • 
+            <a href="/partnership" class="hover:underline">Jaringan</a>
           </p>
-          <p class="text-sm text-dark dark:text-light mb-3">
-            Komunitas belajar fisika berbasis Yogyakarta yang menginspirasi generasi muda Indonesia<br/>
-            untuk memahami alam semesta melalui sains dan eksperimen sejak 2013.
-          </p>
-          <div class="text-xs text-dark dark:text-light opacity-75 space-y-1">
-            <p>📍 Yogyakarta, Indonesia | 📧 info@klubfisika.org</p>
-            <p>🏫 Kerjasama: UGM, UNY, UIN, UMY, Amikom</p>
-            <p class="mt-3">© 2024 KF13. Made with 🥼🔬🧬🧫🧪 for Indonesia</p>
-            <p class="mt-1">
-              <a href="/terms" class="hover:underline">Syarat & Ketentuan</a> • 
-              <a href="/partnership" class="hover:underline">Jaringan</a>
-            </p>
-          </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</footer>

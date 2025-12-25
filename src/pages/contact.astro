@@ -8,6 +8,8 @@ import ScrollProgress from "../components/ui/ScrollProgress.astro";
 import BackToTop from "../components/ui/BackToTop.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
 import BrutalCard from "../components/ui/BrutalCard.astro";
+import GradientSection from "../components/ui/GradientSection.astro";
+import ContactSection from "../components/sections/ContactSection.astro";
 ---
 
 <!doctype html>
@@ -28,7 +30,7 @@ import BrutalCard from "../components/ui/BrutalCard.astro";
         
         <main class="pt-20">
             <!-- Hero Section -->
-            <section class="bg-gradient-to-br from-blue-200 via-purple-100 to-pink-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-600 py-20 transition-colors">
+            <GradientSection variant="blue-purple">
                 <div class="max-w-6xl mx-auto px-6 text-center">
                     <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-dark dark:text-light transform -rotate-1 mb-8">
                         KONTAK & <span class="text-secondary dark:text-secondary-dark">LOKASI</span>
@@ -42,7 +44,7 @@ import BrutalCard from "../components/ui/BrutalCard.astro";
                         </p>
                     </div>
                 </div>
-            </section>
+            </GradientSection>
 
             <!-- Contact Methods -->
             <section class="py-20 bg-white dark:bg-slate-700 transition-colors">
@@ -291,6 +293,7 @@ import BrutalCard from "../components/ui/BrutalCard.astro";
             </section>
         </main>
 
+        <ContactSection />
         <Footer />
 
         <script>

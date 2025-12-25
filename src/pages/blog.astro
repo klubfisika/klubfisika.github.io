@@ -8,6 +8,7 @@ import ScrollProgress from "../components/ui/ScrollProgress.astro";
 import BackToTop from "../components/ui/BackToTop.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
 import BrutalCard from "../components/ui/BrutalCard.astro";
+import GradientSection from "../components/ui/GradientSection.astro";
 ---
 
 <!doctype html>
@@ -28,7 +29,7 @@ import BrutalCard from "../components/ui/BrutalCard.astro";
         
         <main class="pt-20">
             <!-- Hero Section -->
-            <section class="bg-gradient-to-br from-green-200 via-blue-100 to-purple-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-600 py-20 transition-colors">
+            <GradientSection variant="green-blue">
                 <div class="max-w-6xl mx-auto px-6 text-center">
                     <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-dark dark:text-light transform -rotate-1 mb-8">
                         BLOG & <span class="text-primary dark:text-primary-dark">ARTIKEL</span>
@@ -43,7 +44,7 @@ import BrutalCard from "../components/ui/BrutalCard.astro";
                         </p>
                     </div>
                 </div>
-            </section>
+            </GradientSection>
 
             <!-- Categories Filter -->
             <section class="py-12 bg-white dark:bg-slate-700 transition-colors">

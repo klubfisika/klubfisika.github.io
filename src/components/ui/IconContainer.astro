@@ -1,0 +1,26 @@
+---
+export interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  variant?: 'gradient' | 'solid';
+  class?: string;
+}
+
+const { size = 'md', variant = 'gradient', class: className = '', ...props } = Astro.props;
+
+const sizeClasses = {
+  sm: 'w-8 h-8',
+  md: 'w-10 h-10',
+  lg: 'w-12 h-12'
+};
+
+const variantClasses = {
+  gradient: 'bg-gradient-to-r from-blue-500 to-purple-600',
+  solid: 'bg-primary'
+};
+
+const baseClasses = `${sizeClasses[size]} ${variantClasses[variant]} rounded-lg flex items-center justify-center ${className}`;
+---
+
+<div class={baseClasses} {...props}>
+  <slot />
+</div>

@@ -7,6 +7,8 @@ import FloatingActions from "../components/ui/FloatingActions.astro";
 import ScrollProgress from "../components/ui/ScrollProgress.astro";
 import BackToTop from "../components/ui/BackToTop.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
+import BrutalCard from "../components/ui/BrutalCard.astro";
+import GradientSection from "../components/ui/GradientSection.astro";
 ---
 
 <!doctype html>
@@ -27,7 +29,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
         
         <main class="pt-20">
             <!-- Hero Section -->
-            <section class="bg-gradient-to-br from-blue-200 via-purple-100 to-pink-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-600 py-20 transition-colors">
+            <GradientSection variant="blue-purple">
                 <div class="max-w-4xl mx-auto px-6 text-center">
                     <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tight text-dark dark:text-light transform -rotate-1 mb-8">
                         SYARAT & <span class="text-primary dark:text-primary-dark">KETENTUAN</span>

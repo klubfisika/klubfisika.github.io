@@ -8,6 +8,7 @@ import ScrollProgress from "../components/ui/ScrollProgress.astro";
 import BackToTop from "../components/ui/BackToTop.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
 import BrutalCard from "../components/ui/BrutalCard.astro";
+import GradientSection from "../components/ui/GradientSection.astro";
 import BrutalSection from "../components/ui/BrutalSection.astro";
 import BrutalGrid from "../components/ui/BrutalGrid.astro";
 ---
@@ -30,7 +31,7 @@ import BrutalGrid from "../components/ui/BrutalGrid.astro";
         
         <main class="pt-20">
             <!-- Hero Section -->
-            <section class="bg-gradient-to-br from-yellow-200 via-green-100 to-blue-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-600 py-20 transition-colors">
+            <GradientSection variant="yellow-blue">
                 <div class="max-w-6xl mx-auto px-6 text-center">
                     <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-dark dark:text-light transform -rotate-1 mb-8">
                         EVENTS & <span class="text-secondary dark:text-secondary-dark">KEGIATAN</span>
@@ -45,7 +46,7 @@ import BrutalGrid from "../components/ui/BrutalGrid.astro";
                         </p>
                     </div>
                 </div>
-            </section>
+            </GradientSection>
 
             <!-- Upcoming Events -->
             <BrutalSection background="white" id="upcoming-events">
@@ -160,7 +161,7 @@ import BrutalGrid from "../components/ui/BrutalGrid.astro";
                         ))}
                     </div>
                 </div>
-            </section>
+            </GradientSection>
 
             <!-- Past Events -->
             <section class="py-20 bg-surface dark:bg-slate-800 transition-colors">
@@ -217,7 +218,7 @@ import BrutalGrid from "../components/ui/BrutalGrid.astro";
                         ))}
                     </div>
                 </div>
-            </section>
+            </GradientSection>
 
             <!-- Event Registration CTA -->
             <section class="py-20 bg-white dark:bg-slate-700 transition-colors">
@@ -253,7 +254,7 @@ import BrutalGrid from "../components/ui/BrutalGrid.astro";
                         </p>
                     </div>
                 </div>
-            </section>
+            </GradientSection>
         </main>
 
         <Footer />

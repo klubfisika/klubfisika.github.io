@@ -1,0 +1,41 @@
+---
+export interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  color?: 'primary' | 'secondary' | 'accent' | 'muted';
+  leading?: 'tight' | 'normal' | 'relaxed';
+  class?: string;
+}
+
+const { 
+  size = 'md', 
+  color = 'primary', 
+  leading = 'normal',
+  class: className = '',
+  ...props 
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'text-sm',
+  md: 'text-base',
+  lg: 'text-lg'
+};
+
+const colorClasses = {
+  primary: 'text-on-light dark:text-on-dark',
+  secondary: 'text-gray-600 dark:text-gray-300',
+  accent: 'text-accent',
+  muted: 'text-gray-500 dark:text-gray-400'
+};
+
+const leadingClasses = {
+  tight: 'leading-tight',
+  normal: 'leading-normal',
+  relaxed: 'leading-relaxed'
+};
+
+const baseClasses = `${sizeClasses[size]} ${colorClasses[color]} ${leadingClasses[leading]} ${className}`;
+---
+
+<p class={baseClasses} {...props}>
+  <slot />
+</p>
