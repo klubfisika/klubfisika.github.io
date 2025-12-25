@@ -65,7 +65,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 capacity: "50 peserta",
                                 price: "GRATIS",
                                 status: "Pendaftaran Dibuka",
-                                bg: "bg-purple-500",
+                                bg: "btn-primary",
                                 urgent: true
                             },
                             {
@@ -78,7 +78,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 capacity: "20 peserta",
                                 price: "Rp 25.000 (biaya alat)",
                                 status: "Tersedia 8 Slot",
-                                bg: "bg-blue",
+                                bg: "btn-accent",
                                 urgent: false
                             },
                             {
@@ -91,7 +91,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 capacity: "100 peserta",
                                 price: "GRATIS",
                                 status: "Pendaftaran Segera",
-                                bg: "bg-green-500",
+                                bg: "btn-accent",
                                 urgent: false
                             },
                             {
@@ -104,7 +104,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 capacity: "200 peserta (50 tim)",
                                 price: "Rp 50.000/tim",
                                 status: "Early Bird 40% Off",
-                                bg: "bg-orange-500",
+                                bg: "btn-secondary",
                                 urgent: true
                             }
                         ].map((event, index) => (
@@ -121,11 +121,11 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                     </span>
                                 </div>
                                 
-                                <h3 class="text-xl font-black uppercase text-white mb-4 leading-tight">
+                                <h3 class="text-xl font-black uppercase text-on-primary mb-4 leading-tight">
                                     {event.title}
                                 </h3>
                                 
-                                <div class="space-y-2 text-white/90 text-sm mb-4">
+                                <div class="space-y-2 text-on-primary opacity-90 text-sm mb-4">
                                     <div class="flex items-center gap-2">
                                         <span>📅</span>
                                         <span class="font-bold">{event.date}</span>
@@ -144,18 +144,18 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                     </div>
                                 </div>
                                 
-                                <p class="text-white/90 text-sm leading-relaxed mb-4">
+                                <p class="text-on-primary opacity-90 text-sm leading-relaxed mb-4">
                                     {event.description}
                                 </p>
                                 
                                 <div class="bg-white/20 border-2 border-white p-3 rounded mb-4">
-                                    <div class="flex justify-between items-center text-white text-xs">
+                                    <div class="flex justify-between items-center text-on-primary text-xs">
                                         <span>👥 {event.capacity}</span>
                                         <span class="font-bold">{event.price}</span>
                                     </div>
                                 </div>
                                 
-                                <button class="bg-white text-dark px-6 py-3 font-black border-2 border-dark hover:scale-105 transition-transform w-full">
+                                <button class="bg-white text-on-light px-6 py-3 font-black border-2 border-dark hover:scale-105 transition-transform w-full">
                                     📝 DAFTAR SEKARANG
                                 </button>
                             </div>
@@ -177,7 +177,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 participants: "25 peserta",
                                 success: "98% satisfaction rate",
                                 image: "rocket-workshop.jpg",
-                                bg: "bg-accent"
+                                bg: "btn-accent"
                             },
                             {
                                 title: "Seminar Astronomi",
@@ -185,7 +185,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 participants: "80 peserta",
                                 success: "15 follow-up projects",
                                 image: "lunar-eclipse.jpg",
-                                bg: "bg-blue"
+                                bg: "btn-primary"
                             },
                             {
                                 title: "Kompetisi Fisika Internal",
@@ -193,7 +193,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 participants: "40 peserta",
                                 success: "12 tim finalis",
                                 image: "physics-competition.jpg",
-                                bg: "bg-pink"
+                                bg: "btn-secondary"
                             }
                         ].map((event, index) => (
                             <div class={`${event.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? '-rotate-1' : 'rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
@@ -201,18 +201,18 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                     <div class="w-16 h-16 bg-white border-2 border-dark dark:border-light rounded-full mx-auto mb-3 flex items-center justify-center">
                                         <span class="text-2xl">✅</span>
                                     </div>
-                                    <h3 class="text-lg font-black uppercase text-white mb-2">
+                                    <h3 class="text-lg font-black uppercase text-on-primary mb-2">
                                         {event.title}
                                     </h3>
-                                    <p class="text-white/80 text-sm">{event.date}</p>
+                                    <p class="text-on-primary opacity-80 text-sm">{event.date}</p>
                                 </div>
                                 
-                                <div class="space-y-2 text-white/90 text-sm">
+                                <div class="space-y-2 text-on-primary opacity-90 text-sm">
                                     <div>👥 {event.participants}</div>
                                     <div>🎯 {event.success}</div>
                                 </div>
                                 
-                                <button class="bg-white/20 border-2 border-white text-white px-4 py-2 font-bold text-sm hover:scale-105 transition-transform w-full mt-4">
+                                <button class="bg-white/20 border-2 border-white text-on-primary px-4 py-2 font-bold text-sm hover:scale-105 transition-transform w-full mt-4">
                                     📸 LIHAT DOKUMENTASI
                                 </button>
                             </div>
