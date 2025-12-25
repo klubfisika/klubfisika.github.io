@@ -7,6 +7,9 @@ import FloatingActions from "../components/ui/FloatingActions.astro";
 import BackToTop from "../components/ui/BackToTop.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
 import BrutalCard from "../components/ui/BrutalCard.astro";
+import Heading from "../components/ui/Heading.astro";
+import Text from "../components/ui/Text.astro";
+import BrutalSection from "../components/ui/BrutalSection.astro";
 import GradientSection from "../components/ui/GradientSection.astro";
 ---
 
@@ -29,18 +32,18 @@ import GradientSection from "../components/ui/GradientSection.astro";
             <!-- Hero Section -->
             <GradientSection variant="green-blue">
                 <div class="max-w-6xl mx-auto px-6 text-center">
-                    <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-dark dark:text-light transform -rotate-1 mb-8">
+                    <Heading level={1} size="3xl" class="uppercase tracking-tight transform -rotate-1 mb-8">
                         BLOG & <span class="text-primary dark:text-primary-dark">ARTIKEL</span>
-                    </h1>
-                    <div class="bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal max-w-2xl mx-auto">
-                        <p class="text-xl font-bold text-dark dark:text-light mb-4">
+                    </Heading>
+                    <BrutalCard variant="white" class="transform rotate-1 max-w-2xl mx-auto">
+                        <Text size="lg" class="font-bold mb-4">
                             📚 Pusat Pengetahuan Fisika Indonesia
-                        </p>
-                        <p class="text-dark dark:text-light font-semibold">
+                        </Text>
+                        <Text class="font-semibold">
                             Artikel fisika, tutorial eksperimen, tips belajar, dan berita terbaru dari komunitas KF13. 
                             Belajar fisika jadi lebih mudah dan menyenangkan!
-                        </p>
-                    </div>
+                        </Text>
+                    </BrutalCard>
                 </div>
             </GradientSection>
 

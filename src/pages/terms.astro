@@ -10,6 +10,7 @@ import BrutalCard from "../components/ui/BrutalCard.astro";
 import GradientSection from "../components/ui/GradientSection.astro";
 import Heading from "../components/ui/Heading.astro";
 import Text from "../components/ui/Text.astro";
+import SectionHeaderWithHash from "../components/ui/SectionHeaderWithHash.astro";
 import BrutalSection from "../components/ui/BrutalSection.astro";
 ---
 
@@ -49,13 +50,65 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                 </div>
             </GradientSection>
 
-            <!-- Terms of Service -->
+            <!-- Main Content with Sidebar -->
             <BrutalSection background="white" padding="lg">
-                <div class="max-w-4xl mx-auto px-6">
-                    <SectionHeader title="SYARAT LAYANAN" subtitle="Ketentuan penggunaan layanan KF13" className="mb-16" />
-                    
-                    <div class="space-y-8">
-                        <BrutalCard variant="surface" class="transform rotate-1">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                        <!-- Sidebar Table of Contents -->
+                        <div class="lg:col-span-1">
+                            <div class="sticky top-24">
+                                <BrutalCard variant="surface" class="transform rotate-1">
+                                    <Heading level={3} size="md" class="uppercase mb-4 text-center">📋 DAFTAR ISI</Heading>
+                                    <nav class="space-y-3">
+                                        <div>
+                                            <Text class="font-bold text-primary mb-2">
+                                                <a href="#syarat-layanan" class="hover:text-primary transition-colors">SYARAT LAYANAN</a>
+                                            </Text>
+                                            <ul class="space-y-1 text-sm ml-2">
+                                                <li><a href="#penerimaan-syarat" class="hover:text-primary transition-colors block py-1">1. Penerimaan Syarat</a></li>
+                                                <li><a href="#layanan-komunitas" class="hover:text-primary transition-colors block py-1">2. Layanan Komunitas</a></li>
+                                                <li><a href="#kode-etik" class="hover:text-primary transition-colors block py-1">3. Kode Etik Anggota</a></li>
+                                                <li><a href="#hak-kekayaan" class="hover:text-primary transition-colors block py-1">4. Hak Kekayaan</a></li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <Text class="font-bold text-accent mb-2">
+                                                <a href="#kebijakan-privasi" class="hover:text-accent transition-colors">KEBIJAKAN PRIVASI</a>
+                                            </Text>
+                                            <ul class="space-y-1 text-sm ml-2">
+                                                <li><a href="#data-dikumpulkan" class="hover:text-accent transition-colors block py-1">1. Data Dikumpulkan</a></li>
+                                                <li><a href="#penggunaan-data" class="hover:text-accent transition-colors block py-1">2. Penggunaan Data</a></li>
+                                                <li><a href="#keamanan-data" class="hover:text-accent transition-colors block py-1">3. Keamanan Data</a></li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <Text class="font-bold text-secondary mb-2">
+                                                <a href="#panduan-komunitas" class="hover:text-secondary transition-colors">PANDUAN KOMUNITAS</a>
+                                            </Text>
+                                            <ul class="space-y-1 text-sm ml-2">
+                                                <li><a href="#nilai-komunitas" class="hover:text-secondary transition-colors block py-1">1. Nilai-nilai Komunitas</a></li>
+                                                <li><a href="#sanksi-pelanggaran" class="hover:text-secondary transition-colors block py-1">2. Sanksi & Pelanggaran</a></li>
+                                                <li><a href="#kontak-legal" class="hover:text-secondary transition-colors block py-1">3. Kontak Legal</a></li>
+                                            </ul>
+                                        </div>
+                                    </nav>
+                                </BrutalCard>
+                            </div>
+                        </div>
+
+                        <!-- Main Content -->
+                        <div class="lg:col-span-3">
+                            <!-- Terms of Service -->
+                            <div class="mb-16">
+                                <SectionHeaderWithHash 
+                                    title="SYARAT LAYANAN" 
+                                    subtitle="Ketentuan penggunaan layanan KF13" 
+                                    id="syarat-layanan"
+                                    className="mb-8" 
+                                />
+                                
+                                <div class="space-y-8">
+                        <BrutalCard variant="surface" class="transform rotate-1" id="penerimaan-syarat">
                             <Heading level={3} size="lg" class="uppercase mb-4">1. PENERIMAAN SYARAT</Heading>
                             <Text class="leading-relaxed mb-4">
                                 Dengan mengakses dan menggunakan layanan KF13 Klub Fisika Indonesia, Anda menyetujui untuk terikat oleh syarat dan ketentuan ini. 
@@ -68,7 +121,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                             </ul>
                         </BrutalCard>
 
-                        <BrutalCard variant="primary" class="transform -rotate-1">
+                        <BrutalCard variant="primary" class="transform -rotate-1" id="layanan-komunitas">
                             <Heading level={3} size="lg" class="uppercase mb-4 text-white">2. LAYANAN KOMUNITAS</Heading>
                             <Text class="leading-relaxed mb-4 text-white">
                                 KF13 menyediakan platform pembelajaran fisika, diskusi ilmiah, dan kegiatan edukatif. 
@@ -82,7 +135,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                             </ul>
                         </BrutalCard>
 
-                        <BrutalCard variant="accent" class="transform rotate-1">
+                        <BrutalCard variant="accent" class="transform rotate-1" id="kode-etik">
                             <Heading level={3} size="lg" class="uppercase mb-4">3. KODE ETIK ANGGOTA</Heading>
                             <Text class="leading-relaxed mb-4">
                                 Sebagai komunitas pembelajaran, kami menjunjung tinggi nilai-nilai ilmiah, etika, dan saling menghormati.
@@ -108,177 +161,168 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                                 </div>
                             </div>
                         </BrutalCard>
+
+                        <BrutalCard variant="secondary" class="transform rotate-1" id="hak-kekayaan">
+                            <Heading level={3} size="lg" class="uppercase mb-4">4. HAK KEKAYAAN INTELEKTUAL</Heading>
+                            <Text class="leading-relaxed mb-4">
+                                Semua konten, materi pembelajaran, dan desain website adalah milik KF13 atau digunakan dengan izin yang sah.
+                            </Text>
+                            <ul class="list-disc list-inside space-y-1 text-sm text-dark dark:text-light">
+                                <li>Materi pembelajaran dapat digunakan untuk tujuan edukatif non-komersial</li>
+                                <li>Dilarang menyalin atau mendistribusikan tanpa izin tertulis</li>
+                                <li>Kredit harus diberikan kepada KF13 saat menggunakan materi</li>
+                                <li>Logo dan brand KF13 tidak boleh digunakan tanpa izin</li>
+                            </ul>
+                        </BrutalCard>
+                    </div>
+                </div>
+
+                            <!-- Privacy Policy -->
+                            <div class="mb-16">
+                                <SectionHeaderWithHash 
+                                    title="KEBIJAKAN PRIVASI" 
+                                    subtitle="Perlindungan data dan informasi pribadi" 
+                                    id="kebijakan-privasi"
+                                    className="mb-8" 
+                                />
+                                
+                                <div class="space-y-8">
+                                    <BrutalCard variant="white" class="transform -rotate-1" id="data-dikumpulkan">
+                                        <Heading level={3} size="lg" class="uppercase mb-4">DATA YANG KAMI KUMPULKAN</Heading>
+                                        <div class="space-y-4">
+                                            <div>
+                                                <Text class="font-bold mb-2">📧 Informasi Kontak:</Text>
+                                                <Text size="sm">Nama, email, nomor WhatsApp (jika diberikan secara sukarela untuk komunikasi komunitas)</Text>
+                                            </div>
+                                            <div>
+                                                <Text class="font-bold mb-2">🎓 Informasi Akademik:</Text>
+                                                <Text size="sm">Sekolah/universitas, tingkat pendidikan (untuk personalisasi program)</Text>
+                                            </div>
+                                            <div>
+                                                <Text class="font-bold mb-2">📊 Data Penggunaan:</Text>
+                                                <Text size="sm">Aktivitas di website, preferensi tema, statistik kunjungan (anonim)</Text>
+                                            </div>
+                                        </div>
+                                    </BrutalCard>
+
+                                    <BrutalCard variant="secondary" class="transform rotate-1" id="penggunaan-data">
+                                        <Heading level={3} size="lg" class="uppercase mb-4">PENGGUNAAN DATA</Heading>
+                                        <ul class="list-disc list-inside space-y-2 text-dark dark:text-light">
+                                            <li>Komunikasi terkait kegiatan dan program KF13</li>
+                                            <li>Personalisasi pengalaman pembelajaran</li>
+                                            <li>Analisis untuk peningkatan layanan</li>
+                                            <li>Keamanan dan pencegahan penyalahgunaan</li>
+                                        </ul>
+                                        <BrutalCard variant="accent" class="mt-4">
+                                            <Text size="sm" class="font-bold">
+                                                🔒 <strong>Jaminan:</strong> Data pribadi TIDAK akan dijual, disewakan, atau dibagikan kepada pihak ketiga tanpa persetujuan eksplisit.
+                                            </Text>
+                                        </BrutalCard>
+                                    </BrutalCard>
+
+                                    <BrutalCard variant="accent" class="transform -rotate-1" id="keamanan-data">
+                                        <Heading level={3} size="lg" class="uppercase mb-4">KEAMANAN DATA</Heading>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div>
+                                                <Text class="font-bold mb-2">✅ HAK ANDA:</Text>
+                                                <ul class="list-disc list-inside text-sm space-y-1 text-dark dark:text-light">
+                                                    <li>Mengakses data pribadi Anda</li>
+                                                    <li>Memperbarui informasi</li>
+                                                    <li>Menghapus akun dan data</li>
+                                                    <li>Opt-out dari komunikasi</li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <Text class="font-bold mb-2">📞 KONTAK PRIVASI:</Text>
+                                                <ul class="text-sm space-y-1 text-dark dark:text-light">
+                                                    <li>Email: privacy@klubfisika.org</li>
+                                                    <li>WhatsApp: +62 822-2500-9253</li>
+                                                    <li>Respon dalam 7 hari kerja</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </BrutalCard>
+                                </div>
+                            </div>
+
+                            <!-- Community Guidelines -->
+                            <div class="mb-16">
+                                <SectionHeaderWithHash 
+                                    title="PANDUAN KOMUNITAS" 
+                                    subtitle="Aturan dan etika dalam komunitas KF13" 
+                                    id="panduan-komunitas"
+                                    className="mb-8" 
+                                />
+                                
+                                <div class="space-y-8">
+                                    <BrutalCard variant="accent" class="transform rotate-1" id="nilai-komunitas">
+                                        <Heading level={3} size="lg" class="uppercase mb-4">NILAI-NILAI KOMUNITAS</Heading>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div>
+                                                <Text class="font-bold mb-3">🔬 ILMIAH</Text>
+                                                <Text size="sm">Berdasarkan fakta, data, dan metode ilmiah yang valid</Text>
+                                            </div>
+                                            <div>
+                                                <Text class="font-bold mb-3">🤝 KOLABORATIF</Text>
+                                                <Text size="sm">Saling membantu dan berbagi pengetahuan</Text>
+                                            </div>
+                                            <div>
+                                                <Text class="font-bold mb-3">🌈 INKLUSIF</Text>
+                                                <Text size="sm">Terbuka untuk semua latar belakang dan tingkat kemampuan</Text>
+                                            </div>
+                                            <div>
+                                                <Text class="font-bold mb-3">⚖️ BERINTEGRITAS</Text>
+                                                <Text size="sm">Jujur, bertanggung jawab, dan menghormati hak cipta</Text>
+                                            </div>
+                                        </div>
+                                    </BrutalCard>
+
+                                    <BrutalCard variant="secondary" class="transform -rotate-1" id="sanksi-pelanggaran">
+                                        <Heading level={3} size="lg" class="uppercase mb-4">SANKSI DAN PELANGGARAN</Heading>
+                                        <div class="space-y-4">
+                                            <div>
+                                                <Text class="font-bold mb-2">⚠️ PERINGATAN:</Text>
+                                                <Text size="sm">Pelanggaran ringan akan mendapat peringatan dan bimbingan</Text>
+                                            </div>
+                                            <div>
+                                                <Text class="font-bold mb-2">🚫 PEMBATASAN:</Text>
+                                                <Text size="sm">Pelanggaran berulang dapat mengakibatkan pembatasan akses sementara</Text>
+                                            </div>
+                                            <div>
+                                                <Text class="font-bold mb-2">❌ PEMBLOKIRAN:</Text>
+                                                <Text size="sm">Pelanggaran serius akan mengakibatkan pemblokiran permanen</Text>
+                                            </div>
+                                        </div>
+                                    </BrutalCard>
+
+                                    <BrutalCard variant="primary" class="transform rotate-1" id="kontak-legal">
+                                        <Heading level={3} size="lg" class="uppercase mb-4 text-white">KONTAK LEGAL</Heading>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-white">
+                                            <div>
+                                                <Text class="font-bold mb-2 text-white">📧 Email Resmi:</Text>
+                                                <Text size="sm" class="text-white">info@klubfisika.org</Text>
+                                                <Text size="sm" class="text-white">legal@klubfisika.org</Text>
+                                            </div>
+                                            <div>
+                                                <Text class="font-bold mb-2 text-white">💬 WhatsApp:</Text>
+                                                <Text size="sm" class="text-white">+62 822-2500-9253</Text>
+                                            </div>
+                                            <div>
+                                                <Text class="font-bold mb-2 text-white">📍 Alamat:</Text>
+                                                <Text size="sm" class="text-white">Yogyakarta, Indonesia</Text>
+                                            </div>
+                                            <div>
+                                                <Text class="font-bold mb-2 text-white">⏰ Jam Operasional:</Text>
+                                                <Text size="sm" class="text-white">Senin-Jumat, 09:00-17:00 WIB</Text>
+                                            </div>
+                                        </div>
+                                    </BrutalCard>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </BrutalSection>
-
-            <!-- Privacy Policy -->
-            <section class="py-20 bg-surface dark:bg-slate-800 transition-colors">
-                <div class="max-w-4xl mx-auto px-6">
-                    <SectionHeader title="KEBIJAKAN PRIVASI" subtitle="Perlindungan data dan informasi pribadi" className="mb-16" />
-                    
-                    <div class="space-y-8">
-                        <div class="bg-white dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal-sm">
-                            <h3 class="text-xl font-black uppercase text-dark dark:text-light mb-4">DATA YANG KAMI KUMPULKAN</h3>
-                            <div class="space-y-4 text-dark dark:text-light">
-                                <div>
-                                    <p class="font-bold mb-2">📧 Informasi Kontak:</p>
-                                    <p class="text-sm">Nama, email, nomor WhatsApp (jika diberikan secara sukarela untuk komunikasi komunitas)</p>
-                                </div>
-                                <div>
-                                    <p class="font-bold mb-2">🎓 Informasi Akademik:</p>
-                                    <p class="text-sm">Sekolah/universitas, tingkat pendidikan (untuk personalisasi program)</p>
-                                </div>
-                                <div>
-                                    <p class="font-bold mb-2">📊 Data Penggunaan:</p>
-                                    <p class="text-sm">Aktivitas di website, preferensi tema, statistik kunjungan (anonim)</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-pink dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal-sm">
-                            <h3 class="text-xl font-black uppercase text-dark dark:text-light mb-4">PENGGUNAAN DATA</h3>
-                            <ul class="list-disc list-inside text-dark dark:text-light space-y-2">
-                                <li>Komunikasi terkait kegiatan dan program KF13</li>
-                                <li>Personalisasi pengalaman pembelajaran</li>
-                                <li>Analisis untuk peningkatan layanan</li>
-                                <li>Keamanan dan pencegahan penyalahgunaan</li>
-                            </ul>
-                            <div class="bg-white/20 dark:bg-slate-800/50 border-2 border-dark dark:border-light p-3 rounded mt-4">
-                                <p class="text-sm font-bold text-dark dark:text-light">
-                                    🔒 <strong>Jaminan:</strong> Data pribadi TIDAK akan dijual, disewakan, atau dibagikan kepada pihak ketiga tanpa persetujuan eksplisit.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="bg-secondary dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal-sm">
-                            <h3 class="text-xl font-black uppercase text-dark dark:text-light mb-4">HAK PENGGUNA</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <p class="font-bold text-dark dark:text-light mb-2">✅ HAK ANDA:</p>
-                                    <ul class="list-disc list-inside text-dark dark:text-light text-sm space-y-1">
-                                        <li>Mengakses data pribadi Anda</li>
-                                        <li>Memperbarui informasi</li>
-                                        <li>Menghapus akun dan data</li>
-                                        <li>Opt-out dari komunikasi</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-dark dark:text-light mb-2">📞 KONTAK PRIVASI:</p>
-                                    <ul class="text-dark dark:text-light text-sm space-y-1">
-                                        <li>Email: privacy@klubfisika.org</li>
-                                        <li>WhatsApp: +62 822-2500-9253</li>
-                                        <li>Respon dalam 7 hari kerja</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Community Guidelines -->
-            <section class="py-20 bg-white dark:bg-slate-700 transition-colors">
-                <div class="max-w-4xl mx-auto px-6">
-                    <SectionHeader title="PANDUAN KOMUNITAS" subtitle="Aturan dan etika dalam komunitas KF13" className="mb-16" />
-                    
-                    <div class="space-y-8">
-                        <div class="bg-green-500 dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal-sm">
-                            <h3 class="text-xl font-black uppercase text-white mb-4">NILAI-NILAI KOMUNITAS</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <p class="font-bold text-white mb-3">🔬 ILMIAH</p>
-                                    <p class="text-white text-sm">Berdasarkan fakta, data, dan metode ilmiah yang valid</p>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-white mb-3">🤝 KOLABORATIF</p>
-                                    <p class="text-white text-sm">Saling membantu dan berbagi pengetahuan</p>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-white mb-3">🌈 INKLUSIF</p>
-                                    <p class="text-white text-sm">Terbuka untuk semua latar belakang dan tingkat kemampuan</p>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-white mb-3">⚖️ BERINTEGRITAS</p>
-                                    <p class="text-white text-sm">Jujur, bertanggung jawab, dan menghormati hak cipta</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-orange-500 dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal-sm">
-                            <h3 class="text-xl font-black uppercase text-white mb-4">SANKSI DAN PELANGGARAN</h3>
-                            <div class="space-y-4 text-white">
-                                <div>
-                                    <p class="font-bold mb-2">⚠️ PERINGATAN:</p>
-                                    <p class="text-sm">Pelanggaran ringan akan mendapat peringatan dan bimbingan</p>
-                                </div>
-                                <div>
-                                    <p class="font-bold mb-2">🚫 PEMBATASAN:</p>
-                                    <p class="text-sm">Pelanggaran berulang dapat mengakibatkan pembatasan akses sementara</p>
-                                </div>
-                                <div>
-                                    <p class="font-bold mb-2">❌ PEMBLOKIRAN:</p>
-                                    <p class="text-sm">Pelanggaran serius akan mengakibatkan pemblokiran permanen</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Legal Information -->
-            <section class="py-20 bg-surface dark:bg-slate-800 transition-colors">
-                <div class="max-w-4xl mx-auto px-6">
-                    <SectionHeader title="INFORMASI LEGAL" subtitle="Ketentuan hukum dan kontak resmi" className="mb-16" />
-                    
-                    <div class="space-y-8">
-                        <div class="bg-white dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal-sm">
-                            <h3 class="text-xl font-black uppercase text-dark dark:text-light mb-4">KONTAK RESMI</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-dark dark:text-light">
-                                <div>
-                                    <p class="font-bold mb-2">📧 Email Resmi:</p>
-                                    <p class="text-sm">info@klubfisika.org</p>
-                                    <p class="text-sm">legal@klubfisika.org</p>
-                                </div>
-                                <div>
-                                    <p class="font-bold mb-2">📍 Alamat:</p>
-                                    <p class="text-sm">Yogyakarta, Indonesia</p>
-                                </div>
-                                <div>
-                                    <p class="font-bold mb-2">💬 WhatsApp:</p>
-                                    <p class="text-sm">+62 822-2500-9253</p>
-                                </div>
-                                <div>
-                                    <p class="font-bold mb-2">⏰ Jam Operasional:</p>
-                                    <p class="text-sm">Senin-Jumat, 09:00-17:00 WIB</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-purple-500 dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal-sm">
-                            <h3 class="text-xl font-black uppercase text-white mb-4">PERUBAHAN KETENTUAN</h3>
-                            <p class="text-white leading-relaxed mb-4">
-                                KF13 berhak mengubah syarat dan ketentuan ini sewaktu-waktu. Perubahan akan diberitahukan melalui:
-                            </p>
-                            <ul class="list-disc list-inside text-white space-y-2 text-sm">
-                                <li>Notifikasi di website utama</li>
-                                <li>Email kepada anggota terdaftar</li>
-                                <li>Pengumuman di grup komunitas</li>
-                                <li>Update tanggal "Terakhir diperbarui"</li>
-                            </ul>
-                        </div>
-
-                        <div class="btn-primary dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal-sm text-center">
-                            <h3 class="text-xl font-black uppercase text-on-primary mb-4">DISCLAIMER</h3>
-                            <p class="text-on-primary text-sm leading-relaxed">
-                                KF13 Klub Fisika Indonesia adalah komunitas edukatif non-profit. Semua materi dan informasi disediakan "sebagaimana adanya" 
-                                untuk tujuan pembelajaran. Kami tidak bertanggung jawab atas kerugian yang mungkin timbul dari penggunaan informasi ini. 
-                                Selalu konsultasikan dengan ahli yang kompeten untuk keputusan penting.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </main>
 
         <Footer />

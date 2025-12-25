@@ -1,0 +1,77 @@
+---
+export interface Props {
+  title: string;
+  subtitle?: string;
+  id?: string;
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
+  className?: string;
+}
+
+const { 
+  title, 
+  subtitle, 
+  id,
+  level = 2,
+  className = "" 
+} = Astro.props;
+
+const Element = `h${level}` as keyof JSX.IntrinsicElements;
+---
+
+<div class={`text-center ${className}`} id={id}>
+  <Element class="text-3xl md:text-4xl font-black uppercase tracking-tight text-dark dark:text-light mb-4 transform -rotate-1">
+    {id ? (
+      <a href={`#${id}`} class="hover:text-primary transition-colors">
+        {title}
+      </a>
+    ) : title}
+  </Element>
+  {subtitle && (
+    <p class="text-lg text-dark dark:text-light opacity-75 max-w-2xl mx-auto">
+      {subtitle}
+    </p>
+  )}
+</div>
+
+<script>
+// Smooth scroll untuk anchor links dengan offset untuk fixed header
+document.addEventListener('DOMContentLoaded', () => {
+  const headerOffset = 100; // Offset untuk fixed navigation header
+  
+  // Handle semua anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        
+        // Update URL hash
+        history.pushState(null, null, this.getAttribute('href'));
+      }
+    });
+  });
+
+  // Handle direct hash navigation (refresh dengan hash)
+  if (window.location.hash) {
+    setTimeout(() => {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
+  }
+});
+</script>
