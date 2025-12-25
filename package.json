@@ -3,7 +3,8 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"astro dev\"",
+    "dev": "./dev-with-tina.sh",
+    "dev:astro": "astro dev",
     "build": "astro build",
     "build:tina": "./build-with-tina.sh",
     "preview": "astro preview",
