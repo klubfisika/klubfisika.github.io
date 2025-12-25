@@ -89,6 +89,111 @@
 }
 
 /* Utility Classes */
+.text-dark {
+  color: var(--color-dark);
+}
+
+.text-light {
+  color: var(--color-light);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.bg-dark {
+  background-color: var(--color-dark);
+}
+
+.bg-light {
+  background-color: var(--color-light);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+}
+
+.bg-surface {
+  background-color: var(--color-surface);
+}
+
+.bg-pink {
+  background-color: var(--color-pink);
+}
+
+.bg-blue {
+  background-color: var(--color-blue);
+}
+
+.border-dark {
+  border-color: var(--color-dark);
+}
+
+.border-light {
+  border-color: var(--color-light);
+}
+
+/* Dark mode variants */
+.dark .text-dark {
+  color: var(--color-light);
+}
+
+.dark .text-light {
+  color: var(--color-dark);
+}
+
+.dark .text-primary {
+  color: var(--color-primary-dark);
+}
+
+.dark .text-secondary {
+  color: var(--color-secondary-dark);
+}
+
+.dark .text-accent {
+  color: var(--color-accent-dark);
+}
+
+.dark .bg-primary {
+  background-color: var(--color-primary-dark);
+}
+
+.dark .bg-secondary {
+  background-color: var(--color-secondary-dark);
+}
+
+.dark .bg-accent {
+  background-color: var(--color-accent-dark);
+}
+
+.dark .bg-surface {
+  background-color: var(--color-surface-dark);
+}
+
+.dark .border-dark {
+  border-color: var(--color-light);
+}
+
+.dark .border-light {
+  border-color: var(--color-dark);
+}
+
 .wobble:hover {
   animation: wobble 0.5s ease-in-out;
 }
