@@ -53,15 +53,15 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                 <div class="max-w-6xl mx-auto px-6">
                     <div class="flex flex-wrap justify-center gap-4 mb-8">
                         {[
-                            { name: "Semua", slug: "all", bg: "bg-surface", active: true },
-                            { name: "Tutorial", slug: "tutorial", bg: "bg-blue" },
-                            { name: "Eksperimen", slug: "eksperimen", bg: "bg-green-500" },
-                            { name: "Teori", slug: "teori", bg: "bg-purple-500" },
-                            { name: "Tips Belajar", slug: "tips", bg: "bg-orange-500" },
-                            { name: "Berita", slug: "berita", bg: "bg-pink" }
+                            { name: "Semua", slug: "all", bg: "bg-surface text-on-surface", active: true },
+                            { name: "Tutorial", slug: "tutorial", bg: "btn-primary" },
+                            { name: "Eksperimen", slug: "eksperimen", bg: "btn-accent" },
+                            { name: "Teori", slug: "teori", bg: "btn-primary" },
+                            { name: "Tips Belajar", slug: "tips", bg: "btn-secondary" },
+                            { name: "Berita", slug: "berita", bg: "btn-accent" }
                         ].map((category, index) => (
                             <button 
-                                class={`${category.bg} ${category.active ? 'scale-110' : ''} dark:bg-slate-600 border-3 border-dark dark:border-light px-6 py-3 font-black text-dark dark:text-light hover:scale-105 transition-transform transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0`}
+                                class={`${category.bg} ${category.active ? 'scale-110' : ''} dark:bg-slate-600 border-3 border-dark dark:border-light px-6 py-3 font-black hover:scale-105 transition-transform transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0`}
                                 data-category={category.slug}
                             >
                                 {category.name}
@@ -115,8 +115,8 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 author: "Dr. Sarah Quantum",
                                 date: "20 Desember 2024",
                                 readTime: "8 menit",
-                                bg: "bg-purple-500",
-                                categoryBg: "bg-purple-200",
+                                bg: "btn-primary",
+                                categoryBg: "bg-white text-on-light",
                                 link: "/blog/fisika-kuantum-untuk-pemula"
                             },
                             {
@@ -126,8 +126,8 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 author: "Budi Eksperimen",
                                 date: "18 Desember 2024",
                                 readTime: "6 menit",
-                                bg: "bg-green-500",
-                                categoryBg: "bg-green-200",
+                                bg: "btn-accent",
+                                categoryBg: "bg-white text-on-light",
                                 link: "/blog/eksperimen-gelombang-bunyi-sederhana"
                             },
                             {
@@ -137,8 +137,8 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 author: "Ahmad Belajar",
                                 date: "15 Desember 2024",
                                 readTime: "5 menit",
-                                bg: "bg-orange-500",
-                                categoryBg: "bg-orange-200",
+                                bg: "btn-secondary",
+                                categoryBg: "bg-white text-on-light",
                                 link: "/blog/tips-belajar-fisika-efektif"
                             },
                             {
@@ -174,7 +174,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                         ].map((article, index) => (
                             <article class={`${article.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-2' : '-rotate-2'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
                                 <div class="mb-4">
-                                    <span class={`${article.categoryBg} text-dark px-3 py-1 text-xs font-bold border-2 border-dark`}>
+                                    <span class={`${article.categoryBg} px-3 py-1 text-xs font-bold border-2 border-dark`}>
                                         {article.category.toUpperCase()}
                                     </span>
                                 </div>
@@ -183,16 +183,16 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                     href={article.link || "#"}
                                     class="block hover:scale-105 transition-transform"
                                 >
-                                    <h3 class="text-lg font-black uppercase text-white mb-3 leading-tight">
+                                    <h3 class="text-lg font-black uppercase text-on-primary mb-3 leading-tight">
                                         {article.title}
                                     </h3>
                                 </a>
                                 
-                                <p class="text-white/90 text-sm leading-relaxed mb-4">
+                                <p class="text-on-primary opacity-90 text-sm leading-relaxed mb-4">
                                     {article.excerpt}
                                 </p>
                                 
-                                <div class="space-y-2 text-white/80 text-xs mb-4">
+                                <div class="space-y-2 text-on-primary opacity-80 text-xs mb-4">
                                     <div>👨‍🏫 {article.author}</div>
                                     <div>📅 {article.date}</div>
                                     <div>⏱️ {article.readTime} baca</div>
@@ -200,7 +200,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
                                 
                                 <a 
                                     href={article.link || "#"}
-                                    class="bg-white text-dark px-4 py-2 font-bold text-sm border-2 border-dark hover:scale-105 transition-transform w-full block text-center"
+                                    class="bg-white text-on-light px-4 py-2 font-bold text-sm border-2 border-dark hover:scale-105 transition-transform w-full block text-center"
                                 >
                                     BACA SELENGKAPNYA
                                 </a>
