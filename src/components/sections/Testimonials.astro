@@ -1,0 +1,92 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import Testimonial from '../ui/Testimonial.astro';
+---
+
+<section class="py-20 bg-surface dark:bg-slate-800 transition-colors" id="testimoni">
+  <div class="max-w-6xl mx-auto px-6">
+    <SectionHeader title="TESTIMONI" subtitle="Apa kata anggota KF13" className="mb-16" />
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <Testimonial 
+        quote="KF13 benar-benar mengubah cara saya memahami fisika. Dari yang awalnya takut dengan rumus, sekarang saya excited setiap ada eksperimen baru!"
+        author="Rina Maharani"
+        role="Anggota KF13, Mahasiswa Fisika UI"
+        photo="/testimonials/rina.jpg"
+        className="rotate-2"
+      />
+      
+      <Testimonial 
+        quote="Komunitas yang sangat supportive! Diskusi-diskusi di KF13 membantu saya mempersiapkan olimpiade fisika dan akhirnya lolos ke tingkat nasional."
+        author="Fajar Ramadhan"
+        role="Alumni KF13, Juara OSN Fisika"
+        photo="/testimonials/fajar.jpg"
+        className="-rotate-1"
+      />
+      
+      <Testimonial 
+        quote="Proyek roket air di KF13 jadi pengalaman paling berkesan. Belajar fisika sambil praktik langsung, seru banget!"
+        author="Dinda Sari"
+        role="Anggota KF13, Pelajar SMA"
+        photo="/testimonials/dinda.jpg"
+        className="rotate-1"
+      />
+      
+      <Testimonial 
+        quote="Mentor-mentor di KF13 sangat berpengalaman. Mereka sabar menjelaskan konsep yang sulit dengan cara yang mudah dipahami."
+        author="Arif Budiman"
+        role="Anggota KF13, Mahasiswa Fisika ITB"
+        photo="/testimonials/arif.jpg"
+        className="-rotate-2"
+      />
+      
+      <Testimonial 
+        quote="Bergabung dengan KF13 adalah keputusan terbaik! Saya jadi punya teman-teman yang sama-sama passionate di bidang fisika."
+        author="Sinta Dewi"
+        role="Anggota KF13, Mahasiswa Fisika UGM"
+        photo="/testimonials/sinta.jpg"
+        className="rotate-2"
+      />
+      
+      <Testimonial 
+        quote="Workshop dan seminar di KF13 selalu berkualitas. Materinya up-to-date dan pembicara yang kompeten di bidangnya."
+        author="Rudi Hartono"
+        role="Alumni KF13, Peneliti LIPI"
+        photo="/testimonials/rudi.jpg"
+        className="-rotate-1"
+      />
+    </div>
+
+    <!-- Stats -->
+    <div class="mt-16">
+      <div class="bg-primary dark:bg-primary-dark border-4 border-dark dark:border-light p-8 transform -rotate-1 shadow-brutal">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div>
+            <div class="text-4xl font-black text-dark dark:text-light mb-2">150+</div>
+            <p class="font-bold text-dark dark:text-light">Anggota Aktif</p>
+          </div>
+          <div>
+            <div class="text-4xl font-black text-dark dark:text-light mb-2">95%</div>
+            <p class="font-bold text-dark dark:text-light">Tingkat Kepuasan</p>
+          </div>
+          <div>
+            <div class="text-4xl font-black text-dark dark:text-light mb-2">25+</div>
+            <p class="font-bold text-dark dark:text-light">Proyek Selesai</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-12 text-center">
+      <div class="bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light p-6 transform rotate-1 inline-block shadow-brutal">
+        <p class="text-dark dark:text-light font-bold mb-4">
+          💬 <strong>Ingin berbagi pengalaman Anda?</strong>
+        </p>
+        <p class="text-sm text-dark dark:text-light">
+          Kirim testimoni Anda ke <strong>testimoni@kf13.org</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,68 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  photo?: string;
+  bio?: string;
+  email?: string;
+  linkedin?: string;
+  className?: string;
+}
+
+const { 
+  name, 
+  role, 
+  photo = "/placeholder-avatar.jpg", 
+  bio, 
+  email, 
+  linkedin,
+  className = ""
+} = Astro.props;
+---
+
+<div class={`bg-white dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform hover:rotate-0 transition-transform shadow-brutal-sm ${className}`}>
+  <div class="text-center">
+    <!-- Photo -->
+    <div class="w-24 h-24 mx-auto mb-4 border-4 border-dark dark:border-light overflow-hidden">
+      <img 
+        src={photo} 
+        alt={`${name} - ${role}`}
+        class="w-full h-full object-cover"
+        loading="lazy"
+      />
+    </div>
+    
+    <!-- Name & Role -->
+    <h3 class="text-lg font-black uppercase text-dark dark:text-light mb-2">{name}</h3>
+    <p class="text-sm font-bold text-dark dark:text-light mb-3 opacity-75">{role}</p>
+    
+    <!-- Bio -->
+    {bio && (
+      <p class="text-xs text-dark dark:text-light mb-4 leading-relaxed">{bio}</p>
+    )}
+    
+    <!-- Contact Links -->
+    <div class="flex justify-center gap-2">
+      {email && (
+        <a 
+          href={`mailto:${email}`}
+          class="w-8 h-8 bg-secondary dark:bg-secondary-dark border-2 border-dark dark:border-light flex items-center justify-center text-xs hover:scale-110 transition-transform"
+          aria-label={`Email ${name}`}
+        >
+          📧
+        </a>
+      )}
+      {linkedin && (
+        <a 
+          href={linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-8 h-8 bg-blue dark:bg-blue-dark border-2 border-dark dark:border-light flex items-center justify-center text-xs hover:scale-110 transition-transform"
+          aria-label={`${name} LinkedIn`}
+        >
+          💼
+        </a>
+      )}
+    </div>
+  </div>
+</div>

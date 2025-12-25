@@ -1,0 +1,410 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - img "KF13 Logo" [ref=e7]
+        - generic [ref=e8]:
+          - heading "KF13" [level=1] [ref=e9]
+          - paragraph [ref=e10]: Klub Fisika Indonesia
+      - button "Toggle mobile menu" [ref=e11]:
+        - img [ref=e12]
+  - generic [ref=e14]:
+    - link "Hubungi Admin WhatsApp" [ref=e15] [cursor=pointer]:
+      - /url: https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20ingin%20bergabung%20dengan%20komunitas
+      - generic [ref=e16]: 💬
+      - generic: Chat Admin
+    - button "Toggle Dark Mode" [ref=e17]:
+      - generic [ref=e18]: 🌙
+      - generic: Dark Mode
+  - button "Back to top": ↑
+  - generic [ref=e19]:
+    - heading "🧪 TESTING CHECKLIST" [level=3] [ref=e20]
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - checkbox "FAQ Accordion" [ref=e23]
+        - generic [ref=e24]: FAQ Accordion
+      - generic [ref=e25]:
+        - checkbox "Animated Counters" [ref=e26]
+        - generic [ref=e27]: Animated Counters
+      - generic [ref=e28]:
+        - checkbox "Contact Form" [ref=e29]
+        - generic [ref=e30]: Contact Form
+      - generic [ref=e31]:
+        - checkbox "WhatsApp Button" [ref=e32]
+        - generic [ref=e33]: WhatsApp Button
+      - generic [ref=e34]:
+        - checkbox "Navigation Scroll" [ref=e35]
+        - generic [ref=e36]: Navigation Scroll
+      - generic [ref=e37]:
+        - checkbox "Dark Mode Toggle" [ref=e38]
+        - generic [ref=e39]: Dark Mode Toggle
+      - generic [ref=e40]:
+        - checkbox "Mobile Responsive" [ref=e41]
+        - generic [ref=e42]: Mobile Responsive
+    - button "Hide" [ref=e43]
+  - main [ref=e44]:
+    - generic [ref=e50]:
+      - heading "RUANG BERTUMBUH FISIKA INDONESIA" [level=1] [ref=e51]:
+        - text: RUANG BERTUMBUH
+        - text: FISIKA INDONESIA
+      - generic [ref=e53]:
+        - paragraph [ref=e54]: Belajar • Eksperimen • Kolaborasi • Fun! 🧪⚡
+        - paragraph [ref=e55]: KF13 adalah komunitas pembelajaran dan eksplorasi fisika yang mendorong generasi muda untuk memahami sains secara mendalam, aplikatif, dan kolaboratif.
+      - generic [ref=e56]:
+        - link "🚀 GABUNG KF13" [ref=e57] [cursor=pointer]:
+          - /url: "#gabung"
+        - link "📚 LIHAT PROGRAM" [ref=e58] [cursor=pointer]:
+          - /url: "#program"
+    - generic [ref=e60]:
+      - heading "TENTANG KF13" [level=2] [ref=e62]
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - paragraph [ref=e66]:
+            - text: KF13 merupakan bagian dari
+            - strong [ref=e67]: Klub Fisika Indonesia
+            - text: ", sebuah komunitas yang berfokus pada pengembangan minat dan kemampuan fisika di kalangan pelajar dan generasi muda."
+          - paragraph [ref=e69]: Kami percaya bahwa fisika tidak hanya tentang rumus, tetapi tentang cara memahami alam, teknologi, dan kehidupan sehari-hari melalui pendekatan ilmiah yang kritis dan logis.
+          - generic [ref=e70]:
+            - generic [ref=e71]: Ilmiah
+            - generic [ref=e72]: Eksploratif
+            - generic [ref=e73]: Kolaboratif
+            - generic [ref=e74]: Inklusif
+            - generic [ref=e75]: Berintegritas
+        - generic [ref=e76]:
+          - generic [ref=e78]:
+            - generic [ref=e79]: 🧬
+            - heading "KOMUNITAS FISIKA" [level=3] [ref=e80]
+            - paragraph [ref=e81]: Ruang aman dan inklusif untuk belajar, berdiskusi, bereksperimen, serta mengembangkan cara berpikir ilmiah.
+          - generic [ref=e83]:
+            - generic [ref=e84]: "2024"
+            - generic [ref=e85]: AKTIF
+    - generic [ref=e87]:
+      - generic [ref=e88]:
+        - heading "VISI & MISI" [level=2] [ref=e89]
+        - paragraph [ref=e90]: Arah dan prinsip KF13
+      - generic [ref=e91]:
+        - generic [ref=e94]:
+          - generic [ref=e95]: 🎯
+          - heading "VISI" [level=3] [ref=e96]
+          - paragraph [ref=e97]: Menjadi komunitas fisika yang berkontribusi nyata dalam pengembangan generasi muda yang kritis, ilmiah, dan inovatif.
+        - generic [ref=e98]:
+          - heading "MISI" [level=3] [ref=e100]
+          - generic [ref=e101]:
+            - generic [ref=e103]:
+              - generic [ref=e104]: 📚
+              - paragraph [ref=e105]: Menyediakan ruang pembelajaran fisika yang aktif dan kolaboratif
+            - generic [ref=e107]:
+              - generic [ref=e108]: 🔬
+              - paragraph [ref=e109]: Mendorong eksplorasi, eksperimen, dan proyek fisika terapan
+            - generic [ref=e111]:
+              - generic [ref=e112]: 🧠
+              - paragraph [ref=e113]: Menumbuhkan budaya berpikir ilmiah dan rasa ingin tahu
+            - generic [ref=e115]:
+              - generic [ref=e116]: 🌐
+              - paragraph [ref=e117]: Membuka akses jejaring sains yang lebih luas
+      - generic [ref=e118]:
+        - heading "NILAI INTI" [level=3] [ref=e121]
+        - generic [ref=e122]:
+          - generic [ref=e123]:
+            - generic [ref=e124]: 🔬
+            - generic [ref=e125]: ILMIAH
+          - generic [ref=e126]:
+            - generic [ref=e127]: 🚀
+            - generic [ref=e128]: EKSPLORATIF
+          - generic [ref=e129]:
+            - generic [ref=e130]: 🤝
+            - generic [ref=e131]: KOLABORATIF
+          - generic [ref=e132]:
+            - generic [ref=e133]: 🌈
+            - generic [ref=e134]: INKLUSIF
+          - generic [ref=e135]:
+            - generic [ref=e136]: ⚖️
+            - generic [ref=e137]: BERINTEGRITAS
+    - generic [ref=e139]:
+      - generic [ref=e140]:
+        - heading "PROGRAM & AKTIVITAS" [level=2] [ref=e141]
+        - paragraph [ref=e142]: Apa yang benar-benar dilakukan KF13
+      - generic [ref=e143]:
+        - generic [ref=e144]:
+          - generic [ref=e145]: 💬
+          - heading "DISKUSI" [level=3] [ref=e146]
+          - paragraph [ref=e147]: Sesi diskusi berkala untuk membahas konsep fisika, fenomena alam, dan penerapan fisika dalam teknologi
+        - generic [ref=e148]:
+          - generic [ref=e149]: 🔬
+          - heading "EKSPERIMEN" [level=3] [ref=e150]
+          - paragraph [ref=e151]: Kegiatan eksperimen fisika yang dirancang agar mudah diakses, aplikatif, dan mendorong pemahaman konseptual
+        - generic [ref=e152]:
+          - generic [ref=e153]: 🚀
+          - heading "PROYEK" [level=3] [ref=e154]
+          - paragraph [ref=e155]: Anggota bekerja sama dalam proyek fisika, seperti pembuatan alat sederhana, media pembelajaran, atau riset mini
+        - generic [ref=e156]:
+          - generic [ref=e157]: 🎯
+          - heading "EVENT" [level=3] [ref=e158]
+          - paragraph [ref=e159]: Workshop, kelas terbuka, dan seminar fisika untuk memperluas wawasan dan jejaring
+      - generic [ref=e161]:
+        - heading "KENAPA KF13?" [level=3] [ref=e162]
+        - generic [ref=e163]:
+          - generic [ref=e164]:
+            - generic [ref=e165]: 📚
+            - heading "BELAJAR AKTIF" [level=4] [ref=e166]
+            - paragraph [ref=e167]: Diskusi konsep fisika secara interaktif dan aplikatif
+          - generic [ref=e168]:
+            - generic [ref=e169]: ⚗️
+            - heading "EKSPERIMEN NYATA" [level=4] [ref=e170]
+            - paragraph [ref=e171]: Praktikum dan proyek fisika sederhana hingga terapan
+          - generic [ref=e172]:
+            - generic [ref=e173]: 🤝
+            - heading "KOMUNITAS POSITIF" [level=4] [ref=e174]
+            - paragraph [ref=e175]: Bertemu teman belajar dengan minat yang sama
+          - generic [ref=e176]:
+            - generic [ref=e177]: 🧠
+            - heading "PENGEMBANGAN DIRI" [level=4] [ref=e178]
+            - paragraph [ref=e179]: Melatih berpikir kritis, problem solving, dan kolaborasi
+          - generic [ref=e180]:
+            - generic [ref=e181]: 🌐
+            - heading "AKSES JEJARING" [level=4] [ref=e182]
+            - paragraph [ref=e183]: Terhubung dengan komunitas dan mentor fisika
+          - generic [ref=e184]:
+            - generic [ref=e185]: 🎓
+            - heading "UNTUK SEMUA" [level=4] [ref=e186]
+            - paragraph [ref=e187]: Tidak diperlukan kemampuan tingkat lanjut
+    - generic [ref=e189]:
+      - generic [ref=e190]:
+        - heading "GALERI KEGIATAN" [level=2] [ref=e191]
+        - paragraph [ref=e192]: Dokumentasi aktivitas KF13
+      - generic [ref=e193]:
+        - generic [ref=e194]:
+          - img "Eksperimen Gelombang Bunyi" [ref=e196]
+          - generic [ref=e197]:
+            - generic [ref=e198]:
+              - heading "Eksperimen Gelombang Bunyi" [level=3] [ref=e199]
+              - generic [ref=e200]: November 2024
+            - paragraph [ref=e201]: Praktikum mengukur kecepatan gelombang bunyi menggunakan tabung resonansi
+        - generic [ref=e202]:
+          - img "Workshop Roket Air" [ref=e204]
+          - generic [ref=e205]:
+            - generic [ref=e206]:
+              - heading "Workshop Roket Air" [level=3] [ref=e207]
+              - generic [ref=e208]: Oktober 2024
+            - paragraph [ref=e209]: Membuat dan meluncurkan roket air untuk memahami hukum Newton
+        - generic [ref=e210]:
+          - img "Diskusi Fisika Kuantum" [ref=e212]
+          - generic [ref=e213]:
+            - generic [ref=e214]:
+              - heading "Diskusi Fisika Kuantum" [level=3] [ref=e215]
+              - generic [ref=e216]: September 2024
+            - paragraph [ref=e217]: Sesi diskusi mendalam tentang interpretasi mekanika kuantum
+        - generic [ref=e218]:
+          - img "Pengamatan Gerhana Bulan" [ref=e220]
+          - generic [ref=e221]:
+            - generic [ref=e222]:
+              - heading "Pengamatan Gerhana Bulan" [level=3] [ref=e223]
+              - generic [ref=e224]: Agustus 2024
+            - paragraph [ref=e225]: Observasi gerhana bulan total dengan teleskop sederhana
+        - generic [ref=e226]:
+          - img "Kompetisi Fisika Internal" [ref=e228]
+          - generic [ref=e229]:
+            - generic [ref=e230]:
+              - heading "Kompetisi Fisika Internal" [level=3] [ref=e231]
+              - generic [ref=e232]: Juli 2024
+            - paragraph [ref=e233]: Lomba pemecahan masalah fisika tingkat komunitas KF13
+        - generic [ref=e234]:
+          - img "Presentasi Proyek Akhir" [ref=e236]
+          - generic [ref=e237]:
+            - generic [ref=e238]:
+              - heading "Presentasi Proyek Akhir" [level=3] [ref=e239]
+              - generic [ref=e240]: Juni 2024
+            - paragraph [ref=e241]: Anggota mempresentasikan hasil penelitian mini semester ini
+      - generic [ref=e243]:
+        - paragraph [ref=e244]:
+          - text: 📸
+          - strong [ref=e245]: Lihat lebih banyak foto kegiatan kami!
+        - generic [ref=e246]:
+          - link "📸 Instagram" [ref=e247] [cursor=pointer]:
+            - /url: https://instagram.com/kf13_indonesia
+          - link "📺 YouTube" [ref=e248] [cursor=pointer]:
+            - /url: https://youtube.com/@KF13Indonesia
+    - generic [ref=e250]:
+      - generic [ref=e251]:
+        - heading "FAQ" [level=2] [ref=e252]
+        - paragraph [ref=e253]: Pertanyaan yang sering ditanyakan
+      - generic [ref=e254]:
+        - generic [ref=e255]:
+          - button "Apakah pemula boleh bergabung? +" [ref=e256]:
+            - generic [ref=e257]:
+              - heading "Apakah pemula boleh bergabung?" [level=3] [ref=e258]
+              - generic [ref=e259]: +
+          - paragraph [ref=e262]: Tentu saja! KF13 terbuka untuk semua level. Yang terpenting adalah rasa ingin tahu dan semangat belajar fisika.
+        - generic [ref=e263]:
+          - button "Apakah ada biaya untuk bergabung? +" [ref=e264]:
+            - generic [ref=e265]:
+              - heading "Apakah ada biaya untuk bergabung?" [level=3] [ref=e266]
+              - generic [ref=e267]: +
+          - paragraph [ref=e270]: Tidak ada biaya sama sekali. KF13 adalah komunitas gratis yang fokus pada pembelajaran dan berbagi pengetahuan.
+        - generic [ref=e271]:
+          - button "Seberapa sering kegiatan dilakukan? +" [ref=e272]:
+            - generic [ref=e273]:
+              - heading "Seberapa sering kegiatan dilakukan?" [level=3] [ref=e274]
+              - generic [ref=e275]: +
+          - paragraph [ref=e278]: Kegiatan rutin dilakukan mingguan untuk diskusi, dan bulanan untuk eksperimen atau workshop khusus.
+        - generic [ref=e279]:
+          - button "Apa saja yang diperlukan untuk bergabung? +" [ref=e280]:
+            - generic [ref=e281]:
+              - heading "Apa saja yang diperlukan untuk bergabung?" [level=3] [ref=e282]
+              - generic [ref=e283]: +
+          - paragraph [ref=e286]: Hanya perlu minat pada fisika dan akses internet. Semua materi pembelajaran akan disediakan oleh komunitas.
+        - generic [ref=e287]:
+          - button "Bagaimana cara mengikuti eksperimen? +" [ref=e288]:
+            - generic [ref=e289]:
+              - heading "Bagaimana cara mengikuti eksperimen?" [level=3] [ref=e290]
+              - generic [ref=e291]: +
+          - paragraph [ref=e294]: Eksperimen dirancang dengan alat-alat sederhana yang mudah didapat. Panduan lengkap akan diberikan sebelum kegiatan.
+        - generic [ref=e295]:
+          - button "Apakah ada sertifikat atau pengakuan? +" [ref=e296]:
+            - generic [ref=e297]:
+              - heading "Apakah ada sertifikat atau pengakuan?" [level=3] [ref=e298]
+              - generic [ref=e299]: +
+          - paragraph [ref=e302]: Fokus kami pada pembelajaran, bukan sertifikat. Namun kontribusi aktif akan mendapat pengakuan dari komunitas.
+      - generic [ref=e304]:
+        - paragraph [ref=e305]:
+          - text: 💡
+          - strong [ref=e306]: Masih ada pertanyaan lain?
+        - paragraph [ref=e307]: Jangan ragu untuk menghubungi kami melalui email atau media sosial!
+    - generic [ref=e313]:
+      - generic [ref=e314]:
+        - heading "MULAI PERJALANAN BELAJARMU" [level=2] [ref=e315]:
+          - text: MULAI PERJALANAN
+          - text: BELAJARMU
+        - paragraph [ref=e317]: Jadilah bagian dari komunitas fisika yang bertumbuh dan berdampak
+      - generic [ref=e318]:
+        - generic [ref=e319]:
+          - generic [ref=e320]: 🎓
+          - heading "BELAJAR GRATIS" [level=3] [ref=e321]
+          - paragraph [ref=e322]: Tidak ada biaya untuk bergabung
+        - generic [ref=e323]:
+          - generic [ref=e324]: 👥
+          - heading "KOMUNITAS AKTIF" [level=3] [ref=e325]
+          - paragraph [ref=e326]: Bertemu teman dengan minat sama
+        - generic [ref=e327]:
+          - generic [ref=e328]: 🚀
+          - heading "PENGEMBANGAN DIRI" [level=3] [ref=e329]
+          - paragraph [ref=e330]: Tingkatkan skill dan pengetahuan
+      - generic [ref=e331]:
+        - link "🚀 DAFTAR SEKARANG" [ref=e332] [cursor=pointer]:
+          - /url: http://47.84.35.77/wp/portal/?fcom_action=auth
+        - link "💬 HUBUNGI KAMI" [ref=e333] [cursor=pointer]:
+          - /url: "#kontak"
+      - paragraph [ref=e336]: ✨ Platform Beta • Web 3.0 Ready • Made with 🥼🔬🧬 for Indonesia
+    - generic [ref=e338]:
+      - heading "KONTAK & MEDIA SOSIAL" [level=2] [ref=e340]
+      - generic [ref=e341]:
+        - generic [ref=e343]:
+          - heading "HUBUNGI KAMI" [level=3] [ref=e344]
+          - generic [ref=e345]:
+            - generic [ref=e346]:
+              - generic [ref=e347]: Nama *
+              - textbox "Nama *" [ref=e348]:
+                - /placeholder: Nama lengkap Anda
+            - generic [ref=e349]:
+              - generic [ref=e350]: Email *
+              - textbox "Email *" [ref=e351]:
+                - /placeholder: email@example.com
+            - generic [ref=e352]:
+              - generic [ref=e353]: WhatsApp
+              - textbox "WhatsApp" [ref=e354]:
+                - /placeholder: +62 812-3456-7890
+            - generic [ref=e355]:
+              - generic [ref=e356]: Pesan *
+              - textbox "Pesan *" [ref=e357]:
+                - /placeholder: Ceritakan minat Anda pada fisika atau pertanyaan tentang KF13...
+            - button "📧 KIRIM PESAN" [ref=e359]
+        - generic [ref=e360]:
+          - generic [ref=e361]:
+            - heading "INFO KONTAK" [level=3] [ref=e362]
+            - generic [ref=e363]:
+              - generic [ref=e364]:
+                - generic [ref=e366]: 📧
+                - generic [ref=e367]:
+                  - paragraph [ref=e368]: Email Resmi
+                  - paragraph [ref=e369]: info@klubfisika.org
+              - generic [ref=e370]:
+                - generic [ref=e372]: 💬
+                - generic [ref=e373]:
+                  - paragraph [ref=e374]: WhatsApp Admin
+                  - paragraph [ref=e375]: +62 822-2500-9253
+              - generic [ref=e376]:
+                - generic [ref=e378]: 🌐
+                - generic [ref=e379]:
+                  - paragraph [ref=e380]: Website
+                  - paragraph [ref=e381]: klubfisika.github.io
+              - generic [ref=e382]:
+                - generic [ref=e384]: 📍
+                - generic [ref=e385]:
+                  - paragraph [ref=e386]: Alamat
+                  - paragraph [ref=e387]: Jakarta, Indonesia
+              - generic [ref=e388]:
+                - generic [ref=e390]: ⏰
+                - generic [ref=e391]:
+                  - paragraph [ref=e392]: Jam Operasional
+                  - paragraph [ref=e393]: Senin-Jumat, 09:00-17:00 WIB
+          - generic [ref=e394]:
+            - heading "MEDIA SOSIAL" [level=3] [ref=e395]
+            - generic [ref=e396]:
+              - link "📸 Instagram @kf13_indonesia" [ref=e397] [cursor=pointer]:
+                - /url: https://instagram.com/kf13_indonesia
+                - generic [ref=e398]: 📸
+                - paragraph [ref=e399]: Instagram
+                - paragraph [ref=e400]: "@kf13_indonesia"
+              - link "📺 YouTube KF13 Indonesia" [ref=e401] [cursor=pointer]:
+                - /url: https://youtube.com/@KF13Indonesia
+                - generic [ref=e402]: 📺
+                - paragraph [ref=e403]: YouTube
+                - paragraph [ref=e404]: KF13 Indonesia
+              - link "✈️ Telegram @kf13indonesia" [ref=e405] [cursor=pointer]:
+                - /url: https://t.me/kf13indonesia
+                - generic [ref=e406]: ✈️
+                - paragraph [ref=e407]: Telegram
+                - paragraph [ref=e408]: "@kf13indonesia"
+              - link "🎮 Discord KF13 Community" [ref=e409] [cursor=pointer]:
+                - /url: https://discord.gg/kf13indonesia
+                - generic [ref=e410]: 🎮
+                - paragraph [ref=e411]: Discord
+                - paragraph [ref=e412]: KF13 Community
+              - link "💻 GitHub klubfisika" [ref=e413] [cursor=pointer]:
+                - /url: https://github.com/klubfisika
+                - generic [ref=e414]: 💻
+                - paragraph [ref=e415]: GitHub
+                - paragraph [ref=e416]: klubfisika
+              - link "📧 Email info@klubfisika.org" [ref=e417] [cursor=pointer]:
+                - /url: mailto:info@klubfisika.org
+                - generic [ref=e418]: 📧
+                - paragraph [ref=e419]: Email
+                - paragraph [ref=e420]: info@klubfisika.org
+      - generic [ref=e423]:
+        - paragraph [ref=e424]: 🔬 KF13 - Klub Fisika Indonesia
+        - paragraph [ref=e425]:
+          - text: Komunitas belajar fisika yang menginspirasi generasi muda Indonesia
+          - text: untuk memahami alam semesta melalui sains dan eksperimen.
+        - generic [ref=e427]:
+          - paragraph [ref=e428]: 📍 Jakarta, Indonesia | 📧 info@klubfisika.org
+          - paragraph [ref=e429]: ⏰ Senin-Jumat, 09:00-17:00 WIB
+          - paragraph [ref=e430]: © 2024 KF13. Made with 🥼🔬🧬🧫🧪 for Indonesia
+  - generic [ref=e433]:
+    - button "Menu" [ref=e434]:
+      - img [ref=e436]
+      - generic: Menu
+    - button "Inspect" [ref=e440]:
+      - img [ref=e442]
+      - generic: Inspect
+    - button "Audit" [ref=e444]:
+      - generic [ref=e445]:
+        - img [ref=e446]
+        - img [ref=e449]
+      - generic: Audit
+    - button "Settings" [ref=e452]:
+      - img [ref=e454]
+      - generic: Settings
+```

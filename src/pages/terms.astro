@@ -1,0 +1,287 @@
+---
+import "@/styles/main.css";
+import BaseHead from "../components/BaseHead.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/sections/Footer.astro";
+import FloatingActions from "../components/ui/FloatingActions.astro";
+import ScrollProgress from "../components/ui/ScrollProgress.astro";
+import BackToTop from "../components/ui/BackToTop.astro";
+import SectionHeader from "../components/ui/SectionHeader.astro";
+---
+
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+    <head>
+        <BaseHead 
+            title="Syarat & Ketentuan - KF13 Klub Fisika Indonesia" 
+            description="Syarat dan ketentuan penggunaan layanan KF13 Klub Fisika Indonesia, kebijakan privasi, dan panduan komunitas"
+        />
+        <script>
+          if (localStorage.theme === 'dark' || 
+              (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          }
+        </script>
+    </head>
+    <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">
+        <ScrollProgress />
+        <Navigation />
+        <FloatingActions />
+        <BackToTop threshold={300} />
+        
+        <main class="pt-20">
+            <!-- Hero Section -->
+            <section class="bg-gradient-to-br from-blue-200 via-purple-100 to-pink-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-600 py-20 transition-colors">
+                <div class="max-w-4xl mx-auto px-6 text-center">
+                    <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tight text-dark dark:text-light transform -rotate-1 mb-8">
+                        SYARAT & <span class="text-primary dark:text-primary-dark">KETENTUAN</span>
+                    </h1>
+                    <div class="bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal">
+                        <p class="text-lg font-bold text-dark dark:text-light mb-4">
+                            📋 Panduan Resmi KF13 Klub Fisika Indonesia
+                        </p>
+                        <p class="text-dark dark:text-light font-semibold">
+                            Syarat dan ketentuan penggunaan layanan, kebijakan privasi, dan panduan komunitas yang berlaku untuk semua anggota dan pengunjung.
+                        </p>
+                        <p class="text-sm text-dark dark:text-light mt-4 opacity-75">
+                            Terakhir diperbarui: 25 Desember 2024
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Terms of Service -->
+            <section class="py-20 bg-white dark:bg-slate-700 transition-colors">
+                <div class="max-w-4xl mx-auto px-6">
+                    <SectionHeader title="SYARAT LAYANAN" subtitle="Ketentuan penggunaan layanan KF13" className="mb-16" />
+                    
+                    <div class="space-y-8">
+                        <div class="bg-surface dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal-sm">
+                            <h3 class="text-xl font-black uppercase text-dark dark:text-light mb-4">1. PENERIMAAN SYARAT</h3>
+                            <p class="text-dark dark:text-light leading-relaxed mb-4">
+                                Dengan mengakses dan menggunakan layanan KF13 Klub Fisika Indonesia, Anda menyetujui untuk terikat oleh syarat dan ketentuan ini. 
+                                Jika Anda tidak setuju dengan syarat ini, mohon untuk tidak menggunakan layanan kami.
+                            </p>
+                            <ul class="list-disc list-inside text-dark dark:text-light space-y-2 text-sm">
+                                <li>Layanan tersedia untuk pelajar, mahasiswa, dan pendidik fisika</li>
+                                <li>Pengguna harus berusia minimal 13 tahun atau memiliki izin orang tua</li>
+                                <li>Akun harus menggunakan identitas yang benar dan valid</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-blue dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal-sm">
+                            <h3 class="text-xl font-black uppercase text-white mb-4">2. LAYANAN KOMUNITAS</h3>
+                            <p class="text-white leading-relaxed mb-4">
+                                KF13 menyediakan platform pembelajaran fisika, diskusi ilmiah, dan kegiatan edukatif. 
+                                Semua layanan bersifat gratis dan berbasis komunitas.
+                            </p>
+                            <ul class="list-disc list-inside text-white space-y-2 text-sm">
+                                <li>Diskusi fisika dan sains terbuka untuk semua anggota</li>
+                                <li>Eksperimen dan workshop sesuai kapasitas dan jadwal</li>
+                                <li>Materi pembelajaran dapat digunakan untuk tujuan edukatif</li>
+                                <li>Tidak ada jaminan ketersediaan layanan 24/7</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-accent dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal-sm">
+                            <h3 class="text-xl font-black uppercase text-dark dark:text-light mb-4">3. KODE ETIK ANGGOTA</h3>
+                            <p class="text-dark dark:text-light leading-relaxed mb-4">
+                                Sebagai komunitas pembelajaran, kami menjunjung tinggi nilai-nilai ilmiah, etika, dan saling menghormati.
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <p class="font-bold text-dark dark:text-light mb-2">✅ DIPERBOLEHKAN:</p>
+                                    <ul class="list-disc list-inside text-dark dark:text-light space-y-1">
+                                        <li>Diskusi ilmiah yang konstruktif</li>
+                                        <li>Berbagi pengetahuan dan pengalaman</li>
+                                        <li>Bertanya dan meminta bantuan</li>
+                                        <li>Kritik yang membangun</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-dark dark:text-light mb-2">❌ TIDAK DIPERBOLEHKAN:</p>
+                                    <ul class="list-disc list-inside text-dark dark:text-light space-y-1">
+                                        <li>Konten SARA, politik, atau pornografi</li>
+                                        <li>Spam, iklan, atau promosi berlebihan</li>
+                                        <li>Plagiarisme atau pelanggaran hak cipta</li>
+                                        <li>Bullying atau harassment</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Privacy Policy -->
+            <section class="py-20 bg-surface dark:bg-slate-800 transition-colors">
+                <div class="max-w-4xl mx-auto px-6">
+                    <SectionHeader title="KEBIJAKAN PRIVASI" subtitle="Perlindungan data dan informasi pribadi" className="mb-16" />
+                    
+                    <div class="space-y-8">
+                        <div class="bg-white dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal-sm">
+                            <h3 class="text-xl font-black uppercase text-dark dark:text-light mb-4">DATA YANG KAMI KUMPULKAN</h3>
+                            <div class="space-y-4 text-dark dark:text-light">
+                                <div>
+                                    <p class="font-bold mb-2">📧 Informasi Kontak:</p>
+                                    <p class="text-sm">Nama, email, nomor WhatsApp (jika diberikan secara sukarela untuk komunikasi komunitas)</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold mb-2">🎓 Informasi Akademik:</p>
+                                    <p class="text-sm">Sekolah/universitas, tingkat pendidikan (untuk personalisasi program)</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold mb-2">📊 Data Penggunaan:</p>
+                                    <p class="text-sm">Aktivitas di website, preferensi tema, statistik kunjungan (anonim)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-pink dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal-sm">
+                            <h3 class="text-xl font-black uppercase text-dark dark:text-light mb-4">PENGGUNAAN DATA</h3>
+                            <ul class="list-disc list-inside text-dark dark:text-light space-y-2">
+                                <li>Komunikasi terkait kegiatan dan program KF13</li>
+                                <li>Personalisasi pengalaman pembelajaran</li>
+                                <li>Analisis untuk peningkatan layanan</li>
+                                <li>Keamanan dan pencegahan penyalahgunaan</li>
+                            </ul>
+                            <div class="bg-white/20 dark:bg-slate-800/50 border-2 border-dark dark:border-light p-3 rounded mt-4">
+                                <p class="text-sm font-bold text-dark dark:text-light">
+                                    🔒 <strong>Jaminan:</strong> Data pribadi TIDAK akan dijual, disewakan, atau dibagikan kepada pihak ketiga tanpa persetujuan eksplisit.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="bg-secondary dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal-sm">
+                            <h3 class="text-xl font-black uppercase text-dark dark:text-light mb-4">HAK PENGGUNA</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <p class="font-bold text-dark dark:text-light mb-2">✅ HAK ANDA:</p>
+                                    <ul class="list-disc list-inside text-dark dark:text-light text-sm space-y-1">
+                                        <li>Mengakses data pribadi Anda</li>
+                                        <li>Memperbarui informasi</li>
+                                        <li>Menghapus akun dan data</li>
+                                        <li>Opt-out dari komunikasi</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-dark dark:text-light mb-2">📞 KONTAK PRIVASI:</p>
+                                    <ul class="text-dark dark:text-light text-sm space-y-1">
+                                        <li>Email: privacy@klubfisika.org</li>
+                                        <li>WhatsApp: +62 822-2500-9253</li>
+                                        <li>Respon dalam 7 hari kerja</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Community Guidelines -->
+            <section class="py-20 bg-white dark:bg-slate-700 transition-colors">
+                <div class="max-w-4xl mx-auto px-6">
+                    <SectionHeader title="PANDUAN KOMUNITAS" subtitle="Aturan dan etika dalam komunitas KF13" className="mb-16" />
+                    
+                    <div class="space-y-8">
+                        <div class="bg-green-500 dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal-sm">
+                            <h3 class="text-xl font-black uppercase text-white mb-4">NILAI-NILAI KOMUNITAS</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <p class="font-bold text-white mb-3">🔬 ILMIAH</p>
+                                    <p class="text-white text-sm">Berdasarkan fakta, data, dan metode ilmiah yang valid</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-white mb-3">🤝 KOLABORATIF</p>
+                                    <p class="text-white text-sm">Saling membantu dan berbagi pengetahuan</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-white mb-3">🌈 INKLUSIF</p>
+                                    <p class="text-white text-sm">Terbuka untuk semua latar belakang dan tingkat kemampuan</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-white mb-3">⚖️ BERINTEGRITAS</p>
+                                    <p class="text-white text-sm">Jujur, bertanggung jawab, dan menghormati hak cipta</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-orange-500 dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal-sm">
+                            <h3 class="text-xl font-black uppercase text-white mb-4">SANKSI DAN PELANGGARAN</h3>
+                            <div class="space-y-4 text-white">
+                                <div>
+                                    <p class="font-bold mb-2">⚠️ PERINGATAN:</p>
+                                    <p class="text-sm">Pelanggaran ringan akan mendapat peringatan dan bimbingan</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold mb-2">🚫 PEMBATASAN:</p>
+                                    <p class="text-sm">Pelanggaran berulang dapat mengakibatkan pembatasan akses sementara</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold mb-2">❌ PEMBLOKIRAN:</p>
+                                    <p class="text-sm">Pelanggaran serius akan mengakibatkan pemblokiran permanen</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Legal Information -->
+            <section class="py-20 bg-surface dark:bg-slate-800 transition-colors">
+                <div class="max-w-4xl mx-auto px-6">
+                    <SectionHeader title="INFORMASI LEGAL" subtitle="Ketentuan hukum dan kontak resmi" className="mb-16" />
+                    
+                    <div class="space-y-8">
+                        <div class="bg-white dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal-sm">
+                            <h3 class="text-xl font-black uppercase text-dark dark:text-light mb-4">KONTAK RESMI</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-dark dark:text-light">
+                                <div>
+                                    <p class="font-bold mb-2">📧 Email Resmi:</p>
+                                    <p class="text-sm">info@klubfisika.org</p>
+                                    <p class="text-sm">legal@klubfisika.org</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold mb-2">📍 Alamat:</p>
+                                    <p class="text-sm">Yogyakarta, Indonesia</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold mb-2">💬 WhatsApp:</p>
+                                    <p class="text-sm">+62 822-2500-9253</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold mb-2">⏰ Jam Operasional:</p>
+                                    <p class="text-sm">Senin-Jumat, 09:00-17:00 WIB</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-500 dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal-sm">
+                            <h3 class="text-xl font-black uppercase text-white mb-4">PERUBAHAN KETENTUAN</h3>
+                            <p class="text-white leading-relaxed mb-4">
+                                KF13 berhak mengubah syarat dan ketentuan ini sewaktu-waktu. Perubahan akan diberitahukan melalui:
+                            </p>
+                            <ul class="list-disc list-inside text-white space-y-2 text-sm">
+                                <li>Notifikasi di website utama</li>
+                                <li>Email kepada anggota terdaftar</li>
+                                <li>Pengumuman di grup komunitas</li>
+                                <li>Update tanggal "Terakhir diperbarui"</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-red-500 dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal-sm text-center">
+                            <h3 class="text-xl font-black uppercase text-white mb-4">DISCLAIMER</h3>
+                            <p class="text-white text-sm leading-relaxed">
+                                KF13 Klub Fisika Indonesia adalah komunitas edukatif non-profit. Semua materi dan informasi disediakan "sebagaimana adanya" 
+                                untuk tujuan pembelajaran. Kami tidak bertanggung jawab atas kerugian yang mungkin timbul dari penggunaan informasi ini. 
+                                Selalu konsultasikan dengan ahli yang kompeten untuk keputusan penting.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <Footer />
+    </body>
+</html>

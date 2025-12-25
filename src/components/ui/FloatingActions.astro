@@ -16,17 +16,19 @@
     </div>
   </a>
 
-  <!-- Debug Panel Toggle -->
-  <button 
-    id="debug-toggle"
-    class="w-14 h-14 bg-purple-500 hover:bg-purple-600 border-3 border-dark dark:border-light rounded-full flex items-center justify-center shadow-brutal hover:scale-110 transition-all group"
-    aria-label="Toggle Debug Panel"
-  >
-    <span class="text-2xl text-white">🐛</span>
-    <div class="absolute right-16 top-1/2 -translate-y-1/2 bg-dark dark:bg-light text-light dark:text-dark px-3 py-2 rounded border-2 border-dark dark:border-light text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-      Debug Panel
-    </div>
-  </button>
+  <!-- Debug Panel Toggle (Development Only) -->
+  {import.meta.env.DEV && (
+    <button 
+      id="debug-toggle"
+      class="w-14 h-14 bg-purple-500 hover:bg-purple-600 border-3 border-dark dark:border-light rounded-full flex items-center justify-center shadow-brutal hover:scale-110 transition-all group"
+      aria-label="Toggle Debug Panel"
+    >
+      <span class="text-2xl text-white">🐛</span>
+      <div class="absolute right-16 top-1/2 -translate-y-1/2 bg-dark dark:bg-light text-light dark:text-dark px-3 py-2 rounded border-2 border-dark dark:border-light text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+        Debug Panel (DEV)
+      </div>
+    </button>
+  )}
 
   <!-- Theme Toggle -->
   <button 
@@ -43,59 +45,62 @@
   </button>
 </div>
 
-<!-- Debug Panel Modal -->
-<div id="debug-panel" class="fixed inset-0 bg-black/50 z-50 hidden">
-  <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 bg-white dark:bg-slate-800 border-4 border-dark dark:border-light shadow-brutal">
-    <div class="p-4 border-b-4 border-dark dark:border-light bg-purple-500 dark:bg-purple-600">
-      <div class="flex justify-between items-center">
-        <h3 class="font-black text-white">🐛 DEBUG PANEL</h3>
-        <button id="close-debug" class="text-2xl text-white hover:scale-110 transition-transform">×</button>
+<!-- Debug Panel Modal (Development Only) -->
+{import.meta.env.DEV && (
+  <div id="debug-panel" class="fixed inset-0 bg-black/50 z-50 hidden">
+    <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 bg-white dark:bg-slate-800 border-4 border-dark dark:border-light shadow-brutal">
+      <div class="p-4 border-b-4 border-dark dark:border-light bg-purple-500 dark:bg-purple-600">
+        <div class="flex justify-between items-center">
+          <h3 class="font-black text-white">🐛 DEBUG PANEL (DEV)</h3>
+          <button id="close-debug" class="text-2xl text-white hover:scale-110 transition-transform">×</button>
+        </div>
       </div>
-    </div>
-    
-    <div class="p-6 space-y-4">
-      <!-- Testing Checklist Toggle -->
-      <button 
-        id="toggle-testing-checklist"
-        class="w-full bg-accent dark:bg-accent-dark border-2 border-dark dark:border-light p-3 font-bold text-dark dark:text-light hover:scale-105 transition-transform text-left"
-      >
-        <div class="flex items-center justify-between">
-          <span>🧪 Testing Checklist</span>
-          <span id="checklist-status" class="text-sm">Show</span>
-        </div>
-      </button>
+      
+      <div class="p-6 space-y-4">
+        <!-- Testing Checklist Toggle -->
+        <button 
+          id="toggle-testing-checklist"
+          class="w-full bg-accent dark:bg-accent-dark border-2 border-dark dark:border-light p-3 font-bold text-dark dark:text-light hover:scale-105 transition-transform text-left"
+        >
+          <div class="flex items-center justify-between">
+            <span>🧪 Testing Checklist</span>
+            <span id="checklist-status" class="text-sm">Show</span>
+          </div>
+        </button>
 
-      <!-- Responsive Test Toggle -->
-      <button 
-        id="toggle-responsive-test"
-        class="w-full bg-blue dark:bg-blue-dark border-2 border-dark dark:border-light p-3 font-bold text-light hover:scale-105 transition-transform text-left"
-      >
-        <div class="flex items-center justify-between">
-          <span>📱 Responsive Test</span>
-          <span id="responsive-status" class="text-sm">Show</span>
-        </div>
-      </button>
+        <!-- Responsive Test Toggle -->
+        <button 
+          id="toggle-responsive-test"
+          class="w-full bg-blue dark:bg-blue-dark border-2 border-dark dark:border-light p-3 font-bold text-light hover:scale-105 transition-transform text-left"
+        >
+          <div class="flex items-center justify-between">
+            <span>📱 Responsive Test</span>
+            <span id="responsive-status" class="text-sm">Show</span>
+          </div>
+        </button>
 
-      <!-- Test Results Toggle -->
-      <button 
-        id="toggle-test-results"
-        class="w-full bg-green-500 dark:bg-green-600 border-2 border-dark dark:border-light p-3 font-bold text-white hover:scale-105 transition-transform text-left"
-      >
-        <div class="flex items-center justify-between">
-          <span>📊 Test Results</span>
-          <span class="text-sm">View</span>
-        </div>
-      </button>
+        <!-- Test Results Toggle -->
+        <button 
+          id="toggle-test-results"
+          class="w-full bg-green-500 dark:bg-green-600 border-2 border-dark dark:border-light p-3 font-bold text-white hover:scale-105 transition-transform text-left"
+        >
+          <div class="flex items-center justify-between">
+            <span>📊 Test Results</span>
+            <span class="text-sm">View</span>
+          </div>
+        </button>
 
-      <!-- Debug Info -->
-      <div class="bg-surface dark:bg-slate-700 border-2 border-dark dark:border-light p-3 text-xs text-dark dark:text-light">
-        <div class="font-bold mb-1">Debug Info:</div>
-        <div>Viewport: <span id="debug-viewport">Loading...</span></div>
-        <div>Theme: <span id="debug-theme">Loading...</span></div>
+        <!-- Debug Info -->
+        <div class="bg-surface dark:bg-slate-700 border-2 border-dark dark:border-light p-3 text-xs text-dark dark:text-light">
+          <div class="font-bold mb-1">Debug Info:</div>
+          <div>Mode: <span class="text-purple-600 font-bold">DEVELOPMENT</span></div>
+          <div>Viewport: <span id="debug-viewport">Loading...</span></div>
+          <div>Theme: <span id="debug-theme">Loading...</span></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+)}
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
@@ -115,26 +120,28 @@
     });
   });
 
-  // Debug Panel Toggle
+  // Debug Panel Toggle (Development Only)
   const debugToggle = document.querySelector('#debug-toggle');
   const debugPanel = document.querySelector('#debug-panel');
   const closeDebug = document.querySelector('#close-debug');
   
-  debugToggle?.addEventListener('click', () => {
-    debugPanel?.classList.remove('hidden');
-    updateDebugInfo();
-  });
-  
-  closeDebug?.addEventListener('click', () => {
-    debugPanel?.classList.add('hidden');
-  });
-  
-  // Close panel when clicking outside
-  debugPanel?.addEventListener('click', (e) => {
-    if (e.target === debugPanel) {
+  if (debugToggle && debugPanel) {
+    debugToggle.addEventListener('click', () => {
+      debugPanel.classList.remove('hidden');
+      updateDebugInfo();
+    });
+    
+    closeDebug?.addEventListener('click', () => {
       debugPanel.classList.add('hidden');
-    }
-  });
+    });
+    
+    // Close panel when clicking outside
+    debugPanel.addEventListener('click', (e) => {
+      if (e.target === debugPanel) {
+        debugPanel.classList.add('hidden');
+      }
+    });
+  }
 
   // Debug Panel Controls
   const toggleTestingChecklist = document.querySelector('#toggle-testing-checklist');

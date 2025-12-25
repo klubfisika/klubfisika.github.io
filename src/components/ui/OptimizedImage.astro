@@ -1,66 +1,22 @@
 ---
-interface Props {
+export interface Props {
   src: string;
   alt: string;
+  className?: string;
+  loading?: 'lazy' | 'eager';
   width?: number;
   height?: number;
-  loading?: 'lazy' | 'eager';
-  className?: string;
-  sizes?: string;
 }
 
-const { 
-  src, 
-  alt, 
-  width, 
-  height, 
-  loading = 'lazy',
-  className = "",
-  sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-} = Astro.props;
-
-// Generate different formats and sizes
-const formats = ['avif', 'webp', 'jpg'];
-const imageSizes = [400, 800, 1200];
+const { src, alt, className = '', loading = 'lazy', width, height } = Astro.props;
 ---
 
-<picture class={`block ${className}`}>
-  {formats.map(format => (
-    <source 
-      srcset={imageSizes.map(size => `${src}?format=${format}&w=${size} ${size}w`).join(', ')}
-      sizes={sizes}
-      type={`image/${format}`}
-    />
-  ))}
-  
-  <img 
-    src={src}
-    alt={alt}
-    width={width}
-    height={height}
-    loading={loading}
-    class="w-full h-auto transition-opacity duration-300 opacity-0 image-load"
-    onload="this.classList.remove('opacity-0')"
-    onerror="this.classList.remove('opacity-0')"
-  />
-</picture>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Fallback for browsers that don't support onload attribute
-  const images = document.querySelectorAll('.image-load');
-  
-  images.forEach(img => {
-    if (img.complete) {
-      img.classList.remove('opacity-0');
-    } else {
-      img.addEventListener('load', () => {
-        img.classList.remove('opacity-0');
-      });
-      img.addEventListener('error', () => {
-        img.classList.remove('opacity-0');
-      });
-    }
-  });
-});
-</script>
+<img 
+  src={src}
+  alt={alt}
+  class={className}
+  loading={loading}
+  width={width}
+  height={height}
+  onerror="this.src='/placeholder-image.jpg'; this.onerror=null;"
+/>

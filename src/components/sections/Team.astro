@@ -1,0 +1,120 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import TeamMember from '../ui/TeamMember.astro';
+---
+
+<section class="py-20 bg-white dark:bg-slate-700 transition-colors" id="tim">
+  <div class="max-w-6xl mx-auto px-6">
+    <SectionHeader title="TIM KF13" subtitle="Pengurus dan mentor komunitas" className="mb-16" />
+    
+    <!-- Leadership Team -->
+    <div class="mb-16">
+      <div class="bg-primary dark:bg-primary-dark border-4 border-dark dark:border-light p-4 transform rotate-1 inline-block shadow-brutal-sm mb-8">
+        <h3 class="text-xl font-black uppercase text-dark dark:text-light m-0">PENGURUS INTI</h3>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <TeamMember 
+          name="Ahmad Rizki"
+          role="Ketua Umum"
+          photo="/team/ketua.jpg"
+          bio="Mahasiswa Fisika UI, passionate dalam eksperimen dan penelitian fisika teoretis"
+          email="ketua@kf13.org"
+          linkedin="https://linkedin.com/in/ahmad-rizki"
+          className="rotate-2"
+        />
+        
+        <TeamMember 
+          name="Sari Indah"
+          role="Wakil Ketua"
+          photo="/team/wakil.jpg"
+          bio="Lulusan Fisika ITB, fokus pada fisika komputasi dan simulasi"
+          email="wakil@kf13.org"
+          linkedin="https://linkedin.com/in/sari-indah"
+          className="-rotate-1"
+        />
+        
+        <TeamMember 
+          name="Budi Santoso"
+          role="Sekretaris"
+          photo="/team/sekretaris.jpg"
+          bio="Mahasiswa Fisika UGM, ahli dalam dokumentasi dan administrasi"
+          email="sekretaris@kf13.org"
+          className="rotate-1"
+        />
+        
+        <TeamMember 
+          name="Maya Putri"
+          role="Bendahara"
+          photo="/team/bendahara.jpg"
+          bio="Mahasiswa Fisika UNPAD, mengelola keuangan dan sponsorship"
+          email="bendahara@kf13.org"
+          className="-rotate-2"
+        />
+        
+        <TeamMember 
+          name="Doni Pratama"
+          role="Koordinator Acara"
+          photo="/team/acara.jpg"
+          bio="Mahasiswa Fisika ITS, mengorganisir workshop dan eksperimen"
+          email="acara@kf13.org"
+          className="rotate-2"
+        />
+        
+        <TeamMember 
+          name="Lisa Wati"
+          role="Humas & Media"
+          photo="/team/humas.jpg"
+          bio="Mahasiswa Fisika UNDIP, mengelola media sosial dan publikasi"
+          email="humas@kf13.org"
+          linkedin="https://linkedin.com/in/lisa-wati"
+          className="-rotate-1"
+        />
+      </div>
+    </div>
+
+    <!-- Mentors -->
+    <div>
+      <div class="bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light p-4 transform -rotate-1 inline-block shadow-brutal-sm mb-8">
+        <h3 class="text-xl font-black uppercase text-dark dark:text-light m-0">MENTOR & PEMBINA</h3>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <TeamMember 
+          name="Dr. Andi Wijaya, M.Si"
+          role="Pembina Akademik"
+          photo="/team/pembina1.jpg"
+          bio="Dosen Fisika UI, spesialisasi Fisika Nuklir dan Partikel. Membimbing riset mahasiswa selama 15 tahun"
+          email="pembina@kf13.org"
+          className="rotate-1"
+        />
+        
+        <TeamMember 
+          name="Prof. Dr. Ratna Sari"
+          role="Advisor Penelitian"
+          photo="/team/pembina2.jpg"
+          bio="Profesor Fisika ITB, expert dalam Fisika Material dan Nanoteknologi. Penulis 50+ paper internasional"
+          email="advisor@kf13.org"
+          linkedin="https://linkedin.com/in/ratna-sari"
+          className="-rotate-1"
+        />
+      </div>
+    </div>
+
+    <!-- Join Team CTA -->
+    <div class="mt-16 text-center">
+      <div class="bg-secondary dark:bg-secondary-dark border-4 border-dark dark:border-light p-8 transform rotate-1 shadow-brutal">
+        <h3 class="text-2xl font-black uppercase text-dark dark:text-light mb-4">BERGABUNG DENGAN TIM</h3>
+        <p class="text-dark dark:text-light font-semibold mb-6">
+          Tertarik menjadi bagian dari tim pengurus KF13? Kami selalu mencari anggota yang passionate dalam fisika!
+        </p>
+        <a 
+          href="#kontak"
+          class="inline-block bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light px-8 py-3 font-black uppercase text-dark dark:text-light hover:scale-105 transition-transform"
+        >
+          📝 DAFTAR JADI PENGURUS
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
