@@ -1,115 +1,238 @@
 ---
-import "@/styles/main.css";
-import BaseHead from "../components/BaseHead.astro";
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/sections/Footer.astro";
-import FloatingActions from "../components/ui/FloatingActions.astro";
-import BackToTop from "../components/ui/BackToTop.astro";
+import Layout from "../layouts/Layout.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
 import BrutalCard from "../components/ui/BrutalCard.astro";
 import GradientSection from "../components/ui/GradientSection.astro";
 import Heading from "../components/ui/Heading.astro";
 import Text from "../components/ui/Text.astro";
 import BrutalSection from "../components/ui/BrutalSection.astro";
+import StatCard from "../components/ui/StatCard.astro";
 ---
 
-<!doctype html>
-<html lang="id" class="scroll-smooth">
-    <head>
-        <BaseHead 
-            title="Tentang KF13 - Klub Fisika Indonesia" 
-            description="Sejarah, visi misi, dan perjalanan KF13 sebagai komunitas fisika terdepan di Indonesia sejak 2013."
-        />
-    </head>
-    <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">
-        <Navigation />
-        <FloatingActions />
-        <BackToTop threshold={300} />
-        
-        <main class="pt-20">
-            <!-- Hero Section -->
-            <GradientSection variant="blue-purple">
-                <div class="max-w-6xl mx-auto px-6 text-center">
-                    <Heading level={1} size="3xl" class="uppercase tracking-tight transform -rotate-1 mb-8">
-                        TENTANG <span class="text-primary dark:text-primary-dark">KF13</span>
-                    </Heading>
-                    <BrutalCard variant="white" class="transform rotate-1 max-w-2xl mx-auto">
-                        <Text size="lg" class="font-bold mb-4">
-                            🔬 Klub Fisika Indonesia - Sejak 2013
-                        </Text>
-                        <Text class="font-semibold">
-                            Komunitas pembelajaran fisika yang menginspirasi generasi muda Indonesia 
-                            untuk memahami alam semesta melalui sains dan eksperimen.
-                        </Text>
-                    </BrutalCard>
-                </div>
-            </GradientSection>
+<Layout 
+    title="Tentang KF13 - Klub Fisika Indonesia" 
+    description="Sejarah, visi misi, dan perjalanan KF13 sebagai komunitas fisika terdepan di Indonesia sejak 2013."
+>
+    <!-- Hero Section -->
+    <GradientSection variant="blue-purple">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <Heading level={1} size="3xl" class="uppercase tracking-tight transform -rotate-1 mb-8">
+                TENTANG <span class="text-primary dark:text-primary-dark">KF13</span>
+            </Heading>
+            <BrutalCard variant="white" class="transform rotate-1 max-w-2xl mx-auto">
+                <Text size="lg" class="font-bold mb-4">
+                    🔬 Klub Fisika Indonesia - Sejak 2013
+                </Text>
+                <Text class="font-semibold">
+                    Komunitas pembelajaran fisika yang menginspirasi generasi muda Indonesia 
+                    untuk memahami alam semesta melalui sains dan eksperimen.
+                </Text>
+            </BrutalCard>
+        </div>
+    </GradientSection>
 
-            <!-- About Content -->
-            <BrutalSection background="white" padding="lg">
-                <div class="max-w-4xl mx-auto px-6">
-                    <SectionHeader title="SEJARAH KAMI" subtitle="Perjalanan KF13 dari komunitas kecil hingga jaringan nasional" className="mb-16" />
-                    
-                    <div class="space-y-8">
-                        <BrutalCard variant="primary" class="transform rotate-1">
-                            <Heading level={3} size="lg" class="uppercase mb-4 text-white">AWAL MULA (2013)</Heading>
-                            <Text class="text-white leading-relaxed">
-                                KF13 lahir dari semangat sekelompok mahasiswa fisika di Yogyakarta yang ingin 
-                                menciptakan ruang belajar yang lebih interaktif dan menyenangkan. Dimulai dengan 
-                                diskusi kecil di kampus, kami berkembang menjadi komunitas yang solid.
-                            </Text>
-                        </BrutalCard>
+    <!-- Stats Section -->
+    <BrutalSection background="white" padding="lg">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <StatCard 
+                    number="11+" 
+                    label="Tahun Berdiri" 
+                    icon="🎂"
+                    variant="primary"
+                />
+                <StatCard 
+                    number="500+" 
+                    label="Anggota Aktif" 
+                    icon="👥"
+                    variant="accent"
+                />
+                <StatCard 
+                    number="50+" 
+                    label="Workshop" 
+                    icon="🔬"
+                    variant="secondary"
+                />
+                <StatCard 
+                    number="15+" 
+                    label="Kota Jangkauan" 
+                    icon="🌍"
+                    variant="primary"
+                />
+            </div>
+        </div>
+    </BrutalSection>
 
-                        <BrutalCard variant="accent" class="transform -rotate-1">
-                            <Heading level={3} size="lg" class="uppercase mb-4">PERKEMBANGAN (2015-2020)</Heading>
-                            <Text class="leading-relaxed">
-                                Komunitas berkembang dengan berbagai program seperti workshop eksperimen, 
-                                seminar fisika, dan kompetisi sains. Anggota mulai tersebar di berbagai 
-                                universitas di Yogyakarta, memperkuat jaringan pembelajaran fisika.
-                            </Text>
-                        </BrutalCard>
+    <!-- History Section -->
+    <BrutalSection background="surface" padding="lg">
+        <div class="max-w-4xl mx-auto px-6">
+            <SectionHeader title="SEJARAH KAMI" subtitle="Perjalanan KF13 dari komunitas kecil hingga jaringan nasional" className="mb-16" />
+            
+            <div class="space-y-8">
+                <BrutalCard variant="primary" class="transform rotate-1">
+                    <Heading level={3} size="lg" class="uppercase mb-4 text-white">AWAL MULA (2013)</Heading>
+                    <Text class="text-white leading-relaxed">
+                        KF13 lahir dari semangat sekelompok mahasiswa fisika di Yogyakarta yang ingin 
+                        menciptakan ruang belajar yang lebih interaktif dan menyenangkan. Dimulai dengan 
+                        diskusi kecil di kampus, kami berkembang menjadi komunitas yang solid.
+                    </Text>
+                </BrutalCard>
 
-                        <BrutalCard variant="secondary" class="transform rotate-1">
-                            <Heading level={3} size="lg" class="uppercase mb-4">ERA DIGITAL (2021-SEKARANG)</Heading>
-                            <Text class="leading-relaxed">
-                                Pandemi mendorong kami untuk berinovasi dengan platform digital. 
-                                KF13 kini hadir dengan website, media sosial aktif, dan program 
-                                pembelajaran online yang menjangkau seluruh Indonesia.
-                            </Text>
-                        </BrutalCard>
+                <BrutalCard variant="accent" class="transform -rotate-1">
+                    <Heading level={3} size="lg" class="uppercase mb-4">PERKEMBANGAN (2015-2020)</Heading>
+                    <Text class="leading-relaxed">
+                        Komunitas berkembang dengan berbagai program seperti workshop eksperimen, 
+                        seminar fisika, dan kompetisi sains. Anggota mulai tersebar di berbagai 
+                        universitas di Yogyakarta, memperkuat jaringan pembelajaran fisika.
+                    </Text>
+                </BrutalCard>
+
+                <BrutalCard variant="secondary" class="transform rotate-1">
+                    <Heading level={3} size="lg" class="uppercase mb-4">ERA DIGITAL (2021-SEKARANG)</Heading>
+                    <Text class="leading-relaxed">
+                        Pandemi mendorong kami untuk berinovasi dengan platform digital. 
+                        KF13 kini hadir dengan website, media sosial aktif, dan program 
+                        pembelajaran online yang menjangkau seluruh Indonesia.
+                    </Text>
+                </BrutalCard>
+            </div>
+        </div>
+    </BrutalSection>
+
+    <!-- Vision Mission -->
+    <BrutalSection background="white" padding="lg">
+        <div class="max-w-4xl mx-auto px-6">
+            <SectionHeader title="VISI & MISI" subtitle="Tujuan dan cita-cita KF13 untuk pendidikan fisika Indonesia" className="mb-16" />
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <BrutalCard variant="primary" class="transform -rotate-1">
+                    <Heading level={3} size="lg" class="uppercase mb-4 text-white">🎯 VISI</Heading>
+                    <Text class="text-white leading-relaxed">
+                        Menjadi komunitas fisika terdepan di Indonesia yang menginspirasi 
+                        generasi muda untuk mencintai sains dan berkontribusi pada 
+                        kemajuan ilmu pengetahuan.
+                    </Text>
+                </BrutalCard>
+
+                <BrutalCard variant="accent" class="transform rotate-1">
+                    <Heading level={3} size="lg" class="uppercase mb-4">🚀 MISI</Heading>
+                    <ul class="space-y-2 text-dark dark:text-light">
+                        <li>• Menyediakan platform pembelajaran fisika yang interaktif</li>
+                        <li>• Memfasilitasi diskusi dan kolaborasi antar pelajar fisika</li>
+                        <li>• Mengadakan workshop dan eksperimen sains berkualitas</li>
+                        <li>• Membangun jaringan komunitas fisika di seluruh Indonesia</li>
+                    </ul>
+                </BrutalCard>
+            </div>
+        </div>
+    </BrutalSection>
+
+    <!-- Values Section -->
+    <BrutalSection background="surface" padding="lg">
+        <div class="max-w-6xl mx-auto px-6">
+            <SectionHeader title="NILAI-NILAI KAMI" subtitle="Prinsip yang menjadi fondasi KF13" className="mb-16" />
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <BrutalCard variant="white" class="transform rotate-1 text-center">
+                    <div class="text-4xl mb-4">🤝</div>
+                    <Heading level={4} size="md" class="uppercase mb-3">KOLABORASI</Heading>
+                    <Text class="text-sm">
+                        Belajar bersama lebih efektif daripada belajar sendiri. 
+                        Kami percaya pada kekuatan kolaborasi.
+                    </Text>
+                </BrutalCard>
+
+                <BrutalCard variant="white" class="transform -rotate-1 text-center">
+                    <div class="text-4xl mb-4">🔬</div>
+                    <Heading level={4} size="md" class="uppercase mb-3">EKSPERIMEN</Heading>
+                    <Text class="text-sm">
+                        Fisika bukan hanya teori. Kami mengutamakan 
+                        pembelajaran melalui praktik dan eksperimen.
+                    </Text>
+                </BrutalCard>
+
+                <BrutalCard variant="white" class="transform rotate-1 text-center">
+                    <div class="text-4xl mb-4">🌟</div>
+                    <Heading level={4} size="md" class="uppercase mb-3">INSPIRASI</Heading>
+                    <Text class="text-sm">
+                        Setiap anggota adalah inspirator bagi yang lain. 
+                        Kami saling memotivasi untuk terus berkembang.
+                    </Text>
+                </BrutalCard>
+            </div>
+        </div>
+    </BrutalSection>
+
+    <!-- Team Section -->
+    <BrutalSection background="white" padding="lg">
+        <div class="max-w-6xl mx-auto px-6">
+            <SectionHeader title="TIM INTI" subtitle="Orang-orang di balik KF13" className="mb-16" />
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <BrutalCard variant="white" class="transform rotate-1 text-center">
+                    <div class="w-24 h-24 bg-primary rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+                        AF
                     </div>
-                </div>
-            </BrutalSection>
-
-            <!-- Vision Mission -->
-            <BrutalSection background="surface" padding="lg">
-                <div class="max-w-4xl mx-auto px-6">
-                    <SectionHeader title="VISI & MISI" subtitle="Tujuan dan cita-cita KF13 untuk pendidikan fisika Indonesia" className="mb-16" />
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <BrutalCard variant="primary" class="transform -rotate-1">
-                            <Heading level={3} size="lg" class="uppercase mb-4 text-white">🎯 VISI</Heading>
-                            <Text class="text-white leading-relaxed">
-                                Menjadi komunitas fisika terdepan di Indonesia yang menginspirasi 
-                                generasi muda untuk mencintai sains dan berkontribusi pada 
-                                kemajuan ilmu pengetahuan.
-                            </Text>
-                        </BrutalCard>
-
-                        <BrutalCard variant="accent" class="transform rotate-1">
-                            <Heading level={3} size="lg" class="uppercase mb-4">🚀 MISI</Heading>
-                            <ul class="space-y-2 text-dark dark:text-light">
-                                <li>• Menyediakan platform pembelajaran fisika yang interaktif</li>
-                                <li>• Memfasilitasi diskusi dan kolaborasi antar pelajar fisika</li>
-                                <li>• Mengadakan workshop dan eksperimen sains berkualitas</li>
-                                <li>• Membangun jaringan komunitas fisika di seluruh Indonesia</li>
-                            </ul>
-                        </BrutalCard>
+                    <Heading level={4} size="md" class="uppercase mb-2">Dr. Ahmad Fisika</Heading>
+                    <Text class="text-sm text-accent font-bold mb-3">Founder & Mentor</Text>
+                    <Text class="text-xs leading-relaxed">
+                        Dosen Fisika UGM, peneliti di bidang fisika material dengan pengalaman 15+ tahun.
+                    </Text>
+                </BrutalCard>
+                
+                <BrutalCard variant="white" class="transform -rotate-1 text-center">
+                    <div class="w-24 h-24 bg-accent rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+                        SQ
                     </div>
-                </div>
-            </BrutalSection>
-        </main>
+                    <Heading level={4} size="md" class="uppercase mb-2">Sarah Quantum</Heading>
+                    <Text class="text-sm text-accent font-bold mb-3">Koordinator Program</Text>
+                    <Text class="text-xs leading-relaxed">
+                        Mahasiswa S2 Fisika, spesialis fisika kuantum dan content creator edukasi.
+                    </Text>
+                </BrutalCard>
+                
+                <BrutalCard variant="white" class="transform rotate-1 text-center">
+                    <div class="w-24 h-24 bg-secondary rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+                        BE
+                    </div>
+                    <Heading level={4} size="md" class="uppercase mb-2">Budi Eksperimen</Heading>
+                    <Text class="text-sm text-accent font-bold mb-3">Koordinator Workshop</Text>
+                    <Text class="text-xs leading-relaxed">
+                        Praktisi eksperimen fisika, creator konten edukasi dengan 100K+ followers.
+                    </Text>
+                </BrutalCard>
+            </div>
+        </div>
+    </BrutalSection>
 
-        <Footer />
-    </body>
-</html>
+    <!-- CTA Section -->
+    <BrutalSection background="surface" padding="lg">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <BrutalCard variant="primary" class="transform -rotate-1">
+                <Heading level={2} size="xl" class="uppercase mb-4 text-white">
+                    BERGABUNG DENGAN KF13
+                </Heading>
+                <Text class="text-white mb-6 leading-relaxed">
+                    Jadilah bagian dari komunitas fisika terbesar di Indonesia. 
+                    Belajar, bereksperimen, dan berkembang bersama kami!
+                </Text>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a 
+                        href="/contact" 
+                        class="bg-white text-primary px-6 py-3 font-black border-2 border-dark hover:scale-105 transition-transform inline-block"
+                    >
+                        HUBUNGI KAMI
+                    </a>
+                    <a 
+                        href="https://wa.me/6281234567890" 
+                        class="bg-accent text-white px-6 py-3 font-black border-2 border-dark hover:scale-105 transition-transform inline-block"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        JOIN WHATSAPP
+                    </a>
+                </div>
+            </BrutalCard>
+        </div>
+    </BrutalSection>
+</Layout>

@@ -1,10 +1,5 @@
 ---
-import "@/styles/main.css";
-import BaseHead from "../components/BaseHead.astro";
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/sections/Footer.astro";
-import FloatingActions from "../components/ui/FloatingActions.astro";
-import BackToTop from "../components/ui/BackToTop.astro";
+import Layout from "../layouts/Layout.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
 import BrutalCard from "../components/ui/BrutalCard.astro";
 import GradientSection from "../components/ui/GradientSection.astro";
@@ -14,20 +9,10 @@ import SectionHeaderWithHash from "../components/ui/SectionHeaderWithHash.astro"
 import BrutalSection from "../components/ui/BrutalSection.astro";
 ---
 
-<!doctype html>
-<html lang="id" class="scroll-smooth">
-    <head>
-        <BaseHead 
-            title="Syarat & Ketentuan - KF13 Klub Fisika Indonesia" 
-            description="Syarat dan ketentuan penggunaan layanan KF13 Klub Fisika Indonesia, kebijakan privasi, dan panduan komunitas"
-        />
-        <script>
-        </script>
-    </head>
-    <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">
-        <Navigation />
-        <FloatingActions />
-        <BackToTop threshold={300} />
+<Layout 
+    title="Syarat & Ketentuan - KF13 Klub Fisika Indonesia" 
+    description="Syarat dan ketentuan penggunaan layanan KF13 Klub Fisika Indonesia, kebijakan privasi, dan panduan komunitas"
+>
         
         <main class="pt-20">
             <!-- Hero Section -->
@@ -323,8 +308,4 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                     </div>
                 </div>
             </BrutalSection>
-        </main>
-
-        <Footer />
-    </body>
-</html>
+</Layout>

@@ -1,260 +1,162 @@
 ---
-import "../styles/global.css";
-import BaseHead from "../components/BaseHead.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import PulseButton from "../components/ui/PulseButton.astro";
-import Heading from "../components/ui/Heading.astro";
+import Layout from "../layouts/Layout.astro";
+import GradientSection from "../components/ui/GradientSection.astro";
+import BrutalSection from "../components/ui/BrutalSection.astro";
+import SectionHeader from "../components/ui/SectionHeader.astro";
 import Heading from "../components/ui/Heading.astro";
 import Text from "../components/ui/Text.astro";
+import BrutalCard from "../components/ui/BrutalCard.astro";
 ---
 
-<html lang="en">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    </head>
-    <body class="bg-gray-900 text-on-dark overflow-x-hidden">
-        <!-- CTA Section -->
-        <section
-            class="min-h-screen flex items-center justify-center py-20 gradient-bg relative overflow-hidden"
-        >
-            <div class="absolute inset-0 bg-black/20"></div>
-            <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-                <Heading level={2} size="3xl" class="mb-6 text-gray-200">
-                    Bergabunglah dalam <span
-                        class="text-on-dark text-5xl md:text-6xl">Revolusi</span
-                    >
-                    <br />
-                    <span class="text-yellow-300">Research Indonesia</span>
-                </Heading>
-                <Text size="lg" class="text-gray-200 mb-8 max-w-2xl mx-auto">
-                    Jadilah bagian dari komunitas peneliti dan inovator yang
-                    akan mengubah cara kita berkolaborasi dan berbagi
-                    pengetahuan di era digital.
+<Layout 
+    title="Research & Riset - KF13 Klub Fisika Indonesia" 
+    description="Platform riset dan penelitian fisika KF13. Bergabunglah dalam komunitas peneliti untuk mengembangkan ilmu fisika Indonesia."
+>
+    <!-- Hero Section -->
+    <GradientSection variant="blue-purple">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <Heading level={1} size="3xl" class="uppercase tracking-tight transform -rotate-1 mb-8">
+                RESEARCH & <span class="text-secondary dark:text-secondary-dark">RISET</span>
+            </Heading>
+            <BrutalCard variant="white" class="transform rotate-1 max-w-2xl mx-auto">
+                <Text size="lg" class="font-bold mb-4">
+                    🔬 Bergabunglah dalam Revolusi Research Indonesia!
                 </Text>
+                <Text class="font-semibold">
+                    Jadilah bagian dari komunitas peneliti dan inovator yang akan mengubah cara kita berkolaborasi dan berbagi pengetahuan di era digital.
+                </Text>
+            </BrutalCard>
+        </div>
+    </GradientSection>
 
-                <PulseButton
-                    href="http://47.84.35.77/wp/portal/?fcom_action=auth"
-                    size="lg"
-                    variant="white"
-                >
-                    🚀 Mulai Journey Anda Sekarang
-                </PulseButton>
-
-                <div class="mt-8 text-sm text-gray-300">
-                    Platform Beta • Web 3.0 Ready • Made with 🥼🔬🧬🧫🧪 for
-                    Indonesia
+    <!-- Research Platform -->
+    <BrutalSection background="white" padding="lg">
+        <SectionHeader title="PLATFORM RISET" subtitle="Akses portal penelitian dan kolaborasi" className="mb-16" />
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <div class="bg-primary dark:bg-primary-dark border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal">
+                    <h3 class="text-2xl font-black uppercase text-on-primary mb-4">
+                        🚀 MULAI JOURNEY ANDA
+                    </h3>
+                    <p class="text-on-primary opacity-90 mb-6">
+                        Akses portal penelitian lengkap dengan tools kolaborasi, database jurnal, dan networking dengan peneliti lainnya.
+                    </p>
+                    <a 
+                        href="http://47.84.35.77/wp/portal/?fcom_action=auth"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="bg-white text-dark px-6 py-3 font-black border-2 border-dark hover:scale-105 transition-transform inline-block"
+                    >
+                        🔬 AKSES PORTAL RISET
+                    </a>
                 </div>
-
-                <a
-                    href="/about"
-                    class="mt-4 inline-block btn-primary px-4 py-2 rounded-full font-bold text-sm hover:scale-105 transform"
-                >
-                    Klub Fisika Indonesia
-                </a>
             </div>
-        </section>
-    </body>
-</html>
+            
+            <div class="space-y-6">
+                <div class="bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal">
+                    <h3 class="text-xl font-black uppercase text-on-accent mb-4">
+                        📊 FITUR PLATFORM
+                    </h3>
+                    <ul class="text-on-accent space-y-2 text-sm">
+                        <li>✅ Database jurnal fisika terlengkap</li>
+                        <li>✅ Tools kolaborasi real-time</li>
+                        <li>✅ Networking dengan peneliti global</li>
+                        <li>✅ Project management terintegrasi</li>
+                        <li>✅ Publication tracking system</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </BrutalSection>
 
-<style>
-    /* Custom CSS */
-    .gradient-bg {
-        background: linear-gradient(
-            135deg,
-            #667eea 0%,
-            #764ba2 25%,
-            #f093fb 50%,
-            #f5576c 75%,
-            #4facfe 100%
-        );
-        background-size: 400% 400%;
-        animation: gradientShift 15s ease infinite;
-    }
+    <!-- Research Areas -->
+    <BrutalSection background="surface" padding="lg">
+        <SectionHeader title="BIDANG RISET" subtitle="Area penelitian yang kami fokuskan" className="mb-16" />
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+                {
+                    title: "Fisika Kuantum",
+                    description: "Penelitian quantum computing, quantum optics, dan aplikasi teknologi kuantum",
+                    icon: "⚛️",
+                    bg: "bg-primary"
+                },
+                {
+                    title: "Fisika Material",
+                    description: "Pengembangan material baru, nanoteknologi, dan karakterisasi material",
+                    icon: "🔬",
+                    bg: "bg-secondary"
+                },
+                {
+                    title: "Astrofisika",
+                    description: "Studi tentang benda langit, kosmologi, dan fenomena alam semesta",
+                    icon: "🌌",
+                    bg: "bg-accent"
+                },
+                {
+                    title: "Fisika Medis",
+                    description: "Aplikasi fisika dalam bidang kesehatan dan teknologi medis",
+                    icon: "🏥",
+                    bg: "bg-pink"
+                },
+                {
+                    title: "Energi Terbarukan",
+                    description: "Penelitian solar cell, fuel cell, dan teknologi energi berkelanjutan",
+                    icon: "⚡",
+                    bg: "bg-blue"
+                },
+                {
+                    title: "Fisika Komputasi",
+                    description: "Simulasi numerik, machine learning, dan computational physics",
+                    icon: "💻",
+                    bg: "bg-accent"
+                }
+            ].map((area, index) => (
+                <div class={`${area.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-3">{area.icon}</div>
+                        <h3 class="text-lg font-black uppercase text-white mb-2">
+                            {area.title}
+                        </h3>
+                    </div>
+                    <p class="text-white opacity-90 text-sm leading-relaxed text-center">
+                        {area.description}
+                    </p>
+                </div>
+            ))}
+        </div>
+    </BrutalSection>
 
-    @keyframes gradientShift {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
-    }
-
-    .hero-text {
-        background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-size: 300% 300%;
-        animation: gradientShift 8s ease infinite;
-    }
-
-    .floating {
-        animation: float 6s ease-in-out infinite;
-    }
-
-    .floating-delay {
-        animation: float 6s ease-in-out infinite;
-        animation-delay: -3s;
-    }
-
-    @keyframes float {
-        0%,
-        100% {
-            transform: translateY(0px) rotate(0deg);
-        }
-        33% {
-            transform: translateY(-20px) rotate(120deg);
-        }
-        66% {
-            transform: translateY(10px) rotate(240deg);
-        }
-    }
-
-    .card-gradient {
-        background: linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0.1) 0%,
-            rgba(255, 255, 255, 0.05) 100%
-        );
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.3s ease;
-    }
-
-    .card-gradient:hover {
-        background: linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0.15) 0%,
-            rgba(255, 255, 255, 0.08) 100%
-        );
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .pulse-glow {
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        animation: pulseGlow 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes pulseGlow {
-        from {
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-        to {
-            box-shadow:
-                0 0 30px rgba(255, 255, 255, 0.8),
-                0 0 40px rgba(102, 126, 234, 0.3);
-        }
-    }
-
-    .navbar-blur {
-        transition: all 0.3s ease;
-    }
-
-    .section-fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s ease;
-    }
-
-    .section-fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* Smooth scroll */
-    html {
-        scroll-behavior: smooth;
-    }
-
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: #1f2937;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(135deg, #764ba2, #f093fb);
-    }
-</style>
-<script>
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                });
-            }
-        });
-    });
-
-    // Add scroll effect to navbar
-    window.addEventListener("scroll", () => {
-        const navbar = document.querySelector("nav");
-        if (navbar && window.scrollY > 100) {
-            navbar.classList.add("bg-gray-900");
-            navbar.classList.remove("bg-gray-900/80");
-        } else if (navbar) {
-            navbar.classList.remove("bg-gray-900");
-            navbar.classList.add("bg-gray-900/80");
-        }
-    });
-
-    // Mobile menu toggle
-    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener("click", () => {
-            if (mobileMenu) {
-                mobileMenu.classList.toggle("hidden");
-            }
-        });
-    }
-
-    // Section fade-in animation on scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -100px 0px",
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll(".section-fade-in").forEach((section) => {
-        observer.observe(section);
-    });
-
-    // Add parallax effect to floating elements
-    window.addEventListener("scroll", () => {
-        const scrolled = window.pageYOffset;
-        const parallax = scrolled * 0.5;
-
-        document
-            .querySelectorAll(".floating, .floating-delay")
-            .forEach((element) => {
-                element.style.transform = `translateY(${parallax}px)`;
-            });
-    });
-</script>
+    <!-- Join Research -->
+    <BrutalSection background="white" padding="lg">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light p-8 transform -rotate-1 shadow-brutal">
+                <h2 class="text-3xl font-black uppercase text-dark dark:text-light mb-6">
+                    🤝 BERGABUNG DENGAN TIM RISET
+                </h2>
+                <p class="text-lg font-semibold text-dark dark:text-light mb-8">
+                    Punya ide penelitian menarik? Ingin berkolaborasi dengan peneliti lain? 
+                    Mari bergabung dan wujudkan riset impian Anda!
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a 
+                        href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20tertarik%20bergabung%20dengan%20tim%20riset"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="bg-primary dark:bg-primary-dark border-2 border-dark dark:border-light px-8 py-4 font-black text-white hover:scale-105 transition-transform"
+                    >
+                        💬 DISKUSI RISET
+                    </a>
+                    <a 
+                        href="mailto:research@klubfisika.org"
+                        class="bg-secondary dark:bg-secondary-dark border-2 border-dark dark:border-light px-8 py-4 font-black text-dark hover:scale-105 transition-transform"
+                    >
+                        📧 KIRIM PROPOSAL
+                    </a>
+                </div>
+            </div>
+        </div>
+    </BrutalSection>
+</Layout>

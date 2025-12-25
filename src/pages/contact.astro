@@ -1,10 +1,5 @@
 ---
-import "@/styles/main.css";
-import BaseHead from "../components/BaseHead.astro";
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/sections/Footer.astro";
-import FloatingActions from "../components/ui/FloatingActions.astro";
-import BackToTop from "../components/ui/BackToTop.astro";
+import Layout from "../layouts/Layout.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
 import BrutalCard from "../components/ui/BrutalCard.astro";
 import GradientSection from "../components/ui/GradientSection.astro";
@@ -14,22 +9,10 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
 import ContactSection from "../components/sections/ContactSection.astro";
 ---
 
-<!doctype html>
-<html lang="id" class="scroll-smooth">
-    <head>
-        <BaseHead 
-            title="Kontak & Lokasi - KF13 Klub Fisika Indonesia" 
-            description="Hubungi KF13 dan kunjungi Sanggar Fisika kami di Yogyakarta. Alamat lengkap, kontak WhatsApp, email, dan media sosial."
-        />
-        <script>
-        </script>
-    </head>
-    <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">
-        <Navigation />
-        <FloatingActions />
-        <BackToTop threshold={300} />
-        
-        <main class="pt-20">
+<Layout 
+    title="Kontak & Lokasi - KF13 Klub Fisika Indonesia" 
+    description="Hubungi KF13 dan kunjungi Sanggar Fisika kami di Yogyakarta. Alamat lengkap, kontak WhatsApp, email, dan media sosial."
+>
             <!-- Hero Section -->
             <GradientSection variant="blue-purple">
                 <div class="max-w-6xl mx-auto px-6 text-center">
@@ -49,8 +32,7 @@ import ContactSection from "../components/sections/ContactSection.astro";
 
             <!-- Contact Methods -->
             <BrutalSection background="white" padding="lg">
-                <div class="max-w-6xl mx-auto px-6">
-                    <SectionHeader title="HUBUNGI KAMI" subtitle="Berbagai cara untuk terhubung dengan KF13" className="mb-16" />
+                <SectionHeader title="HUBUNGI KAMI" subtitle="Berbagai cara untuk terhubung dengan KF13" className="mb-16" />
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
@@ -61,7 +43,7 @@ import ContactSection from "../components/sections/ContactSection.astro";
                                 description: "Chat langsung dengan admin KF13 untuk info cepat",
                                 action: "Chat Sekarang",
                                 link: "https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20ingin%20bertanya%20tentang%20klub%20fisika",
-                                bg: "btn-accent",
+                                bg: "bg-accent",
                                 urgent: true
                             },
                             {
@@ -71,7 +53,7 @@ import ContactSection from "../components/sections/ContactSection.astro";
                                 description: "Untuk pertanyaan formal, kerjasama, dan proposal",
                                 action: "Kirim Email",
                                 link: "mailto:info@klubfisika.org",
-                                bg: "btn-primary",
+                                bg: "bg-primary",
                                 urgent: false
                             },
                             {
@@ -81,7 +63,7 @@ import ContactSection from "../components/sections/ContactSection.astro";
                                 description: "Follow untuk update kegiatan dan konten edukatif",
                                 action: "Follow IG",
                                 link: "https://instagram.com/klubfisika13",
-                                bg: "btn-secondary",
+                                bg: "bg-secondary",
                                 urgent: false
                             },
                             {
@@ -91,7 +73,7 @@ import ContactSection from "../components/sections/ContactSection.astro";
                                 description: "Video pembelajaran dan dokumentasi kegiatan",
                                 action: "Subscribe",
                                 link: "https://youtube.com/@klubfisika13",
-                                bg: "btn-primary",
+                                bg: "bg-primary",
                                 urgent: false
                             },
                             {
@@ -101,7 +83,7 @@ import ContactSection from "../components/sections/ContactSection.astro";
                                 description: "Diskusi fisika dan sharing materi pembelajaran",
                                 action: "Join Group",
                                 link: "https://t.me/klubfisika13",
-                                bg: "btn-accent",
+                                bg: "bg-accent",
                                 urgent: false
                             },
                             {
@@ -116,7 +98,7 @@ import ContactSection from "../components/sections/ContactSection.astro";
                             }
                         ].map((contact, index) => (
                             <BrutalCard 
-                                variant={contact.bg === 'btn-primary' ? 'primary' : contact.bg === 'btn-secondary' ? 'secondary' : 'accent'}
+                                variant={contact.bg === 'bg-primary' ? 'primary' : contact.bg === 'bg-secondary' ? 'secondary' : contact.bg === 'bg-accent' ? 'accent' : 'white'}
                                 rotation={index % 2 === 0 ? 'right' : 'left'}
                                 urgent={contact.urgent}
                             >
@@ -144,13 +126,11 @@ import ContactSection from "../components/sections/ContactSection.astro";
                             </BrutalCard>
                         ))}
                     </div>
-                </div>
-            </section>
+            </BrutalSection>
 
             <!-- Physical Location -->
-            <section class="py-20 bg-surface dark:bg-slate-800 transition-colors">
-                <div class="max-w-6xl mx-auto px-6">
-                    <SectionHeader title="SANGGAR FISIKA KF13" subtitle="Lokasi fisik yang bisa dikunjungi" className="mb-16" />
+            <BrutalSection background="surface" padding="lg">
+                <SectionHeader title="SANGGAR FISIKA KF13" subtitle="Lokasi fisik yang bisa dikunjungi" className="mb-16" />
                     
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <!-- Location Info -->
@@ -191,7 +171,7 @@ import ContactSection from "../components/sections/ContactSection.astro";
                                         href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20ingin%20berkunjung%20ke%20Sanggar%20Fisika.%20Kapan%20waktu%20yang%20tepat?"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        class="btn-accent border-2 border-dark dark:border-light px-4 py-3 font-black hover:scale-105 transition-transform text-center"
+                                        class="bg-accent border-2 border-dark dark:border-light px-4 py-3 font-black text-dark hover:scale-105 transition-transform text-center"
                                     >
                                         📱 KONFIRMASI KUNJUNGAN
                                     </a>
@@ -199,7 +179,7 @@ import ContactSection from "../components/sections/ContactSection.astro";
                                         href="https://maps.app.goo.gl/6qKexhinfiqhfZTT7"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        class="btn-primary border-2 border-dark dark:border-light px-4 py-3 font-black hover:scale-105 transition-transform text-center"
+                                        class="bg-primary border-2 border-dark dark:border-light px-4 py-3 font-black hover:scale-105 transition-transform text-center"
                                     >
                                         🗺️ BUKA MAPS
                                     </a>
@@ -226,15 +206,14 @@ import ContactSection from "../components/sections/ContactSection.astro";
                                     href="https://maps.app.goo.gl/6qKexhinfiqhfZTT7"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="btn-primary border-2 border-dark dark:border-light px-6 py-2 font-black hover:scale-105 transition-transform inline-block"
+                                    class="bg-primary border-2 border-dark dark:border-light px-6 py-2 font-black hover:scale-105 transition-transform inline-block"
                                 >
                                     📍 LIHAT DI GOOGLE MAPS
                                 </a>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+            </BrutalSection>
 
             <!-- FAQ Contact -->
             <section class="py-20 bg-white dark:bg-slate-700 transition-colors">
@@ -256,12 +235,12 @@ import ContactSection from "../components/sections/ContactSection.astro";
                             {
                                 question: "Kapan waktu terbaik untuk berkunjung?",
                                 answer: "Sanggar buka Senin-Jumat (15:00-20:00) dan weekend (09:00-17:00). Konfirmasi dulu via WhatsApp untuk memastikan ada kegiatan.",
-                                bg: "btn-accent"
+                                bg: "bg-accent"
                             },
                             {
                                 question: "Apa saja kegiatan rutin KF13?",
                                 answer: "Workshop mingguan, diskusi fisika, eksperimen praktis, kompetisi, dan project kolaboratif. Cek halaman Events untuk jadwal terbaru!",
-                                bg: "btn-secondary"
+                                bg: "bg-secondary"
                             }
                         ].map((faq, index) => (
                             <div class={`${faq.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} shadow-brutal-sm`}>
@@ -276,7 +255,7 @@ import ContactSection from "../components/sections/ContactSection.astro";
                     </div>
                     
                     <div class="text-center mt-12">
-                        <div class="btn-secondary border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal inline-block">
+                        <div class="bg-secondary border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal inline-block">
                             <p class="text-dark dark:text-light font-bold mb-4">
                                 Masih ada pertanyaan lain?
                             </p>
@@ -284,7 +263,7 @@ import ContactSection from "../components/sections/ContactSection.astro";
                                 href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20punya%20pertanyaan%20tentang%20klub%20fisika"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="btn-primary border-2 border-dark dark:border-light px-6 py-3 font-black hover:scale-105 transition-transform inline-block"
+                                class="bg-primary border-2 border-dark dark:border-light px-6 py-3 font-black hover:scale-105 transition-transform inline-block"
                             >
                                 💬 TANYA LANGSUNG
                             </a>
@@ -292,16 +271,14 @@ import ContactSection from "../components/sections/ContactSection.astro";
                     </div>
                 </div>
             </section>
-        </main>
 
-        <ContactSection />
-        <Footer />
+    <ContactSection />
 
-        <script>
-            // Contact interaction tracking
-            document.addEventListener('DOMContentLoaded', () => {
-                // Track contact method clicks
-                document.querySelectorAll('a[href^="https://wa.me"], a[href^="mailto:"], a[href^="https://instagram"], a[href^="https://youtube"], a[href^="https://t.me"], a[href^="https://github"]').forEach(link => {
+<script>
+    // Contact interaction tracking
+    document.addEventListener('DOMContentLoaded', () => {
+        // Track contact method clicks
+        document.querySelectorAll('a[href^="https://wa.me"], a[href^="mailto:"], a[href^="https://instagram"], a[href^="https://youtube"], a[href^="https://t.me"], a[href^="https://github"]').forEach(link => {
                     link.addEventListener('click', () => {
                         const method = link.href.includes('wa.me') ? 'WhatsApp' : 
                                      link.href.includes('mailto') ? 'Email' :
@@ -323,5 +300,4 @@ import ContactSection from "../components/sections/ContactSection.astro";
                 }
             });
         </script>
-    </body>
-</html>
+</Layout>

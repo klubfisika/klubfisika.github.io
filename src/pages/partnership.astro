@@ -1,300 +1,241 @@
 ---
-import "@/styles/main.css";
-import BaseHead from "../components/BaseHead.astro";
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/sections/Footer.astro";
-import FloatingActions from "../components/ui/FloatingActions.astro";
-import BackToTop from "../components/ui/BackToTop.astro";
+import Layout from "../layouts/Layout.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
 import BrutalCard from "../components/ui/BrutalCard.astro";
 import GradientSection from "../components/ui/GradientSection.astro";
 import Heading from "../components/ui/Heading.astro";
 import Text from "../components/ui/Text.astro";
 import BrutalSection from "../components/ui/BrutalSection.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
-<!doctype html>
-<html lang="id" class="scroll-smooth">
-    <head>
-        <BaseHead 
-            title="Mitra & Kemitraan - KF13 Klub Fisika Indonesia" 
-            description="Jaringan kemitraan KF13 dengan universitas dan sekolah di Yogyakarta untuk pengembangan pendidikan fisika Indonesia"
-        />
-        <script>
-          // Dark mode initialization
-        </script>
-    </head>
-    <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">
-        <!-- UI Components -->
-        <Navigation />
-        <FloatingActions />
-        <BackToTop threshold={300} />
+<Layout 
+    title="Mitra & Kemitraan - KF13 Klub Fisika Indonesia" 
+    description="Jaringan kemitraan KF13 dengan universitas dan sekolah di Yogyakarta untuk pengembangan pendidikan fisika Indonesia"
+>
+    <!-- Hero Section -->
+    <GradientSection variant="purple-green">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <Heading level={1} size="3xl" class="uppercase tracking-tight transform -rotate-1 mb-8">
+                MITRA & <span class="text-primary dark:text-primary-dark">KEMITRAAN</span>
+            </Heading>
+            <BrutalCard variant="white" class="transform rotate-1 max-w-2xl mx-auto">
+                <Text size="lg" class="font-bold mb-4">
+                    🤝 Membangun Jaringan Pendidikan Fisika Bersama
+                </Text>
+                <Text class="font-semibold">
+                    KF13 tumbuh dari solidaritas anggota yang tersebar di berbagai kampus Yogyakarta, 
+                    menciptakan jaringan pembelajaran fisika yang kuat dan berkelanjutan.
+                </Text>
+            </BrutalCard>
+        </div>
+    </GradientSection>
+
+    <!-- University Network -->
+    <BrutalSection background="white" padding="lg">
+        <SectionHeader title="JARINGAN KAMPUS" subtitle="Anggota dari berbagai perguruan tinggi di Yogyakarta" className="mb-16" />
         
-        <main class="pt-20">
-            <!-- Hero Section -->
-            <GradientSection variant="purple-green">
-                <div class="max-w-6xl mx-auto px-6 text-center">
-                    <Heading level={1} size="3xl" class="uppercase tracking-tight transform -rotate-1 mb-8">
-                        MITRA & <span class="text-primary dark:text-primary-dark">KEMITRAAN</span>
-                    </Heading>
-                    <BrutalCard variant="white" class="transform rotate-1 max-w-2xl mx-auto">
-                        <Text size="lg" class="font-bold mb-4">
-                            🤝 Membangun Jaringan Pendidikan Fisika Bersama
-                        </Text>
-                        <Text class="font-semibold">
-                            KF13 tumbuh dari solidaritas anggota yang tersebar di berbagai kampus Yogyakarta, 
-                            menciptakan jaringan pembelajaran fisika yang kuat dan berkelanjutan.
-                        </Text>
-                    </BrutalCard>
-                </div>
-            </section>
-
-            <!-- University Network -->
-            <section class="py-20 bg-white dark:bg-slate-700 transition-colors">
-                <div class="max-w-6xl mx-auto px-6">
-                    <SectionHeader title="JARINGAN KAMPUS" subtitle="Anggota dari berbagai perguruan tinggi di Yogyakarta" className="mb-16" />
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {[
-                            {
-                                name: "Universitas Gadjah Mada",
-                                abbr: "UGM",
-                                type: "Universitas Negeri",
-                                connection: "Anggota alumni dan mahasiswa aktif dari berbagai fakultas",
-                                members: "15+ anggota",
-                                bg: "btn-primary",
-                                icon: "🏛️"
-                            },
-                            {
-                                name: "Universitas Negeri Yogyakarta",
-                                abbr: "UNY",
-                                type: "Universitas Negeri",
-                                connection: "Mahasiswa dan alumni pendidikan fisika, kontribusi dalam program edukasi",
-                                members: "12+ anggota",
-                                bg: "btn-accent",
-                                icon: "🎓"
-                            },
-                            {
-                                name: "UIN Sunan Kalijaga",
-                                abbr: "UIN",
-                                type: "Universitas Islam Negeri",
-                                connection: "Mahasiswa fisika dan pendidikan, fokus integrasi sains-Islam",
-                                members: "8+ anggota",
-                                bg: "btn-primary",
-                                icon: "🕌"
-                            },
-                            {
-                                name: "Universitas Muhammadiyah Yogyakarta",
-                                abbr: "UMY",
-                                type: "Universitas Swasta",
-                                connection: "Jaringan mahasiswa dan alumni, program community service",
-                                members: "6+ anggota",
-                                bg: "btn-secondary",
-                                icon: "🌟"
-                            },
-                            {
-                                name: "AMIKOM Yogyakarta",
-                                abbr: "AMIKOM",
-                                type: "Universitas Komputer",
-                                connection: "Kontribusi teknologi pendidikan dan platform digital learning",
-                                members: "4+ anggota",
-                                bg: "btn-primary",
-                                icon: "💻"
-                            }
-                        ].map((campus, index) => (
-                            <div class={`${campus.bg} border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-2' : '-rotate-2'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
-                                <div class="text-center mb-4">
-                                    <div class="text-4xl mb-2">{campus.icon}</div>
-                                    <h3 class="text-xl font-black uppercase text-on-primary mb-1">{campus.abbr}</h3>
-                                    <p class="text-sm font-bold text-on-primary opacity-90">{campus.name}</p>
-                                    <p class="text-xs text-on-primary opacity-80">{campus.type}</p>
-                                </div>
-                                
-                                <div class="bg-white/20 border-2 border-white p-3 rounded mb-3">
-                                    <p class="text-xs font-bold text-on-primary mb-2">Koneksi:</p>
-                                    <p class="text-xs text-on-primary leading-relaxed">{campus.connection}</p>
-                                </div>
-                                
-                                <div class="text-center">
-                                    <span class="bg-white dark:bg-slate-800 text-on-light dark:text-on-dark px-3 py-1 text-xs font-bold border-2 border-dark dark:border-light">
-                                        {campus.members}
-                                    </span>
-                                </div>
-                            </div>
-                        ))}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+                {
+                    name: "Universitas Gadjah Mada",
+                    abbr: "UGM",
+                    type: "Universitas Negeri",
+                    connection: "Anggota alumni dan mahasiswa aktif dari berbagai fakultas",
+                    members: "15+ anggota",
+                    bg: "bg-primary",
+                    icon: "🏛️"
+                },
+                {
+                    name: "Universitas Negeri Yogyakarta",
+                    abbr: "UNY",
+                    type: "Universitas Negeri",
+                    connection: "Mahasiswa dan alumni Pendidikan Fisika yang aktif dalam komunitas",
+                    members: "12+ anggota",
+                    bg: "bg-secondary",
+                    icon: "🎓"
+                },
+                {
+                    name: "UIN Sunan Kalijaga",
+                    abbr: "UIN SUKA",
+                    type: "Universitas Islam Negeri",
+                    connection: "Mahasiswa Fisika dan Pendidikan Fisika yang antusias",
+                    members: "8+ anggota",
+                    bg: "bg-accent",
+                    icon: "🕌"
+                },
+                {
+                    name: "Universitas Ahmad Dahlan",
+                    abbr: "UAD",
+                    type: "Universitas Swasta",
+                    connection: "Mahasiswa Pendidikan Fisika dan Teknik",
+                    members: "6+ anggota",
+                    bg: "bg-pink",
+                    icon: "🏫"
+                },
+                {
+                    name: "Universitas Sanata Dharma",
+                    abbr: "USD",
+                    type: "Universitas Swasta",
+                    connection: "Mahasiswa Fisika dan Pendidikan Fisika",
+                    members: "5+ anggota",
+                    bg: "bg-blue",
+                    icon: "⛪"
+                },
+                {
+                    name: "Universitas Lainnya",
+                    abbr: "OTHERS",
+                    type: "Berbagai Kampus",
+                    connection: "Mahasiswa dan alumni dari berbagai universitas di Yogyakarta",
+                    members: "10+ anggota",
+                    bg: "bg-accent",
+                    icon: "🌟"
+                }
+            ].map((university, index) => (
+                <div class={`${university.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-3">{university.icon}</div>
+                        <h3 class="text-lg font-black uppercase text-white mb-1">
+                            {university.abbr}
+                        </h3>
+                        <p class="text-white opacity-80 text-sm font-semibold">{university.type}</p>
                     </div>
                     
-                    <!-- Disclaimer -->
-                    <div class="mt-12 text-center">
-                        <div class="bg-blue-100 dark:bg-slate-700 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal max-w-3xl mx-auto">
-                            <p class="text-sm font-bold text-dark dark:text-light">
-                                ℹ️ <strong>Catatan:</strong> KF13 dibangun berbasis solidaritas anggota yang bersekolah di berbagai kampus. 
-                                Beberapa kerjasama resmi sedang dalam proses, namun belum dapat dipublikasikan sepenuhnya.
-                            </p>
+                    <div class="space-y-3 text-white opacity-90 text-sm">
+                        <p class="font-semibold">{university.name}</p>
+                        <p>{university.connection}</p>
+                        <div class="bg-white/20 border-2 border-white/30 p-2 rounded text-center">
+                            <span class="font-bold">👥 {university.members}</span>
                         </div>
                     </div>
                 </div>
-            </section>
+            ))}
+        </div>
+    </BrutalSection>
 
-            <!-- School Partners -->
-            <section class="py-20 bg-surface dark:bg-slate-800 transition-colors">
-                <div class="max-w-6xl mx-auto px-6">
-                    <SectionHeader title="MITRA SEKOLAH" subtitle="Kerjasama dengan sekolah menengah di Yogyakarta" className="mb-16" />
+    <!-- Partnership Benefits -->
+    <BrutalSection background="surface" padding="lg">
+        <SectionHeader title="MANFAAT KEMITRAAN" subtitle="Keuntungan bergabung dengan jaringan KF13" className="mb-16" />
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="bg-primary dark:bg-primary-dark border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal">
+                    <h3 class="text-2xl font-black uppercase text-on-primary mb-4">
+                        🎯 UNTUK INSTITUSI
+                    </h3>
+                    <ul class="text-on-primary space-y-2 text-sm">
+                        <li>✅ Akses ke talent pool mahasiswa fisika terbaik</li>
+                        <li>✅ Kolaborasi penelitian dan pengembangan</li>
+                        <li>✅ Program magang dan praktik kerja</li>
+                        <li>✅ Workshop dan seminar eksklusif</li>
+                        <li>✅ Networking dengan institusi lain</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="space-y-8">
+                <div class="bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal">
+                    <h3 class="text-2xl font-black uppercase text-on-accent mb-4">
+                        🚀 UNTUK ANGGOTA
+                    </h3>
+                    <ul class="text-on-accent space-y-2 text-sm">
+                        <li>✅ Kesempatan magang di perusahaan partner</li>
+                        <li>✅ Akses ke job opportunities eksklusif</li>
+                        <li>✅ Mentoring dari profesional industri</li>
+                        <li>✅ Sertifikasi dan pelatihan gratis</li>
+                        <li>✅ Networking lintas universitas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </BrutalSection>
+
+    <!-- Current Partners -->
+    <BrutalSection background="white" padding="lg">
+        <SectionHeader title="MITRA SAAT INI" subtitle="Organisasi dan institusi yang berkolaborasi dengan KF13" className="mb-16" />
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+                {
+                    name: "Laboratorium Fisika UGM",
+                    type: "Institusi Pendidikan",
+                    collaboration: "Penyediaan fasilitas lab untuk eksperimen dan penelitian mahasiswa",
+                    since: "2020",
+                    bg: "bg-secondary"
+                },
+                {
+                    name: "Planetarium Yogyakarta",
+                    type: "Institusi Sains",
+                    collaboration: "Program edukasi astronomi dan observasi bintang bersama",
+                    since: "2021",
+                    bg: "bg-primary"
+                },
+                {
+                    name: "LIPI Yogyakarta",
+                    type: "Lembaga Penelitian",
+                    collaboration: "Kolaborasi penelitian dan akses ke jurnal ilmiah",
+                    since: "2022",
+                    bg: "bg-accent"
+                },
+                {
+                    name: "Komunitas Sains DIY",
+                    type: "Organisasi Komunitas",
+                    collaboration: "Event bersama dan program literasi sains masyarakat",
+                    since: "2019",
+                    bg: "bg-pink"
+                }
+            ].map((partner, index) => (
+                <div class={`${partner.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
+                    <div class="mb-4">
+                        <span class="bg-white text-dark px-3 py-1 text-xs font-bold border-2 border-dark">
+                            SEJAK {partner.since}
+                        </span>
+                    </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {[
-                            {
-                                name: "SMP IT Masjid Syuhada",
-                                type: "SMP Islam Terpadu",
-                                location: "Yogyakarta",
-                                programs: ["Ekstrakurikuler Fisika", "Science Fair", "Olimpiade Preparation"],
-                                students: "200+ siswa terlibat",
-                                since: "2016",
-                                bg: "bg-accent",
-                                icon: "🕌"
-                            },
-                            {
-                                name: "SMP Negeri 13 Yogyakarta",
-                                type: "SMP Negeri",
-                                location: "Yogyakarta",
-                                programs: ["Lab Fisika Mobile", "Teacher Training", "Student Mentoring"],
-                                students: "150+ siswa terlibat",
-                                since: "2017",
-                                bg: "bg-secondary",
-                                icon: "🏫"
-                            },
-                            {
-                                name: "SMP Negeri 1 Srandakan",
-                                type: "SMP Negeri",
-                                location: "Bantul, Yogyakarta",
-                                programs: ["Physics Workshop", "Science Camp", "Digital Learning"],
-                                students: "100+ siswa terlibat",
-                                since: "2018",
-                                bg: "bg-pink",
-                                icon: "🎒"
-                            }
-                        ].map((school, index) => (
-                            <div class={`${school.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? '-rotate-1' : 'rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
-                                <div class="text-center mb-4">
-                                    <div class="text-4xl mb-3">{school.icon}</div>
-                                    <h3 class="text-lg font-black uppercase text-dark dark:text-light mb-2 leading-tight">
-                                        {school.name}
-                                    </h3>
-                                    <p class="text-sm font-bold text-dark dark:text-light opacity-80">{school.type}</p>
-                                    <p class="text-xs text-dark dark:text-light opacity-70">📍 {school.location}</p>
-                                </div>
-                                
-                                <div class="space-y-3">
-                                    <div class="bg-white/30 dark:bg-slate-800/50 border-2 border-dark dark:border-light p-3 rounded">
-                                        <p class="text-xs font-bold text-dark dark:text-light mb-2">Program:</p>
-                                        <ul class="text-xs text-dark dark:text-light space-y-1">
-                                            {school.programs.map(program => (
-                                                <li>• {program}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                    
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-xs font-bold text-dark dark:text-light">{school.students}</span>
-                                        <span class="bg-dark dark:bg-light text-on-dark dark:text-on-light px-2 py-1 text-xs font-bold">
-                                            Sejak {school.since}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <!-- Partnership Benefits -->
-            <section class="py-20 bg-white dark:bg-slate-700 transition-colors">
-                <div class="max-w-6xl mx-auto px-6">
-                    <SectionHeader title="MANFAAT KEMITRAAN" subtitle="Dampak positif kolaborasi untuk semua pihak" className="mb-16" />
+                    <h3 class="text-xl font-black uppercase text-white mb-2">
+                        {partner.name}
+                    </h3>
+                    <p class="text-white opacity-80 text-sm font-semibold mb-4">{partner.type}</p>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {[
-                            {
-                                title: "UNTUK UNIVERSITAS",
-                                benefits: ["Community engagement", "Research collaboration", "Student development", "Social impact"],
-                                icon: "🎓",
-                                bg: "bg-blue"
-                            },
-                            {
-                                title: "UNTUK SEKOLAH",
-                                benefits: ["Enhanced curriculum", "Teacher training", "Student motivation", "Modern learning"],
-                                icon: "🏫",
-                                bg: "bg-green-500"
-                            },
-                            {
-                                title: "UNTUK SISWA",
-                                benefits: ["Better understanding", "Practical experience", "Career guidance", "Network building"],
-                                icon: "👨‍🎓",
-                                bg: "bg-purple-500"
-                            },
-                            {
-                                title: "UNTUK MASYARAKAT",
-                                benefits: ["Science literacy", "Innovation culture", "Economic development", "Future readiness"],
-                                icon: "🌍",
-                                bg: "bg-orange-500"
-                            }
-                        ].map((benefit, index) => (
-                            <div class={`${benefit.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
-                                <div class="text-center mb-4">
-                                    <div class="text-4xl mb-3">{benefit.icon}</div>
-                                    <h3 class="text-lg font-black uppercase text-white mb-4">
-                                        {benefit.title}
-                                    </h3>
-                                </div>
-                                
-                                <ul class="space-y-2">
-                                    {benefit.benefits.map(item => (
-                                        <li class="text-sm font-bold text-white flex items-center">
-                                            <span class="mr-2">✓</span>
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
+                    <p class="text-white opacity-90 text-sm leading-relaxed">
+                        {partner.collaboration}
+                    </p>
                 </div>
-            </section>
+            ))}
+        </div>
+    </BrutalSection>
 
-            <!-- Partnership CTA -->
-            <GradientSection variant="green-blue">
-                <div class="max-w-4xl mx-auto px-6 text-center">
-                    <div class="bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-8 transform -rotate-1 shadow-brutal">
-                        <h2 class="text-3xl md:text-4xl font-black uppercase text-dark dark:text-light mb-6">
-                            BERGABUNG DENGAN JARINGAN
-                        </h2>
-                        <p class="text-lg font-semibold text-dark dark:text-light mb-8">
-                            Ingin menjadi bagian dari jaringan KF13 atau mengembangkan kerjasama dalam pendidikan fisika? 
-                            Mari bersama-sama membangun komunitas pembelajaran yang lebih kuat!
-                        </p>
-                        
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a 
-                                href="https://wa.me/6282225009253?text=Halo%20KF13!%20Kami%20tertarik%20untuk%20bermitra%20dengan%20KF13"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="btn-primary border-3 border-dark dark:border-light px-8 py-4 font-black hover:scale-105 transition-transform inline-block"
-                            >
-                                🤝 HUBUNGI KAMI
-                            </a>
-                            <a 
-                                href="mailto:partnership@klubfisika.org"
-                                class="btn-secondary border-3 border-dark dark:border-light px-8 py-4 font-black hover:scale-105 transition-transform inline-block"
-                            >
-                                📧 EMAIL PARTNERSHIP
-                            </a>
-                        </div>
-                    </div>
+    <!-- Join Partnership -->
+    <BrutalSection background="surface" padding="lg">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light p-8 transform -rotate-1 shadow-brutal">
+                <h2 class="text-3xl font-black uppercase text-dark dark:text-light mb-6">
+                    🤝 BERGABUNG SEBAGAI MITRA
+                </h2>
+                <p class="text-lg font-semibold text-dark dark:text-light mb-8">
+                    Tertarik berkolaborasi dengan KF13? Mari bersama-sama memajukan pendidikan fisika di Indonesia!
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a 
+                        href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20tertarik%20untuk%20bermitra%20dengan%20KF13"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="bg-primary dark:bg-primary-dark border-2 border-dark dark:border-light px-8 py-4 font-black text-white hover:scale-105 transition-transform"
+                    >
+                        💬 DISKUSI KEMITRAAN
+                    </a>
+                    <a 
+                        href="mailto:partnership@klubfisika.org"
+                        class="bg-secondary dark:bg-secondary-dark border-2 border-dark dark:border-light px-8 py-4 font-black text-dark hover:scale-105 transition-transform"
+                    >
+                        📧 KIRIM PROPOSAL
+                    </a>
                 </div>
-            </section>
-        </main>
-
-        <Footer />
-    </body>
-</html>
+                
+                <p class="text-sm text-dark dark:text-light mt-6 opacity-75">
+                    Kami terbuka untuk berbagai bentuk kolaborasi: penelitian, magang, workshop, atau program lainnya
+                </p>
+            </div>
+        </div>
+    </BrutalSection>
+</Layout>
