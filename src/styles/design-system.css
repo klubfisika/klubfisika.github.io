@@ -194,6 +194,24 @@
   border-color: var(--color-dark);
 }
 
+/* Hover states with better contrast */
+.hover-contrast:hover {
+  color: #2563eb; /* blue-600 */
+}
+
+.dark .hover-contrast:hover {
+  color: #fbbf24; /* yellow-400 */
+}
+
+/* Link hover states */
+a:hover {
+  color: #2563eb !important;
+}
+
+.dark a:hover {
+  color: #fbbf24 !important;
+}
+
 .wobble:hover {
   animation: wobble 0.5s ease-in-out;
 }
