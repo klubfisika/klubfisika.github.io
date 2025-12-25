@@ -7,6 +7,8 @@ interface Props {
   rel?: string;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
+  id?: string;
+  ariaLabel?: string;
 }
 
 const { 
@@ -16,7 +18,9 @@ const {
   target,
   rel,
   className = "",
-  type = 'button'
+  type = 'button',
+  id,
+  ariaLabel
 } = Astro.props;
 
 const variantClasses = {
@@ -43,6 +47,8 @@ const buttonClasses = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[s
     target={target}
     rel={rel}
     class={buttonClasses}
+    id={id}
+    aria-label={ariaLabel}
   >
     <slot />
   </a>
@@ -50,6 +56,8 @@ const buttonClasses = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[s
   <button 
     type={type}
     class={buttonClasses}
+    id={id}
+    aria-label={ariaLabel}
   >
     <slot />
   </button>

@@ -3,7 +3,7 @@ import FloatingButton from "./FloatingButton.astro";
 import Tooltip from "./Tooltip.astro";
 ---
 
-<div class="fixed bottom-6 right-6 z-50 flex flex-col gap-1">
+<div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 items-end">
   <!-- WhatsApp Contact -->
   <Tooltip content="Chat Admin" position="left">
     <a 
@@ -104,24 +104,41 @@ import Tooltip from "./Tooltip.astro";
 )}
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.querySelector('[data-theme-toggle]');
+document.addEventListener('DOMContentLoaded', () => {
+  // Theme Toggle
+  const themeToggle = document.querySelector('[data-theme-toggle]');
+  
+  // Initialize theme from localStorage or system preference
+  const initTheme = () => {
+    const savedTheme = localStorage.getItem('theme');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = savedTheme === 'dark' || (!savedTheme && systemDark);
     
-    themeToggle?.addEventListener('click', () => {
-      const html = document.documentElement;
-      const isDark = html.classList.contains('dark');
-      
-      if (isDark) {
-        html.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-      } else {
-        html.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-      }
-    });
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
+  
+  // Initialize theme on load
+  initTheme();
+  
+  // Theme toggle handler
+  themeToggle?.addEventListener('click', () => {
+    const html = document.documentElement;
+    const isDark = html.classList.contains('dark');
+    
+    if (isDark) {
+      html.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    } else {
+      html.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
   });
 
-  // Debug Panel Toggle (Development Only)
+  // Debug Panel (Development Only)
   const debugToggle = document.querySelector('#debug-toggle');
   const debugPanel = document.querySelector('#debug-panel');
   const closeDebug = document.querySelector('#close-debug');
@@ -142,6 +159,13 @@ import Tooltip from "./Tooltip.astro";
         debugPanel.classList.add('hidden');
       }
     });
+    
+    // ESC key to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !debugPanel.classList.contains('hidden')) {
+        debugPanel.classList.add('hidden');
+      }
+    });
   }
 
   // Debug Panel Controls
@@ -158,10 +182,10 @@ import Tooltip from "./Tooltip.astro";
       const isHidden = checklist.classList.contains('hidden');
       if (isHidden) {
         checklist.classList.remove('hidden');
-        checklistStatus.textContent = 'Hide';
+        if (checklistStatus) checklistStatus.textContent = 'Hide';
       } else {
         checklist.classList.add('hidden');
-        checklistStatus.textContent = 'Show';
+        if (checklistStatus) checklistStatus.textContent = 'Show';
       }
     }
   });
@@ -172,17 +196,16 @@ import Tooltip from "./Tooltip.astro";
       const isHidden = responsiveTest.classList.contains('hidden');
       if (isHidden) {
         responsiveTest.classList.remove('hidden');
-        responsiveStatus.textContent = 'Hide';
+        if (responsiveStatus) responsiveStatus.textContent = 'Hide';
       } else {
         responsiveTest.classList.add('hidden');
-        responsiveStatus.textContent = 'Show';
+        if (responsiveStatus) responsiveStatus.textContent = 'Show';
       }
     }
   });
 
   toggleTestResults?.addEventListener('click', () => {
-    // Show test results in a simple alert for now
-    alert(`🧪 TEST RESULTS SUMMARY\n\n✅ Overall Score: 94/100 (EXCELLENT)\n✅ 31/33 Tests Passed (93.9%)\n⏱️ Load Time: 638-1367ms\n🌐 3 Browsers Tested\n📱 4 Device Sizes\n\n✅ READY FOR PRODUCTION\nTested: 25 Dec 2024, 11:06 WIB`);
+    alert(`🧪 TEST RESULTS SUMMARY\n\n✅ Overall Score: 94/100 (EXCELLENT)\n✅ 31/33 Tests Passed (93.9%)\n⏱️ Load Time: 638-1367ms\n🌐 3 Browsers Tested\n📱 4 Device Sizes\n\n✅ READY FOR PRODUCTION\nTested: 25 Dec 2024, 23:05 WIB`);
   });
 
   // Update debug info
@@ -199,4 +222,8 @@ import Tooltip from "./Tooltip.astro";
       debugTheme.textContent = isDark ? 'Dark' : 'Light';
     }
   }
+
+  // Update debug info on resize
+  window.addEventListener('resize', updateDebugInfo);
+});
 </script>

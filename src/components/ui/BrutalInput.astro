@@ -8,6 +8,7 @@ interface Props {
   value?: string;
   size?: 'sm' | 'md' | 'lg';
   className?: string;
+  hasSlot?: boolean;
 }
 
 const { 
@@ -18,7 +19,8 @@ const {
   id,
   value,
   size = 'md',
-  className = ""
+  className = "",
+  hasSlot = false
 } = Astro.props;
 
 const sizeClasses = {
@@ -28,14 +30,30 @@ const sizeClasses = {
 };
 
 const inputClasses = `${sizeClasses[size]} border-4 border-dark dark:border-light bg-white dark:bg-slate-800 text-dark dark:text-light font-bold focus:outline-none focus:ring-4 focus:ring-accent transition-all ${className}`;
+const wrapperClasses = `relative flex items-center border-4 border-dark dark:border-light bg-white dark:bg-slate-800 focus-within:ring-4 focus-within:ring-accent transition-all ${sizeClasses[size]}`;
 ---
 
-<input 
-  type={type}
-  placeholder={placeholder}
-  required={required}
-  name={name}
-  id={id}
-  value={value}
-  class={inputClasses}
-/>
+{hasSlot ? (
+  <div class={wrapperClasses}>
+    <input 
+      type={type}
+      placeholder={placeholder}
+      required={required}
+      name={name}
+      id={id}
+      value={value}
+      class={`flex-1 bg-transparent text-dark dark:text-light font-bold focus:outline-none border-0 ${className}`}
+    />
+    <slot />
+  </div>
+) : (
+  <input 
+    type={type}
+    placeholder={placeholder}
+    required={required}
+    name={name}
+    id={id}
+    value={value}
+    class={inputClasses}
+  />
+)}
