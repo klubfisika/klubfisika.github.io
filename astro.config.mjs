@@ -10,10 +10,35 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), qwikdev()],
   vite: {
     plugins: [tailwindcss()],
+    css: {
+      postcss: {
+        plugins: [
+          {
+            postcssPlugin: 'fix-invalid-selectors',
+            Rule(rule) {
+              // Remove invalid :visible:is() selectors
+              if (rule.selector && rule.selector.includes(':visible:is()')) {
+                rule.remove();
+              }
+            }
+          }
+        ]
+      }
+    },
     resolve: {
       alias: {
         '@': '/src',
-        '@assets': '/src/assets'
+        '@assets': '/src/assets',
+        '@components': '/src/components',
+        '@layouts': '/src/layouts',
+        '@pages': '/src/pages',
+        '@styles': '/src/styles',
+        '@scripts': '/src/scripts',
+        '@types': '/src/types',
+        '@data': '/src/data',
+        '@ui': '/src/components/ui',
+        '@blog': '/src/components/blog',
+        '@sections': '/src/components/sections'
       }
     }
   },
@@ -21,5 +46,8 @@ export default defineConfig({
     domains: ['localhost'],
     formats: ['webp', 'avif', 'jpeg'],
     quality: 80
-  }
+  },
+  // Add TinaCMS admin route
+  output: 'static',
+  adapter: undefined
 });
