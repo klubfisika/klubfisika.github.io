@@ -3,6 +3,9 @@ interface Props {
   icon?: string;
   title: string;
   description: string;
+  schedule?: string;
+  level?: string;
+  participants?: string;
   bgColor?: string;
   rotation?: string;
   className?: string;
@@ -11,7 +14,10 @@ interface Props {
 const { 
   icon = "🔬", 
   title, 
-  description, 
+  description,
+  schedule,
+  level,
+  participants,
   bgColor = "bg-pink", 
   rotation = "-rotate-2",
   className = ""
@@ -21,5 +27,25 @@ const {
 <div class={`${bgColor} card-brutal p-6 transform ${rotation} hover:rotate-0 ${className}`}>
   <div class="text-4xl mb-4">{icon}</div>
   <h3 class="text-2xl font-black uppercase text-dark mb-3">{title}</h3>
-  <p class="text-dark font-semibold">{description}</p>
+  <p class="text-dark font-semibold mb-4">{description}</p>
+  
+  {(schedule || level || participants) && (
+    <div class="border-t-2 border-dark pt-3 mt-3 space-y-2">
+      {schedule && (
+        <div class="text-xs font-bold text-dark">
+          📅 {schedule}
+        </div>
+      )}
+      {level && (
+        <div class="text-xs font-bold text-dark">
+          📊 Level: {level}
+        </div>
+      )}
+      {participants && (
+        <div class="text-xs font-bold text-dark">
+          👥 {participants}
+        </div>
+      )}
+    </div>
+  )}
 </div>
