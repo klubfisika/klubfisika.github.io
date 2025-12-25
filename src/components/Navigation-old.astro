@@ -1,0 +1,345 @@
+---
+import { Image } from 'astro:assets';
+import kf13Logo from '@assets/images/kf13-logo.png';
+import IconContainer from './ui/IconContainer.astro';
+
+// Navigation structure with submenus
+const navigationItems = [
+  {
+    label: "Tentang",
+    href: "/about",
+    submenu: [
+      { label: "Sejarah", href: "/about#sejarah" },
+      { label: "Visi & Misi", href: "/about#visi-misi" },
+      { label: "Tim Kami", href: "/about#tim" },
+      { label: "Nilai-Nilai", href: "/about#nilai" }
+    ]
+  },
+  {
+    label: "Program",
+    href: "/#program",
+    submenu: [
+      { label: "Workshop", href: "/events#workshop" },
+      { label: "Seminar", href: "/events#seminar" },
+      { label: "Kompetisi", href: "/events#kompetisi" },
+      { label: "Mentoring", href: "/events#mentoring" }
+    ]
+  },
+  {
+    label: "Konten",
+    href: "/blog",
+    submenu: [
+      { label: "Artikel", href: "/blog" },
+      { label: "Tutorial", href: "/blog?category=tutorial" },
+      { label: "Eksperimen", href: "/blog?category=eksperimen" },
+      { label: "Teori", href: "/blog?category=teori" }
+    ]
+  },
+  {
+    label: "Komunitas",
+    href: "/events",
+    submenu: [
+      { label: "Events", href: "/events" },
+      { label: "Galeri", href: "/#galeri" },
+      { label: "Partnership", href: "/partnership" },
+      { label: "Research", href: "/research" }
+    ]
+  },
+  { label: "Kontak", href: "/contact" },
+  { label: "Gabung", href: "/#gabung", highlight: true }
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-surface/90 dark:bg-surface-dark/90 backdrop-blur-md border-b-4 border-dark dark:border-light transition-colors">
+  <div class="max-w-6xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo/Brand -->
+      <a href="/" class="flex items-center gap-3 hover:scale-105 transition-transform">
+        <IconContainer variant="solid" class="!bg-white border-2 border-dark dark:border-light transform rotate-12 overflow-hidden">
+          <div class="w-full h-full bg-white flex items-center justify-center">
+            <Image 
+              src={kf13Logo}
+              alt="KF13 Logo"
+              width={32}
+              height={32}
+              format="webp"
+              quality={90}
+              class="w-8 h-8 object-contain"
+            />
+          </div>
+        </IconContainer>
+        <div>
+          <h1 class="font-black text-lg text-dark dark:text-light">KF13</h1>
+          <p class="text-xs font-semibold text-dark dark:text-light opacity-75">Klub Fisika Indonesia</p>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-6">
+        {navigationItems.map((item, index) => (
+          <div class="relative group">
+            {item.submenu ? (
+              <!-- Dropdown Menu Item -->
+              <button 
+                class={`font-bold text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark transition-colors transform hover:scale-105 flex items-center gap-1 ${index % 2 === 0 ? 'hover:rotate-1' : 'hover:-rotate-1'}`}
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {item.label}
+                <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              
+              <!-- Dropdown Content -->
+              <div class="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-surface-dark border-4 border-dark dark:border-light shadow-brutal opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform rotate-1 group-hover:rotate-0">
+                <div class="py-2">
+                  {item.submenu.map((subItem) => (
+                    <a 
+                      href={subItem.href}
+                      class="block px-4 py-2 text-sm font-bold text-dark dark:text-light hover:bg-primary hover:text-white transition-colors"
+                    >
+                      {subItem.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <!-- Regular Menu Item -->
+              <a 
+                href={item.href}
+                class={`font-bold transition-colors transform hover:scale-105 ${
+                  item.highlight 
+                    ? 'bg-primary text-white px-4 py-2 border-2 border-dark hover:bg-accent hover:rotate-1' 
+                    : `text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark ${index % 2 === 0 ? 'hover:rotate-1' : 'hover:-rotate-1'}`
+                }`}
+              >
+                {item.label}
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-btn"
+        class="lg:hidden p-2 text-dark dark:text-light hover:text-primary transition-colors"
+        aria-label="Toggle mobile menu"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div 
+      id="mobile-menu"
+      class="lg:hidden mt-4 pb-4 border-t-2 border-dark dark:border-light hidden"
+    >
+      <div class="space-y-2 pt-4">
+        {navigationItems.map((item) => (
+          <div>
+            {item.submenu ? (
+              <div>
+                <button 
+                  class="mobile-dropdown-btn w-full text-left font-bold text-dark dark:text-light hover:text-primary py-2 flex items-center justify-between"
+                  data-target={`mobile-submenu-${item.label.toLowerCase()}`}
+                >
+                  {item.label}
+                  <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div 
+                  id={`mobile-submenu-${item.label.toLowerCase()}`}
+                  class="mobile-submenu hidden pl-4 space-y-1 mt-1"
+                >
+                  {item.submenu.map((subItem) => (
+                    <a 
+                      href={subItem.href}
+                      class="block py-1 text-sm font-semibold text-dark dark:text-light opacity-75 hover:opacity-100 hover:text-primary transition-colors"
+                    >
+                      {subItem.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <a 
+                href={item.href}
+                class={`block font-bold py-2 transition-colors ${
+                  item.highlight 
+                    ? 'bg-primary text-white px-4 py-2 border-2 border-dark text-center' 
+                    : 'text-dark dark:text-light hover:text-primary'
+                }`}
+              >
+                {item.label}
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+// Mobile menu toggle
+document.addEventListener('DOMContentLoaded', () => {
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  mobileMenuBtn?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.contains('hidden');
+    
+    if (isOpen) {
+      mobileMenu?.classList.remove('hidden');
+      mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    } else {
+      mobileMenu?.classList.add('hidden');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Mobile dropdown toggles
+  document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-target');
+      const submenu = document.getElementById(targetId);
+      const icon = btn.querySelector('svg');
+      
+      if (submenu?.classList.contains('hidden')) {
+        submenu.classList.remove('hidden');
+        icon?.classList.add('rotate-180');
+      } else {
+        submenu?.classList.add('hidden');
+        icon?.classList.remove('rotate-180');
+      }
+    });
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const nav = document.querySelector('nav');
+    if (!nav?.contains(e.target as Node)) {
+      mobileMenu?.classList.add('hidden');
+      mobileMenuBtn?.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
+</script>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-btn"
+        class="md:hidden btn-secondary p-2"
+        aria-label="Toggle mobile menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+      <div class="flex flex-col gap-3">
+        {[
+          { label: "Tentang", href: "/#tentang" },
+          { label: "Program", href: "/#program" },
+          { label: "Blog", href: "/blog" },
+          { label: "Events", href: "/events" },
+          { label: "Galeri", href: "/#galeri" },
+          { label: "Mitra", href: "/partnership" },
+          { label: "Kontak", href: "/contact" },
+          { label: "Gabung", href: "/#gabung" }
+        ].map((item, index) => (
+          <a 
+            href={item.href}
+            class={`${
+              index % 4 === 0 ? 'btn-primary' : 
+              index % 4 === 1 ? 'btn-accent' : 
+              index % 4 === 2 ? 'btn-secondary' : 
+              'bg-gray-600 text-on-dark dark:bg-gray-700'
+            } border-2 border-dark dark:border-light p-3 font-bold transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-transform`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  mobileMenuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Navigation handling with smooth scroll
+  mobileMenuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Handle navigation links with smooth scroll
+  document.querySelectorAll('nav a[href]').forEach(link => {
+    link.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      
+      // Close mobile menu for any navigation
+      mobileMenu?.classList.add('hidden');
+      
+      // Handle hash links on current page
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          const navHeight = 80;
+          const targetPosition = target.offsetTop - navHeight;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+      // Handle absolute hash links (/#section)
+      else if (href && href.startsWith('/#')) {
+        const hash = href.substring(1); // Remove leading /
+        if (window.location.pathname === '/') {
+          // On home page, scroll to section
+          e.preventDefault();
+          const target = document.querySelector(hash);
+          if (target) {
+            const navHeight = 80;
+            const targetPosition = target.offsetTop - navHeight;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+        // On other pages, let browser navigate normally (will go to home + hash)
+      }
+    });
+  });
+
+  // Add scroll effect to navbar
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 100) {
+      nav?.classList.add('bg-surface/95', 'dark:bg-surface-dark/95');
+      nav?.classList.remove('bg-surface/90', 'dark:bg-surface-dark/90');
+    } else {
+      nav?.classList.remove('bg-surface/95', 'dark:bg-surface-dark/95');
+      nav?.classList.add('bg-surface/90', 'dark:bg-surface-dark/90');
+    }
+  });
+});
+</script>
