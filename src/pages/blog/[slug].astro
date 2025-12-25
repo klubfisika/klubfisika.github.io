@@ -4,6 +4,10 @@ import BaseHead from "@/components/BaseHead.astro";
 import Navigation from "@/components/Navigation.astro";
 import Footer from "@/components/sections/Footer.astro";
 import FloatingActions from "@/components/ui/FloatingActions.astro";
+import Heading from "@/components/ui/Heading.astro";
+import Text from "@/components/ui/Text.astro";
+import BrutalCard from "@/components/ui/BrutalCard.astro";
+import BrutalSection from "@/components/ui/BrutalSection.astro";
 import BackToTop from "@/components/ui/BackToTop.astro";
 
 export async function getStaticPaths() {
@@ -172,29 +176,29 @@ const { post } = Astro.props;
         <BackToTop threshold={300} />
         
         <main class="pt-20">
-            <!-- Article Header -->
-            <article class="max-w-4xl mx-auto px-6 py-12">
-                <!-- Breadcrumb -->
-                <nav class="mb-8">
-                    <div class="flex items-center gap-2 text-sm">
-                        <a href="/" class="text-primary dark:text-primary-dark hover:underline font-semibold">Home</a>
-                        <span class="text-dark dark:text-light opacity-50">→</span>
-                        <a href="/blog" class="text-primary dark:text-primary-dark hover:underline font-semibold">Blog</a>
-                        <span class="text-dark dark:text-light opacity-50">→</span>
-                        <span class="text-dark dark:text-light opacity-75">{post.category}</span>
-                    </div>
-                </nav>
+            <BrutalSection background="surface" padding="lg">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Breadcrumb -->
+                    <nav class="mb-8">
+                        <div class="flex items-center gap-2 text-sm">
+                            <a href="/" class="text-primary dark:text-primary-dark hover:underline font-semibold">Home</a>
+                            <span class="text-dark dark:text-light opacity-50">→</span>
+                            <a href="/blog" class="text-primary dark:text-primary-dark hover:underline font-semibold">Blog</a>
+                            <span class="text-dark dark:text-light opacity-50">→</span>
+                            <span class="text-dark dark:text-light opacity-75">{post.category}</span>
+                        </div>
+                    </nav>
 
-                <!-- Article Meta -->
-                <div class="mb-8">
-                    <div class="flex flex-wrap items-center gap-4 mb-6">
-                        <span class={`px-3 py-1 text-xs font-bold border-2 border-dark dark:border-light ${
-                            post.category === 'Tutorial' ? 'bg-blue text-white' :
-                            post.category === 'Eksperimen' ? 'bg-green-500 text-white' :
-                            post.category === 'Teori' ? 'bg-purple-500 text-white' :
-                            post.category === 'Tips Belajar' ? 'bg-orange-500 text-white' :
-                            'bg-pink text-white'
-                        }`}>
+                    <!-- Article Meta -->
+                    <div class="mb-8">
+                        <div class="flex flex-wrap items-center gap-4 mb-6">
+                            <span class={`px-3 py-1 text-xs font-bold border-2 border-dark dark:border-light ${
+                                post.category === 'Tutorial' ? 'bg-blue text-white' :
+                                post.category === 'Eksperimen' ? 'bg-green-500 text-white' :
+                                post.category === 'Teori' ? 'bg-purple-500 text-white' :
+                                post.category === 'Tips Belajar' ? 'bg-orange-500 text-white' :
+                                'bg-pink text-white'
+                            }`}>
                             {post.category.toUpperCase()}
                         </span>
                         <span class="text-sm text-dark dark:text-light opacity-75">📅 {post.date}</span>
@@ -202,13 +206,13 @@ const { post } = Astro.props;
                         <span class="text-sm text-dark dark:text-light opacity-75">👨‍🏫 {post.author}</span>
                     </div>
                     
-                    <h1 class="text-3xl md:text-5xl font-black uppercase leading-tight text-dark dark:text-light mb-6">
+                    <Heading level="h1" size="4xl" weight="black" color="primary">
                         {post.title}
-                    </h1>
+                    </Heading>
                     
-                    <p class="text-lg text-dark dark:text-light opacity-80 leading-relaxed mb-8">
+                    <Text size="lg" color="muted" class="mb-8">
                         {post.excerpt}
-                    </p>
+                    </Text>
                     
                     <!-- Tags -->
                     <div class="flex flex-wrap gap-2">
@@ -219,22 +223,26 @@ const { post } = Astro.props;
                         ))}
                     </div>
                 </div>
+            </BrutalSection>
 
-                <!-- Article Content -->
-                <div class="prose prose-lg max-w-none">
-                    <div class="bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-8 shadow-brutal">
+            <!-- Article Content -->
+            <BrutalSection background="white" padding="lg">
+                <div class="max-w-4xl mx-auto">
+                    <BrutalCard padding="lg">
                         <div 
-                            class="article-content text-dark dark:text-light"
+                            class="article-content prose prose-lg max-w-none text-dark dark:text-light"
                             set:html={post.content}
                         />
-                    </div>
+                    </BrutalCard>
                 </div>
+            </BrutalSection>
 
-                <!-- Article Footer -->
-                <div class="mt-12 pt-8 border-t-4 border-dark dark:border-light">
+            <!-- Article Footer -->
+            <BrutalSection background="surface" padding="lg">
+                <div class="max-w-4xl mx-auto">
                     <!-- Share Buttons -->
                     <div class="mb-8">
-                        <h3 class="text-xl font-black uppercase text-dark dark:text-light mb-4">📤 BAGIKAN ARTIKEL</h3>
+                        <Heading level="h3" size="xl" weight="black" color="primary" class="mb-4">📤 BAGIKAN ARTIKEL</Heading>
                         <div class="flex flex-wrap gap-3">
                             <a 
                                 href={`https://wa.me/?text=Baca artikel fisika menarik: ${post.title} https://klubfisika.org/blog/${post.slug}`}
@@ -273,13 +281,13 @@ const { post } = Astro.props;
                                 <span class="text-2xl text-white">👨‍🔬</span>
                             </div>
                             <div>
-                                <h5 class="font-bold text-dark dark:text-light mb-2">{post.author}</h5>
-                                <p class="text-sm text-dark dark:text-light opacity-80">
+                                <Heading level="h5" size="base" weight="bold" color="primary" class="mb-2">{post.author}</Heading>
+                                <Text size="sm" color="muted">
                                     Kontributor aktif KF13 yang berpengalaman dalam pembelajaran fisika dan eksperimen praktis.
-                                </p>
+                                </Text>
                             </div>
                         </div>
-                    </div>
+                    </BrutalCard>
 
                     <!-- Navigation -->
                     <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-between">
@@ -297,7 +305,8 @@ const { post } = Astro.props;
                         </a>
                     </div>
                 </div>
-            </article>
+            </BrutalSection>
+        </main>
         </main>
 
         <Footer />

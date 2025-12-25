@@ -5,7 +5,9 @@ import Navigation from "../components/Navigation.astro";
 import Footer from "../components/sections/Footer.astro";
 import FloatingActions from "../components/ui/FloatingActions.astro";
 import BackToTop from "../components/ui/BackToTop.astro";
-import SectionHeader from "../components/ui/SectionHeader.astro";
+import SectionHeaderWithHash from "../components/ui/SectionHeaderWithHash.astro";
+import BrutalInput from "../components/ui/BrutalInput.astro";
+import BrutalButton from "../components/ui/BrutalButton.astro";
 import BrutalCard from "../components/ui/BrutalCard.astro";
 import Heading from "../components/ui/Heading.astro";
 import Text from "../components/ui/Text.astro";
@@ -47,33 +49,215 @@ import GradientSection from "../components/ui/GradientSection.astro";
                 </div>
             </GradientSection>
 
-            <!-- Categories Filter -->
-            <section class="py-12 bg-white dark:bg-slate-700 transition-colors">
-                <div class="max-w-6xl mx-auto px-6">
-                    <div class="flex flex-wrap justify-center gap-4 mb-8">
-                        {[
-                            { name: "Semua", slug: "all", bg: "bg-surface text-on-surface", active: true },
-                            { name: "Tutorial", slug: "tutorial", bg: "btn-primary" },
-                            { name: "Eksperimen", slug: "eksperimen", bg: "btn-accent" },
-                            { name: "Teori", slug: "teori", bg: "btn-primary" },
-                            { name: "Tips Belajar", slug: "tips", bg: "btn-secondary" },
-                            { name: "Berita", slug: "berita", bg: "btn-accent" }
-                        ].map((category, index) => (
-                            <button 
-                                class={`${category.bg} ${category.active ? 'scale-110' : ''} dark:bg-slate-600 border-3 border-dark dark:border-light px-6 py-3 font-black hover:scale-105 transition-transform transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0`}
-                                data-category={category.slug}
-                            >
-                                {category.name}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <!-- Main Content with Sidebar -->
+            <BrutalSection background="white" padding="xl">
+                <div class="max-w-7xl mx-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                        <!-- Sidebar -->
+                        <aside class="lg:col-span-1 space-y-6" role="complementary" aria-label="Sidebar navigasi blog">
+                            <!-- Search -->
+                            <BrutalCard background="surface" class="sticky top-24">
+                                <Heading level="h2" size="lg" weight="black" color="primary" class="mb-4">
+                                    🔍 CARI ARTIKEL
+                                </Heading>
+                                <form role="search" aria-label="Pencarian artikel" class="space-y-3">
+                                    <label for="search-input" class="sr-only">Cari artikel fisika</label>
+                                    <BrutalInput 
+                                        type="text" 
+                                        placeholder="Cari topik fisika..." 
+                                        id="search-input"
+                                        aria-label="Masukkan kata kunci pencarian artikel"
+                                        aria-describedby="search-help"
+                                    />
+                                    <div id="search-help" class="sr-only">
+                                        Ketik kata kunci untuk mencari artikel fisika, tutorial, atau eksperimen
+                                    </div>
+                                    <BrutalButton 
+                                        variant="primary" 
+                                        class="w-full"
+                                        type="submit"
+                                        aria-label="Mulai pencarian artikel"
+                                    >
+                                        CARI
+                                    </BrutalButton>
+                                </form>
+                                <!-- Live region for search results -->
+                                <div id="search-results" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+                            </BrutalCard>
 
-            <!-- Featured Articles -->
-            <section class="py-20 bg-surface dark:bg-slate-800 transition-colors">
-                <div class="max-w-6xl mx-auto px-6">
-                    <SectionHeader title="ARTIKEL UNGGULAN" subtitle="Konten terpopuler dan terbaru" className="mb-16" />
+                            <!-- Categories -->
+                            <BrutalCard background="accent">
+                                <Heading level="h2" size="lg" weight="black" color="primary" class="mb-4">
+                                    📂 KATEGORI
+                                </Heading>
+                                <nav role="navigation" aria-label="Filter kategori artikel">
+                                    <div class="space-y-2" role="group" aria-label="Pilihan kategori artikel">
+                                        {[
+                                            { name: "Semua", slug: "all", active: true },
+                                            { name: "Tutorial", slug: "tutorial" },
+                                            { name: "Eksperimen", slug: "eksperimen" },
+                                            { name: "Teori", slug: "teori" },
+                                            { name: "Tips Belajar", slug: "tips" },
+                                            { name: "Berita", slug: "berita" }
+                                        ].map((category) => (
+                                            <button 
+                                                class={`w-full text-left px-3 py-2 text-sm font-bold border-2 border-dark dark:border-light transition-all hover:scale-105 focus:outline-none focus:ring-4 focus:ring-primary/50 ${
+                                                    category.active 
+                                                        ? 'bg-primary text-white' 
+                                                        : 'bg-white text-dark hover:bg-primary hover:text-white'
+                                                }`}
+                                                data-category={category.slug}
+                                                aria-pressed={category.active ? 'true' : 'false'}
+                                                aria-label={`Filter artikel kategori ${category.name}`}
+                                            >
+                                                {category.name}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </nav>
+                                <!-- Live region for filter results -->
+                                <div id="filter-results" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+                            </BrutalCard>
+
+                            <!-- Popular Tags -->
+                            <BrutalCard background="primary">
+                                <Heading level="h2" size="lg" weight="black" color="white" class="mb-4">
+                                    🏷️ TAG POPULER
+                                </Heading>
+                                <nav role="navigation" aria-label="Tag artikel populer">
+                                    <div class="flex flex-wrap gap-2" role="group" aria-label="Daftar tag artikel">
+                                        {[
+                                            { name: "Fisika Kuantum", count: 12 },
+                                            { name: "Eksperimen", count: 8 },
+                                            { name: "Newton", count: 6 },
+                                            { name: "Relativitas", count: 4 },
+                                            { name: "Gelombang", count: 7 },
+                                            { name: "Optik", count: 5 },
+                                            { name: "Termodinamika", count: 3 }
+                                        ].map((tag) => (
+                                            <button 
+                                                class={`px-2 py-1 text-xs font-bold border border-white text-white hover:bg-white hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary ${
+                                                    tag.count > 6 ? 'text-sm' : tag.count > 4 ? 'text-xs' : 'text-xs opacity-75'
+                                                }`}
+                                                aria-label={`Filter artikel dengan tag ${tag.name}, ${tag.count} artikel`}
+                                                title={`${tag.count} artikel dengan tag ${tag.name}`}
+                                            >
+                                                {tag.name} ({tag.count})
+                                            </button>
+                                        ))}
+                                    </div>
+                                </nav>
+                            </BrutalCard>
+
+                            <!-- Recent Articles -->
+                            <BrutalCard background="white">
+                                <Heading level="h2" size="lg" weight="black" color="primary" class="mb-4">
+                                    📰 ARTIKEL TERBARU
+                                </Heading>
+                                <nav role="navigation" aria-label="Artikel terbaru">
+                                    <ul class="space-y-3" role="list">
+                                        {[
+                                            { title: "Hukum Termodinamika dalam Kehidupan", date: "23 Des 2024", readTime: "4 min" },
+                                            { title: "Eksperimen Listrik Statis Sederhana", date: "22 Des 2024", readTime: "6 min" },
+                                            { title: "Memahami Spektrum Cahaya", date: "21 Des 2024", readTime: "5 min" }
+                                        ].map((article) => (
+                                            <li role="listitem">
+                                                <a 
+                                                    href="#" 
+                                                    class="block border-l-4 border-primary pl-3 hover:bg-surface transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                                                    aria-label={`Baca artikel: ${article.title}, dipublikasi ${article.date}, estimasi baca ${article.readTime}`}
+                                                >
+                                                    <Text size="sm" weight="bold" class="mb-1 hover:text-primary">
+                                                        {article.title}
+                                                    </Text>
+                                                    <div class="flex items-center gap-2 text-xs opacity-75">
+                                                        <time datetime={article.date} aria-label={`Dipublikasi ${article.date}`}>
+                                                            📅 {article.date}
+                                                        </time>
+                                                        <span aria-label={`Estimasi waktu baca ${article.readTime}`}>
+                                                            ⏱️ {article.readTime}
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </nav>
+                            </BrutalCard>
+
+                            <!-- Blog Stats -->
+                            <BrutalCard background="accent">
+                                <Heading level="h2" size="lg" weight="black" color="primary" class="mb-4">
+                                    📊 STATISTIK BLOG
+                                </Heading>
+                                <div class="space-y-3" role="region" aria-label="Statistik blog KF13">
+                                    <div class="flex justify-between items-center">
+                                        <Text size="sm" weight="bold">Total Artikel:</Text>
+                                        <Text size="sm" weight="black" color="primary" aria-label="127 total artikel">127</Text>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <Text size="sm" weight="bold">Total Pembaca:</Text>
+                                        <Text size="sm" weight="black" color="primary" aria-label="15.200 total pembaca">15.2K</Text>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <Text size="sm" weight="bold">Artikel Bulan Ini:</Text>
+                                        <Text size="sm" weight="black" color="primary" aria-label="8 artikel bulan ini">8</Text>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <Text size="sm" weight="bold">Kategori Aktif:</Text>
+                                        <Text size="sm" weight="black" color="primary" aria-label="6 kategori aktif">6</Text>
+                                    </div>
+                                </div>
+                            </BrutalCard>
+
+                            <!-- Newsletter -->
+                            <BrutalCard background="secondary">
+                                <Heading level="h2" size="lg" weight="black" color="primary" class="mb-4">
+                                    📧 NEWSLETTER
+                                </Heading>
+                                <Text size="sm" class="mb-4">
+                                    Dapatkan artikel terbaru langsung di email!
+                                </Text>
+                                <form class="space-y-3" aria-label="Berlangganan newsletter KF13">
+                                    <label for="newsletter-email" class="sr-only">
+                                        Alamat email untuk berlangganan newsletter
+                                    </label>
+                                    <BrutalInput 
+                                        type="email" 
+                                        placeholder="email@example.com"
+                                        id="newsletter-email"
+                                        required
+                                        aria-label="Masukkan alamat email Anda"
+                                        aria-describedby="newsletter-help newsletter-privacy"
+                                    />
+                                    <div id="newsletter-help" class="sr-only">
+                                        Masukkan alamat email valid untuk menerima artikel fisika terbaru
+                                    </div>
+                                    <BrutalButton 
+                                        variant="primary" 
+                                        type="submit" 
+                                        class="w-full"
+                                        aria-label="Berlangganan newsletter KF13"
+                                    >
+                                        BERLANGGANAN
+                                    </BrutalButton>
+                                </form>
+                                <Text size="xs" color="muted" class="mt-2" id="newsletter-privacy">
+                                    Gratis, tanpa spam, bisa unsubscribe kapan saja
+                                </Text>
+                                <!-- Success/Error messages -->
+                                <div id="newsletter-status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+                            </BrutalCard>
+                        </aside>
+
+                        <!-- Main Content -->
+                        <main class="lg:col-span-3">
+                            <SectionHeaderWithHash 
+                                id="articles"
+                                title="⭐ ARTIKEL TERBARU" 
+                                subtitle="Konten terpopuler dan terbaru dari komunitas"
+                                class="mb-8"
+                            />
                     
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
                         <!-- Main Featured Article -->
@@ -174,6 +358,8 @@ import GradientSection from "../components/ui/GradientSection.astro";
                             <BrutalCard 
                                 variant={article.bg === 'btn-primary' ? 'primary' : article.bg === 'btn-secondary' ? 'secondary' : 'accent'}
                                 rotation={index % 2 === 0 ? 'right' : 'left'}
+                                class="data-article"
+                                data-article={article.category.toLowerCase()}
                             >
                                 <div class="mb-4">
                                     <span class={`${article.categoryBg} px-3 py-1 text-xs font-bold border-2 border-dark`}>
@@ -210,58 +396,145 @@ import GradientSection from "../components/ui/GradientSection.astro";
                         ))}
                     </div>
 
-                    <!-- Load More -->
-                    <div class="text-center mt-16">
-                        <button class="bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light px-8 py-4 font-black text-dark dark:text-light hover:scale-105 transition-transform transform rotate-1 hover:rotate-0">
-                            📚 MUAT ARTIKEL LAINNYA
-                        </button>
+                            <!-- Load More -->
+                            <div class="text-center mt-16">
+                                <BrutalButton variant="accent" class="transform rotate-1 hover:rotate-0">
+                                    📚 MUAT ARTIKEL LAINNYA
+                                </BrutalButton>
+                            </div>
+                        </main>
                     </div>
                 </div>
-            </section>
-
-            <!-- Newsletter Subscription -->
-            <section class="py-20 bg-white dark:bg-slate-700 transition-colors">
-                <div class="max-w-4xl mx-auto px-6 text-center">
-                    <div class="bg-secondary dark:bg-secondary-dark border-4 border-dark dark:border-light p-8 transform -rotate-1 shadow-brutal">
-                        <h2 class="text-3xl font-black uppercase text-dark dark:text-light mb-6">
-                            📧 BERLANGGANAN NEWSLETTER
-                        </h2>
-                        <p class="text-lg font-semibold text-dark dark:text-light mb-8">
-                            Dapatkan artikel fisika terbaru, tips belajar, dan info kegiatan KF13 langsung di email Anda!
-                        </p>
-                        
-                        <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                            <input 
-                                type="email" 
-                                placeholder="email@example.com"
-                                class="flex-1 px-4 py-3 border-3 border-dark dark:border-light font-semibold text-dark bg-white focus:outline-none focus:ring-4 focus:ring-primary/50"
-                                required
-                            />
-                            <button 
-                                type="submit"
-                                class="btn-primary border-3 border-dark dark:border-light px-6 py-3 font-black hover:scale-105 transition-transform"
-                            >
-                                BERLANGGANAN
-                            </button>
-                        </form>
-                        
-                        <p class="text-xs text-dark dark:text-light mt-4 opacity-75">
-                            Gratis, tanpa spam, bisa unsubscribe kapan saja
-                        </p>
-                    </div>
-                </div>
-            </section>
+            </BrutalSection>
         </main>
 
         <Footer />
 
         <script>
-            // Category filter functionality
+            // Enhanced WCAG-compliant functionality
             document.addEventListener('DOMContentLoaded', () => {
+                const searchInput = document.getElementById('search-input');
+                const articles = document.querySelectorAll('[data-article]');
                 const categoryButtons = document.querySelectorAll('[data-category]');
+                const searchResults = document.getElementById('search-results');
+                const filterResults = document.getElementById('filter-results');
                 
+                // Enhanced search functionality with accessibility
+                searchInput?.addEventListener('input', (e) => {
+                    const query = e.target.value.toLowerCase();
+                    let visibleCount = 0;
+                    
+                    articles.forEach(article => {
+                        const title = article.querySelector('h3')?.textContent.toLowerCase() || '';
+                        const excerpt = article.querySelector('p')?.textContent.toLowerCase() || '';
+                        const category = article.getAttribute('data-article') || '';
+                        
+                        const matches = title.includes(query) || excerpt.includes(query) || category.includes(query);
+                        article.style.display = matches ? 'block' : 'none';
+                        
+                        if (matches) visibleCount++;
+                    });
+                    
+                    // Update screen reader with results
+                    if (searchResults) {
+                        const message = query 
+                            ? `Ditemukan ${visibleCount} artikel yang cocok dengan pencarian "${query}"`
+                            : 'Menampilkan semua artikel';
+                        searchResults.textContent = message;
+                    }
+                });
+                
+                // Enhanced category filter with ARIA states
                 categoryButtons.forEach(button => {
                     button.addEventListener('click', () => {
+                        // Update ARIA states
+                        categoryButtons.forEach(btn => {
+                            btn.setAttribute('aria-pressed', 'false');
+                            btn.classList.remove('bg-primary', 'text-white');
+                            btn.classList.add('bg-white', 'text-dark');
+                        });
+                        
+                        // Set active state
+                        button.setAttribute('aria-pressed', 'true');
+                        button.classList.remove('bg-white', 'text-dark');
+                        button.classList.add('bg-primary', 'text-white');
+                        
+                        const category = button.getAttribute('data-category');
+                        let visibleCount = 0;
+                        
+                        articles.forEach(article => {
+                            const articleCategory = article.getAttribute('data-article');
+                            const matches = category === 'all' || articleCategory === category;
+                            article.style.display = matches ? 'block' : 'none';
+                            
+                            if (matches) visibleCount++;
+                        });
+                        
+                        // Update screen reader with filter results
+                        if (filterResults) {
+                            const categoryName = button.textContent;
+                            const message = category === 'all' 
+                                ? `Menampilkan semua ${visibleCount} artikel`
+                                : `Menampilkan ${visibleCount} artikel kategori ${categoryName}`;
+                            filterResults.textContent = message;
+                        }
+                        
+                        // Announce to screen readers
+                        button.focus();
+                    });
+                    
+                    // Handle keyboard navigation
+                    button.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            button.click();
+                        }
+                    });
+                });
+                
+                // Newsletter form accessibility
+                const newsletterForm = document.querySelector('form[aria-label*="newsletter"]');
+                const newsletterStatus = document.getElementById('newsletter-status');
+                
+                newsletterForm?.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = e.target.querySelector('input[type="email"]').value;
+                    
+                    // Simulate subscription (replace with actual API call)
+                    if (newsletterStatus) {
+                        newsletterStatus.textContent = `Berhasil berlangganan dengan email ${email}. Terima kasih!`;
+                    }
+                    
+                    // Reset form
+                    e.target.reset();
+                    
+                    // Focus back to form for screen readers
+                    setTimeout(() => {
+                        e.target.querySelector('input[type="email"]').focus();
+                    }, 2000);
+                });
+                
+                // Enhanced keyboard navigation for article cards
+                articles.forEach(article => {
+                    const links = article.querySelectorAll('a, button');
+                    links.forEach(link => {
+                        link.addEventListener('focus', () => {
+                            article.classList.add('ring-2', 'ring-primary', 'ring-offset-2');
+                        });
+                        
+                        link.addEventListener('blur', () => {
+                            article.classList.remove('ring-2', 'ring-primary', 'ring-offset-2');
+                        });
+                    });
+                });
+                
+                // Skip link functionality
+                const skipLink = document.createElement('a');
+                skipLink.href = '#articles';
+                skipLink.textContent = 'Langsung ke konten artikel';
+                skipLink.className = 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-white px-4 py-2 z-50';
+                document.body.insertBefore(skipLink, document.body.firstChild);
+            });
                         // Remove active state from all buttons
                         categoryButtons.forEach(btn => {
                             btn.classList.remove('scale-110');
@@ -271,13 +544,6 @@ import GradientSection from "../components/ui/GradientSection.astro";
                         button.classList.add('scale-110');
                         
                         // Here you would filter articles based on category
-                        const category = button.dataset.category;
-                        console.log('Filter by category:', category);
-                        
-                        // TODO: Implement article filtering logic
-                    });
-                });
-            });
         </script>
     </body>
 </html>
