@@ -1,0 +1,327 @@
+---
+import "../styles/design-system.css";
+import BaseHead from "../components/BaseHead.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/sections/Footer.astro";
+import FloatingActions from "../components/ui/FloatingActions.astro";
+import ScrollProgress from "../components/ui/ScrollProgress.astro";
+import BackToTop from "../components/ui/BackToTop.astro";
+import SectionHeader from "../components/ui/SectionHeader.astro";
+---
+
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+    <head>
+        <BaseHead 
+            title="Kontak & Lokasi - KF13 Klub Fisika Indonesia" 
+            description="Hubungi KF13 dan kunjungi Sanggar Fisika kami di Yogyakarta. Alamat lengkap, kontak WhatsApp, email, dan media sosial."
+        />
+        <script>
+          if (localStorage.theme === 'dark' || 
+              (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          }
+        </script>
+    </head>
+    <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">
+        <ScrollProgress />
+        <Navigation />
+        <FloatingActions />
+        <BackToTop threshold={300} />
+        
+        <main class="pt-20">
+            <!-- Hero Section -->
+            <section class="bg-gradient-to-br from-blue-200 via-purple-100 to-pink-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-600 py-20 transition-colors">
+                <div class="max-w-6xl mx-auto px-6 text-center">
+                    <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-dark dark:text-light transform -rotate-1 mb-8">
+                        KONTAK & <span class="text-secondary dark:text-secondary-dark">LOKASI</span>
+                    </h1>
+                    <div class="bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal max-w-2xl mx-auto">
+                        <p class="text-xl font-bold text-dark dark:text-light mb-4">
+                            📍 Mari Berkunjung ke Sanggar Fisika KF13!
+                        </p>
+                        <p class="text-dark dark:text-light font-semibold">
+                            Temukan kami di Yogyakarta dan bergabunglah dalam komunitas fisika yang penuh semangat belajar.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Methods -->
+            <section class="py-20 bg-white dark:bg-slate-700 transition-colors">
+                <div class="max-w-6xl mx-auto px-6">
+                    <SectionHeader title="HUBUNGI KAMI" subtitle="Berbagai cara untuk terhubung dengan KF13" className="mb-16" />
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            {
+                                title: "WhatsApp Admin",
+                                icon: "📱",
+                                info: "+62 822-2500-9253",
+                                description: "Chat langsung dengan admin KF13 untuk info cepat",
+                                action: "Chat Sekarang",
+                                link: "https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20ingin%20bertanya%20tentang%20klub%20fisika",
+                                bg: "bg-green-500",
+                                urgent: true
+                            },
+                            {
+                                title: "Email Resmi",
+                                icon: "📧",
+                                info: "info@klubfisika.org",
+                                description: "Untuk pertanyaan formal, kerjasama, dan proposal",
+                                action: "Kirim Email",
+                                link: "mailto:info@klubfisika.org",
+                                bg: "bg-blue",
+                                urgent: false
+                            },
+                            {
+                                title: "Instagram",
+                                icon: "📸",
+                                info: "@klubfisika13",
+                                description: "Follow untuk update kegiatan dan konten edukatif",
+                                action: "Follow IG",
+                                link: "https://instagram.com/klubfisika13",
+                                bg: "bg-pink",
+                                urgent: false
+                            },
+                            {
+                                title: "YouTube Channel",
+                                icon: "🎥",
+                                info: "KF13 Fisika Indonesia",
+                                description: "Video pembelajaran dan dokumentasi kegiatan",
+                                action: "Subscribe",
+                                link: "https://youtube.com/@klubfisika13",
+                                bg: "bg-red-500",
+                                urgent: false
+                            },
+                            {
+                                title: "Telegram Group",
+                                icon: "💬",
+                                info: "KF13 Community",
+                                description: "Diskusi fisika dan sharing materi pembelajaran",
+                                action: "Join Group",
+                                link: "https://t.me/klubfisika13",
+                                bg: "bg-accent",
+                                urgent: false
+                            },
+                            {
+                                title: "GitHub Repository",
+                                icon: "💻",
+                                info: "klubfisika/resources",
+                                description: "Akses materi pembelajaran dan project open source",
+                                action: "View Repo",
+                                link: "https://github.com/klubfisika",
+                                bg: "bg-gray-600",
+                                urgent: false
+                            }
+                        ].map((contact, index) => (
+                            <div class={`${contact.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm relative`}>
+                                {contact.urgent && (
+                                    <div class="absolute -top-3 -right-3 bg-yellow-400 border-2 border-dark dark:border-light px-2 py-1 transform rotate-12">
+                                        <span class="text-xs font-black text-dark">FAST!</span>
+                                    </div>
+                                )}
+                                
+                                <div class="text-center mb-4">
+                                    <div class="text-4xl mb-3">{contact.icon}</div>
+                                    <h3 class="text-lg font-black uppercase text-white mb-2">
+                                        {contact.title}
+                                    </h3>
+                                    <p class="text-white/90 font-bold text-sm">{contact.info}</p>
+                                </div>
+                                
+                                <p class="text-white/80 text-sm text-center mb-6 leading-relaxed">
+                                    {contact.description}
+                                </p>
+                                
+                                <a 
+                                    href={contact.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="bg-white text-dark px-4 py-3 font-black border-2 border-dark hover:scale-105 transition-transform w-full block text-center text-sm"
+                                >
+                                    {contact.action}
+                                </a>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Physical Location -->
+            <section class="py-20 bg-surface dark:bg-slate-800 transition-colors">
+                <div class="max-w-6xl mx-auto px-6">
+                    <SectionHeader title="SANGGAR FISIKA KF13" subtitle="Lokasi fisik yang bisa dikunjungi" className="mb-16" />
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <!-- Location Info -->
+                        <div class="space-y-8">
+                            <div class="bg-primary dark:bg-primary-dark border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal">
+                                <h3 class="text-2xl font-black uppercase text-white mb-4">
+                                    📍 ALAMAT LENGKAP
+                                </h3>
+                                <div class="space-y-3 text-white">
+                                    <p class="font-bold text-lg">Sanggar Fisika KF13</p>
+                                    <p class="font-semibold">Yogyakarta, Daerah Istimewa Yogyakarta</p>
+                                    <p class="text-sm opacity-90">Indonesia</p>
+                                </div>
+                                
+                                <div class="mt-6 pt-4 border-t-2 border-white/30">
+                                    <p class="text-white/90 text-sm mb-4">
+                                        🕒 <strong>Jam Operasional:</strong><br>
+                                        Senin - Jumat: 15:00 - 20:00 WIB<br>
+                                        Sabtu - Minggu: 09:00 - 17:00 WIB
+                                    </p>
+                                    <p class="text-white/90 text-xs">
+                                        *Untuk kunjungan, harap konfirmasi terlebih dahulu via WhatsApp
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Visit CTA -->
+                            <div class="bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal">
+                                <h4 class="text-xl font-black uppercase text-dark dark:text-light mb-4">
+                                    🚗 MAU BERKUNJUNG?
+                                </h4>
+                                <p class="text-dark dark:text-light font-semibold mb-6">
+                                    Koordinasi dulu dengan admin untuk memastikan kami ada di tempat!
+                                </p>
+                                
+                                <div class="flex flex-col sm:flex-row gap-3">
+                                    <a 
+                                        href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20ingin%20berkunjung%20ke%20Sanggar%20Fisika.%20Kapan%20waktu%20yang%20tepat?"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="bg-green-500 border-2 border-dark dark:border-light px-4 py-3 font-black text-white hover:scale-105 transition-transform text-center"
+                                    >
+                                        📱 KONFIRMASI KUNJUNGAN
+                                    </a>
+                                    <a 
+                                        href="https://maps.app.goo.gl/6qKexhinfiqhfZTT7"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="bg-blue border-2 border-dark dark:border-light px-4 py-3 font-black text-white hover:scale-105 transition-transform text-center"
+                                    >
+                                        🗺️ BUKA MAPS
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Map Embed -->
+                        <div class="bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-4 transform rotate-1 shadow-brutal">
+                            <div class="aspect-video bg-gray-200 dark:bg-gray-600 rounded border-2 border-dark dark:border-light overflow-hidden">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.0!2d110.3695!3d-7.7956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwNDcnNDQuMiJTIDExMMKwMjInMTAuMiJF!5e0!3m2!1sen!2sid!4v1640000000000!5m2!1sen!2sid"
+                                    width="100%" 
+                                    height="100%" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    title="Lokasi Sanggar Fisika KF13"
+                                ></iframe>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <a 
+                                    href="https://maps.app.goo.gl/6qKexhinfiqhfZTT7"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="bg-primary dark:bg-primary-dark border-2 border-dark dark:border-light px-6 py-2 font-black text-white hover:scale-105 transition-transform inline-block"
+                                >
+                                    📍 LIHAT DI GOOGLE MAPS
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Contact -->
+            <section class="py-20 bg-white dark:bg-slate-700 transition-colors">
+                <div class="max-w-4xl mx-auto px-6">
+                    <SectionHeader title="PERTANYAAN UMUM" subtitle="Jawaban cepat untuk pertanyaan yang sering ditanyakan" className="mb-16" />
+                    
+                    <div class="space-y-6">
+                        {[
+                            {
+                                question: "Bagaimana cara bergabung dengan KF13?",
+                                answer: "Hubungi admin via WhatsApp atau datang langsung ke Sanggar Fisika. Kami terbuka untuk semua kalangan yang tertarik dengan fisika!",
+                                bg: "bg-blue"
+                            },
+                            {
+                                question: "Apakah ada biaya untuk bergabung?",
+                                answer: "Bergabung dengan komunitas KF13 GRATIS! Beberapa workshop atau event khusus mungkin ada biaya untuk cover materi dan konsumsi.",
+                                bg: "bg-green-500"
+                            },
+                            {
+                                question: "Kapan waktu terbaik untuk berkunjung?",
+                                answer: "Sanggar buka Senin-Jumat (15:00-20:00) dan weekend (09:00-17:00). Konfirmasi dulu via WhatsApp untuk memastikan ada kegiatan.",
+                                bg: "bg-accent"
+                            },
+                            {
+                                question: "Apa saja kegiatan rutin KF13?",
+                                answer: "Workshop mingguan, diskusi fisika, eksperimen praktis, kompetisi, dan project kolaboratif. Cek halaman Events untuk jadwal terbaru!",
+                                bg: "bg-pink"
+                            }
+                        ].map((faq, index) => (
+                            <div class={`${faq.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} shadow-brutal-sm`}>
+                                <h4 class="text-lg font-black uppercase text-white mb-3">
+                                    ❓ {faq.question}
+                                </h4>
+                                <p class="text-white/90 font-semibold leading-relaxed">
+                                    {faq.answer}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                    
+                    <div class="text-center mt-12">
+                        <div class="bg-secondary dark:bg-secondary-dark border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal inline-block">
+                            <p class="text-dark dark:text-light font-bold mb-4">
+                                Masih ada pertanyaan lain?
+                            </p>
+                            <a 
+                                href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20punya%20pertanyaan%20tentang%20klub%20fisika"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="bg-primary dark:bg-primary-dark border-2 border-dark dark:border-light px-6 py-3 font-black text-white hover:scale-105 transition-transform inline-block"
+                            >
+                                💬 TANYA LANGSUNG
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <Footer />
+
+        <script>
+            // Contact interaction tracking
+            document.addEventListener('DOMContentLoaded', () => {
+                // Track contact method clicks
+                document.querySelectorAll('a[href^="https://wa.me"], a[href^="mailto:"], a[href^="https://instagram"], a[href^="https://youtube"], a[href^="https://t.me"], a[href^="https://github"]').forEach(link => {
+                    link.addEventListener('click', () => {
+                        const method = link.href.includes('wa.me') ? 'WhatsApp' : 
+                                     link.href.includes('mailto') ? 'Email' :
+                                     link.href.includes('instagram') ? 'Instagram' :
+                                     link.href.includes('youtube') ? 'YouTube' :
+                                     link.href.includes('t.me') ? 'Telegram' :
+                                     link.href.includes('github') ? 'GitHub' : 'Unknown';
+                        
+                        console.log(`Contact method used: ${method}`);
+                    });
+                });
+
+                // Map interaction
+                const mapFrame = document.querySelector('iframe[title="Lokasi Sanggar Fisika KF13"]');
+                if (mapFrame) {
+                    mapFrame.addEventListener('load', () => {
+                        console.log('Map loaded successfully');
+                    });
+                }
+            });
+        </script>
+    </body>
+</html>
