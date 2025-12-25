@@ -3,8 +3,8 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "./dev-with-tina.sh",
-    "dev:astro": "astro dev",
+    "dev": "astro dev",
+    "dev:tina": "./dev-with-tina.sh",
     "build": "astro build",
     "build:tina": "./build-with-tina.sh",
     "preview": "astro preview",

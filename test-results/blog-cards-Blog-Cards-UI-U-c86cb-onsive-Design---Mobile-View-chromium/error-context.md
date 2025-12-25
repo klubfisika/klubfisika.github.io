@@ -1,0 +1,266 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "KF13 Logo KF13 Klub Fisika Indonesia" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "KF13 Logo" [ref=e8]
+        - generic [ref=e9]:
+          - heading "KF13" [level=1] [ref=e10]
+          - paragraph [ref=e11]: Klub Fisika Indonesia
+      - button "Toggle mobile menu" [ref=e12]:
+        - img [ref=e13]
+  - generic [ref=e15]:
+    - generic [ref=e16]:
+      - link "Hubungi Admin WhatsApp" [ref=e17] [cursor=pointer]:
+        - /url: https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20ingin%20bergabung%20dengan%20komunitas
+        - button "💬" [ref=e18]:
+          - generic [ref=e19]: 💬
+      - generic: Chat Admin
+    - generic [ref=e20]:
+      - button "Toggle Debug Panel"
+      - button "🐛" [ref=e21]:
+        - generic [ref=e22]: 🐛
+      - generic: Debug Panel (DEV)
+    - generic [ref=e23]:
+      - button "Toggle Dark Mode"
+      - button "🌙" [ref=e24]:
+        - generic [ref=e25]: 🌙
+      - generic: Toggle Theme
+  - button "Back to top":
+    - img
+    - text: ↑
+  - main [ref=e26]:
+    - generic [ref=e28]:
+      - heading "BLOG & ARTIKEL" [level=1] [ref=e29]
+      - generic [ref=e30]:
+        - paragraph [ref=e31]: 📚 Pusat Pengetahuan Fisika Indonesia
+        - paragraph [ref=e32]: Artikel fisika, tutorial eksperimen, tips belajar, dan berita terbaru dari komunitas KF13. Belajar fisika jadi lebih mudah dan menyenangkan!
+    - generic [ref=e36]:
+      - complementary "Sidebar navigasi blog" [ref=e37]:
+        - generic [ref=e38]:
+          - heading "🔍 CARI ARTIKEL" [level=2] [ref=e39]
+          - search "Pencarian artikel" [ref=e40]:
+            - generic [ref=e41]: Cari artikel fisika
+            - textbox "Cari artikel fisika" [ref=e42]:
+              - /placeholder: Cari topik fisika...
+            - generic [ref=e43]: Ketik kata kunci untuk mencari artikel fisika, tutorial, atau eksperimen
+        - generic [ref=e45]:
+          - heading "📂 KATEGORI" [level=2] [ref=e46]
+          - navigation "Filter kategori artikel" [ref=e47]:
+            - group "Pilihan kategori artikel" [ref=e48]:
+              - button "Filter artikel kategori Semua" [pressed] [ref=e49]: Semua
+              - button "Filter artikel kategori Tutorial" [ref=e50]: Tutorial
+              - button "Filter artikel kategori Eksperimen" [ref=e51]: Eksperimen
+              - button "Filter artikel kategori Teori" [ref=e52]: Teori
+              - button "Filter artikel kategori Tips Belajar" [ref=e53]: Tips Belajar
+              - button "Filter artikel kategori Berita" [ref=e54]: Berita
+        - generic [ref=e56]:
+          - heading "🏷️ TAG POPULER" [level=2] [ref=e57]
+          - navigation "Tag artikel populer" [ref=e58]:
+            - group "Daftar tag artikel" [ref=e59]:
+              - button "Filter artikel dengan tag fisika-modern, 2 artikel" [ref=e60]: fisika-modern (2)
+              - button "Filter artikel dengan tag newton, 2 artikel" [ref=e61]: newton (2)
+              - button "Filter artikel dengan tag eksperimen, 2 artikel" [ref=e62]: eksperimen (2)
+              - button "Filter artikel dengan tag kuantum, 1 artikel" [ref=e63]: kuantum (1)
+              - button "Filter artikel dengan tag teori, 1 artikel" [ref=e64]: teori (1)
+              - button "Filter artikel dengan tag hukum, 1 artikel" [ref=e65]: hukum (1)
+              - button "Filter artikel dengan tag mekanika, 1 artikel" [ref=e66]: mekanika (1)
+              - button "Filter artikel dengan tag gelombang, 1 artikel" [ref=e67]: gelombang (1)
+              - button "Filter artikel dengan tag bunyi, 1 artikel" [ref=e68]: bunyi (1)
+              - button "Filter artikel dengan tag diy, 1 artikel" [ref=e69]: diy (1)
+        - generic [ref=e70]:
+          - heading "📰 ARTIKEL TERBARU" [level=2] [ref=e71]
+          - navigation "Artikel terbaru" [ref=e72]:
+            - list [ref=e73]:
+              - listitem [ref=e74]:
+                - 'link "Baca artikel: Fisika Kuantum untuk Pemula: Memahami Dunia Atom, dipublikasi 2024-12-20, estimasi baca 8 menit" [ref=e75] [cursor=pointer]':
+                  - /url: /blog/fisika-kuantum-untuk-pemula
+                  - paragraph [ref=e76]: "Fisika Kuantum untuk Pemula: Memahami Dunia Atom"
+                  - generic [ref=e77]:
+                    - time [ref=e78]: 📅 2024-12-20
+                    - generic [ref=e79]: ⏱️ 8 menit
+              - listitem [ref=e80]:
+                - 'link "Baca artikel: Cara Mudah Memahami Hukum Newton dengan Eksperimen Sederhana, dipublikasi 2024-12-20, estimasi baca 8 menit" [ref=e81] [cursor=pointer]':
+                  - /url: /blog/hukum-newton-eksperimen-sederhana
+                  - paragraph [ref=e82]: Cara Mudah Memahami Hukum Newton dengan Eksperimen Sederhana
+                  - generic [ref=e83]:
+                    - time [ref=e84]: 📅 2024-12-20
+                    - generic [ref=e85]: ⏱️ 8 menit
+              - listitem [ref=e86]:
+                - 'link "Baca artikel: Eksperimen Gelombang Bunyi yang Bisa Dilakukan di Rumah, dipublikasi 2024-12-18, estimasi baca 6 menit" [ref=e87] [cursor=pointer]':
+                  - /url: /blog/eksperimen-gelombang-bunyi-sederhana
+                  - paragraph [ref=e88]: Eksperimen Gelombang Bunyi yang Bisa Dilakukan di Rumah
+                  - generic [ref=e89]:
+                    - time [ref=e90]: 📅 2024-12-18
+                    - generic [ref=e91]: ⏱️ 6 menit
+        - generic [ref=e92]:
+          - heading "📧 NEWSLETTER" [level=2] [ref=e93]
+          - paragraph [ref=e94]: Dapatkan artikel terbaru langsung di email!
+          - form "Berlangganan newsletter KF13" [ref=e95]:
+            - generic [ref=e96]: Alamat email untuk berlangganan newsletter
+            - textbox "Alamat email untuk berlangganan newsletter" [ref=e97]:
+              - /placeholder: email@example.com
+            - generic [ref=e98]: Masukkan alamat email valid untuk menerima artikel fisika terbaru
+            - button "BERLANGGANAN" [ref=e99]
+          - paragraph [ref=e100]: Gratis, tanpa spam, bisa unsubscribe kapan saja
+        - generic [ref=e102]:
+          - heading "📊 STATISTIK BLOG" [level=2] [ref=e103]
+          - region "Statistik blog KF13" [ref=e104]:
+            - generic [ref=e105]:
+              - paragraph [ref=e106]: "Total Artikel:"
+              - paragraph [ref=e107]: "7"
+            - generic [ref=e108]:
+              - paragraph [ref=e109]: "Total Pembaca:"
+              - paragraph [ref=e110]: 19.9K
+            - generic [ref=e111]:
+              - paragraph [ref=e112]: "Artikel Bulan Ini:"
+              - paragraph [ref=e113]: "0"
+            - generic [ref=e114]:
+              - paragraph [ref=e115]: "Kategori Aktif:"
+              - paragraph [ref=e116]: "5"
+      - main [ref=e117]:
+        - generic [ref=e118]:
+          - heading "⭐ ARTIKEL TERBARU" [level=2] [ref=e119]:
+            - link "⭐ ARTIKEL TERBARU" [ref=e120] [cursor=pointer]:
+              - /url: "#articles"
+          - paragraph [ref=e121]: Konten terpopuler dan terbaru dari komunitas
+        - 'article "Fisika Kuantum untuk Pemula: Memahami Dunia Atom" [ref=e124]':
+          - generic [ref=e125]:
+            - generic [ref=e126]: TEORI
+            - generic [ref=e127]: POPULER
+          - 'heading "Fisika Kuantum untuk Pemula: Memahami Dunia Atom" [level=2] [ref=e128]'
+          - paragraph [ref=e129]: Pelajari konsep dasar fisika kuantum dengan cara yang mudah dipahami, mulai dari dualitas gelombang-partikel hingga prinsip ketidakpastian Heisenberg.
+          - generic [ref=e130]:
+            - generic [ref=e131]:
+              - generic [ref=e132]: 👨🔬 Dr. Sarah Quantum
+              - generic [ref=e133]: 📅 2024-12-20
+              - generic [ref=e134]: ⏱️ 8 menit
+            - 'link "Baca artikel lengkap: Fisika Kuantum untuk Pemula: Memahami Dunia Atom" [ref=e135] [cursor=pointer]':
+              - /url: /blog/fisika-kuantum-untuk-pemula
+              - text: BACA ARTIKEL
+        - region "Daftar artikel blog" [ref=e136]:
+          - article "Cara Mudah Memahami Hukum Newton dengan Eksperimen Sederhana" [ref=e137]:
+            - generic [ref=e138]:
+              - generic [ref=e139]: TUTORIAL
+              - 'link "Baca artikel: Cara Mudah Memahami Hukum Newton dengan Eksperimen Sederhana" [ref=e140] [cursor=pointer]':
+                - /url: /blog/hukum-newton-eksperimen-sederhana
+                - heading "Cara Mudah Memahami Hukum Newton dengan Eksperimen Sederhana" [level=3] [ref=e141]
+              - paragraph [ref=e142]: Pelajari ketiga hukum Newton melalui eksperimen yang bisa dilakukan di rumah menggunakan bahan-bahan sederhana.
+              - group "Informasi artikel" [ref=e143]:
+                - generic [ref=e144]: 👨🏫 Dr. Ahmad Fisika
+                - generic [ref=e145]: 📅 2024-12-20
+                - generic [ref=e146]: ⏱️ 8 menit
+                - generic [ref=e147]: 👁️ 2800 views
+              - 'link "Baca selengkapnya: Cara Mudah Memahami Hukum Newton dengan Eksperimen Sederhana" [ref=e148] [cursor=pointer]':
+                - /url: /blog/hukum-newton-eksperimen-sederhana
+                - text: BACA SELENGKAPNYA
+          - article "Eksperimen Gelombang Bunyi yang Bisa Dilakukan di Rumah" [ref=e149]:
+            - generic [ref=e150]:
+              - generic [ref=e151]: EKSPERIMEN
+              - 'link "Baca artikel: Eksperimen Gelombang Bunyi yang Bisa Dilakukan di Rumah" [ref=e152] [cursor=pointer]':
+                - /url: /blog/eksperimen-gelombang-bunyi-sederhana
+                - heading "Eksperimen Gelombang Bunyi yang Bisa Dilakukan di Rumah" [level=3] [ref=e153]
+              - paragraph [ref=e154]: Panduan lengkap melakukan eksperimen gelombang bunyi menggunakan alat-alat sederhana yang ada di rumah.
+              - group "Informasi artikel" [ref=e155]:
+                - generic [ref=e156]: 👨🏫 Budi Eksperimen
+                - generic [ref=e157]: 📅 2024-12-18
+                - generic [ref=e158]: ⏱️ 6 menit
+                - generic [ref=e159]: 👁️ 1850 views
+              - 'link "Baca selengkapnya: Eksperimen Gelombang Bunyi yang Bisa Dilakukan di Rumah" [ref=e160] [cursor=pointer]':
+                - /url: /blog/eksperimen-gelombang-bunyi-sederhana
+                - text: BACA SELENGKAPNYA
+          - article "7 Tips Belajar Fisika yang Efektif untuk Siswa SMA" [ref=e161]:
+            - generic [ref=e162]:
+              - generic [ref=e163]: TIPS BELAJAR
+              - 'link "Baca artikel: 7 Tips Belajar Fisika yang Efektif untuk Siswa SMA" [ref=e164] [cursor=pointer]':
+                - /url: /blog/tips-belajar-fisika-efektif
+                - heading "7 Tips Belajar Fisika yang Efektif untuk Siswa SMA" [level=3] [ref=e165]
+              - paragraph [ref=e166]: Strategi pembelajaran fisika yang terbukti efektif untuk meningkatkan pemahaman dan nilai ujian.
+              - group "Informasi artikel" [ref=e167]:
+                - generic [ref=e168]: 👨🏫 Ahmad Belajar
+                - generic [ref=e169]: 📅 2024-12-15
+                - generic [ref=e170]: ⏱️ 5 menit
+                - generic [ref=e171]: 👁️ 3200 views
+              - 'link "Baca selengkapnya: 7 Tips Belajar Fisika yang Efektif untuk Siswa SMA" [ref=e172] [cursor=pointer]':
+                - /url: /blog/tips-belajar-fisika-efektif
+                - text: BACA SELENGKAPNYA
+          - 'article "Roket Air: Prinsip Fisika di Balik Peluncuran Sederhana" [ref=e174]':
+            - generic [ref=e175]:
+              - generic [ref=e176]: TUTORIAL
+              - 'link "Baca artikel: Roket Air: Prinsip Fisika di Balik Peluncuran Sederhana" [ref=e177] [cursor=pointer]':
+                - /url: /blog/roket-air-prinsip-fisika
+                - 'heading "Roket Air: Prinsip Fisika di Balik Peluncuran Sederhana" [level=3] [ref=e178]'
+              - paragraph [ref=e179]: Memahami hukum Newton ketiga melalui pembuatan dan peluncuran roket air dengan bahan sederhana.
+              - group "Informasi artikel" [ref=e180]:
+                - generic [ref=e181]: 👨🏫 Dr. Ahmad Fisika
+                - generic [ref=e182]: 📅 2024-12-10
+                - generic [ref=e183]: ⏱️ 7 menit
+                - generic [ref=e184]: 👁️ 1950 views
+              - 'link "Baca selengkapnya: Roket Air: Prinsip Fisika di Balik Peluncuran Sederhana" [ref=e185] [cursor=pointer]':
+                - /url: /blog/roket-air-prinsip-fisika
+                - text: BACA SELENGKAPNYA
+          - article "KF13 Raih Juara 1 Kompetisi Fisika Nasional 2024" [ref=e187]:
+            - generic [ref=e188]:
+              - generic [ref=e189]: BERITA
+              - 'link "Baca artikel: KF13 Raih Juara 1 Kompetisi Fisika Nasional 2024" [ref=e190] [cursor=pointer]':
+                - /url: /blog/kf13-juara-kompetisi-fisika-2024
+                - heading "KF13 Raih Juara 1 Kompetisi Fisika Nasional 2024" [level=3] [ref=e191]
+              - paragraph [ref=e192]: Tim KF13 berhasil meraih prestasi gemilang dalam kompetisi fisika tingkat nasional dengan project inovatif.
+              - group "Informasi artikel" [ref=e193]:
+                - generic [ref=e194]: 👨🏫 Tim KF13
+                - generic [ref=e195]: 📅 2024-12-08
+                - generic [ref=e196]: ⏱️ 5 menit
+                - generic [ref=e197]: 👁️ 4200 views
+              - 'link "Baca selengkapnya: KF13 Raih Juara 1 Kompetisi Fisika Nasional 2024" [ref=e198] [cursor=pointer]':
+                - /url: /blog/kf13-juara-kompetisi-fisika-2024
+                - text: BACA SELENGKAPNYA
+          - article "Memahami Relativitas Einstein dengan Analogi Sederhana" [ref=e200]:
+            - generic [ref=e201]:
+              - generic [ref=e202]: TEORI
+              - 'link "Baca artikel: Memahami Relativitas Einstein dengan Analogi Sederhana" [ref=e203] [cursor=pointer]':
+                - /url: /blog/relativitas-einstein-analogi-sederhana
+                - heading "Memahami Relativitas Einstein dengan Analogi Sederhana" [level=3] [ref=e204]
+              - paragraph [ref=e205]: Konsep ruang-waktu dan relativitas khusus dijelaskan dengan analogi yang mudah dipahami untuk pemula.
+              - group "Informasi artikel" [ref=e206]:
+                - generic [ref=e207]: 👨🏫 Dr. Sarah Quantum
+                - generic [ref=e208]: 📅 2024-12-05
+                - generic [ref=e209]: ⏱️ 12 menit
+                - generic [ref=e210]: 👁️ 3800 views
+              - 'link "Baca selengkapnya: Memahami Relativitas Einstein dengan Analogi Sederhana" [ref=e211] [cursor=pointer]':
+                - /url: /blog/relativitas-einstein-analogi-sederhana
+                - text: BACA SELENGKAPNYA
+        - button "Muat lebih banyak artikel blog" [ref=e213]: 📚 MUAT ARTIKEL LAINNYA
+  - contentinfo [ref=e214]:
+    - generic [ref=e217]:
+      - paragraph [ref=e218]: 🔬 KF13 - Klub Fisika Indonesia
+      - paragraph [ref=e219]:
+        - text: Komunitas belajar fisika berbasis Yogyakarta yang menginspirasi generasi muda Indonesia
+        - text: untuk memahami alam semesta melalui sains dan eksperimen sejak 2013.
+      - generic [ref=e221]:
+        - paragraph [ref=e222]: 📍 Yogyakarta, Indonesia | 📧 info@klubfisika.org
+        - paragraph [ref=e223]: © 2025 KF13. Made with 🥼🔬🧬🧫🧪 for Indonesia
+        - paragraph [ref=e224]:
+          - link "Syarat & Ketentuan" [ref=e225] [cursor=pointer]:
+            - /url: /terms
+          - text: •
+          - link "Jaringan" [ref=e226] [cursor=pointer]:
+            - /url: /partnership
+  - generic [ref=e229]:
+    - button "Menu" [ref=e230]:
+      - img [ref=e232]
+      - generic: Menu
+    - button "Inspect" [ref=e236]:
+      - img [ref=e238]
+      - generic: Inspect
+    - button "Audit" [ref=e240]:
+      - generic [ref=e241]:
+        - img [ref=e242]
+        - img [ref=e245]
+      - generic: Audit
+    - button "Settings" [ref=e248]:
+      - img [ref=e250]
+      - generic: Settings
+```

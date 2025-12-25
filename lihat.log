@@ -1,0 +1,87 @@
+$ astro build
+using deprecated parameters for the initialization function; pass a single object instead
+23:19:13 [content] Syncing content
+23:19:13 [content] Synced content
+23:19:13 [types] Generated 246ms
+23:19:13 [build] output: "static"
+23:19:13 [build] mode: "static"
+23:19:13 [build] directory: /home/dev/web/instances/clients/services/klubfisika.github.io/dist/
+23:19:13 [build] Collecting build info...
+23:19:13 [build] ✓ Completed in 262ms.
+23:19:13 [build] Building static entrypoints...
+23:19:15 [vite] ✓ built in 1.59s
+23:19:15 [build] ✓ Completed in 1.62s.
+
+ building client (vite) 
+23:19:15 [vite] transforming...
+23:19:15 [vite] ✓ 25 modules transformed.
+23:19:15 [WARN] [vite] Generated an empty chunk: "_slug_.astro_astro_type_script_index_1_lang".
+23:19:15 [WARN] [vite] Generated an empty chunk: "blog-old.astro_astro_type_script_index_1_lang".
+23:19:15 [WARN] [vite] Generated an empty chunk: "contact.astro_astro_type_script_index_1_lang".
+23:19:15 [WARN] [vite] Generated an empty chunk: "events.astro_astro_type_script_index_1_lang".
+23:19:15 [WARN] [vite] Generated an empty chunk: "partnership.astro_astro_type_script_index_0_lang".
+23:19:15 [WARN] [vite] Generated an empty chunk: "terms.astro_astro_type_script_index_0_lang".
+23:19:15 [vite] rendering chunks...
+23:19:15 [vite] computing gzip size...
+23:19:15 [vite] dist/build/q-bundle-graph-ajda5k.json                              0.07 kB │ gzip: 0.08 kB
+23:19:15 [vite] dist/q-manifest.json                                               1.28 kB │ gzip: 0.54 kB
+23:19:15 [vite] dist/_astro/qwik-preloader.8fLela9Y.js                             1.32 kB │ gzip: 0.83 kB
+23:19:15 [vite] dist/_astro/root.BO6-VKAa.js                                       3.80 kB │ gzip: 1.95 kB
+23:19:15 [vite] dist/_astro/blog.astro_astro_type_script_index_0_lang.DeEVt0lu.js  5.23 kB │ gzip: 1.67 kB
+23:19:15 [vite] ✓ built in 141ms
+vite v6.3.5 building for production...
+transforming...
+✓ 6 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/build/q-bundle-graph-4a30ic.json  0.08 kB │ gzip: 0.09 kB
+dist/q-manifest.json                   1.66 kB │ gzip: 0.64 kB
+dist/build/q-BBPfWHQt.js               0.18 kB │ gzip: 0.16 kB
+dist/build/q-07egN8u3.js               3.81 kB │ gzip: 2.04 kB
+dist/build/q-T7i3iGCV.js               4.50 kB │ gzip: 2.24 kB
+✓ built in 94ms
+
+ generating static routes 
+23:19:15 ▶ src/pages/about.astro
+23:19:15   └─ /about/index.html (+12ms) 
+23:19:15 ▶ src/pages/blog/[slug].astro
+23:19:15   ├─ /blog/fisika-kuantum-untuk-pemula/index.html (+3ms) 
+23:19:15   ├─ /blog/eksperimen-gelombang-bunyi-sederhana/index.html (+2ms) 
+23:19:15   ├─ /blog/tips-belajar-fisika-efektif/index.html (+2ms) 
+23:19:15   ├─ /blog/hukum-newton-eksperimen-sederhana/index.html (+2ms) 
+23:19:15   ├─ /blog/roket-air-prinsip-fisika/index.html (+2ms) 
+23:19:15   ├─ /blog/kf13-juara-kompetisi-fisika-2024/index.html (+2ms) 
+23:19:15   └─ /blog/relativitas-einstein-analogi-sederhana/index.html (+2ms) 
+23:19:15 ▶ src/pages/blog.astro
+23:19:15   └─ /blog/index.html (+5ms) 
+23:19:15 ▶ src/pages/blog-old.astro
+23:19:15   └─ /blog-old/index.html (+3ms) 
+23:19:15 ▶ src/pages/contact.astro
+23:19:15   └─ /contact/index.html (+2ms) 
+23:19:15 ▶ src/pages/events.astro
+23:19:15   └─ /events/index.html (+2ms) 
+23:19:15 ▶ src/pages/partnership.astro
+23:19:15   └─ /partnership/index.html (+2ms) 
+23:19:15 ▶ src/pages/research.astro
+23:19:15   └─ /research/index.html (+1ms) 
+23:19:15 λ src/pages/rss.xml.js
+23:19:15   └─ /rss.xml (+4ms) 
+23:19:15 ▶ src/pages/terms.astro
+23:19:15   └─ /terms/index.html (+3ms) 
+23:19:15 ▶ src/pages/index.astro
+23:19:15   └─ /index.html (+3ms) 
+23:19:15 ✓ Completed in 100ms.
+
+ generating optimized images 
+23:19:15   ▶ /_astro/kf13-logo.DYOpVU7J_2aA3LU.webp (reused cache entry) (+0ms) (1/7)
+23:19:15   ▶ /_astro/rocket-workshop.BqvqsvIL_1dFEgW.webp (reused cache entry) (+0ms) (2/7)
+23:19:15   ▶ /_astro/quantum-discussion.Dk4kH-GX_1hm4UX.webp (reused cache entry) (+0ms) (3/7)
+23:19:15   ▶ /_astro/experiment-wave.BIQZrgFI_Zn4vk0.webp (reused cache entry) (+0ms) (4/7)
+23:19:15   ▶ /_astro/lunar-eclipse.DP7kpFEj_ZFUJh9.webp (reused cache entry) (+0ms) (5/7)
+23:19:15   ▶ /_astro/physics-competition.DE5DNx2E_oNmaU.webp (reused cache entry) (+0ms) (6/7)
+23:19:15   ▶ /_astro/project-presentation.BU552u8B_XWtSd.webp (reused cache entry) (+0ms) (7/7)
+23:19:15 ✓ Completed in 1ms.
+
+23:19:15 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+23:19:15 [build] 16 page(s) built in 2.25s
+23:19:15 [build] Complete!

@@ -10,147 +10,9 @@ import BrutalCard from "@/components/ui/BrutalCard.astro";
 import BrutalSection from "@/components/ui/BrutalSection.astro";
 import BackToTop from "@/components/ui/BackToTop.astro";
 
-export async function getStaticPaths() {
-  const blogPosts = [
-    {
-      slug: "fisika-kuantum-untuk-pemula",
-      title: "Fisika Kuantum untuk Pemula: Memahami Dunia Atom",
-      excerpt: "Pelajari konsep dasar fisika kuantum dengan cara yang mudah dipahami, mulai dari dualitas gelombang-partikel hingga prinsip ketidakpastian Heisenberg.",
-      content: `
-        <h2>Apa itu Fisika Kuantum?</h2>
-        <p>Fisika kuantum adalah cabang fisika yang mempelajari perilaku materi dan energi pada skala atom dan subatom. Di dunia kuantum, partikel berperilaku sangat berbeda dari yang kita alami sehari-hari.</p>
-        
-        <h3>1. Dualitas Gelombang-Partikel</h3>
-        <p>Salah satu konsep paling mendasar dalam fisika kuantum adalah bahwa partikel seperti elektron dan foton dapat berperilaku sebagai gelombang dan partikel sekaligus.</p>
-        
-        <h3>2. Prinsip Ketidakpastian Heisenberg</h3>
-        <p>Werner Heisenberg menemukan bahwa kita tidak dapat mengetahui posisi dan momentum partikel secara bersamaan dengan presisi sempurna.</p>
-        
-        <h3>3. Superposisi Kuantum</h3>
-        <p>Partikel kuantum dapat berada dalam beberapa keadaan sekaligus sampai diamati. Ini seperti koin yang berputar - ia adalah kepala dan ekor sekaligus sampai berhenti.</p>
-        
-        <h2>Aplikasi dalam Kehidupan Sehari-hari</h2>
-        <ul>
-          <li><strong>Laser:</strong> Teknologi laser menggunakan prinsip emisi terstimulasi</li>
-          <li><strong>MRI:</strong> Magnetic Resonance Imaging menggunakan spin kuantum</li>
-          <li><strong>Komputer:</strong> Transistor dalam komputer bekerja berdasarkan mekanika kuantum</li>
-          <li><strong>GPS:</strong> Satelit GPS menggunakan koreksi relativistik kuantum</li>
-        </ul>
-        
-        <h2>Eksperimen Sederhana</h2>
-        <p>Coba eksperimen celah ganda dengan laser pointer dan sisir! Arahkan laser melalui gigi sisir ke dinding - kamu akan melihat pola interferensi yang menunjukkan sifat gelombang cahaya.</p>
-      `,
-      author: "Dr. Sarah Quantum",
-      date: "2024-12-20",
-      readTime: "8 menit",
-      category: "Teori",
-      tags: ["kuantum", "fisika-modern", "teori"],
-      image: "quantum-physics.jpg"
-    },
-    {
-      slug: "eksperimen-gelombang-bunyi-sederhana",
-      title: "Eksperimen Gelombang Bunyi yang Bisa Dilakukan di Rumah",
-      excerpt: "Panduan lengkap melakukan eksperimen gelombang bunyi menggunakan alat-alat sederhana yang ada di rumah.",
-      content: `
-        <h2>Alat dan Bahan</h2>
-        <ul>
-          <li>2 gelas plastik</li>
-          <li>Benang sepanjang 3-5 meter</li>
-          <li>Paku atau jarum</li>
-          <li>Penggaris</li>
-          <li>Stopwatch (HP)</li>
-        </ul>
-        
-        <h2>Eksperimen 1: Telepon Benang</h2>
-        <h3>Langkah-langkah:</h3>
-        <ol>
-          <li>Lubangi bagian bawah kedua gelas dengan paku</li>
-          <li>Masukkan benang melalui lubang dan buat simpul di dalam gelas</li>
-          <li>Regangkan benang hingga kencang</li>
-          <li>Satu orang berbicara di gelas, yang lain mendengarkan</li>
-        </ol>
-        
-        <h3>Penjelasan:</h3>
-        <p>Suara merambat melalui benang sebagai gelombang mekanik. Getaran udara di gelas pertama menggetarkan benang, yang kemudian menggetarkan udara di gelas kedua.</p>
-        
-        <h2>Eksperimen 2: Mengukur Kecepatan Bunyi</h2>
-        <h3>Langkah-langkah:</h3>
-        <ol>
-          <li>Berdiri 100 meter dari dinding besar</li>
-          <li>Tepuk tangan keras dan dengarkan gema</li>
-          <li>Ukur waktu antara tepukan dan gema dengan stopwatch</li>
-          <li>Hitung: Kecepatan = (2 × jarak) / waktu</li>
-        </ol>
-        
-        <h3>Hasil yang Diharapkan:</h3>
-        <p>Kecepatan bunyi di udara sekitar 343 m/s pada suhu ruang. Hasil eksperimen mungkin sedikit berbeda karena faktor lingkungan.</p>
-        
-        <h2>Tips Keselamatan</h2>
-        <ul>
-          <li>Hati-hati saat membuat lubang di gelas</li>
-          <li>Pastikan area eksperimen aman</li>
-          <li>Jangan berteriak terlalu keras</li>
-        </ul>
-      `,
-      author: "Budi Eksperimen",
-      date: "2024-12-18",
-      readTime: "6 menit",
-      category: "Eksperimen",
-      tags: ["gelombang", "bunyi", "eksperimen", "diy"],
-      image: "sound-wave-experiment.jpg"
-    },
-    {
-      slug: "tips-belajar-fisika-efektif",
-      title: "7 Tips Belajar Fisika yang Efektif untuk Siswa SMA",
-      excerpt: "Strategi pembelajaran fisika yang terbukti efektif untuk meningkatkan pemahaman dan nilai ujian.",
-      content: `
-        <h2>1. Pahami Konsep, Bukan Hafal Rumus</h2>
-        <p>Fisika bukan tentang menghafal rumus, tapi memahami mengapa rumus itu ada. Mulai dengan memahami konsep dasar sebelum masuk ke perhitungan.</p>
-        
-        <h2>2. Visualisasikan Masalah</h2>
-        <p>Gambar diagram, sketsa, atau grafik untuk setiap soal. Visualisasi membantu otak memproses informasi dengan lebih baik.</p>
-        
-        <h2>3. Praktik Soal Bertahap</h2>
-        <ul>
-          <li><strong>Level 1:</strong> Soal dasar dengan satu konsep</li>
-          <li><strong>Level 2:</strong> Soal gabungan beberapa konsep</li>
-          <li><strong>Level 3:</strong> Soal aplikasi dan analisis</li>
-        </ul>
-        
-        <h2>4. Buat Catatan Mind Map</h2>
-        <p>Hubungkan konsep-konsep fisika dalam bentuk mind map. Ini membantu melihat keterkaitan antar topik.</p>
-        
-        <h2>5. Diskusi dengan Teman</h2>
-        <p>Bergabunglah dengan study group atau komunitas seperti KF13. Menjelaskan konsep ke orang lain memperkuat pemahaman.</p>
-        
-        <h2>6. Gunakan Analogi Sehari-hari</h2>
-        <p>Hubungkan konsep fisika dengan pengalaman sehari-hari:</p>
-        <ul>
-          <li>Momentum = seperti truk vs sepeda yang bergerak</li>
-          <li>Arus listrik = seperti aliran air di pipa</li>
-          <li>Gelombang = seperti riak di kolam</li>
-        </ul>
-        
-        <h2>7. Review dan Evaluasi Berkala</h2>
-        <p>Lakukan review mingguan dan evaluasi bulanan. Identifikasi topik yang masih lemah dan fokus perbaiki.</p>
-        
-        <h2>Tools yang Membantu</h2>
-        <ul>
-          <li><strong>PhET Simulations:</strong> Simulasi fisika interaktif</li>
-          <li><strong>Khan Academy:</strong> Video pembelajaran gratis</li>
-          <li><strong>Wolfram Alpha:</strong> Kalkulator fisika canggih</li>
-          <li><strong>KF13 Community:</strong> Diskusi dan tanya jawab</li>
-        </ul>
-      `,
-      author: "Ahmad Belajar",
-      date: "2024-12-15",
-      readTime: "5 menit",
-      category: "Tips Belajar",
-      tags: ["belajar", "tips", "sma", "strategi"],
-      image: "study-tips.jpg"
-    }
-  ];
+import { blogPosts } from "../../data/blogPosts";
 
+export async function getStaticPaths() {
   return blogPosts.map(post => ({
     params: { slug: post.slug },
     props: { post }
@@ -182,10 +44,10 @@ const { post } = Astro.props;
                     <nav class="mb-8">
                         <div class="flex items-center gap-2 text-sm">
                             <a href="/" class="text-primary dark:text-primary-dark hover:underline font-semibold">Home</a>
-                            <span class="text-dark dark:text-light opacity-50">→</span>
+                            <span class="text-dark dark:text-light ">→</span>
                             <a href="/blog" class="text-primary dark:text-primary-dark hover:underline font-semibold">Blog</a>
-                            <span class="text-dark dark:text-light opacity-50">→</span>
-                            <span class="text-dark dark:text-light opacity-75">{post.category}</span>
+                            <span class="text-dark dark:text-light ">→</span>
+                            <span class="text-dark dark:text-light ">{post.category}</span>
                         </div>
                     </nav>
 
@@ -201,16 +63,16 @@ const { post } = Astro.props;
                             }`}>
                             {post.category.toUpperCase()}
                         </span>
-                        <span class="text-sm text-dark dark:text-light opacity-75">📅 {post.date}</span>
-                        <span class="text-sm text-dark dark:text-light opacity-75">⏱️ {post.readTime}</span>
-                        <span class="text-sm text-dark dark:text-light opacity-75">👨‍🏫 {post.author}</span>
+                        <span class="text-sm text-dark dark:text-light ">📅 {post.date}</span>
+                        <span class="text-sm text-dark dark:text-light ">⏱️ {post.readTime}</span>
+                        <span class="text-sm text-dark dark:text-light ">👨‍🏫 {post.author}</span>
                     </div>
                     
-                    <Heading level="h1" size="4xl" weight="black" color="primary">
+                    <Heading level={1} size="4xl" weight="extrabold" color="primary">
                         {post.title}
                     </Heading>
                     
-                    <Text size="lg" color="muted" class="mb-8">
+                    <Text size="lg" color="dark" class="mb-8">
                         {post.excerpt}
                     </Text>
                     
@@ -228,9 +90,22 @@ const { post } = Astro.props;
             <!-- Article Content -->
             <BrutalSection background="white" padding="lg">
                 <div class="max-w-4xl mx-auto">
-                    <BrutalCard padding="lg">
+                    <!-- Reading Progress -->
+                    <div class="sticky top-20 mb-4 z-10">
+                        <div class="bg-surface border-2 border-dark p-2">
+                            <div class="flex items-center justify-between text-xs mb-1">
+                                <span>Progress Baca</span>
+                                <span id="progress-text">0%</span>
+                            </div>
+                            <div class="w-full bg-white h-2 border border-dark">
+                                <div class="bg-primary h-full w-0 transition-all duration-300" id="reading-progress"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <BrutalCard variant="surface" size="lg">
                         <div 
-                            class="article-content prose prose-lg max-w-none text-dark dark:text-light"
+                            class="article-content prose prose-lg max-w-none text-dark"
                             set:html={post.content}
                         />
                     </BrutalCard>
@@ -242,7 +117,7 @@ const { post } = Astro.props;
                 <div class="max-w-4xl mx-auto">
                     <!-- Share Buttons -->
                     <div class="mb-8">
-                        <Heading level="h3" size="xl" weight="black" color="primary" class="mb-4">📤 BAGIKAN ARTIKEL</Heading>
+                        <Heading level={3} size="xl" weight="extrabold" color="primary" class="mb-4">📤 BAGIKAN ARTIKEL</Heading>
                         <div class="flex flex-wrap gap-3">
                             <a 
                                 href={`https://wa.me/?text=Baca artikel fisika menarik: ${post.title} https://klubfisika.org/blog/${post.slug}`}
@@ -281,8 +156,8 @@ const { post } = Astro.props;
                                 <span class="text-2xl text-white">👨‍🔬</span>
                             </div>
                             <div>
-                                <Heading level="h5" size="base" weight="bold" color="primary" class="mb-2">{post.author}</Heading>
-                                <Text size="sm" color="muted">
+                                <Heading level={5} size="base" weight="bold" color="primary" class="mb-2">{post.author}</Heading>
+                                <Text size="sm" color="dark">
                                     Kontributor aktif KF13 yang berpengalaman dalam pembelajaran fisika dan eksperimen praktis.
                                 </Text>
                             </div>
@@ -306,7 +181,6 @@ const { post } = Astro.props;
                     </div>
                 </div>
             </BrutalSection>
-        </main>
         </main>
 
         <Footer />
@@ -340,12 +214,13 @@ const { post } = Astro.props;
         <script>
             // Reading progress
             document.addEventListener('DOMContentLoaded', () => {
-                const article = document.querySelector('article');
-                const progressBar = document.querySelector('.scroll-progress-bar');
+                const article = document.querySelector('.article-content');
+                const progressBar = document.getElementById('reading-progress');
+                const progressText = document.getElementById('progress-text');
                 
-                if (article && progressBar) {
+                if (article && progressBar && progressText) {
                     window.addEventListener('scroll', () => {
-                        const articleTop = article.offsetTop;
+                        const articleTop = article.offsetTop - 200;
                         const articleHeight = article.offsetHeight;
                         const windowHeight = window.innerHeight;
                         const scrollTop = window.scrollY;
@@ -355,7 +230,9 @@ const { post } = Astro.props;
                             1
                         );
                         
-                        progressBar.style.width = `${progress * 100}%`;
+                        const percentage = Math.round(progress * 100);
+                        progressBar.style.width = `${percentage}%`;
+                        progressText.textContent = `${percentage}%`;
                     });
                 }
             });
