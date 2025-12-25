@@ -1,0 +1,29 @@
+---
+import BrutalCard from "../ui/BrutalCard.astro";
+import Heading from "../ui/Heading.astro";
+
+interface Props {
+  tags: Array<{ name: string; count: number }>;
+}
+
+const { tags } = Astro.props;
+---
+
+<BrutalCard variant="surface" size="sm" rotation="right">
+  <Heading level={2} size="lg" weight="extrabold" color="primary" class="mb-6 transform -rotate-1">
+    🏷️ TAG POPULER
+  </Heading>
+  <nav role="navigation" aria-label="Tag artikel populer">
+    <div class="flex flex-wrap gap-2" role="group" aria-label="Daftar tag artikel">
+      {tags.map((tag, i) => (
+        <button 
+          class={`px-2 py-1 text-xs font-bold border-2 border-dark text-dark bg-white hover:bg-primary hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-primary transform ${i % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0`}
+          data-tag={tag.name}
+          aria-label={`Filter artikel dengan tag ${tag.name}, ${tag.count} artikel`}
+        >
+          {tag.name} ({tag.count})
+        </button>
+      ))}
+    </div>
+  </nav>
+</BrutalCard>

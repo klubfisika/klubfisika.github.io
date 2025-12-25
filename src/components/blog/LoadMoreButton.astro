@@ -1,0 +1,51 @@
+---
+---
+
+<div class="text-center mt-16">
+  <button 
+    type="button" 
+    class="font-black border-2 hover:scale-105 transition-transform inline-block text-center btn-accent px-6 py-3 text-base transform rotate-1 hover:rotate-0"
+    id="loadMoreBtn"
+    aria-label="Muat lebih banyak artikel blog"
+  >
+    📚 MUAT ARTIKEL LAINNYA
+  </button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+  const hiddenArticles = document.querySelectorAll('.hidden-article');
+  let currentlyShown = 0;
+  const articlesPerLoad = 3;
+
+  loadMoreBtn?.addEventListener('click', () => {
+    const articlesToShow = Array.from(hiddenArticles).slice(currentlyShown, currentlyShown + articlesPerLoad);
+    
+    articlesToShow.forEach(article => {
+      const element = article as HTMLElement;
+      element.style.display = 'block';
+      element.classList.remove('hidden-article');
+    });
+    
+    currentlyShown += articlesPerLoad;
+    
+    if (currentlyShown >= hiddenArticles.length) {
+      (loadMoreBtn as HTMLElement).style.display = 'none';
+    }
+    
+    // Announce to screen readers
+    const announcement = `Dimuat ${articlesToShow.length} artikel tambahan. Total ${currentlyShown + 3} artikel ditampilkan.`;
+    const srAnnouncement = document.createElement('div');
+    srAnnouncement.setAttribute('aria-live', 'polite');
+    srAnnouncement.setAttribute('aria-atomic', 'true');
+    srAnnouncement.className = 'sr-only';
+    srAnnouncement.textContent = announcement;
+    document.body.appendChild(srAnnouncement);
+    
+    setTimeout(() => {
+      document.body.removeChild(srAnnouncement);
+    }, 1000);
+  });
+});
+</script>

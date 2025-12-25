@@ -1,0 +1,47 @@
+---
+import BrutalCard from "../ui/BrutalCard.astro";
+import Heading from "../ui/Heading.astro";
+import Text from "../ui/Text.astro";
+
+interface Props {
+  articles: Array<{
+    slug: string;
+    title: string;
+    date: string;
+    readTime: string;
+  }>;
+}
+
+const { articles } = Astro.props;
+---
+
+<BrutalCard variant="surface" size="sm" rotation="left">
+  <Heading level={2} size="lg" weight="extrabold" color="primary" class="mb-6">
+    📰 ARTIKEL TERBARU
+  </Heading>
+  <nav role="navigation" aria-label="Artikel terbaru">
+    <ul class="space-y-3" role="list">
+      {articles.map((article) => (
+        <li role="listitem">
+          <a 
+            href={`/blog/${article.slug}`}
+            class="block border-l-4 border-primary pl-3 hover:bg-surface transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            aria-label={`Baca artikel: ${article.title}, dipublikasi ${article.date}, estimasi baca ${article.readTime}`}
+          >
+            <Text size="sm" weight="bold" color="dark" class="mb-1 hover:text-primary">
+              {article.title}
+            </Text>
+            <div class="flex items-center gap-2 text-xs text-dark">
+              <time datetime={article.date}>
+                📅 {article.date}
+              </time>
+              <span>
+                ⏱️ {article.readTime}
+              </span>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</BrutalCard>

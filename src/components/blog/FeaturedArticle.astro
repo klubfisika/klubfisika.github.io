@@ -1,0 +1,30 @@
+---
+import type { FeaturedArticleProps } from "@types/blog";
+
+const { post }: FeaturedArticleProps = Astro.props;
+---
+
+<div class="lg:col-span-2">
+  <article class="bg-primary dark:bg-slate-600 border-4 border-dark dark:border-light p-8 transform -rotate-1 hover:rotate-0 transition-transform shadow-brutal" tabindex="0" role="article" aria-labelledby="featured-title" data-article={post.category} data-tags={post.tags.join(',')}>
+    <div class="flex flex-wrap gap-2 mb-4">
+      <span class="bg-white text-dark px-3 py-1 text-xs font-bold border-2 border-dark">{post.category.toUpperCase()}</span>
+      <span class="bg-white text-dark px-3 py-1 text-xs font-bold border-2 border-dark">POPULER</span>
+    </div>
+    <h2 id="featured-title" class="text-3xl md:text-4xl font-black uppercase text-on-primary mb-4 leading-tight">
+      {post.title}
+    </h2>
+    <p class="text-on-primary opacity-90 text-lg leading-relaxed mb-6">
+      {post.excerpt}
+    </p>
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-4 text-on-primary opacity-80 text-sm">
+        <span>👨🔬 {post.author}</span>
+        <span>📅 {post.date}</span>
+        <span>⏱️ {post.readTime}</span>
+      </div>
+      <a href={`/blog/${post.slug}`} class="bg-white text-dark px-6 py-3 font-black border-2 border-dark hover:scale-105 transition-transform focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-4 focus:ring-offset-primary" aria-label={`Baca artikel lengkap: ${post.title}`}>
+        BACA ARTIKEL
+      </a>
+    </div>
+  </article>
+</div>

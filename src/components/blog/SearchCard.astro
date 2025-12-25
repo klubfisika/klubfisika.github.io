@@ -1,0 +1,25 @@
+---
+import BrutalCard from "../ui/BrutalCard.astro";
+import Heading from "../ui/Heading.astro";
+import BrutalInput from "../ui/BrutalInput.astro";
+---
+
+<BrutalCard variant="surface" size="sm" rotation="right">
+  <Heading level={2} size="lg" weight="extrabold" color="primary" class="mb-6">
+    🔍 CARI ARTIKEL
+  </Heading>
+  <form role="search" aria-label="Pencarian artikel" class="space-y-3">
+    <label for="search-input" class="sr-only">Cari artikel fisika</label>
+    <BrutalInput 
+      type="text" 
+      placeholder="Cari topik fisika..." 
+      id="search-input"
+      aria-label="Masukkan kata kunci pencarian artikel"
+      aria-describedby="search-help"
+    />
+    <div id="search-help" class="sr-only">
+      Ketik kata kunci untuk mencari artikel fisika, tutorial, atau eksperimen
+    </div>
+  </form>
+  <div id="search-results" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+</BrutalCard>

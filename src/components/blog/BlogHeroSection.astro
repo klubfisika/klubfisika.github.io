@@ -1,0 +1,23 @@
+---
+import GradientSection from "@ui/GradientSection.astro";
+import Heading from "@ui/Heading.astro";
+import Text from "@ui/Text.astro";
+import BrutalCard from "@ui/BrutalCard.astro";
+---
+
+<GradientSection variant="green-blue">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <Heading level={1} size="3xl" class="uppercase tracking-tight transform -rotate-1 mb-8">
+      BLOG & <span class="text-primary dark:text-primary-dark">ARTIKEL</span>
+    </Heading>
+    <BrutalCard variant="white" class="transform rotate-1 max-w-2xl mx-auto">
+      <Text size="lg" class="font-bold mb-4">
+        📚 Pusat Pengetahuan Fisika Indonesia
+      </Text>
+      <Text class="font-semibold">
+        Artikel fisika, tutorial eksperimen, tips belajar, dan berita terbaru dari komunitas KF13. 
+        Belajar fisika jadi lebih mudah dan menyenangkan!
+      </Text>
+    </BrutalCard>
+  </div>
+</GradientSection>

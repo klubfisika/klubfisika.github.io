@@ -1,7 +1,5 @@
 ---
-import "@/styles/main.css";
-import BaseHead from "../components/BaseHead.astro";
-import Navigation from "../components/Navigation.astro";
+import Layout from "../layouts/Layout.astro";
 import Hero from "../components/sections/Hero.astro";
 import About from "../components/sections/About.astro";
 import VisionMission from "../components/sections/VisionMission.astro";
@@ -10,45 +8,22 @@ import Gallery from "../components/sections/Gallery.astro";
 import FAQ from "../components/sections/FAQ.astro";
 import CTA from "../components/sections/CTA.astro";
 import ContactSection from "../components/sections/ContactSection.astro";
-import Footer from "../components/sections/Footer.astro";
-import FloatingActions from "../components/ui/FloatingActions.astro";
-import BackToTop from "../components/ui/BackToTop.astro";
 import TestingChecklist from "../components/ui/TestingChecklist.astro";
 import ResponsiveTest from "../components/ui/ResponsiveTest.astro";
-import GoogleAnalytics from "../components/analytics/GoogleAnalytics.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
-<html lang="id">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-        <!-- Analytics - Replace with actual GA4 ID -->
-        <!-- <GoogleAnalytics id="G-XXXXXXXXXX" /> -->
-        
-        <!-- Prevent FOUC (Flash of Unstyled Content) -->
-        <script is:inline>
-        </script>
-    </head>
-    <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">
-        <!-- UI Components -->
-        <Navigation />
-        <FloatingActions />
-        <BackToTop threshold={300} />
-        
-        <!-- Development Testing Tools -->
-        <TestingChecklist />
-        <ResponsiveTest />
-        
-        <main class="pt-20"> <!-- Account for fixed navigation -->
-          <Hero />
-          <About />
-          <VisionMission />
-          <Programs />
-          <Gallery />
-          <FAQ />
-          <CTA />
-          <ContactSection />
-          <Footer />
-        </main>
-    </body>
-</html>
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+    <!-- Development Testing Tools -->
+    <TestingChecklist />
+    <ResponsiveTest />
+    
+    <Hero />
+    <About />
+    <VisionMission />
+    <Programs />
+    <Gallery />
+    <FAQ />
+    <CTA />
+    <ContactSection />
+</Layout>

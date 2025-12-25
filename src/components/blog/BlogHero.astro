@@ -1,0 +1,49 @@
+---
+import GradientSection from "../ui/GradientSection.astro";
+
+interface Props {
+  featuredPost: {
+    title: string;
+    description: string;
+    slug: string;
+  };
+}
+
+const { featuredPost } = Astro.props;
+---
+
+<GradientSection>
+  <div class="max-w-6xl mx-auto px-6 py-16 text-center">
+    <div class="bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-8 transform -rotate-1 hover:rotate-0 shadow-brutal-lg transition-transform">
+      <h1 class="text-4xl md:text-6xl font-black uppercase text-dark dark:text-light mb-6 leading-tight">
+        📚 BLOG KF13
+      </h1>
+      <p class="text-lg md:text-xl text-dark dark:text-light leading-relaxed font-bold mb-8">
+        Artikel fisika, tutorial eksperimen, tips belajar, dan berita terbaru dari komunitas KF13. 
+        Belajar fisika jadi lebih mudah dan menyenangkan!
+      </p>
+      
+      {featuredPost && (
+        <div class="bg-primary text-white p-6 border-4 border-dark transform rotate-1 hover:rotate-0 transition-transform">
+          <div class="mb-4">
+            <span class="bg-white text-dark px-3 py-1 text-sm font-bold border-2 border-dark">
+              ARTIKEL TERBARU
+            </span>
+          </div>
+          <h2 class="text-xl font-black uppercase mb-3">
+            {featuredPost.title}
+          </h2>
+          <p class="text-sm mb-4 opacity-90">
+            {featuredPost.description}
+          </p>
+          <a 
+            href={`/blog/${featuredPost.slug}`}
+            class="bg-white text-dark px-4 py-2 font-bold text-sm border-2 border-dark hover:scale-105 transition-transform inline-block"
+          >
+            BACA SEKARANG
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+</GradientSection>

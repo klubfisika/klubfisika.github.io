@@ -1,0 +1,40 @@
+---
+import BrutalCard from "../ui/BrutalCard.astro";
+import Heading from "../ui/Heading.astro";
+import Text from "../ui/Text.astro";
+
+interface Props {
+  stats: {
+    totalArticles: number;
+    totalViews: string;
+    thisMonth: number;
+    categories: number;
+  };
+}
+
+const { stats } = Astro.props;
+---
+
+<BrutalCard variant="surface" size="sm" rotation="right">
+  <Heading level={2} size="lg" weight="extrabold" color="primary" class="mb-6 transform rotate-1">
+    📊 STATISTIK BLOG
+  </Heading>
+  <div class="space-y-3" role="region" aria-label="Statistik blog KF13">
+    <div class="flex justify-between items-center">
+      <Text size="sm" weight="bold" color="dark">Total Artikel:</Text>
+      <Text size="sm" weight="extrabold" color="primary" aria-label={`${stats.totalArticles} total artikel`}>{stats.totalArticles}</Text>
+    </div>
+    <div class="flex justify-between items-center">
+      <Text size="sm" weight="bold" color="dark">Total Pembaca:</Text>
+      <Text size="sm" weight="extrabold" color="primary" aria-label={`${stats.totalViews} total pembaca`}>{stats.totalViews}</Text>
+    </div>
+    <div class="flex justify-between items-center">
+      <Text size="sm" weight="bold" color="dark">Artikel Bulan Ini:</Text>
+      <Text size="sm" weight="extrabold" color="primary" aria-label={`${stats.thisMonth} artikel bulan ini`}>{stats.thisMonth}</Text>
+    </div>
+    <div class="flex justify-between items-center">
+      <Text size="sm" weight="bold" color="dark">Kategori Aktif:</Text>
+      <Text size="sm" weight="extrabold" color="primary" aria-label={`${stats.categories} kategori aktif`}>{stats.categories}</Text>
+    </div>
+  </div>
+</BrutalCard>

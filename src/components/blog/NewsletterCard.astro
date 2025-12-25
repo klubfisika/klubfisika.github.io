@@ -1,0 +1,44 @@
+---
+import BrutalCard from "../ui/BrutalCard.astro";
+import Heading from "../ui/Heading.astro";
+import Text from "../ui/Text.astro";
+import BrutalInput from "../ui/BrutalInput.astro";
+import BrutalButton from "../ui/BrutalButton.astro";
+---
+
+<BrutalCard variant="surface" size="sm" rotation="left">
+  <Heading level={2} size="lg" weight="extrabold" color="primary" class="mb-6 transform -rotate-1">
+    📧 NEWSLETTER
+  </Heading>
+  <Text size="sm" color="dark" class="mb-4">
+    Dapatkan artikel terbaru langsung di email!
+  </Text>
+  <form class="space-y-3" aria-label="Berlangganan newsletter KF13">
+    <label for="newsletter-email" class="sr-only">
+      Alamat email untuk berlangganan newsletter
+    </label>
+    <BrutalInput 
+      type="email" 
+      placeholder="email@example.com"
+      id="newsletter-email"
+      required
+      aria-label="Masukkan alamat email Anda"
+      aria-describedby="newsletter-help newsletter-privacy"
+    />
+    <div id="newsletter-help" class="sr-only">
+      Masukkan alamat email valid untuk menerima artikel fisika terbaru
+    </div>
+    <BrutalButton 
+      variant="primary" 
+      type="submit" 
+      class="w-full"
+      aria-label="Berlangganan newsletter KF13"
+    >
+      BERLANGGANAN
+    </BrutalButton>
+  </form>
+  <Text size="xs" color="dark" class="mt-2" id="newsletter-privacy">
+    Gratis, tanpa spam, bisa unsubscribe kapan saja
+  </Text>
+  <div id="newsletter-status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+</BrutalCard>
