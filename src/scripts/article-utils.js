@@ -299,6 +299,11 @@ function initKaTeX(article) {
 
     // Add copy buttons to math blocks
     addMathCopyButtons();
+    
+    // Make katex-display focusable for keyboard users (scrollable content)
+    document.querySelectorAll('.katex-display').forEach(el => {
+      el.setAttribute('tabindex', '0');
+    });
   }).catch(console.error);
 }
 
