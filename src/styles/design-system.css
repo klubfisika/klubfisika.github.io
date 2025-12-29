@@ -277,7 +277,7 @@ a:hover {
 }
 
 .text-on-light {
-  color: #111827 !important; /* Dark on light - 4.5:1+ contrast */
+  color: #1f2937 !important; /* Dark on light - 4.5:1+ contrast */
 }
 
 /* Dark mode overrides */
