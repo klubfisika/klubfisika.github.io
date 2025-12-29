@@ -5,6 +5,8 @@ import Navigation from "@components/Navigation.astro";
 import Footer from "@sections/Footer.astro";
 import FloatingActions from "@ui/FloatingActions.astro";
 import BackToTop from "@ui/BackToTop.astro";
+import TestingChecklist from "@ui/TestingChecklist.astro";
+import ResponsiveTest from "@ui/ResponsiveTest.astro";
 
 export interface Props {
     title: string;
@@ -23,7 +25,19 @@ const { title, description, backToTopThreshold = 300 } = Astro.props;
     <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">
         <Navigation />
         <FloatingActions />
-        <BackToTop threshold={backToTopThreshold} />
+        <BackToTop 
+            threshold={backToTopThreshold} 
+            showReadingTime={Astro.url.pathname.startsWith('/blog/') && !Astro.url.pathname.endsWith('/blog')}
+            articleSelector=".article-content"
+        />
+        
+        <!-- Development Only Components -->
+        {import.meta.env.DEV && (
+            <>
+                <TestingChecklist />
+                <ResponsiveTest />
+            </>
+        )}
         
         <main class="pt-20">
             <slot />
