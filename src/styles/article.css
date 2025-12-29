@@ -1,0 +1,1819 @@
+/* Article-specific styles - Medium-inspired reading experience */
+
+/* Import KaTeX CSS */
+@import url('https://cdn.jsdelivr.net/npm/katex@0.16.27/dist/katex.min.css');
+
+/* Import Inter font for better readability */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+
+/* Article container */
+.article-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 20px;
+  background: #ffffff;
+  min-height: 100vh;
+}
+
+.dark .article-container {
+  background: #111827;
+}
+
+/* Article header */
+.article-header {
+  max-width: 680px;
+  margin: 0 auto 3rem;
+  text-align: left;
+}
+
+.article-title {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.article-subtitle {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #6b7280;
+  margin-bottom: 2rem;
+}
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.article-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.article-tag {
+  background: #f3f4f6;
+  color: #374151;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.article-tag:hover {
+  background: #e5e7eb;
+}
+
+/* Article content */
+.article-content {
+  max-width: 680px;
+  margin: 0 auto;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #1a1a1a;
+}
+
+/* Typography hierarchy - Improved visual hierarchy */
+.article-content h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 3rem 0 0.5rem; /* Further reduced bottom */
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+}
+
+.article-content h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 2.5rem 0 0.25rem; /* Further reduced bottom */
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
+}
+
+.article-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 2rem 0 0.25rem; /* Further reduced bottom */
+  color: #1a1a1a;
+}
+
+.article-content h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 1.5rem 0 0.125rem; /* Further reduced bottom */
+  color: #1a1a1a;
+}
+
+.article-content h5 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 1.25rem 0 0.125rem; /* Further reduced bottom */
+  color: #1a1a1a;
+}
+
+.article-content h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 1rem 0 0.125rem; /* Further reduced bottom */
+  color: #1a1a1a;
+}
+
+/* Reduce spacing between headings and their immediate content */
+.article-content h1 + *,
+.article-content h2 + *,
+.article-content h3 + *,
+.article-content h4 + *,
+.article-content h5 + *,
+.article-content h6 + * {
+  margin-top: 0 !important;
+}
+
+/* Special case: when heading follows another heading, add small gap */
+.article-content h1 + h2,
+.article-content h1 + h3,
+.article-content h1 + h4,
+.article-content h2 + h3,
+.article-content h2 + h4,
+.article-content h3 + h4,
+.article-content h3 + h5,
+.article-content h4 + h5,
+.article-content h4 + h6,
+.article-content h5 + h6 {
+  margin-top: 1rem !important;
+}
+
+.article-content p {
+  margin-bottom: 1.5rem;
+  color: #1a1a1a;
+}
+
+.article-content strong {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.article-content em {
+  font-style: italic;
+}
+
+/* Lists */
+.article-content ul,
+.article-content ol {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+/* Reduce top margin when ul/ol follows p */
+.article-content p + ul,
+.article-content p + ol {
+  margin-top: 0.5rem;
+}
+
+/* Lists immediately after headings - closer proximity */
+.article-content h1 + ul,
+.article-content h2 + ul,
+.article-content h3 + ul,
+.article-content h4 + ul,
+.article-content h5 + ul,
+.article-content h6 + ul,
+.article-content h1 + ol,
+.article-content h2 + ol,
+.article-content h3 + ol,
+.article-content h4 + ol,
+.article-content h5 + ol,
+.article-content h6 + ol {
+  margin-top: 0.5rem !important; /* Closer to heading */
+}
+
+.article-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.article-content li > p {
+  margin-bottom: 0.5rem;
+}
+
+.article-content li > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Nested lists - proper indentation for hierarchy */
+.article-content ul ul,
+.article-content ol ol,
+.article-content ul ol,
+.article-content ol ul {
+  margin: 0.25rem 0 0.5rem 0; /* Reduced spacing for nested */
+  padding-left: 1.5rem; /* Additional indentation */
+}
+
+/* Nested list items - closer spacing */
+.article-content ul ul li,
+.article-content ol ol li,
+.article-content ul ol li,
+.article-content ol ul li {
+  margin-bottom: 0.25rem; /* Tighter spacing for sub-items */
+  font-size: 0.95em; /* Slightly smaller for hierarchy */
+  color: #4b5563; /* Slightly muted color */
+}
+
+/* Math content after headings - simple proximity fix only */
+.article-content h4 + p {
+  margin-top: 0 !important; /* Close proximity to heading */
+}
+
+/* Remove all the over-styling that made math blocks look like cards */
+
+.article-content ul li {
+  list-style-type: disc;
+}
+
+.article-content ol li {
+  list-style-type: decimal;
+}
+
+/* Blockquotes */
+.article-content blockquote {
+  border-left: 4px solid #e5e7eb;
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: #6b7280;
+  font-size: 1.125rem;
+}
+
+/* Blockquotes immediately after headings - closer proximity */
+.article-content h1 + blockquote,
+.article-content h2 + blockquote,
+.article-content h3 + blockquote,
+.article-content h4 + blockquote,
+.article-content h5 + blockquote,
+.article-content h6 + blockquote {
+  margin-top: 0.5rem !important; /* Closer to heading */
+}
+
+/* Links */
+.article-content a {
+  color: var(--color-hover-text-primary-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+
+.article-content a:hover {
+  color: var(--color-hover-text-primary);
+}
+
+/* Inline code */
+.article-content code {
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  font-size: 0.875em;
+  background: #f3f4f6;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  color: #dc2626;
+  font-weight: 500;
+}
+
+/* Code blocks */
+.article-content pre {
+  position: relative;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #1e293b;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  border: 1px solid #334155;
+}
+
+/* Reduce top margin when pre follows p */
+.article-content p + pre {
+  margin-top: 0.5rem;
+}
+
+.article-content pre code {
+  display: block;
+  background: transparent;
+  padding: 0;
+  color: #e2e8f0;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  font-variant-ligatures: common-ligatures;
+  font-feature-settings: "liga" 1, "calt" 1;
+}
+
+/* Copy button positioning */
+.code-copy-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: #334155;
+  color: #e2e8f0;
+  border: 1px solid #475569;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.code-copy-button:hover {
+  background: #475569;
+  border-color: #64748b;
+}
+
+.code-copy-button svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Dark mode code blocks */
+.dark .article-content pre {
+  background: #0f172a;
+  border-color: #1e293b;
+}
+
+.dark .code-copy-button {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark .code-copy-button:hover {
+  background: #334155;
+}
+
+/* Advanced code blocks with toolbar */
+.code-block-wrapper {
+  position: relative;
+  margin: 2rem 0;
+}
+
+.code-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-bottom: 1px solid #334155;
+}
+
+.code-language {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+}
+
+.code-copy-button {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: #1e293b;
+  color: #e2e8f0;
+  border: 1px solid #334155;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.code-copy-button:hover {
+  background: #334155;
+  border-color: #475569;
+}
+
+.code-copy-button svg {
+  width: 14px;
+  height: 14px;
+}
+
+.article-content .code-block-wrapper pre {
+  margin: 0;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  font-variant-ligatures: common-ligatures;
+  font-feature-settings: "liga" 1, "calt" 1;
+}
+
+/* Enhanced syntax highlighting with Prism.js */
+.article-content pre .token.comment,
+.article-content pre .token.prolog,
+.article-content pre .token.doctype,
+.article-content pre .token.cdata {
+  color: #64748b;
+  font-style: italic;
+}
+
+.article-content pre .token.punctuation {
+  color: #e2e8f0;
+}
+
+.article-content pre .token.property,
+.article-content pre .token.tag,
+.article-content pre .token.boolean,
+.article-content pre .token.number,
+.article-content pre .token.constant,
+.article-content pre .token.symbol,
+.article-content pre .token.deleted {
+  color: #f87171;
+}
+
+.article-content pre .token.selector,
+.article-content pre .token.attr-name,
+.article-content pre .token.string,
+.article-content pre .token.char,
+.article-content pre .token.builtin,
+.article-content pre .token.inserted {
+  color: #34d399;
+}
+
+.article-content pre .token.operator,
+.article-content pre .token.entity,
+.article-content pre .token.url,
+.article-content pre .language-css .token.string,
+.article-content pre .style .token.string {
+  color: #60a5fa;
+}
+
+.article-content pre .token.atrule,
+.article-content pre .token.attr-value,
+.article-content pre .token.keyword {
+  color: #a78bfa;
+}
+
+.article-content pre .token.function,
+.article-content pre .token.class-name {
+  color: #fbbf24;
+}
+
+.article-content pre .token.regex,
+.article-content pre .token.important,
+.article-content pre .token.variable {
+  color: #fb7185;
+}
+
+/* Dark mode code blocks */
+.dark .code-toolbar {
+  background: #0c0a09;
+  color: #f1f5f9;
+  border-bottom-color: #292524;
+}
+
+.dark .code-copy-button {
+  background: #1c1917;
+  color: #f1f5f9;
+  border-color: #292524;
+}
+
+.dark .code-copy-button:hover {
+  background: #292524;
+  border-color: #3c3836;
+}
+
+.dark .article-content .code-block-wrapper pre {
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+/* Mobile code blocks */
+@media (max-width: 768px) {
+  .code-block-wrapper {
+    margin: 1.5rem 0;
+  }
+  
+  .article-content pre {
+    margin: 1.5rem 0;
+    border-radius: 0.5rem;
+  }
+  
+  .code-toolbar {
+    padding: 0.5rem 1rem;
+  }
+  
+  .article-content .code-block-wrapper pre {
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .code-copy-button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+  }
+  
+  .code-copy-button .copy-text {
+    display: none;
+  }
+}
+
+/* Tables */
+.article-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 2px solid #e5e7eb;
+}
+
+.dark .article-content table {
+  border-color: #374151;
+}
+
+.article-content th,
+.article-content td {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.dark .article-content th,
+.dark .article-content td {
+  border-bottom-color: #374151;
+}
+
+.article-content th {
+  background: #1e40af;
+  color: #ffffff;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.025em;
+}
+
+.dark .article-content th {
+  background: #1e3a8a;
+}
+
+.article-content tbody tr {
+  background: #ffffff;
+  transition: background 0.15s;
+}
+
+.dark .article-content tbody tr {
+  background: #1f2937;
+}
+
+.article-content tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+.dark .article-content tbody tr:nth-child(even) {
+  background: #111827;
+}
+
+.article-content tbody tr:hover {
+  background: #eff6ff;
+}
+
+.dark .article-content tbody tr:hover {
+  background: #1e3a5f;
+}
+
+.article-content td {
+  color: #374151;
+}
+
+.dark .article-content td {
+  color: #e5e7eb;
+}
+
+/* Images */
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 2rem 0;
+}
+
+/* Mermaid diagrams */
+.mermaid-container {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.mermaid-wrapper {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.mermaid {
+  max-width: 100%;
+  height: auto;
+}
+
+.mermaid-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  color: #dc2626;
+}
+
+.mermaid-error p {
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.mermaid-error pre {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  margin: 0;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+/* Dark mode Mermaid */
+.dark .mermaid-wrapper {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.dark .mermaid-error {
+  background: #1f1f1f;
+  border-color: #ef4444;
+  color: #f87171;
+}
+
+.dark .mermaid-error pre {
+  background: #111827;
+  border-color: #374151;
+  color: #d1d5db;
+}
+
+/* Mobile Mermaid */
+@media (max-width: 768px) {
+  .mermaid-container {
+    margin: 1.5rem 0;
+  }
+  
+  .mermaid-wrapper {
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .mermaid {
+    font-size: 0.875rem;
+  }
+}
+
+/* Math rendering with KaTeX */
+.article-content .katex {
+  font-size: 1.1em;
+}
+
+/* KaTeX math display - clean and simple */
+.article-content .katex-display {
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-top: 0.5em;
+}
+
+/* Math block container - minimal styling for copy button functionality */
+.math-block {
+  position: relative !important;
+  background: #f8fafc !important;
+  border-radius: 0.375rem !important;
+}
+
+/* Reduce margin for paragraphs containing math blocks */
+.article-content p:has(.math-block) {
+  margin-bottom: 0.5rem;
+}
+
+/* Reduce margin for paragraphs followed by math block */
+.article-content p:has(+ p > .math-block) {
+  margin-bottom: 0.5rem;
+}
+
+/* Reduce margin for paragraphs followed by code block */
+.article-content p:has(+ pre) {
+  margin-bottom: 0.5rem;
+}
+
+/* Reduce margin for paragraphs followed by lists */
+.article-content p:has(+ ul),
+.article-content p:has(+ ol) {
+  margin-bottom: 0.5rem;
+}
+
+/* Inner wrapper for scroll with spacing */
+.math-block > .katex-display {
+  overflow-x: auto;
+  padding: 0.5rem;
+}
+
+.math-block > .katex-display::-webkit-scrollbar {
+  height: 8px;
+}
+
+.math-block > .katex-display::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+.math-block > .katex-display::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+.math-block > .katex-display::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+.dark .math-block {
+  background: #1f2937 !important;
+}
+
+.dark .math-block > .katex-display::-webkit-scrollbar-track {
+  background: var(--color-surface-dark);
+}
+
+.dark .math-block > .katex-display::-webkit-scrollbar-thumb {
+  background: var(--color-primary-dark);
+}
+
+/* Mobile math - simplified */
+@media (max-width: 768px) {
+  .article-content .katex-display {
+    font-size: 0.9em;
+  }
+}
+
+/* Table of Contents */
+.table-of-contents {
+  max-width: 680px;
+  margin: 1.5rem auto; /* Reduced from 2rem to 1.5rem */
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.toc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.toc-header h4 {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.toc-toggle {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+}
+
+.toc-toggle:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.toc-nav {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.toc-nav.expanded {
+  max-height: 400px;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-item {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.toc-item:last-child {
+  border-bottom: none;
+}
+
+.toc-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #4b5563;
+  text-decoration: none;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.toc-link:hover {
+  background: #f8fafc;
+  color: #1f2937;
+  border-left-color: #e5e7eb;
+}
+
+.toc-link.active {
+  background: #eff6ff;
+  color: var(--color-hover-text-primary);
+  border-left-color: var(--color-hover-text-primary-dark);
+  font-weight: 500;
+}
+
+/* Heading level indentation */
+.toc-h1 .toc-link {
+  padding-left: 1rem;
+  font-weight: 600;
+}
+
+.toc-h2 .toc-link {
+  padding-left: 1.5rem;
+}
+
+.toc-h3 .toc-link {
+  padding-left: 2rem;
+  font-size: 0.8125rem;
+}
+
+.toc-h4 .toc-link {
+  padding-left: 2.5rem;
+  font-size: 0.8125rem;
+  color: #6b7280;
+}
+
+/* Dark mode TOC */
+.dark .table-of-contents {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.dark .toc-header {
+  background: #111827;
+  border-bottom-color: #374151;
+}
+
+.dark .toc-header h4 {
+  color: #f9fafb;
+}
+
+.dark .toc-toggle {
+  color: #9ca3af;
+}
+
+.dark .toc-toggle:hover {
+  background: #374151;
+  color: #f3f4f6;
+}
+
+.dark .toc-item {
+  border-bottom-color: #374151;
+}
+
+.dark .toc-link {
+  color: #d1d5db;
+}
+
+.dark .toc-link:hover {
+  background: #374151;
+  color: #f9fafb;
+  border-left-color: #4b5563;
+}
+
+.dark .toc-link.active {
+  background: #1e3a8a;
+  color: #93c5fd;
+  border-left-color: #60a5fa;
+}
+
+.dark .toc-h4 .toc-link {
+  color: #9ca3af;
+}
+
+/* Mobile TOC */
+@media (max-width: 768px) {
+  .table-of-contents {
+    margin: 1.5rem 0;
+    border-radius: 0.5rem;
+    background: #f8fafc;
+  }
+  
+  .dark .table-of-contents {
+    background: #1f2937;
+  }
+  
+  .toc-header {
+    padding: 0.75rem 1rem;
+    background: #f1f5f9;
+  }
+  
+  .dark .toc-header {
+    background: #111827;
+  }
+  
+  .toc-link {
+    padding: 0.625rem 1rem;
+    font-size: 0.8125rem;
+  }
+  
+  .toc-h2 .toc-link {
+    padding-left: 1.25rem;
+  }
+  
+  .toc-h3 .toc-link {
+    padding-left: 1.5rem;
+  }
+  
+  .toc-h4 .toc-link {
+    padding-left: 1.75rem;
+  }
+}
+@media (max-width: 768px) {
+  .article-container {
+    padding: 0 16px;
+  }
+  
+  .article-header {
+    margin-bottom: 2rem;
+  }
+  
+  .article-content {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  
+  .article-title {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .article-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .article-content h1 {
+    font-size: 1.75rem;
+    margin: 2rem 0 1rem;
+  }
+  
+  .article-content h2 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 0.75rem;
+  }
+  
+  .article-content h3 {
+    font-size: 1.25rem;
+    margin: 1.25rem 0 0.5rem;
+  }
+  
+  .article-content pre {
+    padding: 1rem;
+    font-size: 0.8rem;
+    border-radius: 0.25rem;
+    margin: 1.5rem -16px; /* Full width on mobile */
+  }
+  
+  .article-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .article-tags {
+    gap: 0.375rem;
+  }
+  
+  .article-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+  
+  /* Better touch targets */
+  .article-content a {
+    padding: 0.125rem 0;
+    margin: -0.125rem 0;
+  }
+  
+  /* Improve table scrolling */
+  .article-content table {
+    font-size: 0.8rem;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .article-container {
+    padding: 0 32px;
+  }
+  
+  .article-content {
+    font-size: 17px;
+  }
+  
+  .article-title {
+    font-size: 2.25rem;
+  }
+}
+
+/* Dark mode support - integrate with KF13 system */
+.dark .article-title,
+.dark .article-content h1,
+.dark .article-content h2,
+.dark .article-content h3,
+.dark .article-content h4,
+.dark .article-content p,
+.dark .article-content strong,
+.dark .article-content li {
+  color: #f9fafb;
+}
+
+.dark .article-subtitle,
+.dark .article-meta,
+.dark .article-meta-item {
+  color: #9ca3af;
+}
+
+.dark .article-content code {
+  background: #374151;
+  color: #fbbf24;
+}
+
+.dark .article-tag {
+  background: #374151;
+  color: #f9fafb;
+}
+
+.dark .article-tag:hover {
+  background: #4b5563;
+}
+
+.dark .article-content blockquote {
+  border-left-color: #4b5563;
+  color: #9ca3af;
+}
+
+.dark .article-content a {
+  color: #60a5fa;
+}
+
+.dark .article-content a:hover {
+  color: var(--color-hover-text-primary-dark);
+}
+
+.dark .article-content th,
+.dark .article-content td {
+  border-color: #4b5563;
+}
+
+.dark .article-content th {
+  background: #374151;
+  color: #f9fafb;
+}
+
+/* Print styles */
+@media print {
+  .article-container {
+    max-width: none;
+    padding: 0;
+  }
+  
+  .article-header {
+    margin-bottom: 2rem;
+  }
+  
+  .article-content {
+    max-width: none;
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+  }
+  
+  .article-content h1,
+  .article-content h2,
+  .article-content h3,
+  .article-content h4 {
+    color: #000;
+    page-break-after: avoid;
+  }
+  
+  .article-content pre {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+  
+  .code-toolbar,
+  .table-of-contents,
+  .mermaid-container,
+  .reading-progress,
+  #back-to-top,
+  .floating-actions {
+    display: none !important;
+  }
+  
+  .article-content a {
+    color: #000;
+    text-decoration: underline;
+  }
+  
+  .article-content a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+}
+
+
+/* Mermaid Toolbar */
+.mermaid-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem;
+  background: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.dark .mermaid-toolbar {
+  background: #1e293b;
+  border-bottom-color: #334155;
+}
+
+.mermaid-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.mermaid-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.375rem 0.625rem;
+  font-size: 0.75rem;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.dark .mermaid-btn {
+  background: #334155;
+  border-color: #475569;
+  color: #e2e8f0;
+}
+
+.mermaid-btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.dark .mermaid-btn:hover {
+  background: #475569;
+}
+
+.mermaid-dropdown {
+  position: relative;
+}
+
+.mermaid-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.25rem;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  z-index: 10;
+  min-width: 120px;
+}
+
+.dark .mermaid-dropdown .dropdown-menu {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.mermaid-dropdown.open .dropdown-menu {
+  display: block;
+}
+
+.mermaid-dropdown .export-btn svg:last-child {
+  transition: transform 0.15s;
+}
+
+.mermaid-dropdown.open .export-btn svg:last-child {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-size: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background: #f1f5f9;
+}
+
+.dark .dropdown-menu button {
+  color: #e2e8f0;
+}
+
+.dark .dropdown-menu button:hover {
+  background: #334155;
+}
+
+/* Math Copy Button */
+.math-copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.math-block:hover .math-copy-btn {
+  opacity: 1;
+}
+
+/* Remove orphaned math-block hover rule */
+
+.dark .math-copy-btn {
+  background: rgba(30, 41, 59, 0.9);
+  border-color: #475569;
+  color: #e2e8f0;
+}
+
+.math-copy-btn:hover {
+  background: #f1f5f9;
+  color: var(--color-hover-text-primary);
+}
+
+.dark .math-copy-btn:hover {
+  background: #334155;
+  color: var(--color-hover-text-primary-dark);
+}
+
+@media (max-width: 768px) {
+  .mermaid-btn span {
+    display: none;
+  }
+  
+  .mermaid-btn {
+    padding: 0.375rem;
+  }
+  
+  .math-copy-btn {
+    opacity: 1;
+  }
+}
+
+
+/* Mermaid Toolbar */
+.mermaid-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.dark .mermaid-toolbar {
+  background: #1e293b;
+  border-bottom-color: #334155;
+}
+
+.mermaid-copy-btn,
+.mermaid-export-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.375rem 0.625rem;
+  font-size: 0.75rem;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.dark .mermaid-copy-btn,
+.dark .mermaid-export-btn {
+  background: #334155;
+  border-color: #475569;
+  color: #e2e8f0;
+}
+
+.mermaid-copy-btn:hover,
+.mermaid-export-btn:hover {
+  background: #f1f5f9;
+  color: var(--color-hover-text-primary);
+}
+
+.dark .mermaid-copy-btn:hover,
+.dark .mermaid-export-btn:hover {
+  background: #475569;
+  color: var(--color-hover-text-primary-dark);
+}
+
+.mermaid-export-dropdown {
+  position: relative;
+}
+
+.mermaid-export-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.25rem;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  z-index: 10;
+  min-width: 110px;
+}
+
+.dark .mermaid-export-menu {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.mermaid-export-dropdown.open .mermaid-export-menu {
+  display: block;
+}
+
+.mermaid-export-dropdown.open .mermaid-export-btn svg:last-child {
+  transform: rotate(180deg);
+}
+
+.mermaid-export-menu button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-size: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mermaid-export-menu button:hover {
+  background: #f1f5f9;
+  color: var(--color-hover-text-primary);
+}
+
+.dark .mermaid-export-menu button {
+  color: #e2e8f0;
+}
+
+.dark .mermaid-export-menu button:hover {
+  background: #334155;
+  color: var(--color-hover-text-primary-dark);
+}
+
+/* Remove duplicate math copy button - keep only the first one */
+/* Fix checkbox lists - remove bullet points and make clickable */
+article ul li {
+  position: relative;
+}
+
+/* Hide bullets for all li that contain checkboxes */
+article ul li:first-child:has(input[type="checkbox"]) ~ li,
+article ul li:has(input[type="checkbox"]) {
+  list-style: none !important;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* Alternative approach - hide bullets for the entire ul if it contains checkboxes */
+article ul:has(input[type="checkbox"]) {
+  list-style: none !important;
+  padding-left: 0;
+}
+
+article ul:has(input[type="checkbox"]) li {
+  list-style: none !important;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+article ul li input[type="checkbox"] {
+  pointer-events: auto !important;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+/* Remove disabled attribute from checkboxes */
+article ul li input[type="checkbox"][disabled] {
+  pointer-events: auto !important;
+  cursor: pointer;
+}
+
+/* ========================================
+   Interactive Components for Articles
+   ======================================== */
+
+/* Callout boxes */
+.article-content .callout {
+  display: block;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  border-left: 5px solid;
+}
+
+.article-content .callout > strong:first-child {
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+}
+
+.article-content .callout p {
+  margin: 0 0 0.5rem 0;
+}
+
+.article-content .callout p:last-child {
+  margin-bottom: 0;
+}
+
+.article-content .callout ol,
+.article-content .callout ul {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.5rem;
+}
+
+.article-content .callout li {
+  margin-bottom: 0.5rem;
+}
+
+.article-content .callout li strong {
+  color: inherit;
+}
+
+.article-content .callout-info {
+  border-left-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.article-content .callout-tip {
+  border-left-color: #a855f7;
+  background: #faf5ff;
+}
+
+.article-content .callout-warning {
+  border-left-color: #f59e0b;
+  background: #fffbeb;
+}
+
+.article-content .callout-success {
+  border-left-color: #22c55e;
+  background: #f0fdf4;
+}
+
+.dark .article-content .callout-info {
+  background: #1e3a5f;
+}
+
+.dark .article-content .callout-tip {
+  background: #3b0764;
+}
+
+.dark .article-content .callout-warning {
+  background: #78350f;
+}
+
+.dark .article-content .callout-success {
+  background: #14532d;
+}
+
+/* Accordion / Details */
+.article-content .accordion,
+.article-content details {
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  margin: 1.25rem 0;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.dark .article-content .accordion,
+.dark .article-content details {
+  border-color: #374151;
+  background: #1f2937;
+}
+
+.article-content .accordion summary,
+.article-content details summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: #f9fafb;
+  cursor: pointer;
+  font-weight: 500;
+  list-style: none;
+  transition: background 0.2s;
+}
+
+.dark .article-content .accordion summary,
+.dark .article-content details summary {
+  background: #374151;
+}
+
+.article-content .accordion summary:hover,
+.article-content details summary:hover {
+  background: #f3f4f6;
+}
+
+.dark .article-content .accordion summary:hover,
+.dark .article-content details summary:hover {
+  background: #4b5563;
+}
+
+.article-content .accordion summary::-webkit-details-marker,
+.article-content details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Add chevron icon */
+.article-content .accordion summary::after,
+.article-content details summary::after {
+  content: '▼';
+  font-size: 0.75rem;
+  color: #6b7280;
+  transition: transform 0.2s;
+}
+
+.article-content .accordion[open] summary::after,
+.article-content details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.article-content .accordion-content,
+.article-content details > div {
+  padding: 1.25rem;
+  border-top: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.dark .article-content .accordion-content,
+.dark .article-content details > div {
+  border-top-color: #374151;
+  background: #1f2937;
+}
+
+/* Tabs */
+.article-content .tabs-container {
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  background: #f9fafb;
+}
+
+.dark .article-content .tabs-container {
+  border-color: #374151;
+  background: #1f2937;
+}
+
+.article-content .tabs-header {
+  display: flex;
+  background: #f3f4f6;
+  border-bottom: 2px solid #e5e7eb;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 0;
+}
+
+.dark .article-content .tabs-header {
+  background: #374151;
+  border-bottom-color: #4b5563;
+}
+
+.article-content .tab-btn {
+  padding: 0.625rem 1rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #6b7280;
+  white-space: nowrap;
+  transition: all 0.2s;
+  border-radius: 0.375rem 0.375rem 0 0;
+}
+
+.article-content .tab-btn:hover {
+  color: #1f2937;
+  background: #e5e7eb;
+}
+
+.dark .article-content .tab-btn:hover {
+  color: #f3f4f6;
+  background: #4b5563;
+}
+
+.article-content .tab-btn.active {
+  color: #1f2937;
+  background: #ffffff;
+  font-weight: 600;
+}
+
+.dark .article-content .tab-btn.active {
+  color: #f3f4f6;
+  background: #1f2937;
+}
+
+.article-content .tabs-content {
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.article-content .tab-panel {
+  display: none;
+}
+
+.article-content .tab-panel.active {
+  display: block;
+}
+
+.article-content .tab-panel p:last-child {
+  margin-bottom: 0;
+}
+
+/* Quiz */
+.article-content .quiz-container {
+  background: #f0f9ff;
+  border: 2px solid #bae6fd;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.dark .article-content .quiz-container {
+  background: #0c4a6e;
+  border-color: #0369a1;
+}
+
+.article-content .quiz-question {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.article-content .quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.article-content .quiz-option {
+  text-align: left;
+  padding: 0.875rem 1rem;
+  border: 2px solid #d1d5db;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.dark .article-content .quiz-option {
+  background: #1e3a5f;
+  border-color: #475569;
+  color: #e2e8f0;
+}
+
+.article-content .quiz-option:hover:not(:disabled) {
+  border-color: #3b82f6;
+  background: #eff6ff;
+  transform: translateX(4px);
+}
+
+.dark .article-content .quiz-option:hover:not(:disabled) {
+  border-color: #60a5fa;
+  background: #1e40af;
+}
+
+.article-content .quiz-option.correct {
+  border-color: #22c55e;
+  background: #dcfce7;
+}
+
+.article-content .quiz-option.incorrect {
+  border-color: #ef4444;
+  background: #fee2e2;
+}
+
+.dark .article-content .quiz-option.correct {
+  background: #166534;
+}
+
+.dark .article-content .quiz-option.incorrect {
+  background: #991b1b;
+}
+
+.article-content .quiz-explanation {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #ecfdf5;
+  border-left: 4px solid #22c55e;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-size: 0.9rem;
+  color: #166534;
+}
+
+.dark .article-content .quiz-explanation {
+  background: #14532d;
+  color: #bbf7d0;
+}
+
+.article-content .quiz-explanation.show {
+  display: block;
+}
+
+.article-content .quiz-feedback {
+  margin-top: 0.75rem;
+  font-weight: 500;
+  display: none;
+}
+
+.article-content .quiz-feedback.show {
+  display: block;
+}
