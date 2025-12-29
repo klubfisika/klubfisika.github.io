@@ -1,0 +1,119 @@
+---
+interface Props {
+  question: string;
+  options: string[];
+  correct: number;
+  explanation?: string;
+}
+
+const { question, options, correct, explanation } = Astro.props;
+const id = `quiz-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<div class="quiz-container" data-correct={correct} data-id={id}>
+  <p class="quiz-question">{question}</p>
+  <div class="quiz-options">
+    {options.map((opt, i) => (
+      <button class="quiz-option" data-index={i}>{opt}</button>
+    ))}
+  </div>
+  {explanation && <p class="quiz-explanation">{explanation}</p>}
+  <p class="quiz-feedback"></p>
+</div>
+
+<style>
+  .quiz-container {
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .quiz-question {
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .quiz-option {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--color-border);
+    border-radius: 0.375rem;
+    background: var(--color-background);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .quiz-option:hover:not(:disabled) {
+    border-color: var(--color-primary);
+    background: var(--color-surface);
+  }
+  .quiz-option.correct {
+    border-color: #22c55e;
+    background: #dcfce7;
+  }
+  .quiz-option.incorrect {
+    border-color: #ef4444;
+    background: #fee2e2;
+  }
+  :global(.dark) .quiz-option.correct {
+    background: #166534;
+  }
+  :global(.dark) .quiz-option.incorrect {
+    background: #991b1b;
+  }
+  .quiz-explanation {
+    display: none;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: var(--color-surface);
+    border-radius: 0.375rem;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+  }
+  .quiz-explanation.show {
+    display: block;
+  }
+  .quiz-feedback {
+    margin-top: 0.75rem;
+    font-weight: 500;
+    display: none;
+  }
+  .quiz-feedback.show {
+    display: block;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.quiz-container').forEach(container => {
+    const correct = parseInt(container.dataset.correct || '0');
+    const options = container.querySelectorAll('.quiz-option');
+    const feedback = container.querySelector('.quiz-feedback');
+    const explanation = container.querySelector('.quiz-explanation');
+    
+    options.forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        options.forEach(b => {
+          b.classList.remove('correct', 'incorrect');
+          b.disabled = true;
+        });
+        
+        if (i === correct) {
+          btn.classList.add('correct');
+          feedback.textContent = '✓ Benar!';
+          feedback.style.color = '#22c55e';
+        } else {
+          btn.classList.add('incorrect');
+          options[correct].classList.add('correct');
+          feedback.textContent = '✗ Kurang tepat';
+          feedback.style.color = '#ef4444';
+        }
+        feedback.classList.add('show');
+        explanation?.classList.add('show');
+      });
+    });
+  });
+</script>

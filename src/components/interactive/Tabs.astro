@@ -1,0 +1,91 @@
+---
+interface Props {
+  tabs: string[];
+}
+
+const { tabs } = Astro.props;
+const id = `tabs-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<div class="tabs-container" data-id={id}>
+  <div class="tabs-header" role="tablist">
+    {tabs.map((tab, i) => (
+      <button 
+        class={`tab-btn ${i === 0 ? 'active' : ''}`} 
+        role="tab"
+        data-index={i}
+      >
+        {tab}
+      </button>
+    ))}
+  </div>
+  <div class="tabs-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .tabs-container {
+    border: 2px solid var(--color-border);
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+    overflow: hidden;
+  }
+  .tabs-header {
+    display: flex;
+    background: var(--color-surface);
+    border-bottom: 2px solid var(--color-border);
+    overflow-x: auto;
+  }
+  .tab-btn {
+    padding: 0.75rem 1.25rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .tab-btn:hover {
+    color: var(--color-text);
+    background: var(--color-background);
+  }
+  .tab-btn.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+  }
+  .tabs-content {
+    padding: 1rem;
+  }
+  .tabs-content :global(.tab-panel) {
+    display: none;
+  }
+  .tabs-content :global(.tab-panel.active) {
+    display: block;
+  }
+  .tabs-content :global(.tab-panel p:last-child) {
+    margin-bottom: 0;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.tabs-container').forEach(container => {
+    const buttons = container.querySelectorAll('.tab-btn');
+    const panels = container.querySelectorAll('.tab-panel');
+    
+    // Initialize first panel as active
+    panels[0]?.classList.add('active');
+    
+    buttons.forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        panels[i]?.classList.add('active');
+      });
+    });
+  });
+</script>
