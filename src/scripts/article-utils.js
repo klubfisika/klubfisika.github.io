@@ -30,14 +30,14 @@ function initTOC(article) {
   tocContainer.className = 'table-of-contents';
   tocContainer.innerHTML = `
     <div class="toc-header">
-      <h4>📋 Daftar Isi</h4>
-      <button class="toc-toggle" aria-label="Toggle TOC">
+      <span class="toc-title">📋 Daftar Isi</span>
+      <button class="toc-toggle" aria-label="Toggle TOC" aria-expanded="true">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="6,9 12,15 18,9"></polyline>
         </svg>
       </button>
     </div>
-    <nav class="toc-nav expanded"><ul class="toc-list"></ul></nav>
+    <nav class="toc-nav expanded" aria-label="Table of contents"><ul class="toc-list"></ul></nav>
   `;
 
   const tocList = tocContainer.querySelector('.toc-list');

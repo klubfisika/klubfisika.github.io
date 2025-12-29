@@ -808,9 +808,10 @@
   border-bottom: 1px solid #e2e8f0;
 }
 
-.toc-header h4 {
+.toc-header .toc-title {
   margin: 0;
   font-size: 0.875rem;
+  font-weight: 600;
   font-weight: 600;
   color: #374151;
 }
@@ -910,7 +911,7 @@
   border-bottom-color: #374151;
 }
 
-.dark .toc-header h4 {
+.dark .toc-header .toc-title {
   color: #f9fafb;
 }
 
