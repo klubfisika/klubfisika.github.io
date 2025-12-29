@@ -155,13 +155,13 @@ const categoryClass = categoryColors[post.category] || 'bg-pink-100 text-pink-80
         <div class="flex flex-wrap gap-3">
           <a href={`https://wa.me/?text=Baca artikel fisika menarik: ${post.title} ${Astro.url.href}`}
              target="_blank" rel="noopener noreferrer"
-             class="share-btn bg-green-500 hover:text-orange-600">📱 WhatsApp</a>
+             class="share-btn bg-green-500 hover:bg-green-600 hover:text-white">📱 WhatsApp</a>
           <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${Astro.url.href}`}
              target="_blank" rel="noopener noreferrer"
-             class="share-btn bg-blue-500 hover:text-orange-600">🐦 Twitter</a>
+             class="share-btn bg-blue-500 hover:bg-blue-600 hover:text-white">🐦 Twitter</a>
           <a href={`https://www.facebook.com/sharer/sharer.php?u=${Astro.url.href}`}
              target="_blank" rel="noopener noreferrer"
-             class="share-btn bg-blue-600 hover:text-orange-600">📘 Facebook</a>
+             class="share-btn bg-blue-600 hover:bg-blue-700 hover:text-white">📘 Facebook</a>
         </div>
       </div>
 
@@ -222,6 +222,10 @@ const categoryClass = categoryColors[post.category] || 'bg-pink-100 text-pink-80
     border-radius: 0.5rem;
     font-weight: 500;
     transition: background-color 0.2s;
+  }
+  
+  .share-btn:hover {
+    color: white !important;
   }
   
   .nav-btn {
