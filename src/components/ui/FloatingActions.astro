@@ -1,6 +1,7 @@
 ---
 import FloatingButton from "./FloatingButton.astro";
 import Tooltip from "./Tooltip.astro";
+import Modal from "./Modal.astro";
 ---
 
 <aside class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 items-end" aria-label="Quick actions">
@@ -35,14 +36,18 @@ import Tooltip from "./Tooltip.astro";
   <Tooltip content="Toggle Theme" position="left">
     <FloatingButton 
       variant="surface"
-      data-theme-toggle
+      id="theme-toggle-btn"
       aria-label="Toggle Dark Mode"
     >
-      <span class="text-2xl dark:hidden">🌙</span>
-      <span class="text-2xl hidden dark:inline">☀️</span>
+      <span class="text-2xl">🌙</span>
     </FloatingButton>
   </Tooltip>
 </aside>
+
+<!-- Dark Mode Coming Soon Modal -->
+<Modal id="darkmode-modal" title="🚧 Coming Soon">
+  <p style="margin:0">Dark mode sedang dikembangkan. Nantikan update selanjutnya!</p>
+</Modal>
 
 <!-- Debug Panel Modal (Development Only) -->
 {import.meta.env.DEV && (
@@ -103,37 +108,9 @@ import Tooltip from "./Tooltip.astro";
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Theme Toggle
-  const themeToggle = document.querySelector('[data-theme-toggle]');
-  
-  // Initialize theme from localStorage or system preference
-  const initTheme = () => {
-    const savedTheme = localStorage.getItem('theme');
-    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isDark = savedTheme === 'dark' || (!savedTheme && systemDark);
-    
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  };
-  
-  // Initialize theme on load
-  initTheme();
-  
-  // Theme toggle handler
-  themeToggle?.addEventListener('click', () => {
-    const html = document.documentElement;
-    const isDark = html.classList.contains('dark');
-    
-    if (isDark) {
-      html.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    } else {
-      html.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    }
+  // Theme toggle shows modal (dark mode coming soon)
+  document.getElementById('theme-toggle-btn')?.addEventListener('click', () => {
+    document.getElementById('darkmode-modal')?.classList.remove('hidden');
   });
 
   // Debug Panel (Development Only)

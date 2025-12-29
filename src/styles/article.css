@@ -11,7 +11,7 @@
 .article-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 20px;
+  padding: 0 20px;
   background: #ffffff;
   min-height: 100vh;
 }
@@ -733,6 +733,11 @@
 
 /* Reduce margin for paragraphs followed by math block */
 .article-content p:has(+ p > .math-block) {
+  margin-bottom: 0.5rem;
+}
+
+/* Reduce margin for paragraphs followed by standalone math block */
+.article-content p:has(+ .math-block) {
   margin-bottom: 0.5rem;
 }
 

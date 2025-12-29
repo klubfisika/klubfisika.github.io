@@ -318,13 +318,12 @@ a:hover {
 /* Base Button Styles */
 .btn-primary {
   background-color: var(--color-primary);
-  color: var(--color-light);
+  color: white;
   border-color: var(--color-dark);
-  transition: color 0.15s ease;
 }
 
 .btn-primary:hover {
-  color: #ea580c !important;
+  background-color: var(--color-primary-hover);
 }
 
 .btn-secondary {
@@ -338,21 +337,20 @@ a:hover {
 a.btn-secondary:hover,
 button.btn-secondary:hover,
 .btn-brutal.btn-secondary:hover {
-  color: var(--color-hover-text-orange) !important;
+  color: white !important;
 }
 
 .btn-accent {
   background-color: var(--color-accent);
   color: var(--color-light);
   border-color: var(--color-dark);
-  transition: color 0.15s ease;
 }
 
 .btn-accent:hover,
 a.btn-accent:hover,
 button.btn-accent:hover,
 .btn-brutal.btn-accent:hover {
-  color: var(--color-hover-text-orange) !important;
+  color: white !important;
 }
 
 /* Dark Mode Button Styles */
@@ -363,7 +361,7 @@ button.btn-accent:hover,
 }
 
 .dark .btn-primary:hover {
-  color: var(--color-hover-text-orange-dark);
+  color: white;
 }
 
 .dark .btn-secondary {
@@ -373,7 +371,7 @@ button.btn-accent:hover,
 }
 
 .dark .btn-secondary:hover {
-  color: var(--color-hover-text-orange-dark);
+  color: white;
 }
 
 .dark .btn-accent {
@@ -383,7 +381,7 @@ button.btn-accent:hover,
 }
 
 .dark .btn-accent:hover {
-  color: var(--color-hover-text-orange-dark);
+  color: white;
 }
 
 /* Navigation Highlight Button - Special Case: darken background */
@@ -442,6 +440,16 @@ button.btn-accent:hover,
   @apply border-4 border-dark font-black uppercase transition-all;
   min-height: 44px; /* WCAG touch target */
   min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-brutal p,
+.article-content .btn-brutal p {
+  margin: 0 !important;
+  padding: 0;
+  color: inherit;
 }
 
 .btn-brutal:hover {
@@ -527,19 +535,19 @@ a.btn-primary:hover,
 button.btn-primary:hover,
 .btn-brutal.btn-primary:hover,
 .btn-primary:hover {
-  color: #ea580c !important;
+  color: white !important;
 }
 
 a.btn-secondary:hover,
 button.btn-secondary:hover,
 .btn-brutal.btn-secondary:hover,
 .btn-secondary:hover {
-  color: #ea580c !important;
+  color: white !important;
 }
 
 a.btn-accent:hover,
 button.btn-accent:hover,
 .btn-brutal.btn-accent:hover,
 .btn-accent:hover {
-  color: #ea580c !important;
+  color: white !important;
 }
