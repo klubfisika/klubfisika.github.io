@@ -1669,19 +1669,24 @@ article ul li input[type="checkbox"][disabled] {
 .article-content .tab-btn {
   padding: 0.625rem 1rem;
   border: none;
-  background: transparent;
+  background: #ffffff;
   cursor: pointer;
   font-weight: 500;
   font-size: 0.875rem;
-  color: #4b5563; /* gray-600 for better contrast */
+  color: #4b5563;
   white-space: nowrap;
   transition: all 0.2s;
   border-radius: 0.375rem 0.375rem 0 0;
 }
 
+.dark .article-content .tab-btn {
+  background: #374151;
+  color: #d1d5db;
+}
+
 .article-content .tab-btn:hover {
   color: #1f2937;
-  background: #e5e7eb;
+  background: #f3f4f6;
 }
 
 .dark .article-content .tab-btn:hover {
@@ -1691,7 +1696,7 @@ article ul li input[type="checkbox"][disabled] {
 
 .article-content .tab-btn.active {
   color: #1f2937;
-  background: #ffffff;
+  background: #f8fafc; /* same as math-block */
   font-weight: 600;
 }
 
