@@ -1817,3 +1817,35 @@ article ul li input[type="checkbox"][disabled] {
 .article-content .quiz-feedback.show {
   display: block;
 }
+
+/* ========================================
+   TASK LIST / CHECKLIST
+   ======================================== */
+.article-content .contains-task-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.article-content .task-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0.25rem 0;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.article-content .task-list-item:hover {
+  background-color: #f3f4f6;
+}
+
+.dark .article-content .task-list-item:hover {
+  background-color: #374151;
+}
+
+.article-content .task-list-item input[type="checkbox"] {
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}

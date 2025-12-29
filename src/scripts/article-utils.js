@@ -384,6 +384,7 @@ export function initArticle() {
   initKaTeX(article);
   initTabs(article);
   initQuiz(article);
+  initTaskList(article);
 }
 
 // Tabs functionality
@@ -440,6 +441,23 @@ function initQuiz(article) {
         feedback?.classList.add('show');
         explanation?.classList.add('show');
       });
+    });
+  });
+}
+
+
+// Task list clickable rows
+function initTaskList(article) {
+  article.querySelectorAll('.task-list-item').forEach(item => {
+    const checkbox = item.querySelector('input[type="checkbox"]');
+    if (!checkbox) return;
+    
+    checkbox.disabled = false;
+    
+    item.addEventListener('click', (e) => {
+      if (e.target !== checkbox) {
+        checkbox.checked = !checkbox.checked;
+      }
     });
   });
 }
