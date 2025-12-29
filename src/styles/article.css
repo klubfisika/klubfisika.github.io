@@ -299,7 +299,7 @@
   background: #f3f4f6;
   padding: 0.125rem 0.375rem;
   border-radius: 0.25rem;
-  color: #dc2626;
+  color: #b91c1c; /* red-700 for better contrast */
   font-weight: 500;
 }
 
