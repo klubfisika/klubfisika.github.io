@@ -10,9 +10,11 @@ const { post }: FeaturedArticleProps = Astro.props;
       <span class="bg-white text-dark px-3 py-1 text-xs font-bold border-2 border-dark">{post.category?.toUpperCase() || 'ARTIKEL'}</span>
       <span class="bg-white text-dark px-3 py-1 text-xs font-bold border-2 border-dark">POPULER</span>
     </div>
-    <h2 id="featured-title" class="text-3xl md:text-4xl font-black uppercase text-on-primary mb-4 leading-tight">
-      {post.title}
-    </h2>
+    <a href={`/blog/${post.slug}`} class="block hover:opacity-90 transition-opacity">
+      <h2 id="featured-title" class="text-3xl md:text-4xl font-black uppercase text-on-primary mb-4 leading-tight">
+        {post.title}
+      </h2>
+    </a>
     <p class="text-on-primary opacity-90 text-lg leading-relaxed mb-6">
       {post.excerpt}
     </p>
