@@ -84,21 +84,61 @@ const { id, title } = Astro.props;
     const modal = document.getElementById(id);
     if (!modal) return;
     
-    // Close on button click
-    modal.querySelector('[data-modal-close]')?.addEventListener('click', () => {
+    let previousFocus = null;
+    
+    // Focus management
+    const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    
+    function trapFocus(e) {
+      const focusable = modal.querySelectorAll(focusableElements);
+      const firstFocusable = focusable[0];
+      const lastFocusable = focusable[focusable.length - 1];
+      
+      if (e.key === 'Tab') {
+        if (e.shiftKey) {
+          if (document.activeElement === firstFocusable) {
+            lastFocusable.focus();
+            e.preventDefault();
+          }
+        } else {
+          if (document.activeElement === lastFocusable) {
+            firstFocusable.focus();
+            e.preventDefault();
+          }
+        }
+      }
+    }
+    
+    function openModal() {
+      previousFocus = document.activeElement;
+      modal.classList.remove('hidden');
+      const closeButton = modal.querySelector('[data-modal-close]');
+      closeButton?.focus();
+      document.addEventListener('keydown', trapFocus);
+    }
+    
+    function closeModal() {
       modal.classList.add('hidden');
-    });
+      document.removeEventListener('keydown', trapFocus);
+      previousFocus?.focus();
+    }
+    
+    // Close on button click
+    modal.querySelector('[data-modal-close]')?.addEventListener('click', closeModal);
     
     // Close on overlay click
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.add('hidden');
+      if (e.target === modal) closeModal();
     });
     
     // Close on Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-        modal.classList.add('hidden');
+        closeModal();
       }
     });
+    
+    // Expose openModal for external use
+    window[`openModal_${id}`] = openModal;
   });
 </script>
