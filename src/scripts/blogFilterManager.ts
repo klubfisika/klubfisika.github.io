@@ -117,10 +117,11 @@ export class BlogFilterManager {
             const articleCategory = element.getAttribute('data-article');
             const categoryMap: Record<string, string> = {
                 'tutorial': 'Tutorial',
-                'eksperimen': 'Eksperimen',
+                'eksperimen': 'Eksperimen', 
                 'teori': 'Teori',
                 'tips': 'Tips Belajar',
-                'berita': 'Berita'
+                'berita': 'Berita',
+                'mekanika': 'Mekanika'
             };
             if (articleCategory !== categoryMap[this.state.category]) return false;
         }
