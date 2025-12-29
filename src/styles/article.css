@@ -282,7 +282,7 @@
 
 /* Links */
 .article-content a {
-  color: var(--color-hover-text-primary-dark);
+  color: #1d4ed8; /* blue-700 for better contrast */
   text-decoration: underline;
   text-underline-offset: 2px;
   transition: color 0.2s;
