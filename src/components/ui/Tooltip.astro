@@ -30,7 +30,7 @@ const arrowClasses = {
   <slot />
   
   <!-- Tooltip -->
-  <div class={`absolute ${positionClasses[position]} bg-dark dark:bg-light text-on-dark dark:text-on-light px-3 py-2 rounded border-2 border-dark dark:border-light text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-[60]`}>
+  <div role="tooltip" aria-hidden="true" class={`absolute ${positionClasses[position]} bg-dark dark:bg-light text-on-dark dark:text-on-light px-3 py-2 rounded border-2 border-dark dark:border-light text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-[60]`}>
     {content}
     <div class={`absolute w-0 h-0 ${arrowClasses[position]}`}></div>
   </div>
