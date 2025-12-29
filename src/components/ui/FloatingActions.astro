@@ -21,28 +21,26 @@ import Tooltip from "./Tooltip.astro";
   <!-- Debug Panel Toggle (Development Only) -->
   {import.meta.env.DEV && (
     <Tooltip content="Debug Panel (DEV)" position="left">
-      <button 
+      <FloatingButton 
+        variant="primary"
         id="debug-toggle"
         aria-label="Toggle Debug Panel"
       >
-        <FloatingButton variant="primary">
-          <span class="text-2xl text-on-primary">🐛</span>
-        </FloatingButton>
-      </button>
+        <span class="text-2xl text-on-primary">🐛</span>
+      </FloatingButton>
     </Tooltip>
   )}
 
   <!-- Theme Toggle -->
   <Tooltip content="Toggle Theme" position="left">
-    <button 
+    <FloatingButton 
+      variant="surface"
       data-theme-toggle
       aria-label="Toggle Dark Mode"
     >
-      <FloatingButton variant="surface">
-        <span class="text-2xl dark:hidden">🌙</span>
-        <span class="text-2xl hidden dark:inline">☀️</span>
-      </FloatingButton>
-    </button>
+      <span class="text-2xl dark:hidden">🌙</span>
+      <span class="text-2xl hidden dark:inline">☀️</span>
+    </FloatingButton>
   </Tooltip>
 </div>
 

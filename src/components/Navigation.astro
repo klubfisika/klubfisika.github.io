@@ -38,9 +38,9 @@ const navigationItems = [
         {navigationItems.map((item, index) => (
           <a 
             href={item.href}
-            class={`font-bold transition-colors transform hover:scale-105 ${
+            class={`font-bold transition-all transform hover:scale-105 ${
               item.highlight 
-                ? 'bg-primary text-white px-4 py-2 border-2 border-dark hover:bg-accent hover:rotate-1' 
+                ? 'btn-nav-highlight px-4 py-2 border-2 border-dark hover:rotate-1' 
                 : `text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark ${index % 2 === 0 ? 'hover:rotate-1' : 'hover:-rotate-1'}`
             }`}
           >

@@ -48,15 +48,10 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const hideBtn = document.getElementById('hide-checklist');
-  const checklist = hideBtn?.closest('div');
+  const checklist = document.getElementById('testing-checklist');
   
   hideBtn?.addEventListener('click', () => {
-    checklist?.style.setProperty('display', 'none');
+    checklist?.classList.add('hidden');
   });
-  
-  // Auto-hide after 30 seconds
-  setTimeout(() => {
-    checklist?.style.setProperty('display', 'none');
-  }, 30000);
 });
 </script>
