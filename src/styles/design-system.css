@@ -4,35 +4,58 @@
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #1d4ed8;        /* blue-700 - better contrast */
-  --color-secondary: #f59e0b;      /* amber-500 - good contrast */
-  --color-accent: #059669;         /* emerald-600 - good contrast */
-  --color-surface: #fef3c7;
-  --color-dark: #111827;           /* gray-900 - true dark */
-  --color-pink: #ec4899;           /* pink-500 - good contrast */
-  --color-blue: #2563eb;           /* blue-600 - good contrast */
+  /* ========================================
+     DESIGN TOKENS - Single Source of Truth
+     ======================================== */
   
-  /* Improved Dark mode colors */
-  --color-primary-dark: #3b82f6;   /* blue-500 - good on dark */
-  --color-secondary-dark: #fbbf24; /* amber-400 - good on dark */
-  --color-accent-dark: #10b981;    /* emerald-500 - good on dark */
+  /* Primary Colors */
+  --color-primary: #1d4ed8;        /* blue-700 */
+  --color-primary-hover: #1e40af;  /* blue-800 - darker for hover */
+  --color-primary-dark: #3b82f6;   /* blue-500 - for dark mode */
+  --color-primary-dark-hover: #2563eb; /* blue-600 - darker for dark hover */
+  
+  /* Secondary Colors */
+  --color-secondary: #f59e0b;      /* amber-500 */
+  --color-secondary-hover: #d97706; /* amber-600 - darker for hover */
+  --color-secondary-dark: #fbbf24; /* amber-400 - for dark mode */
+  --color-secondary-dark-hover: #f59e0b; /* amber-500 - darker for dark hover */
+  
+  /* Accent Colors */
+  --color-accent: #059669;         /* emerald-600 */
+  --color-accent-hover: #047857;   /* emerald-700 - darker for hover */
+  --color-accent-dark: #10b981;    /* emerald-500 - for dark mode */
+  --color-accent-dark-hover: #059669; /* emerald-600 - darker for dark hover */
+  
+  /* Hover Text Colors */
+  --color-hover-text-primary: #1d4ed8;   /* blue - for light bg buttons */
+  --color-hover-text-orange: #ea580c;    /* orange-600 - for colored bg buttons */
+  --color-hover-text-primary-dark: #3b82f6; /* blue - for dark mode light bg */
+  --color-hover-text-orange-dark: #fb923c;  /* orange-400 - for dark mode colored bg */
+  
+  /* Surface Colors */
+  --color-surface: #fef3c7;
   --color-surface-dark: #0f172a;
+  
+  /* Neutral Colors */
+  --color-dark: #111827;           /* gray-900 */
   --color-light: #ffffff;          /* pure white */
+  --color-pink: #ec4899;           /* pink-500 */
+  --color-blue: #2563eb;           /* blue-600 */
   --color-pink-dark: #ec4899;
   --color-blue-dark: #3b82f6;
   
-  /* Dark mode specific backgrounds */
+  /* Dark mode backgrounds */
   --color-bg-dark-1: #1e293b;
   --color-bg-dark-2: #334155;
   --color-bg-dark-3: #475569;
   
+  /* Typography */
   --font-sans: "Space Grotesk", "Inter", system-ui, sans-serif;
   
+  /* Shadows */
   --shadow-brutal: 8px 8px 0px var(--color-dark);
   --shadow-brutal-sm: 4px 4px 0px var(--color-dark);
   --shadow-brutal-hover: 2px 2px 0px var(--color-dark);
-  
-  /* Dark mode shadows */
   --shadow-brutal-dark: 8px 8px 0px var(--color-light);
   --shadow-brutal-sm-dark: 4px 4px 0px var(--color-light);
   --shadow-brutal-hover-dark: 2px 2px 0px var(--color-light);
@@ -262,41 +285,128 @@ a:hover {
   color: #111827 !important;
 }
 
-/* Button combinations - WCAG compliant */
+/* ========================================
+   BUTTON SYSTEM - Using Design Tokens
+   ========================================
+   
+   Hover Rules:
+   1. Buttons WITH colored background → text changes to orange on hover
+   2. Buttons WITHOUT background (white/gray) → text changes to primary blue on hover
+   3. Special buttons (nav highlight) → background darkens on hover
+   ======================================== */
+
+/* Base Button Styles */
 .btn-primary {
   background-color: var(--color-primary);
-  color: #ffffff;
+  color: var(--color-light);
   border-color: var(--color-dark);
+  transition: color 0.15s ease;
+}
+
+.btn-primary:hover {
+  color: #ea580c !important;
 }
 
 .btn-secondary {
   background-color: var(--color-secondary);
-  color: #111827;
+  color: var(--color-dark);
   border-color: var(--color-dark);
+  transition: color 0.15s ease;
+}
+
+.btn-secondary:hover,
+a.btn-secondary:hover,
+button.btn-secondary:hover,
+.btn-brutal.btn-secondary:hover {
+  color: var(--color-hover-text-orange) !important;
 }
 
 .btn-accent {
   background-color: var(--color-accent);
-  color: #ffffff;
+  color: var(--color-light);
   border-color: var(--color-dark);
+  transition: color 0.15s ease;
 }
 
+.btn-accent:hover,
+a.btn-accent:hover,
+button.btn-accent:hover,
+.btn-brutal.btn-accent:hover {
+  color: var(--color-hover-text-orange) !important;
+}
+
+/* Dark Mode Button Styles */
 .dark .btn-primary {
   background-color: var(--color-primary-dark);
-  color: #ffffff;
+  color: var(--color-light);
   border-color: var(--color-light);
+}
+
+.dark .btn-primary:hover {
+  color: var(--color-hover-text-orange-dark);
 }
 
 .dark .btn-secondary {
   background-color: var(--color-secondary-dark);
-  color: #111827;
+  color: var(--color-dark);
   border-color: var(--color-light);
+}
+
+.dark .btn-secondary:hover {
+  color: var(--color-hover-text-orange-dark);
 }
 
 .dark .btn-accent {
   background-color: var(--color-accent-dark);
-  color: #ffffff;
+  color: var(--color-light);
   border-color: var(--color-light);
+}
+
+.dark .btn-accent:hover {
+  color: var(--color-hover-text-orange-dark);
+}
+
+/* Navigation Highlight Button - Special Case: darken background */
+.btn-nav-highlight {
+  background-color: var(--color-primary);
+  color: var(--color-light);
+  transition: background-color 0.15s ease;
+}
+
+.btn-nav-highlight:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-light) !important; /* Keep white text */
+}
+
+.dark .btn-nav-highlight {
+  background-color: var(--color-primary-dark);
+}
+
+.dark .btn-nav-highlight:hover {
+  background-color: var(--color-primary-dark-hover);
+  color: var(--color-light) !important; /* Keep white text in dark mode */
+}
+
+/* Light Background Buttons - hover text to primary blue */
+.btn-light {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  border-color: var(--color-dark);
+  transition: color 0.15s ease;
+}
+
+.btn-light:hover {
+  color: var(--color-hover-text-primary);
+}
+
+.dark .btn-light {
+  background-color: var(--color-bg-dark-2);
+  color: var(--color-light);
+  border-color: var(--color-light);
+}
+
+.dark .btn-light:hover {
+  color: var(--color-hover-text-primary-dark);
 }
 
 .wobble:hover {
@@ -364,6 +474,7 @@ html {
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -385,4 +496,30 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-secondary);
+}
+
+/* ========================================
+   FINAL OVERRIDES - Ensure hover states work
+   ======================================== */
+
+/* Force button hover colors - highest specificity */
+a.btn-primary:hover,
+button.btn-primary:hover,
+.btn-brutal.btn-primary:hover,
+.btn-primary:hover {
+  color: #ea580c !important;
+}
+
+a.btn-secondary:hover,
+button.btn-secondary:hover,
+.btn-brutal.btn-secondary:hover,
+.btn-secondary:hover {
+  color: #ea580c !important;
+}
+
+a.btn-accent:hover,
+button.btn-accent:hover,
+.btn-brutal.btn-accent:hover,
+.btn-accent:hover {
+  color: #ea580c !important;
 }
