@@ -23,6 +23,11 @@ const { title, description, backToTopThreshold = 300 } = Astro.props;
         <BaseHead title={title} description={description} />
     </head>
     <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">
+        <!-- Skip Link -->
+        <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-accent text-white px-4 py-2 rounded z-50">
+            Skip to main content
+        </a>
+        
         <Navigation />
         <FloatingActions />
         <BackToTop 
@@ -39,7 +44,7 @@ const { title, description, backToTopThreshold = 300 } = Astro.props;
             </>
         )}
         
-        <main class="pt-20">
+        <main id="main-content" class="pt-20">
             <slot />
         </main>
         
