@@ -3,11 +3,15 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import qwikdev from '@qwikdev/astro';
+import { rehypeTaskListLabel } from './src/plugins/rehype-task-list-label.mjs';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://klubfisika.github.io',
   integrations: [mdx(), sitemap(), qwikdev()],
+  markdown: {
+    rehypePlugins: [rehypeTaskListLabel]
+  },
   vite: {
     plugins: [tailwindcss()],
     css: {

@@ -1819,7 +1819,7 @@ article ul li input[type="checkbox"][disabled] {
 }
 
 /* ========================================
-   TASK LIST / CHECKLIST
+   TASK LIST / CHECKLIST (Pure CSS)
    ======================================== */
 .article-content .contains-task-list {
   list-style: none;
@@ -1827,21 +1827,25 @@ article ul li input[type="checkbox"][disabled] {
 }
 
 .article-content .task-list-item {
+  margin: 0.25rem 0;
+}
+
+.article-content .task-label {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.5rem 0.75rem 0.5rem 0.5rem !important;
-  margin: 0.25rem 0 0.25rem -0.5rem;
+  padding: 0.5rem 0.75rem 0.5rem 0.5rem;
+  margin-left: -0.5rem;
   border-radius: 0.375rem;
   cursor: pointer;
   transition: background-color 0.15s;
 }
 
-.article-content .task-list-item:hover {
+.article-content .task-label:hover {
   background-color: #f3f4f6;
 }
 
-.dark .article-content .task-list-item:hover {
+.dark .article-content .task-label:hover {
   background-color: #374151;
 }
 
@@ -1849,4 +1853,5 @@ article ul li input[type="checkbox"][disabled] {
   width: 1.125rem;
   height: 1.125rem;
   flex-shrink: 0;
+  cursor: pointer;
 }

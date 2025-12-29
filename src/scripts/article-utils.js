@@ -384,7 +384,6 @@ export function initArticle() {
   initKaTeX(article);
   initTabs(article);
   initQuiz(article);
-  initTaskList(article);
 }
 
 // Tabs functionality
