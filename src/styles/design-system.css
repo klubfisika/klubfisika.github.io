@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+/* ========================================
+   STRETCHED LINK - Full card clickable
+   ======================================== */
+.stretched-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
 /* Define dark mode variant */
 @variant dark (&:where(.dark, .dark *));
 
