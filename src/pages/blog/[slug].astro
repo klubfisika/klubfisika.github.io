@@ -1,241 +1,241 @@
 ---
-import "@/styles/main.css";
-import BaseHead from "@/components/BaseHead.astro";
-import Navigation from "@/components/Navigation.astro";
-import Footer from "@/components/sections/Footer.astro";
-import FloatingActions from "@/components/ui/FloatingActions.astro";
-import Heading from "@/components/ui/Heading.astro";
-import Text from "@/components/ui/Text.astro";
-import BrutalCard from "@/components/ui/BrutalCard.astro";
-import BrutalSection from "@/components/ui/BrutalSection.astro";
-import BackToTop from "@/components/ui/BackToTop.astro";
+import Layout from "@layouts/Layout.astro";
+import { getCollection, render } from 'astro:content';
+import "@/styles/article.css";
 
-import { blogPosts } from "../../data/blogPosts";
-
+// Static paths generation
 export async function getStaticPaths() {
-  return blogPosts.map(post => ({
-    params: { slug: post.slug },
-    props: { post }
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.id },
+    props: { entry }
   }));
 }
 
-const { post } = Astro.props;
+// Props and content
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+// Post data formatting
+const post = {
+  slug: entry.id,
+  title: entry.data.title,
+  excerpt: entry.data.description,
+  author: entry.data.author || 'KF13 Team',
+  date: entry.data.pubDate.toISOString().split('T')[0],
+  readTime: Math.ceil(entry.body.length / 200) + ' menit',
+  category: entry.data.category || 'Artikel',
+  tags: entry.data.tags || [],
+  image: entry.data.heroImage || '/blog-placeholder-1.jpg'
+};
+
+// Indonesian date formatter
+const formatDate = (dateString: string) => {
+  return new Date(dateString).toLocaleDateString('id-ID', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+
+// Category badge colors
+const categoryColors: Record<string, string> = {
+  'Tutorial': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+  'Eksperimen': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
+  'Teori': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
+  'Tips Belajar': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
+  'Testing': 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200',
+};
+const categoryClass = categoryColors[post.category] || 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200';
 ---
 
-<!doctype html>
-<html lang="id" class="scroll-smooth">
-    <head>
-        <BaseHead 
-            title={`${post.title} - KF13 Blog`}
-            description={post.excerpt}
-        />
-        <script>
-        </script>
-    </head>
-    <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">
-        <Navigation />
-        <FloatingActions />
-        <BackToTop threshold={300} />
-        
-        <main class="pt-20">
-            <BrutalSection background="surface" padding="lg">
-                <div class="max-w-4xl mx-auto">
-                    <!-- Breadcrumb -->
-                    <nav class="mb-8">
-                        <div class="flex items-center gap-2 text-sm">
-                            <a href="/" class="text-primary dark:text-primary-dark hover:underline font-semibold">Home</a>
-                            <span class="text-dark dark:text-light ">→</span>
-                            <a href="/blog" class="text-primary dark:text-primary-dark hover:underline font-semibold">Blog</a>
-                            <span class="text-dark dark:text-light ">→</span>
-                            <span class="text-dark dark:text-light ">{post.category}</span>
-                        </div>
-                    </nav>
+<Layout title={`${post.title} - KF13 Blog`} description={post.excerpt}>
+  <!-- SEO Meta Tags -->
+  <Fragment slot="head">
+    <meta name="author" content={post.author} />
+    <meta name="article:published_time" content={post.date} />
+    <meta name="article:section" content={post.category} />
+    {post.tags.map(tag => <meta name="article:tag" content={tag} />)}
+    <meta name="reading-time" content={post.readTime} />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={post.title} />
+    <meta property="og:description" content={post.excerpt} />
+    <meta property="og:image" content={new URL(post.image, Astro.url).href} />
+    <meta property="og:url" content={Astro.url.href} />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={post.title} />
+    <meta name="twitter:description" content={post.excerpt} />
+    <meta name="twitter:image" content={new URL(post.image, Astro.url).href} />
+    
+    <!-- Canonical -->
+    <link rel="canonical" href={Astro.url.href} />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": post.title,
+      "description": post.excerpt,
+      "image": new URL(post.image, Astro.url).href,
+      "author": { "@type": "Person", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "KF13 Klub Fisika Indonesia",
+        "logo": { "@type": "ImageObject", "url": new URL("/kf13-logo.png", Astro.url).href }
+      },
+      "datePublished": post.date,
+      "dateModified": post.date,
+      "mainEntityOfPage": { "@type": "WebPage", "@id": Astro.url.href }
+    })} />
+    
+    <!-- Prevent yellow flash - override surface color immediately -->
+    <style>
+      :root { --color-surface: #ffffff !important; }
+      .dark { --color-surface: #111827 !important; }
+    </style>
+  </Fragment>
 
-                    <!-- Article Meta -->
-                    <div class="mb-8">
-                        <div class="flex flex-wrap items-center gap-4 mb-6">
-                            <span class={`px-3 py-1 text-xs font-bold border-2 border-dark dark:border-light ${
-                                post.category === 'Tutorial' ? 'bg-blue text-white' :
-                                post.category === 'Eksperimen' ? 'bg-green-500 text-white' :
-                                post.category === 'Teori' ? 'bg-purple-500 text-white' :
-                                post.category === 'Tips Belajar' ? 'bg-orange-500 text-white' :
-                                'bg-pink text-white'
-                            }`}>
-                            {post.category.toUpperCase()}
-                        </span>
-                        <span class="text-sm text-dark dark:text-light ">📅 {post.date}</span>
-                        <span class="text-sm text-dark dark:text-light ">⏱️ {post.readTime}</span>
-                        <span class="text-sm text-dark dark:text-light ">👨‍🏫 {post.author}</span>
-                    </div>
-                    
-                    <Heading level={1} size="4xl" weight="extrabold" color="primary">
-                        {post.title}
-                    </Heading>
-                    
-                    <Text size="lg" color="dark" class="mb-8">
-                        {post.excerpt}
-                    </Text>
-                    
-                    <!-- Tags -->
-                    <div class="flex flex-wrap gap-2">
-                        {post.tags.map((tag: string) => (
-                            <span class="bg-accent dark:bg-accent-dark border border-dark dark:border-light px-2 py-1 text-xs font-semibold text-dark dark:text-light">
-                                #{tag}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-            </BrutalSection>
+  <div class="article-page-wrapper" style="background: #ffffff; min-height: 100vh;">
+  <div class="article-container">
+    <!-- Article Header -->
+    <header class="article-header pt-6 sm:pt-8 lg:pt-10">
+      <!-- Breadcrumb -->
+      <nav class="mb-6">
+        <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+          <a href="/" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
+          <span>→</span>
+          <a href="/blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
+          <span>→</span>
+          <span class="text-gray-400 dark:text-gray-500">{post.category}</span>
+        </div>
+      </nav>
 
-            <!-- Article Content -->
-            <BrutalSection background="white" padding="lg">
-                <div class="max-w-4xl mx-auto">
-                    <!-- Reading Progress -->
-                    <div class="sticky top-20 mb-4 z-10">
-                        <div class="bg-surface border-2 border-dark p-2">
-                            <div class="flex items-center justify-between text-xs mb-1">
-                                <span>Progress Baca</span>
-                                <span id="progress-text">0%</span>
-                            </div>
-                            <div class="w-full bg-white h-2 border border-dark">
-                                <div class="bg-primary h-full w-0 transition-all duration-300" id="reading-progress"></div>
-                            </div>
-                        </div>
-                    </div>
+      <!-- Category Badge -->
+      <div class="mb-4">
+        <span class={`inline-block px-3 py-1 text-xs font-semibold rounded-full ${categoryClass}`}>
+          {post.category.toUpperCase()}
+        </span>
+      </div>
 
-                    <BrutalCard variant="surface" size="lg">
-                        <div 
-                            class="article-content prose prose-lg max-w-none text-dark"
-                            set:html={post.content}
-                        />
-                    </BrutalCard>
-                </div>
-            </BrutalSection>
+      <!-- Title & Subtitle -->
+      <h1 class="article-title">{post.title}</h1>
+      <p class="article-subtitle">{post.excerpt}</p>
+      
+      <!-- Meta Info -->
+      <div class="article-meta">
+        <div class="article-meta-item"><span>👨‍🔬</span><span>{post.author}</span></div>
+        <div class="article-meta-item"><span>📅</span><span>{formatDate(post.date)}</span></div>
+        <div class="article-meta-item"><span>⏱️</span><span>{post.readTime} baca</span></div>
+      </div>
+      
+      <!-- Tags -->
+      {post.tags.length > 0 && (
+        <div class="article-tags">
+          {post.tags.map((tag: string) => (
+            <a href={`/blog?tag=${tag}`} class="article-tag">#{tag}</a>
+          ))}
+        </div>
+      )}
+    </header>
 
-            <!-- Article Footer -->
-            <BrutalSection background="surface" padding="lg">
-                <div class="max-w-4xl mx-auto">
-                    <!-- Share Buttons -->
-                    <div class="mb-8">
-                        <Heading level={3} size="xl" weight="extrabold" color="primary" class="mb-4">📤 BAGIKAN ARTIKEL</Heading>
-                        <div class="flex flex-wrap gap-3">
-                            <a 
-                                href={`https://wa.me/?text=Baca artikel fisika menarik: ${post.title} https://klubfisika.org/blog/${post.slug}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="bg-green-500 border-2 border-dark dark:border-light px-4 py-2 font-bold text-white hover:scale-105 transition-transform"
-                            >
-                                📱 WhatsApp
-                            </a>
-                            <a 
-                                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://klubfisika.org/blog/${post.slug}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="bg-blue border-2 border-dark dark:border-light px-4 py-2 font-bold text-white hover:scale-105 transition-transform"
-                            >
-                                🐦 Twitter
-                            </a>
-                            <a 
-                                href={`https://www.facebook.com/sharer/sharer.php?u=https://klubfisika.org/blog/${post.slug}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="bg-blue-600 border-2 border-dark dark:border-light px-4 py-2 font-bold text-white hover:scale-105 transition-transform"
-                            >
-                                📘 Facebook
-                            </a>
-                        </div>
-                    </div>
+    <!-- Article Content -->
+    <main class="article-content">
+      <Content />
+    </main>
 
-                    <!-- Author Info -->
-                    <div class="bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal">
-                        <h4 class="text-lg font-black uppercase text-dark dark:text-light mb-3">
-                            ✍️ TENTANG PENULIS
-                        </h4>
-                        <div class="flex items-start gap-4">
-                            <div class="w-16 h-16 bg-primary dark:bg-primary-dark border-2 border-dark dark:border-light rounded-full flex items-center justify-center">
-                                <span class="text-2xl text-white">👨‍🔬</span>
-                            </div>
-                            <div>
-                                <Heading level={5} size="base" weight="bold" color="primary" class="mb-2">{post.author}</Heading>
-                                <Text size="sm" color="dark">
-                                    Kontributor aktif KF13 yang berpengalaman dalam pembelajaran fisika dan eksperimen praktis.
-                                </Text>
-                            </div>
-                        </div>
-                    </BrutalCard>
+    <!-- Article Footer -->
+    <footer class="article-footer">
+      <!-- Share Buttons -->
+      <div class="mb-8">
+        <h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">📤 Bagikan Artikel</h3>
+        <div class="flex flex-wrap gap-3">
+          <a href={`https://wa.me/?text=Baca artikel fisika menarik: ${post.title} ${Astro.url.href}`}
+             target="_blank" rel="noopener noreferrer"
+             class="share-btn bg-green-500 hover:text-orange-600">📱 WhatsApp</a>
+          <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${Astro.url.href}`}
+             target="_blank" rel="noopener noreferrer"
+             class="share-btn bg-blue-500 hover:text-orange-600">🐦 Twitter</a>
+          <a href={`https://www.facebook.com/sharer/sharer.php?u=${Astro.url.href}`}
+             target="_blank" rel="noopener noreferrer"
+             class="share-btn bg-blue-600 hover:text-orange-600">📘 Facebook</a>
+        </div>
+      </div>
 
-                    <!-- Navigation -->
-                    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-between">
-                        <a 
-                            href="/blog"
-                            class="bg-secondary dark:bg-secondary-dark border-3 border-dark dark:border-light px-6 py-3 font-black text-dark dark:text-light hover:scale-105 transition-transform text-center"
-                        >
-                            ← KEMBALI KE BLOG
-                        </a>
-                        <a 
-                            href="/events"
-                            class="bg-primary dark:bg-primary-dark border-3 border-dark dark:border-light px-6 py-3 font-black text-white hover:scale-105 transition-transform text-center"
-                        >
-                            LIHAT EVENTS →
-                        </a>
-                    </div>
-                </div>
-            </BrutalSection>
-        </main>
+      <!-- Author Info -->
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
+        <h4 class="text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">✍️ Tentang Penulis</h4>
+        <div class="flex items-start gap-4">
+          <div class="w-16 h-16 bg-blue-500 dark:bg-blue-600 rounded-full flex items-center justify-center">
+            <span class="text-2xl text-white">👨‍🔬</span>
+          </div>
+          <div>
+            <h5 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">{post.author}</h5>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">
+              Kontributor aktif KF13 yang berpengalaman dalam pembelajaran fisika dan eksperimen praktis.
+            </p>
+          </div>
+        </div>
+      </div>
 
-        <Footer />
+      <!-- Navigation -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-between mb-8 sm:mb-10 lg:mb-12">
+        <a href="/blog" class="nav-btn bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+          ← Kembali ke Blog
+        </a>
+        <a href="/events" class="nav-btn bg-blue-500 text-white hover:text-orange-600">
+          Lihat Events →
+        </a>
+      </div>
+    </footer>
+  </div>
+  </div>
+</Layout>
 
-        <style>
-            @import "@/styles/main.css";
-            
-            .article-content h2 {
-                @apply text-2xl font-black uppercase text-dark dark:text-light mt-8 mb-4;
-            }
-            .article-content h3 {
-                @apply text-xl font-bold text-dark dark:text-light mt-6 mb-3;
-            }
-            .article-content p {
-                @apply text-dark dark:text-light leading-relaxed mb-4;
-            }
-            .article-content ul, .article-content ol {
-                @apply text-dark dark:text-light mb-4 pl-6;
-            }
-            .article-content li {
-                @apply mb-2;
-            }
-            .article-content strong {
-                @apply font-bold text-primary dark:text-primary-dark;
-            }
-            .article-content code {
-                @apply bg-accent dark:bg-accent-dark px-2 py-1 text-sm font-mono border border-dark dark:border-light;
-            }
-        </style>
+<style>
+  .article-footer {
+    max-width: 680px;
+    margin: 4rem auto 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  @media (max-width: 768px) {
+    .article-footer {
+      margin-bottom: 2.5rem;
+    }
+  }
+  
+  .dark .article-footer {
+    border-top-color: #374151;
+  }
+  
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+  
+  .nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+</style>
 
-        <script>
-            // Reading progress
-            document.addEventListener('DOMContentLoaded', () => {
-                const article = document.querySelector('.article-content');
-                const progressBar = document.getElementById('reading-progress');
-                const progressText = document.getElementById('progress-text');
-                
-                if (article && progressBar && progressText) {
-                    window.addEventListener('scroll', () => {
-                        const articleTop = article.offsetTop - 200;
-                        const articleHeight = article.offsetHeight;
-                        const windowHeight = window.innerHeight;
-                        const scrollTop = window.scrollY;
-                        
-                        const progress = Math.min(
-                            Math.max((scrollTop - articleTop + windowHeight) / articleHeight, 0),
-                            1
-                        );
-                        
-                        const percentage = Math.round(progress * 100);
-                        progressBar.style.width = `${percentage}%`;
-                        progressText.textContent = `${percentage}%`;
-                    });
-                }
-            });
-        </script>
-    </body>
-</html>
+<script>
+  import { initArticle } from '../../scripts/article-utils.js';
+  document.addEventListener('DOMContentLoaded', initArticle);
+</script>
