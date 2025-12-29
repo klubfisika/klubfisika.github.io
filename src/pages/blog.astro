@@ -11,16 +11,86 @@ import StatsCard from "@blog/StatsCard.astro";
 import NewsletterCard from "@blog/NewsletterCard.astro";
 import BrutalSection from "@ui/BrutalSection.astro";
 import SectionHeaderWithHash from "@ui/SectionHeaderWithHash.astro";
-import { getAllPosts, getRecentPosts, getPopularTags, getBlogStats } from "@data/blogPosts";
-import type { BlogPost, PopularTag, BlogStats } from "@types/blog";
+import { getCollection } from 'astro:content';
 
-// Data fetching with type safety
-const allPosts: BlogPost[] = getAllPosts();
-const recentPosts = getRecentPosts(3);
-const popularTags: PopularTag[] = getPopularTags();
-const blogStats: BlogStats = getBlogStats();
-const featuredPost: BlogPost = allPosts[0];
-const remainingPosts: BlogPost[] = allPosts.slice(1);
+// Get posts from content collections
+let blogPosts = [];
+try {
+  const allPosts = await getCollection('blog');
+  console.log('All posts loaded:', allPosts.length);
+  
+  const sortedPosts = allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+  
+  // Convert to expected format
+  blogPosts = sortedPosts.map(post => ({
+    slug: post.id,
+    title: post.data.title,
+    excerpt: post.data.description,
+    author: post.data.author || 'KF13 Team',
+    date: post.data.pubDate.toISOString().split('T')[0],
+    readTime: '5 menit',
+    category: post.data.category || 'Uncategorized',
+    tags: post.data.tags || [],
+    image: post.data.heroImage || '/blog-placeholder-1.jpg',
+    views: Math.floor(Math.random() * 3000) + 500
+  }));
+  
+  console.log('First post category:', blogPosts[0]?.category);
+  console.log('All categories:', blogPosts.map(p => p.category));
+  
+  console.log('Processed posts:', blogPosts.length);
+} catch (error) {
+  console.error('Error loading posts:', error);
+  blogPosts = [];
+}
+
+const featuredPost = blogPosts[0];
+const remainingPosts = blogPosts.slice(1);
+
+// Generate categories from actual posts
+const categoryCount: Record<string, number> = {};
+blogPosts.forEach(post => {
+  if (post.category) {
+    categoryCount[post.category] = (categoryCount[post.category] || 0) + 1;
+  }
+});
+
+const dynamicCategories = Object.entries(categoryCount)
+  .sort(([,a], [,b]) => b - a)
+  .map(([name, count]) => ({ 
+    name, 
+    slug: name.toLowerCase().replace(/\s+/g, '-'), 
+    count 
+  }));
+
+console.log('Dynamic categories:', dynamicCategories);
+const blogStats = {
+  totalArticles: blogPosts.length,
+  totalViews: `${(blogPosts.reduce((sum, post) => sum + post.views, 0) / 1000).toFixed(1)}K`,
+  thisMonth: blogPosts.filter(post => {
+    const postDate = new Date(post.date);
+    const now = new Date();
+    return postDate.getMonth() === now.getMonth() && postDate.getFullYear() === now.getFullYear();
+  }).length,
+  categories: [...new Set(blogPosts.map(post => post.category))].length
+};
+
+// Generate popular tags
+const tagCount: Record<string, number> = {};
+blogPosts.forEach(post => {
+  if (post.tags && Array.isArray(post.tags)) {
+    post.tags.forEach(tag => {
+      tagCount[tag] = (tagCount[tag] || 0) + 1;
+    });
+  }
+});
+
+const popularTags = Object.entries(tagCount)
+  .sort(([,a], [,b]) => b - a)
+  .slice(0, 10)
+  .map(([name, count]) => ({ name, count }));
+
+console.log('Popular tags:', popularTags);
 ---
 
 <Layout 
@@ -35,9 +105,9 @@ const remainingPosts: BlogPost[] = allPosts.slice(1);
                 <!-- Sidebar -->
                 <aside class="lg:col-span-1 space-y-6" role="complementary" aria-label="Sidebar navigasi blog">
                     <SearchCard />
-                    <CategoriesCard />
+                    <CategoriesCard categories={dynamicCategories} />
                     <TagsCard tags={popularTags} />
-                    <RecentArticlesCard articles={recentPosts} />
+                    <RecentArticlesCard articles={blogPosts.slice(0, 3)} />
                     <NewsletterCard />
                     <StatsCard stats={blogStats} />
                 </aside>

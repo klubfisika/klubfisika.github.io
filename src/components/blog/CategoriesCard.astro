@@ -2,13 +2,15 @@
 import BrutalCard from "../ui/BrutalCard.astro";
 import Heading from "../ui/Heading.astro";
 
-const categories = [
-  { name: "Semua", slug: "all", active: true },
-  { name: "Tutorial", slug: "tutorial" },
-  { name: "Eksperimen", slug: "eksperimen" },
-  { name: "Teori", slug: "teori" },
-  { name: "Tips Belajar", slug: "tips" },
-  { name: "Berita", slug: "berita" }
+interface Props {
+  categories: Array<{ name: string; slug: string; count: number }>;
+}
+
+const { categories } = Astro.props;
+
+const categoriesWithAll = [
+  { name: "Semua", slug: "all", count: categories.reduce((sum, cat) => sum + cat.count, 0), active: true },
+  ...categories.map(cat => ({ ...cat, active: false }))
 ];
 ---
 
@@ -18,7 +20,7 @@ const categories = [
   </Heading>
   <nav role="navigation" aria-label="Filter kategori artikel">
     <div class="space-y-2" role="group" aria-label="Pilihan kategori artikel">
-      {categories.map((category) => (
+      {categoriesWithAll.map((category) => (
         <button 
           class={`w-full text-left px-3 py-2 text-sm font-bold border-2 border-dark dark:border-light transition-all hover:scale-105 focus:outline-none focus:ring-4 focus:ring-primary/50 ${
             category.active 
@@ -29,11 +31,13 @@ const categories = [
           aria-pressed={category.active ? 'true' : 'false'}
           aria-label={`Filter artikel kategori ${category.name}`}
         >
-          {category.name}
+          <span class="flex justify-between items-center">
+            <span>{category.name}</span>
+            <span class="text-xs opacity-75">({category.count})</span>
+          </span>
         </button>
       ))}
     </div>
   </nav>
-  <!-- Live region for filter results -->
   <div id="filter-results" aria-live="polite" aria-atomic="true" class="sr-only"></div>
 </BrutalCard>
