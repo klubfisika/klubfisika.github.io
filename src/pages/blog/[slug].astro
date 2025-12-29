@@ -186,7 +186,7 @@ const categoryClass = categoryColors[post.category] || 'bg-pink-100 text-pink-80
         <a href="/blog" class="nav-btn bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
           ← Kembali ke Blog
         </a>
-        <a href="/events" class="nav-btn bg-blue-500 text-white hover:text-orange-600">
+        <a href="/events" class="nav-btn bg-blue-500 text-white hover:bg-blue-600">
           Lihat Events →
         </a>
       </div>
@@ -236,6 +236,10 @@ const categoryClass = categoryColors[post.category] || 'bg-pink-100 text-pink-80
     border-radius: 0.5rem;
     font-weight: 500;
     transition: background-color 0.2s;
+  }
+  
+  .nav-btn:hover {
+    color: inherit !important;
   }
 </style>
 
