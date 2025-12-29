@@ -1654,22 +1654,28 @@ article ul li input[type="checkbox"][disabled] {
 
 .article-content .tabs-header {
   display: flex;
-  background: #f3f4f6;
+  background: #ffffff;
   border-bottom: 2px solid #e5e7eb;
   overflow-x: auto;
   overflow-y: hidden;
   gap: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.article-content .tabs-header::-webkit-scrollbar {
+  display: none;
 }
 
 .dark .article-content .tabs-header {
-  background: #374151;
+  background: #1f2937;
   border-bottom-color: #4b5563;
 }
 
 .article-content .tab-btn {
   padding: 0.625rem 1rem;
   border: none;
-  background: #ffffff;
+  background: transparent;
   cursor: pointer;
   font-weight: 500;
   font-size: 0.875rem;
@@ -1680,13 +1686,12 @@ article ul li input[type="checkbox"][disabled] {
 }
 
 .dark .article-content .tab-btn {
-  background: #374151;
   color: #d1d5db;
 }
 
 .article-content .tab-btn:hover {
   color: #1f2937;
-  background: #f3f4f6;
+  background: #f8fafc;
 }
 
 .dark .article-content .tab-btn:hover {
@@ -1696,7 +1701,7 @@ article ul li input[type="checkbox"][disabled] {
 
 .article-content .tab-btn.active {
   color: #1f2937;
-  background: #f8fafc; /* same as math-block */
+  background: #f8fafc;
   font-weight: 600;
 }
 
