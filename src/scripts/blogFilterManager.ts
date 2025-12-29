@@ -196,7 +196,6 @@ export class BlogFilterManager {
                 const category = (button as HTMLElement).getAttribute('data-category');
                 if (category) {
                     this.state.category = category;
-                    this.state.tag = null; // Reset tag when category selected
                     this.updateState();
                 }
             });
@@ -209,7 +208,6 @@ export class BlogFilterManager {
                 const tag = (button as HTMLElement).getAttribute('data-tag');
                 if (tag) {
                     this.state.tag = this.state.tag === tag ? null : tag;
-                    this.state.category = 'all'; // Reset category when tag selected
                     this.updateState();
                 }
             });
