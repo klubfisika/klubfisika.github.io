@@ -13,12 +13,12 @@ const navigationItems = [
 ];
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-surface/90 dark:bg-surface-dark/90 backdrop-blur-sm border-b-4 border-dark dark:border-light" aria-label="Main navigation">
+<nav id="navigation" class="fixed top-0 left-0 right-0 z-50 bg-surface/90 dark:bg-surface-dark/90 backdrop-blur-sm border-b-4 border-dark dark:border-light" aria-label="Main navigation">
   <div class="container mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
       <!-- Logo -->
       <a href="/" class="flex items-center space-x-3 group">
-        <IconContainer size="md" variant="white" class="border-2 border-dark dark:border-light transform rotate-12 group-hover:rotate-0 transition-transform">
+        <IconContainer size="md" variant="white" class="border-2 border-dark dark:border-light transform rotate-12 group-hover:rotate-0 transition-transform flex-shrink-0">
           <Image 
             src={kf13Logo} 
             alt="KF13 Logo" 
@@ -27,9 +27,9 @@ const navigationItems = [
             class="w-full h-full object-contain"
           />
         </IconContainer>
-        <div class="hidden sm:block">
-          <h1 class="text-xl font-black text-dark dark:text-light">KF13</h1>
-          <p class="text-xs text-dark/70 dark:text-light/70 font-semibold">Klub Fisika</p>
+        <div class="hidden sm:block flex-shrink-0">
+          <h1 class="text-xl font-black text-dark dark:text-light leading-tight">KF13</h1>
+          <p class="text-xs text-dark/70 dark:text-light/70 font-semibold leading-tight">Klub Fisika</p>
         </div>
       </a>
 
@@ -38,7 +38,7 @@ const navigationItems = [
         {navigationItems.map((item, index) => (
           <a 
             href={item.href}
-            class={`font-bold transition-all transform hover:scale-105 ${
+            class={`font-bold transition-all transform hover:scale-105 flex items-center ${
               item.highlight 
                 ? 'btn-nav-highlight px-4 py-2 border-2 border-dark hover:rotate-1' 
                 : `text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark ${index % 2 === 0 ? 'hover:rotate-1' : 'hover:-rotate-1'}`
@@ -55,6 +55,7 @@ const navigationItems = [
         class="lg:hidden p-2 text-dark dark:text-light hover:text-primary transition-colors"
         aria-label="Toggle mobile menu"
         aria-expanded="false"
+        aria-controls="mobile-menu"
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
