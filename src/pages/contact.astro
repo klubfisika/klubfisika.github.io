@@ -33,7 +33,7 @@ import ContactSection from "../components/sections/ContactSection.astro";
 
             <!-- Contact Methods -->
             <BrutalSection background="white" padding="lg">
-                <SectionHeader title="HUBUNGI KAMI" subtitle="Berbagai cara untuk terhubung dengan KF13" className="mb-16" />
+                <SectionHeader title="HUBUNGI KAMI" subtitle="Berbagai cara untuk terhubung dengan KF13" className="mb-8" />
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
@@ -98,8 +98,9 @@ import ContactSection from "../components/sections/ContactSection.astro";
                                 urgent: false
                             }
                         ].map((contact, index) => {
-                            // Determine variant and classes
+                            // Determine variant and text color
                             let variant = 'custom';
+                            let textColor = 'white';
                             let classes = '';
                             
                             if (contact.bg.includes('bg-primary')) {
@@ -109,8 +110,9 @@ import ContactSection from "../components/sections/ContactSection.astro";
                             } else if (contact.bg.includes('bg-accent')) {
                                 variant = 'accent';
                             } else {
-                                // For custom backgrounds, use the full bg string
+                                // For custom backgrounds like GitHub
                                 classes = contact.bg;
+                                textColor = 'white'; // Force white text for all colored backgrounds
                             }
                             
                             return (
@@ -123,15 +125,15 @@ import ContactSection from "../components/sections/ContactSection.astro";
                                 
                                 <div class="text-center mb-4">
                                     <div class="text-4xl mb-3">{contact.icon}</div>
-                                    <h3 class="text-lg font-black uppercase mb-2">
+                                    <Heading level={3} size="sm" color={textColor} class="uppercase mb-2">
                                         {contact.title}
-                                    </h3>
-                                    <p class="opacity-90 font-bold text-sm">{contact.info}</p>
+                                    </Heading>
+                                    <Text color={textColor} size="sm" class="opacity-90 font-bold">{contact.info}</Text>
                                 </div>
                                 
-                                <p class="opacity-80 text-sm text-center mb-6 leading-relaxed">
+                                <Text color={textColor} size="sm" class="opacity-80 text-center mb-6 leading-relaxed">
                                     {contact.description}
-                                </p>
+                                </Text>
                                 
                                 <BrutalButton
                                     variant="surface"
@@ -152,7 +154,7 @@ import ContactSection from "../components/sections/ContactSection.astro";
 
             <!-- Physical Location -->
             <BrutalSection background="surface" padding="lg">
-                <SectionHeader title="SANGGAR FISIKA KF13" subtitle="Lokasi fisik yang bisa dikunjungi" className="mb-16" />
+                <SectionHeader title="SANGGAR FISIKA KF13" subtitle="Lokasi fisik yang bisa dikunjungi" className="mb-8" />
                     
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <!-- Location Info -->
@@ -180,24 +182,24 @@ import ContactSection from "../components/sections/ContactSection.astro";
                             </div>
                             
                             <!-- Visit CTA -->
-                            <div class="bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal">
-                                <h4 class="text-xl font-black uppercase text-dark dark:text-light mb-4">
+                            <BrutalCard variant="accent" rotation="right">
+                                <Heading level={4} size="md" color="white" class="uppercase mb-4">
                                     🚗 MAU BERKUNJUNG?
-                                </h4>
-                                <p class="text-dark dark:text-light font-semibold mb-6">
+                                </Heading>
+                                <Text color="white" class="mb-6">
                                     Koordinasi dulu dengan admin untuk memastikan kami ada di tempat!
-                                </p>
+                                </Text>
                                 
                                 <div class="flex flex-col sm:flex-row gap-3">
                                     <BrutalButton
-                                        variant="accent"
+                                        variant="surface"
                                         size="md"
                                         href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20ingin%20berkunjung%20ke%20Sanggar%20Fisika.%20Kapan%20waktu%20yang%20tepat?"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         ariaLabel="Konfirmasi kunjungan via WhatsApp"
                                     >
-                                        📱 KONFIRMASI KUNJUNGAN
+                                        📱 KONFIRMASI
                                     </BrutalButton>
                                     <BrutalButton
                                         variant="primary"
@@ -210,7 +212,7 @@ import ContactSection from "../components/sections/ContactSection.astro";
                                         🗺️ BUKA MAPS
                                     </BrutalButton>
                                 </div>
-                            </div>
+                            </BrutalCard>
                         </div>
                         
                         <!-- Map Embed -->
@@ -246,49 +248,51 @@ import ContactSection from "../components/sections/ContactSection.astro";
             <!-- FAQ Contact -->
             <section class="py-20 bg-white dark:bg-slate-700 transition-colors">
                 <div class="max-w-4xl mx-auto px-6">
-                    <SectionHeader title="PERTANYAAN UMUM" subtitle="Jawaban cepat untuk pertanyaan yang sering ditanyakan" className="mb-16" />
+                    <SectionHeader title="PERTANYAAN UMUM" subtitle="Jawaban cepat untuk pertanyaan yang sering ditanyakan" className="mb-8" />
                     
                     <div class="space-y-6">
                         {[
                             {
                                 question: "Bagaimana cara bergabung dengan KF13?",
-                                answer: "Hubungi admin via WhatsApp atau datang langsung ke Sanggar Fisika. Kami terbuka untuk semua kalangan yang tertarik dengan fisika!",
-                                bg: "bg-blue"
+                                answer: "Hubungi admin via WhatsApp atau datang langsung ke Sanggar Fisika. Kami terbuka untuk semua kalangan yang tertarik dengan fisika!"
                             },
                             {
                                 question: "Apakah ada biaya untuk bergabung?",
-                                answer: "Bergabung dengan komunitas KF13 GRATIS! Beberapa workshop atau event khusus mungkin ada biaya untuk cover materi dan konsumsi.",
-                                bg: "bg-green-500"
+                                answer: "Bergabung dengan komunitas KF13 GRATIS! Beberapa workshop atau event khusus mungkin ada biaya untuk cover materi dan konsumsi."
                             },
                             {
                                 question: "Kapan waktu terbaik untuk berkunjung?",
-                                answer: "Sanggar buka Senin-Jumat (15:00-20:00) dan weekend (09:00-17:00). Konfirmasi dulu via WhatsApp untuk memastikan ada kegiatan.",
-                                bg: "bg-accent"
+                                answer: "Sanggar buka Senin-Jumat (15:00-20:00) dan weekend (09:00-17:00). Konfirmasi dulu via WhatsApp untuk memastikan ada kegiatan."
                             },
                             {
                                 question: "Apa saja kegiatan rutin KF13?",
-                                answer: "Workshop mingguan, diskusi fisika, eksperimen praktis, kompetisi, dan project kolaboratif. Cek halaman Events untuk jadwal terbaru!",
-                                bg: "bg-secondary"
+                                answer: "Workshop mingguan, diskusi fisika, eksperimen praktis, kompetisi, dan project kolaboratif. Cek halaman Events untuk jadwal terbaru!"
                             }
-                        ].map((faq, index) => (
-                            <div class={`${faq.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} shadow-brutal-sm`}>
-                                <h4 class="text-lg font-black uppercase text-on-primary mb-3">
+                        ].map((faq, index) => {
+                            const variants = ['primary', 'accent', 'secondary', 'primary'];
+                            return (
+                            <BrutalCard 
+                                variant={variants[index % 4]}
+                                rotation={index % 2 === 0 ? 'right' : 'left'}
+                            >
+                                <Heading level={4} size="sm" color="white" class="uppercase mb-3">
                                     ❓ {faq.question}
-                                </h4>
-                                <p class="text-on-primary opacity-90 font-semibold leading-relaxed">
+                                </Heading>
+                                <Text color="white" leading="relaxed">
                                     {faq.answer}
-                                </p>
-                            </div>
-                        ))}
+                                </Text>
+                            </BrutalCard>
+                            );
+                        })}
                     </div>
                     
-                    <div class="text-center mt-12">
-                        <div class="bg-secondary border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal inline-block">
-                            <p class="text-dark dark:text-light font-bold mb-4">
+                    <div class="text-center mt-8">
+                        <BrutalCard variant="secondary" rotation="left" className="inline-block">
+                            <Text color="white" class="font-bold mb-4">
                                 Masih ada pertanyaan lain?
-                            </p>
+                            </Text>
                             <BrutalButton
-                                variant="primary"
+                                variant="surface"
                                 size="md"
                                 href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20punya%20pertanyaan%20tentang%20klub%20fisika"
                                 target="_blank"
@@ -297,7 +301,7 @@ import ContactSection from "../components/sections/ContactSection.astro";
                             >
                                 💬 TANYA LANGSUNG
                             </BrutalButton>
-                        </div>
+                        </BrutalCard>
                     </div>
                 </div>
             </section>

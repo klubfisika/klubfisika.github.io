@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import kf13Logo from '@assets/images/kf13-logo.png';
+import BrutalButton from './ui/BrutalButton.astro';
 
 const currentYear = new Date().getFullYear();
 
@@ -8,46 +9,46 @@ const footerSections = [
   {
     title: "Tentang KF13",
     links: [
-      { label: "Sejarah", href: "/about#sejarah" },
-      { label: "Visi & Misi", href: "/about#visi-misi" },
-      { label: "Tim Kami", href: "/about#tim" },
-      { label: "Nilai-Nilai", href: "/about#nilai" }
+      { label: "Sejarah", href: "/about" },
+      { label: "Visi & Misi", href: "/about" },
+      { label: "Tim Kami", href: "/about" },
+      { label: "Bergabung", href: "/#gabung" }
     ]
   },
   {
     title: "Program",
     links: [
-      { label: "Workshop", href: "/events#workshop" },
-      { label: "Seminar", href: "/events#seminar" },
-      { label: "Kompetisi", href: "/events#kompetisi" },
-      { label: "Mentoring", href: "/events#mentoring" }
+      { label: "Events", href: "/events" },
+      { label: "Workshop", href: "/events" },
+      { label: "Seminar", href: "/events" },
+      { label: "Kompetisi", href: "/events" }
     ]
   },
   {
     title: "Konten",
     links: [
+      { label: "Blog", href: "/blog" },
       { label: "Artikel", href: "/blog" },
-      { label: "Tutorial", href: "/blog?category=tutorial" },
-      { label: "Eksperimen", href: "/blog?category=eksperimen" },
-      { label: "Teori", href: "/blog?category=teori" }
+      { label: "Tutorial", href: "/blog" },
+      { label: "Research", href: "/research" }
     ]
   },
   {
     title: "Komunitas",
     links: [
-      { label: "Events", href: "/events" },
       { label: "Partnership", href: "/partnership" },
       { label: "Research", href: "/research" },
-      { label: "Kontak", href: "/contact" }
+      { label: "Kontak", href: "/contact" },
+      { label: "Media Sosial", href: "/contact" }
     ]
   }
 ];
 
 const socialLinks = [
-  { label: "Instagram", href: "#", icon: "instagram" },
-  { label: "YouTube", href: "#", icon: "youtube" },
-  { label: "GitHub", href: "#", icon: "github" },
-  { label: "Email", href: "mailto:info@kf13.com", icon: "email" }
+  { label: "Instagram", href: "https://instagram.com/klubfisika13", icon: "instagram" },
+  { label: "YouTube", href: "https://youtube.com/@klubfisika13", icon: "youtube" },
+  { label: "GitHub", href: "https://github.com/klubfisika", icon: "github" },
+  { label: "Email", href: "mailto:info@klubfisika.org", icon: "email" }
 ];
 ---
 
@@ -79,6 +80,8 @@ const socialLinks = [
           {socialLinks.map((social) => (
             <a 
               href={social.href}
+              target={social.icon === 'email' ? '_self' : '_blank'}
+              rel={social.icon === 'email' ? '' : 'noopener noreferrer'}
               class="w-10 h-10 bg-primary/20 border-2 border-primary text-primary hover:bg-primary hover:text-dark transition-colors flex items-center justify-center transform hover:rotate-12"
               aria-label={social.label}
             >
@@ -133,11 +136,11 @@ const socialLinks = [
         © {currentYear} KF13 - Klub Fisika. All rights reserved.
       </p>
       <div class="flex space-x-6 text-sm">
-        <a href="/terms" class="text-light/60 hover:text-primary transition-colors">
-          Terms of Service
+        <a href="/about" class="text-light/60 hover:text-primary transition-colors">
+          Tentang Kami
         </a>
-        <a href="/privacy" class="text-light/60 hover:text-primary transition-colors">
-          Privacy Policy
+        <a href="/contact" class="text-light/60 hover:text-primary transition-colors">
+          Hubungi Kami
         </a>
       </div>
     </div>

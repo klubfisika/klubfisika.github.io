@@ -1,4 +1,8 @@
 ---
+import BrutalCard from './BrutalCard.astro';
+import Heading from './Heading.astro';
+import Text from './Text.astro';
+
 interface Props {
   icon?: string;
   title: string;
@@ -6,8 +10,8 @@ interface Props {
   schedule?: string;
   level?: string;
   participants?: string;
-  bgColor?: string;
-  rotation?: string;
+  variant?: 'primary' | 'secondary' | 'accent' | 'surface' | 'dark' | 'white';
+  rotation?: 'left' | 'right' | 'none';
   className?: string;
 }
 
@@ -18,34 +22,34 @@ const {
   schedule,
   level,
   participants,
-  bgColor = "bg-pink", 
-  rotation = "-rotate-2",
+  variant = "primary", 
+  rotation = "left",
   className = ""
 } = Astro.props;
 ---
 
-<div class={`${bgColor} card-brutal p-6 transform ${rotation} hover:rotate-0 ${className}`}>
+<BrutalCard variant={variant} rotation={rotation} class={`p-6 ${className}`}>
   <div class="text-4xl mb-4">{icon}</div>
-  <h3 class="text-2xl font-black uppercase text-dark mb-3">{title}</h3>
-  <p class="text-dark font-semibold mb-4">{description}</p>
+  <Heading level={3} size="lg" color="white" class="uppercase mb-3">{title}</Heading>
+  <Text color="white" class="font-semibold mb-4">{description}</Text>
   
   {(schedule || level || participants) && (
-    <div class="border-t-2 border-dark pt-3 mt-3 space-y-2">
+    <div class="border-t-2 border-white pt-3 mt-3 space-y-2">
       {schedule && (
-        <div class="text-xs font-bold text-dark">
+        <Text color="white" size="xs" class="font-bold">
           📅 {schedule}
-        </div>
+        </Text>
       )}
       {level && (
-        <div class="text-xs font-bold text-dark">
+        <Text color="white" size="xs" class="font-bold">
           📊 Level: {level}
-        </div>
+        </Text>
       )}
       {participants && (
-        <div class="text-xs font-bold text-dark">
+        <Text color="white" size="xs" class="font-bold">
           👥 {participants}
-        </div>
+        </Text>
       )}
     </div>
   )}
-</div>
+</BrutalCard>

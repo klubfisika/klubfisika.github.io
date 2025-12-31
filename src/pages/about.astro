@@ -33,9 +33,11 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
     </GradientSection>
 
     <!-- Stats Section -->
-    <BrutalSection background="white" padding="lg">
+    <BrutalSection background="white" padding="lg" id="sejarah">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <SectionHeader title="SEJARAH KF13" subtitle="Perjalanan kami sejak 2013" className="mb-8" />
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
                 <StatCard 
                     value="11+" 
                     label="Tahun Berdiri" 
@@ -63,7 +65,7 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
     <!-- History Section -->
     <BrutalSection background="surface" padding="lg">
         <div class="max-w-4xl mx-auto px-6">
-            <SectionHeader title="SEJARAH KAMI" subtitle="Perjalanan KF13 dari komunitas kecil hingga jaringan nasional" className="mb-16" />
+            <SectionHeader title="SEJARAH KAMI" subtitle="Perjalanan KF13 dari komunitas kecil hingga jaringan nasional" className="mb-8" />
             
             <div class="space-y-8">
                 <BrutalCard variant="primary" class="transform rotate-1">
@@ -97,9 +99,10 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
     </BrutalSection>
 
     <!-- Vision Mission -->
-    <BrutalSection background="white" padding="lg">
+    <!-- Vision Mission Section -->
+    <BrutalSection background="white" padding="lg" id="visi-misi">
         <div class="max-w-4xl mx-auto px-6">
-            <SectionHeader title="VISI & MISI" subtitle="Tujuan dan cita-cita KF13 untuk pendidikan fisika Indonesia" className="mb-16" />
+            <SectionHeader title="VISI & MISI" subtitle="Tujuan dan cita-cita KF13 untuk pendidikan fisika Indonesia" className="mb-8" />
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <BrutalCard variant="primary" class="transform -rotate-1">
@@ -125,9 +128,9 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
     </BrutalSection>
 
     <!-- Values Section -->
-    <BrutalSection background="surface" padding="lg">
+    <BrutalSection background="surface" padding="lg" id="nilai">
         <div class="max-w-6xl mx-auto px-6">
-            <SectionHeader title="NILAI-NILAI KAMI" subtitle="Prinsip yang menjadi fondasi KF13" className="mb-16" />
+            <SectionHeader title="NILAI-NILAI KAMI" subtitle="Prinsip yang menjadi fondasi KF13" className="mb-8" />
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <BrutalCard variant="white" class="transform rotate-1 text-center">
@@ -161,9 +164,9 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
     </BrutalSection>
 
     <!-- Team Section -->
-    <BrutalSection background="white" padding="lg">
+    <BrutalSection background="white" padding="lg" id="tim">
         <div class="max-w-6xl mx-auto px-6">
-            <SectionHeader title="TIM INTI" subtitle="Orang-orang di balik KF13" className="mb-16" />
+            <SectionHeader title="TIM INTI" subtitle="Orang-orang di balik KF13" className="mb-8" />
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <BrutalCard variant="white" class="transform rotate-1 text-center">

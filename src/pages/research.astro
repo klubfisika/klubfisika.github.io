@@ -6,6 +6,7 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
 import Heading from "../components/ui/Heading.astro";
 import Text from "../components/ui/Text.astro";
 import BrutalCard from "../components/ui/BrutalCard.astro";
+import BrutalButton from "../components/ui/BrutalButton.astro";
 ---
 
 <Layout 
@@ -31,48 +32,50 @@ import BrutalCard from "../components/ui/BrutalCard.astro";
 
     <!-- Research Platform -->
     <BrutalSection background="white" padding="lg">
-        <SectionHeader title="PLATFORM RISET" subtitle="Akses portal penelitian dan kolaborasi" className="mb-16" />
+        <SectionHeader title="PLATFORM RISET" subtitle="Akses portal penelitian dan kolaborasi" className="mb-8" />
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div class="space-y-6">
-                <div class="bg-primary dark:bg-primary-dark border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal">
-                    <h3 class="text-2xl font-black uppercase text-on-primary mb-4">
+                <BrutalCard variant="primary" rotation="left">
+                    <Heading level={3} size="lg" color="white" class="uppercase mb-4">
                         🚀 MULAI JOURNEY ANDA
-                    </h3>
-                    <p class="text-on-primary opacity-90 mb-6">
+                    </Heading>
+                    <Text color="white" class="opacity-90 mb-6">
                         Akses portal penelitian lengkap dengan tools kolaborasi, database jurnal, dan networking dengan peneliti lainnya.
-                    </p>
-                    <a 
+                    </Text>
+                    <BrutalButton
+                        variant="surface"
+                        size="lg"
                         href="http://47.84.35.77/wp/portal/?fcom_action=auth"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="bg-white text-dark px-6 py-3 font-black border-2 border-dark hover:scale-105 transition-transform inline-block"
+                        ariaLabel="Akses portal riset"
                     >
                         🔬 AKSES PORTAL RISET
-                    </a>
-                </div>
+                    </BrutalButton>
+                </BrutalCard>
             </div>
             
             <div class="space-y-6">
-                <div class="bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal">
-                    <h3 class="text-xl font-black uppercase text-on-accent mb-4">
+                <BrutalCard variant="accent" rotation="right">
+                    <Heading level={3} size="md" color="white" class="uppercase mb-4">
                         📊 FITUR PLATFORM
-                    </h3>
-                    <ul class="text-on-accent space-y-2 text-sm">
+                    </Heading>
+                    <ul class="text-white space-y-2 text-sm">
                         <li>✅ Database jurnal fisika terlengkap</li>
                         <li>✅ Tools kolaborasi real-time</li>
                         <li>✅ Networking dengan peneliti global</li>
                         <li>✅ Project management terintegrasi</li>
                         <li>✅ Publication tracking system</li>
                     </ul>
-                </div>
+                </BrutalCard>
             </div>
         </div>
     </BrutalSection>
 
     <!-- Research Areas -->
     <BrutalSection background="surface" padding="lg">
-        <SectionHeader title="BIDANG RISET" subtitle="Area penelitian yang kami fokuskan" className="mb-16" />
+        <SectionHeader title="BIDANG RISET" subtitle="Area penelitian yang kami fokuskan" className="mb-8" />
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -80,50 +83,53 @@ import BrutalCard from "../components/ui/BrutalCard.astro";
                     title: "Fisika Kuantum",
                     description: "Penelitian quantum computing, quantum optics, dan aplikasi teknologi kuantum",
                     icon: "⚛️",
-                    bg: "bg-primary"
+                    variant: "primary"
                 },
                 {
                     title: "Fisika Material",
                     description: "Pengembangan material baru, nanoteknologi, dan karakterisasi material",
                     icon: "🔬",
-                    bg: "bg-secondary"
+                    variant: "secondary"
                 },
                 {
                     title: "Astrofisika",
                     description: "Studi tentang benda langit, kosmologi, dan fenomena alam semesta",
                     icon: "🌌",
-                    bg: "bg-accent"
+                    variant: "accent"
                 },
                 {
                     title: "Fisika Medis",
                     description: "Aplikasi fisika dalam bidang kesehatan dan teknologi medis",
                     icon: "🏥",
-                    bg: "bg-pink"
+                    variant: "primary"
                 },
                 {
                     title: "Energi Terbarukan",
                     description: "Penelitian solar cell, fuel cell, dan teknologi energi berkelanjutan",
                     icon: "⚡",
-                    bg: "bg-blue"
+                    variant: "secondary"
                 },
                 {
                     title: "Fisika Komputasi",
                     description: "Simulasi numerik, machine learning, dan computational physics",
                     icon: "💻",
-                    bg: "bg-accent"
+                    variant: "accent"
                 }
             ].map((area, index) => (
-                <div class={`${area.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
+                <BrutalCard 
+                    variant={area.variant}
+                    rotation={index % 2 === 0 ? 'right' : 'left'}
+                >
                     <div class="text-center mb-4">
                         <div class="text-4xl mb-3">{area.icon}</div>
-                        <h3 class="text-lg font-black uppercase text-white mb-2">
+                        <Heading level={3} size="sm" color="white" class="uppercase mb-2">
                             {area.title}
-                        </h3>
+                        </Heading>
                     </div>
-                    <p class="text-white opacity-90 text-sm leading-relaxed text-center">
+                    <Text color="white" size="sm" class="opacity-90 leading-relaxed text-center">
                         {area.description}
-                    </p>
-                </div>
+                    </Text>
+                </BrutalCard>
             ))}
         </div>
     </BrutalSection>
@@ -131,32 +137,36 @@ import BrutalCard from "../components/ui/BrutalCard.astro";
     <!-- Join Research -->
     <BrutalSection background="white" padding="lg">
         <div class="max-w-4xl mx-auto text-center">
-            <div class="bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light p-8 transform -rotate-1 shadow-brutal">
-                <h2 class="text-3xl font-black uppercase text-dark dark:text-light mb-6">
+            <BrutalCard variant="accent" rotation="left" class="p-8">
+                <Heading level={2} size="xl" color="white" class="uppercase mb-6">
                     🤝 BERGABUNG DENGAN TIM RISET
-                </h2>
-                <p class="text-lg font-semibold text-dark dark:text-light mb-8">
+                </Heading>
+                <Text size="lg" color="white" class="font-semibold mb-8">
                     Punya ide penelitian menarik? Ingin berkolaborasi dengan peneliti lain? 
                     Mari bergabung dan wujudkan riset impian Anda!
-                </p>
+                </Text>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a 
+                    <BrutalButton
+                        variant="primary"
+                        size="lg"
                         href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20tertarik%20bergabung%20dengan%20tim%20riset"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="bg-primary dark:bg-primary-dark border-2 border-dark dark:border-light px-8 py-4 font-black text-white hover:scale-105 transition-transform"
+                        ariaLabel="Diskusi riset via WhatsApp"
                     >
                         💬 DISKUSI RISET
-                    </a>
-                    <a 
+                    </BrutalButton>
+                    <BrutalButton
+                        variant="secondary"
+                        size="lg"
                         href="mailto:research@klubfisika.org"
-                        class="bg-secondary dark:bg-secondary-dark border-2 border-dark dark:border-light px-8 py-4 font-black text-dark hover:scale-105 transition-transform"
+                        ariaLabel="Kirim proposal riset via email"
                     >
                         📧 KIRIM PROPOSAL
-                    </a>
+                    </BrutalButton>
                 </div>
-            </div>
+            </BrutalCard>
         </div>
     </BrutalSection>
 </Layout>

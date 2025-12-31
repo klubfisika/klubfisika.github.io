@@ -1,5 +1,10 @@
 ---
 import SectionHeader from '../ui/SectionHeader.astro';
+import BrutalCard from '../ui/BrutalCard.astro';
+import BrutalButton from '../ui/BrutalButton.astro';
+import BrutalSection from '../ui/BrutalSection.astro';
+import Heading from '../ui/Heading.astro';
+import Text from '../ui/Text.astro';
 import { Image } from 'astro:assets';
 
 // Import gallery images with clean aliases
@@ -11,9 +16,9 @@ import physicsCompetition from '@assets/gallery/physics-competition.jpg';
 import projectPresentation from '@assets/gallery/project-presentation.jpg';
 ---
 
-<section class="py-20 bg-white dark:bg-slate-700 transition-colors" id="galeri">
+<BrutalSection background="white" padding="lg" id="galeri">
   <div class="max-w-6xl mx-auto px-6">
-    <SectionHeader title="GALERI KEGIATAN" subtitle="Dokumentasi aktivitas KF13" className="mb-16" />
+    <SectionHeader title="GALERI KEGIATAN" subtitle="Dokumentasi aktivitas KF13" className="mb-8" />
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Real Activity Photos -->
@@ -55,7 +60,7 @@ import projectPresentation from '@assets/gallery/project-presentation.jpg';
           date: "Juni 2024"
         }
       ].map((item, index) => (
-        <div class={`bg-surface dark:bg-slate-600 border-4 border-dark dark:border-light transform ${index % 3 === 0 ? 'rotate-2' : index % 3 === 1 ? '-rotate-1' : 'rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm overflow-hidden`}>
+        <BrutalCard variant="surface" rotation={index % 3 === 0 ? 'right' : index % 3 === 1 ? 'left' : 'right'} className="overflow-hidden">
           <!-- Image -->
           <div class="h-48 overflow-hidden">
             <Image 
@@ -73,48 +78,52 @@ import projectPresentation from '@assets/gallery/project-presentation.jpg';
           <!-- Content -->
           <div class="p-6">
             <div class="flex justify-between items-start mb-3">
-              <h3 class="text-lg font-black uppercase text-dark dark:text-light leading-tight">
+              <Heading level={3} size="sm" class="uppercase leading-tight">
                 {item.title}
-              </h3>
-              <span class="text-xs bg-accent dark:bg-accent-dark text-dark dark:text-light px-2 py-1 border border-dark dark:border-light font-bold">
-                {item.date}
-              </span>
+              </Heading>
+              <BrutalCard variant="accent" className="text-xs px-2 py-1">
+                <Text color="white" size="xs" class="font-bold">
+                  {item.date}
+                </Text>
+              </BrutalCard>
             </div>
-            <p class="text-sm font-semibold text-dark dark:text-light leading-relaxed">
+            <Text size="sm" class="font-semibold leading-relaxed">
               {item.desc}
-            </p>
+            </Text>
           </div>
-        </div>
+        </BrutalCard>
       ))}
     </div>
 
     <!-- Gallery CTA -->
-    <div class="mt-16 text-center">
-      <div class="bg-pink dark:bg-purple-600 border-4 border-dark dark:border-light p-6 transform -rotate-1 inline-block shadow-brutal">
-        <p class="text-dark dark:text-light font-bold mb-4">
+    <div class="mt-8 text-center">
+      <BrutalCard variant="primary" rotation="left" className="inline-block">
+        <Text color="white" class="font-bold mb-4">
           📸 <strong>Lihat lebih banyak foto kegiatan kami!</strong>
-        </p>
+        </Text>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
+          <BrutalButton
+            variant="surface"
+            size="md"
             href="https://instagram.com/kf13_indonesia"
             target="_blank"
             rel="noopener noreferrer"
-            class="bg-secondary border-2 border-dark px-4 py-2 font-bold text-white hover:scale-105 transition-transform"
-            style="color: white !important;"
+            ariaLabel="Lihat Instagram KF13"
           >
             📸 Instagram
-          </a>
-          <a 
+          </BrutalButton>
+          <BrutalButton
+            variant="secondary"
+            size="md"
             href="https://youtube.com/@KF13Indonesia"
             target="_blank"
             rel="noopener noreferrer"
-            class="bg-blue border-2 border-dark px-4 py-2 font-bold text-white hover:scale-105 transition-transform"
-            style="color: white !important;"
+            ariaLabel="Lihat YouTube KF13"
           >
             📺 YouTube
-          </a>
+          </BrutalButton>
         </div>
-      </div>
+      </BrutalCard>
     </div>
   </div>
-</section>
+</BrutalSection>

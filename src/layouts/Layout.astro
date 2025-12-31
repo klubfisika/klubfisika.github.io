@@ -15,6 +15,26 @@ export interface Props {
 }
 
 const { title, description, backToTopThreshold = 300 } = Astro.props;
+
+// Detect current page for scroll offset customization
+const pathname = Astro.url.pathname;
+let scrollOffset = 'medium'; // default
+
+if (pathname.includes('/about')) {
+    scrollOffset = 'small';
+} else if (pathname.includes('/events')) {
+    scrollOffset = 'xlarge';
+} else if (pathname.includes('/blog')) {
+    scrollOffset = 'medium';
+} else if (pathname.includes('/contact')) {
+    scrollOffset = 'medium';
+} else if (pathname.includes('/partnership')) {
+    scrollOffset = 'medium';
+} else if (pathname.includes('/research')) {
+    scrollOffset = 'medium';
+} else {
+    scrollOffset = 'medium'; // homepage
+}
 ---
 
 <!doctype html>
@@ -23,7 +43,7 @@ const { title, description, backToTopThreshold = 300 } = Astro.props;
         <BaseHead title={title} description={description} />
         <slot name="head" />
     </head>
-    <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors">
+    <body class="font-sans bg-surface dark:bg-surface-dark text-dark dark:text-light transition-colors" data-scroll-offset={scrollOffset}>
         <!-- Skip Links for Keyboard Navigation -->
         <div class="skip-links">
             <a href="#main-content" class="skip-link">Skip to main content</a>

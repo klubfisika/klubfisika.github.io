@@ -1,86 +1,90 @@
 ---
 import SectionHeader from '../ui/SectionHeader.astro';
+import BrutalCard from '../ui/BrutalCard.astro';
+import Heading from '../ui/Heading.astro';
+import Text from '../ui/Text.astro';
+import BrutalSection from '../ui/BrutalSection.astro';
 ---
 
-<section class="py-20 bg-surface dark:bg-slate-800 transition-colors" id="faq">
+<BrutalSection background="surface" padding="lg" id="faq">
   <div class="max-w-4xl mx-auto px-6">
-    <SectionHeader title="FAQ" subtitle="Pertanyaan yang sering ditanyakan" className="mb-16" />
+    <SectionHeader title="FAQ" subtitle="Pertanyaan yang sering ditanyakan" className="mb-8" />
     
     <div class="space-y-4">
       {[
         {
           question: "Apakah pemula boleh bergabung?",
           answer: "Tentu saja! KF13 terbuka untuk semua level. Yang terpenting adalah rasa ingin tahu dan semangat belajar fisika.",
-          bg: "bg-pink",
-          rotation: "-rotate-1"
+          variant: "primary",
+          rotation: "left"
         },
         {
           question: "Apakah ada biaya untuk bergabung?",
           answer: "Tidak ada biaya sama sekali. KF13 adalah komunitas gratis yang fokus pada pembelajaran dan berbagi pengetahuan.",
-          bg: "bg-blue", 
-          rotation: "rotate-2"
+          variant: "secondary", 
+          rotation: "right"
         },
         {
           question: "Seberapa sering kegiatan dilakukan?",
           answer: "Kegiatan rutin dilakukan mingguan untuk diskusi, dan bulanan untuk eksperimen atau workshop khusus.",
-          bg: "bg-accent",
-          rotation: "-rotate-2"
+          variant: "accent",
+          rotation: "left"
         },
         {
           question: "Apa saja yang diperlukan untuk bergabung?",
           answer: "Hanya perlu minat pada fisika dan akses internet. Semua materi pembelajaran akan disediakan oleh komunitas.",
-          bg: "bg-secondary",
-          rotation: "rotate-1"
+          variant: "secondary",
+          rotation: "right"
         },
         {
           question: "Bagaimana cara mengikuti eksperimen?",
           answer: "Eksperimen dirancang dengan alat-alat sederhana yang mudah didapat. Panduan lengkap akan diberikan sebelum kegiatan.",
-          bg: "bg-primary",
-          rotation: "-rotate-1"
+          variant: "primary",
+          rotation: "left"
         },
         {
           question: "Apakah ada sertifikat atau pengakuan?",
           answer: "Fokus kami pada pembelajaran, bukan sertifikat. Namun kontribusi aktif akan mendapat pengakuan dari komunitas.",
-          bg: "bg-pink",
-          rotation: "rotate-2"
+          variant: "accent",
+          rotation: "right"
         }
       ].map((faq, index) => (
-        <div class={`${faq.bg} dark:bg-slate-700 border-4 border-dark dark:border-light transform ${faq.rotation} hover:rotate-0 transition-all shadow-brutal-sm faq-item`}>
+        <BrutalCard variant={faq.variant} rotation={faq.rotation} className="faq-item">
           <button 
             class="w-full p-6 text-left focus:outline-none focus:ring-3 focus:ring-accent faq-trigger"
             aria-expanded="false"
           >
             <div class="flex justify-between items-center">
-              <h3 class="text-lg font-black uppercase text-dark dark:text-light pr-4">
+              <Heading level={3} size="sm" color="white" class="uppercase pr-4">
                 {faq.question}
-              </h3>
-              <span class="text-2xl font-black text-dark dark:text-light faq-icon transition-transform">+</span>
+              </Heading>
+              <span class="text-2xl font-black text-white faq-icon transition-transform">+</span>
             </div>
           </button>
           <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
             <div class="px-6 pb-6">
-              <p class="text-dark dark:text-light font-semibold leading-relaxed">
+              <Text color="white" class="font-semibold leading-relaxed">
                 {faq.answer}
-              </p>
+              </Text>
             </div>
           </div>
-        </div>
+        </BrutalCard>
       ))}
     </div>
 
     <!-- Additional Help -->
-    <div class="mt-12 text-center">
-      <div class="bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-6 transform rotate-1 inline-block shadow-brutal">
-        <p class="text-dark dark:text-light font-semibold mb-4">
+    <div class="mt-8 text-center">
+      <BrutalCard variant="white" rotation="right" className="inline-block">
+        <Text class="font-semibold mb-4">
           💡 <strong>Masih ada pertanyaan lain?</strong>
-        </p>
-        <p class="text-sm text-dark dark:text-light">
+        </Text>
+        <Text size="sm">
           Jangan ragu untuk menghubungi kami melalui email atau media sosial!
-        </p>
-      </div>
+        </Text>
+      </BrutalCard>
     </div>
   </div>
-</section>
+</BrutalSection>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {

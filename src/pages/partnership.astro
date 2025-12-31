@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
 import BrutalCard from "../components/ui/BrutalCard.astro";
+import BrutalButton from "../components/ui/BrutalButton.astro";
 import GradientSection from "../components/ui/GradientSection.astro";
 import Heading from "../components/ui/Heading.astro";
 import Text from "../components/ui/Text.astro";
@@ -32,7 +33,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
 
     <!-- University Network -->
     <BrutalSection background="white" padding="lg">
-        <SectionHeader title="JARINGAN KAMPUS" subtitle="Anggota dari berbagai perguruan tinggi di Yogyakarta" className="mb-16" />
+        <SectionHeader title="JARINGAN KAMPUS" subtitle="Anggota dari berbagai perguruan tinggi di Yogyakarta" className="mb-8" />
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -42,7 +43,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                     type: "Universitas Negeri",
                     connection: "Anggota alumni dan mahasiswa aktif dari berbagai fakultas",
                     members: "15+ anggota",
-                    bg: "bg-primary",
+                    variant: "primary",
                     icon: "🏛️"
                 },
                 {
@@ -51,7 +52,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                     type: "Universitas Negeri",
                     connection: "Mahasiswa dan alumni Pendidikan Fisika yang aktif dalam komunitas",
                     members: "12+ anggota",
-                    bg: "bg-secondary",
+                    variant: "secondary",
                     icon: "🎓"
                 },
                 {
@@ -60,7 +61,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                     type: "Universitas Islam Negeri",
                     connection: "Mahasiswa Fisika dan Pendidikan Fisika yang antusias",
                     members: "8+ anggota",
-                    bg: "bg-accent",
+                    variant: "accent",
                     icon: "🕌"
                 },
                 {
@@ -69,7 +70,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                     type: "Universitas Swasta",
                     connection: "Mahasiswa Pendidikan Fisika dan Teknik",
                     members: "6+ anggota",
-                    bg: "bg-pink",
+                    variant: "primary",
                     icon: "🏫"
                 },
                 {
@@ -78,7 +79,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                     type: "Universitas Swasta",
                     connection: "Mahasiswa Fisika dan Pendidikan Fisika",
                     members: "5+ anggota",
-                    bg: "bg-blue",
+                    variant: "secondary",
                     icon: "⛪"
                 },
                 {
@@ -87,17 +88,20 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                     type: "Berbagai Kampus",
                     connection: "Mahasiswa dan alumni dari berbagai universitas di Yogyakarta",
                     members: "10+ anggota",
-                    bg: "bg-accent",
+                    variant: "accent",
                     icon: "🌟"
                 }
             ].map((university, index) => (
-                <div class={`${university.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
+                <BrutalCard 
+                    variant={university.variant}
+                    rotation={index % 2 === 0 ? 'right' : 'left'}
+                >
                     <div class="text-center mb-4">
                         <div class="text-4xl mb-3">{university.icon}</div>
-                        <h3 class="text-lg font-black uppercase text-white mb-1">
+                        <Heading level={3} size="sm" color="white" class="uppercase mb-1">
                             {university.abbr}
-                        </h3>
-                        <p class="text-white opacity-80 text-sm font-semibold">{university.type}</p>
+                        </Heading>
+                        <Text color="white" size="sm" class="opacity-80 font-semibold">{university.type}</Text>
                     </div>
                     
                     <div class="space-y-3 text-white opacity-90 text-sm">
@@ -107,51 +111,51 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                             <span class="font-bold">👥 {university.members}</span>
                         </div>
                     </div>
-                </div>
+                </BrutalCard>
             ))}
         </div>
     </BrutalSection>
 
     <!-- Partnership Benefits -->
     <BrutalSection background="surface" padding="lg">
-        <SectionHeader title="MANFAAT KEMITRAAN" subtitle="Keuntungan bergabung dengan jaringan KF13" className="mb-16" />
+        <SectionHeader title="MANFAAT KEMITRAAN" subtitle="Keuntungan bergabung dengan jaringan KF13" className="mb-8" />
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div class="space-y-8">
-                <div class="bg-primary dark:bg-primary-dark border-4 border-dark dark:border-light p-6 transform -rotate-1 shadow-brutal">
-                    <h3 class="text-2xl font-black uppercase text-on-primary mb-4">
+                <BrutalCard variant="primary" rotation="left">
+                    <Heading level={3} size="lg" color="white" class="uppercase mb-4">
                         🎯 UNTUK INSTITUSI
-                    </h3>
-                    <ul class="text-on-primary space-y-2 text-sm">
+                    </Heading>
+                    <ul class="text-white space-y-2 text-sm">
                         <li>✅ Akses ke talent pool mahasiswa fisika terbaik</li>
                         <li>✅ Kolaborasi penelitian dan pengembangan</li>
                         <li>✅ Program magang dan praktik kerja</li>
                         <li>✅ Workshop dan seminar eksklusif</li>
                         <li>✅ Networking dengan institusi lain</li>
                     </ul>
-                </div>
+                </BrutalCard>
             </div>
             
             <div class="space-y-8">
-                <div class="bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light p-6 transform rotate-1 shadow-brutal">
-                    <h3 class="text-2xl font-black uppercase text-on-accent mb-4">
+                <BrutalCard variant="accent" rotation="right">
+                    <Heading level={3} size="lg" color="white" class="uppercase mb-4">
                         🚀 UNTUK ANGGOTA
-                    </h3>
-                    <ul class="text-on-accent space-y-2 text-sm">
+                    </Heading>
+                    <ul class="text-white space-y-2 text-sm">
                         <li>✅ Kesempatan magang di perusahaan partner</li>
                         <li>✅ Akses ke job opportunities eksklusif</li>
                         <li>✅ Mentoring dari profesional industri</li>
                         <li>✅ Sertifikasi dan pelatihan gratis</li>
                         <li>✅ Networking lintas universitas</li>
                     </ul>
-                </div>
+                </BrutalCard>
             </div>
         </div>
     </BrutalSection>
 
     <!-- Current Partners -->
     <BrutalSection background="white" padding="lg">
-        <SectionHeader title="MITRA SAAT INI" subtitle="Organisasi dan institusi yang berkolaborasi dengan KF13" className="mb-16" />
+        <SectionHeader title="MITRA SAAT INI" subtitle="Organisasi dan institusi yang berkolaborasi dengan KF13" className="mb-8" />
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
@@ -160,46 +164,49 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                     type: "Institusi Pendidikan",
                     collaboration: "Penyediaan fasilitas lab untuk eksperimen dan penelitian mahasiswa",
                     since: "2020",
-                    bg: "bg-secondary"
+                    variant: "secondary"
                 },
                 {
                     name: "Planetarium Yogyakarta",
                     type: "Institusi Sains",
                     collaboration: "Program edukasi astronomi dan observasi bintang bersama",
                     since: "2021",
-                    bg: "bg-primary"
+                    variant: "primary"
                 },
                 {
                     name: "LIPI Yogyakarta",
                     type: "Lembaga Penelitian",
                     collaboration: "Kolaborasi penelitian dan akses ke jurnal ilmiah",
                     since: "2022",
-                    bg: "bg-accent"
+                    variant: "accent"
                 },
                 {
                     name: "Komunitas Sains DIY",
                     type: "Organisasi Komunitas",
                     collaboration: "Event bersama dan program literasi sains masyarakat",
                     since: "2019",
-                    bg: "bg-pink"
+                    variant: "primary"
                 }
             ].map((partner, index) => (
-                <div class={`${partner.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
+                <BrutalCard 
+                    variant={partner.variant}
+                    rotation={index % 2 === 0 ? 'right' : 'left'}
+                >
                     <div class="mb-4">
                         <span class="bg-white text-dark px-3 py-1 text-xs font-bold border-2 border-dark">
                             SEJAK {partner.since}
                         </span>
                     </div>
                     
-                    <h3 class="text-xl font-black uppercase text-white mb-2">
+                    <Heading level={3} size="md" color="white" class="uppercase mb-2">
                         {partner.name}
-                    </h3>
-                    <p class="text-white opacity-80 text-sm font-semibold mb-4">{partner.type}</p>
+                    </Heading>
+                    <Text color="white" size="sm" class="opacity-80 font-semibold mb-4">{partner.type}</Text>
                     
-                    <p class="text-white opacity-90 text-sm leading-relaxed">
+                    <Text color="white" size="sm" class="opacity-90 leading-relaxed">
                         {partner.collaboration}
-                    </p>
-                </div>
+                    </Text>
+                </BrutalCard>
             ))}
         </div>
     </BrutalSection>
@@ -207,35 +214,39 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
     <!-- Join Partnership -->
     <BrutalSection background="surface" padding="lg">
         <div class="max-w-4xl mx-auto text-center">
-            <div class="bg-accent dark:bg-accent-dark border-4 border-dark dark:border-light p-8 transform -rotate-1 shadow-brutal">
-                <h2 class="text-3xl font-black uppercase text-dark dark:text-light mb-6">
+            <BrutalCard variant="accent" rotation="left" class="p-8">
+                <Heading level={2} size="xl" color="white" class="uppercase mb-6">
                     🤝 BERGABUNG SEBAGAI MITRA
-                </h2>
-                <p class="text-lg font-semibold text-dark dark:text-light mb-8">
+                </Heading>
+                <Text size="lg" color="white" class="font-semibold mb-8">
                     Tertarik berkolaborasi dengan KF13? Mari bersama-sama memajukan pendidikan fisika di Indonesia!
-                </p>
+                </Text>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a 
+                    <BrutalButton
+                        variant="primary"
+                        size="lg"
                         href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20tertarik%20untuk%20bermitra%20dengan%20KF13"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="bg-primary dark:bg-primary-dark border-2 border-dark dark:border-light px-8 py-4 font-black text-white hover:scale-105 transition-transform"
+                        ariaLabel="Diskusi kemitraan via WhatsApp"
                     >
                         💬 DISKUSI KEMITRAAN
-                    </a>
-                    <a 
+                    </BrutalButton>
+                    <BrutalButton
+                        variant="secondary"
+                        size="lg"
                         href="mailto:partnership@klubfisika.org"
-                        class="bg-secondary dark:bg-secondary-dark border-2 border-dark dark:border-light px-8 py-4 font-black text-dark hover:scale-105 transition-transform"
+                        ariaLabel="Kirim proposal kemitraan via email"
                     >
                         📧 KIRIM PROPOSAL
-                    </a>
+                    </BrutalButton>
                 </div>
                 
-                <p class="text-sm text-dark dark:text-light mt-6 opacity-75">
+                <Text size="sm" color="white" class="mt-6 opacity-75">
                     Kami terbuka untuk berbagai bentuk kolaborasi: penelitian, magang, workshop, atau program lainnya
-                </p>
-            </div>
+                </Text>
+            </BrutalCard>
         </div>
     </BrutalSection>
 </Layout>

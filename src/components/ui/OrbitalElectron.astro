@@ -1,0 +1,47 @@
+---
+interface Props {
+  icon: string;
+  label: string;
+  variant: 'primary' | 'secondary' | 'accent';
+  className?: string;
+}
+
+const { icon, label, variant, className = "" } = Astro.props;
+
+const variantClasses = {
+  primary: 'bg-primary dark:bg-primary-dark',
+  secondary: 'bg-secondary dark:bg-secondary-dark',
+  accent: 'bg-accent dark:bg-accent-dark'
+};
+---
+
+<div class={`orbital-electron ${variantClasses[variant]} ${className}`}>
+  <div class="electron-content">
+    <div class="text-2xl mb-1">{icon}</div>
+    <div class="text-xs font-black text-white">{label}</div>
+  </div>
+</div>
+
+<style>
+  .orbital-electron {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #1f2937;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .electron-content {
+    text-align: center;
+    animation: keep-upright 15s linear infinite;
+  }
+
+  @keyframes keep-upright {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+  }
+</style>

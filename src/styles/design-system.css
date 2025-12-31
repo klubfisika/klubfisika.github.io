@@ -1,6 +1,51 @@
 @import "tailwindcss";
 
 /* ========================================
+   SCROLL OFFSET - Fix for Fixed Header
+   ======================================== */
+:root {
+  --scroll-offset: 2rem; /* Default scroll offset */
+}
+
+html {
+  scroll-padding-top: var(--scroll-offset);
+}
+
+/* Alternative method for specific sections */
+section[id],
+div[id] {
+  scroll-margin-top: var(--scroll-offset);
+}
+
+/* Dynamic scroll offset using data attributes */
+[data-scroll-offset="small"] {
+  --scroll-offset: 0.5rem;
+}
+
+[data-scroll-offset="medium"] {
+  --scroll-offset: 2rem;
+}
+
+[data-scroll-offset="large"] {
+  --scroll-offset: 3rem;
+}
+
+[data-scroll-offset="xlarge"] {
+  --scroll-offset: 5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :root {
+    --scroll-offset: 1.5rem; /* Smaller offset on mobile */
+  }
+  
+  [data-scroll-offset="xlarge"] {
+    --scroll-offset: 3rem; /* Reduce large offsets on mobile */
+  }
+}
+
+/* ========================================
    FOCUS INDICATORS - Enhanced Accessibility
    ======================================== */
 .focus-visible,

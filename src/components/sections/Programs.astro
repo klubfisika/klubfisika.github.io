@@ -1,11 +1,12 @@
 ---
 import SectionHeader from '../ui/SectionHeader.astro';
 import ProgramCard from '../ui/ProgramCard.astro';
+import BrutalSection from '../ui/BrutalSection.astro';
 ---
 
-<section class="py-20 bg-white" id="program">
+<BrutalSection background="white" padding="lg" id="program">
   <div class="max-w-6xl mx-auto px-6">
-    <SectionHeader title="PROGRAM & AKTIVITAS" subtitle="Apa yang benar-benar dilakukan KF13" className="mb-16" />
+    <SectionHeader title="PROGRAM & AKTIVITAS" subtitle="Apa yang benar-benar dilakukan KF13" className="mb-8" />
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <ProgramCard 
@@ -15,8 +16,8 @@ import ProgramCard from '../ui/ProgramCard.astro';
         schedule="Setiap Sabtu, 14:00-16:00 WIB"
         level="Semua Level"
         participants="15-25 peserta"
-        bgColor="bg-pink"
-        rotation="-rotate-2"
+        variant="primary"
+        rotation="left"
       />
       
       <ProgramCard 
@@ -26,8 +27,8 @@ import ProgramCard from '../ui/ProgramCard.astro';
         schedule="Setiap Minggu ke-2, 15:00-17:00 WIB"
         level="Pemula-Menengah"
         participants="10-15 peserta"
-        bgColor="bg-blue"
-        rotation="rotate-1"
+        variant="secondary"
+        rotation="right"
       />
       
       <ProgramCard 
@@ -37,21 +38,24 @@ import ProgramCard from '../ui/ProgramCard.astro';
         schedule="Fleksibel, 1-3 bulan per proyek"
         level="Menengah-Lanjut"
         participants="5-8 peserta per tim"
-        bgColor="bg-accent"
-        rotation="-rotate-1"
+        variant="accent"
+        rotation="left"
       />
       
       <ProgramCard 
         icon="🎯"
         title="EVENT"
         description="Workshop, kelas terbuka, dan seminar fisika untuk memperluas wawasan dan jejaring"
-        bgColor="bg-secondary"
-        rotation="rotate-2"
+        schedule="Bulanan & Event Khusus"
+        level="Semua Level"
+        participants="20-100 peserta"
+        variant="secondary"
+        rotation="right"
       />
     </div>
 
     <!-- Why Join Section -->
-    <div class="mt-20">
+    <div class="mt-8">
       <div class="btn-primary border-4 border-dark dark:border-light p-8 transform rotate-1 shadow-brutal">
         <h3 class="text-3xl font-black uppercase text-on-primary mb-6 text-center">KENAPA KF13?</h3>
         
@@ -95,4 +99,4 @@ import ProgramCard from '../ui/ProgramCard.astro';
       </div>
     </div>
   </div>
-</section>
+</BrutalSection>

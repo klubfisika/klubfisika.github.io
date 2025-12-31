@@ -1,7 +1,7 @@
 ---
 export interface Props {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
-  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl';
   weight?: 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold';
   color?: 'primary' | 'secondary' | 'accent' | 'dark' | 'light' | 'white' | 'inherit';
   class?: string;
@@ -22,7 +22,10 @@ const sizeClasses = {
   lg: 'text-2xl',
   xl: 'text-3xl',
   '2xl': 'text-4xl',
-  '3xl': 'text-5xl'
+  '3xl': 'text-5xl',
+  '4xl': 'text-6xl',
+  '5xl': 'text-7xl',
+  '6xl': 'text-8xl'
 };
 
 const weightClasses = {

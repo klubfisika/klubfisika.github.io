@@ -1,8 +1,12 @@
 ---
-import Button from '../ui/Button.astro';
+import BrutalButton from '../ui/BrutalButton.astro';
+import BrutalCard from '../ui/BrutalCard.astro';
+import Heading from '../ui/Heading.astro';
+import Text from '../ui/Text.astro';
+import GradientSection from '../ui/GradientSection.astro';
 ---
 
-<section class="py-20 bg-gradient-to-br from-accent via-primary to-secondary dark:from-slate-700 dark:via-slate-600 dark:to-slate-500 relative overflow-hidden" id="gabung">
+<GradientSection variant="accent-primary" class="relative overflow-hidden" id="gabung">
   <!-- Background Elements -->
   <div class="absolute inset-0 opacity-20">
     <div class="absolute top-10 left-10 w-20 h-20 bg-dark dark:bg-light transform rotate-45"></div>
@@ -12,74 +16,78 @@ import Button from '../ui/Button.astro';
 
   <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
     <!-- Main CTA Headline -->
-    <div class="bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-8 transform -rotate-1 shadow-brutal mb-8">
-      <h2 class="text-4xl md:text-5xl font-black uppercase text-dark dark:text-light mb-4">
+    <BrutalCard variant="white" rotation="left" className="p-8 mb-4">
+      <Heading level={2} size="3xl" class="uppercase mb-4">
         MULAI PERJALANAN<br/>
         <span class="text-primary dark:text-primary-dark">BELAJARMU</span>
-      </h2>
-      <p class="text-xl font-semibold text-dark dark:text-light">
+      </Heading>
+      <Text size="lg" class="font-semibold">
         Jadilah bagian dari komunitas fisika yang bertumbuh dan berdampak
-      </p>
-    </div>
+      </Text>
+    </BrutalCard>
 
     <!-- Benefits Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
       {[
         {
           icon: "🎓",
           title: "BELAJAR GRATIS",
           desc: "Tidak ada biaya untuk bergabung",
-          bg: "bg-pink"
+          variant: "primary"
         },
         {
           icon: "👥",
           title: "KOMUNITAS AKTIF",
           desc: "Bertemu teman dengan minat sama",
-          bg: "bg-blue"
+          variant: "secondary"
         },
         {
           icon: "🚀",
           title: "PENGEMBANGAN DIRI",
           desc: "Tingkatkan skill dan pengetahuan",
-          bg: "bg-secondary"
+          variant: "accent"
         }
       ].map((benefit, index) => (
-        <div class={`${benefit.bg} dark:bg-slate-600 border-4 border-dark dark:border-light p-6 transform ${index % 2 === 0 ? 'rotate-2' : '-rotate-2'} hover:rotate-0 transition-transform shadow-brutal-sm`}>
+        <BrutalCard variant={benefit.variant} rotation={index % 2 === 0 ? 'right' : 'left'} className="p-6">
           <div class="text-3xl mb-3">{benefit.icon}</div>
-          <h3 class="font-black text-dark dark:text-light mb-2">{benefit.title}</h3>
-          <p class="text-sm font-semibold text-dark dark:text-light">{benefit.desc}</p>
-        </div>
+          <Heading level={3} size="sm" color="white" class="mb-2">{benefit.title}</Heading>
+          <Text size="sm" color="white" class="font-semibold">{benefit.desc}</Text>
+        </BrutalCard>
       ))}
     </div>
 
     <!-- CTA Buttons -->
     <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-      <Button 
+      <BrutalButton 
         variant="primary" 
         size="lg" 
         href="http://47.84.35.77/wp/portal/?fcom_action=auth"
-        className="bounce-fun text-xl px-12 py-6"
+        class="bounce-fun text-xl px-12 py-6"
+        target="_blank"
+        rel="noopener noreferrer"
+        ariaLabel="Daftar sekarang ke portal KF13"
       >
         🚀 DAFTAR SEKARANG
-      </Button>
+      </BrutalButton>
       
-      <Button 
+      <BrutalButton 
         variant="secondary" 
         size="lg" 
         href="#kontak"
-        className="transform rotate-1 hover:rotate-0"
+        class="transform rotate-1 hover:rotate-0"
+        ariaLabel="Hubungi kami"
       >
         💬 HUBUNGI KAMI
-      </Button>
+      </BrutalButton>
     </div>
 
     <!-- Additional Info -->
     <div class="mt-8">
-      <div class="bg-surface dark:bg-slate-600 border-4 border-dark dark:border-light p-4 transform rotate-1 inline-block shadow-brutal-sm">
-        <p class="text-sm font-bold text-dark dark:text-light">
+      <BrutalCard variant="surface" rotation="right" className="inline-block">
+        <Text size="sm" class="font-bold">
           ✨ Platform Beta • Web 3.0 Ready • Made with 🥼🔬🧬 for Indonesia
-        </p>
-      </div>
+        </Text>
+      </BrutalCard>
     </div>
   </div>
-</section>
+</GradientSection>
