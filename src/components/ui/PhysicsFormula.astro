@@ -1,0 +1,90 @@
+---
+export interface Props {
+  formula: string;
+  explanation: string;
+  meaning: string;
+}
+
+const { formula, explanation, meaning } = Astro.props;
+---
+
+<div class="physics-formula">
+  <div class="formula-container">
+    <div class="formula-display">
+      {formula}
+    </div>
+  </div>
+  
+  <div class="formula-explanation">
+    <h4>Penjelasan:</h4>
+    <p>{explanation}</p>
+    
+    <div class="formula-meaning">
+      <strong>Artinya:</strong> {meaning}
+    </div>
+  </div>
+</div>
+
+<style>
+  .physics-formula {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    color: white;
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+  }
+
+  .formula-container {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .formula-display {
+    font-size: 2rem;
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    min-width: 200px;
+  }
+
+  .formula-explanation {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+
+  .formula-explanation h4 {
+    margin: 0 0 0.5rem 0;
+    color: #ffd700;
+  }
+
+  .formula-explanation p {
+    margin: 0 0 1rem 0;
+    line-height: 1.6;
+  }
+
+  .formula-meaning {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.75rem;
+    border-radius: 6px;
+    border-left: 4px solid #ffd700;
+  }
+
+  @media (max-width: 768px) {
+    .formula-display {
+      font-size: 1.5rem;
+      min-width: auto;
+      padding: 0.75rem;
+    }
+    
+    .physics-formula {
+      padding: 1rem;
+    }
+  }
+</style>

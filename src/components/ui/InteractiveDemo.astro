@@ -1,0 +1,149 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  materials: string[];
+  steps: string[];
+}
+
+const { title, description, materials, steps } = Astro.props;
+---
+
+<div class="interactive-demo">
+  <div class="demo-header">
+    <h3 class="demo-title">{title}</h3>
+    <p class="demo-description">{description}</p>
+  </div>
+
+  <div class="demo-content">
+    <div class="materials-section">
+      <h4>🧪 Alat dan Bahan:</h4>
+      <ul class="materials-list">
+        {materials.map(material => (
+          <li>{material}</li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="steps-section">
+      <h4>📋 Langkah-langkah:</h4>
+      <ol class="steps-list">
+        {steps.map(step => (
+          <li>{step}</li>
+        ))}
+      </ol>
+    </div>
+  </div>
+
+  <div class="demo-footer">
+    <div class="safety-tip">
+      ⚠️ <strong>Tips Keselamatan:</strong> Selalu minta bantuan orang dewasa saat melakukan eksperimen!
+    </div>
+  </div>
+</div>
+
+<style>
+  .interactive-demo {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 10px 40px rgba(255, 154, 158, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .demo-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .demo-title {
+    color: #2d3748;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .demo-description {
+    color: #4a5568;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .demo-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .materials-section,
+  .steps-section {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 1.5rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+  }
+
+  .materials-section h4,
+  .steps-section h4 {
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .materials-list,
+  .steps-list {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .materials-list li,
+  .steps-list li {
+    color: #4a5568;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .steps-list li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+  }
+
+  .demo-footer {
+    text-align: center;
+  }
+
+  .safety-tip {
+    background: rgba(255, 193, 7, 0.2);
+    color: #856404;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .interactive-demo {
+      padding: 1.5rem;
+    }
+
+    .demo-content {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .materials-section,
+    .steps-section {
+      padding: 1rem;
+    }
+
+    .demo-title {
+      font-size: 1.3rem;
+    }
+  }
+</style>

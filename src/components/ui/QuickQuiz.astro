@@ -1,0 +1,258 @@
+---
+export interface Props {
+  question: string;
+  options: string[];
+  correctAnswer: number;
+  explanation: string;
+}
+
+const { question, options, correctAnswer, explanation } = Astro.props;
+---
+
+<div class="quick-quiz" data-correct-answer={correctAnswer}>
+  <div class="quiz-header">
+    <h4>🧠 Quick Quiz</h4>
+    <p class="quiz-question" id={`quiz-question-${Math.random().toString(36).substr(2, 9)}`}>{question}</p>
+  </div>
+
+  <div class="quiz-options" role="radiogroup" aria-labelledby={`quiz-question-${Math.random().toString(36).substr(2, 9)}`}>
+    {options.map((option, index) => (
+      <button 
+        class="quiz-option" 
+        data-option={index}
+        type="button"
+        role="radio"
+        aria-checked="false"
+        aria-describedby="quiz-explanation"
+      >
+        <span class="option-letter">{String.fromCharCode(65 + index)}</span>
+        <span class="option-text">{option}</span>
+      </button>
+    ))}
+  </div>
+
+  <div class="quiz-result" style="display: none;" aria-live="polite" aria-atomic="true">
+    <div class="result-message"></div>
+    <div class="result-explanation" id="quiz-explanation">
+      <strong>Penjelasan:</strong> {explanation}
+    </div>
+  </div>
+
+  <div class="quiz-actions">
+    <button class="reset-quiz" style="display: none;" type="button">
+      Coba Lagi
+    </button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const quizzes = document.querySelectorAll('.quick-quiz');
+    
+    quizzes.forEach(quiz => {
+      const correctAnswer = parseInt(quiz.dataset.correctAnswer);
+      const options = quiz.querySelectorAll('.quiz-option');
+      const result = quiz.querySelector('.quiz-result');
+      const resultMessage = quiz.querySelector('.result-message');
+      const resetButton = quiz.querySelector('.reset-quiz');
+      
+      options.forEach(option => {
+        option.addEventListener('click', function() {
+          const selectedAnswer = parseInt(this.dataset.option);
+          
+          // Disable all options
+          options.forEach(opt => opt.disabled = true);
+          
+          // Show correct/incorrect styling
+          options.forEach((opt, index) => {
+            if (index === correctAnswer) {
+              opt.classList.add('correct');
+            } else if (index === selectedAnswer && index !== correctAnswer) {
+              opt.classList.add('incorrect');
+            }
+          });
+          
+          // Show result
+          result.style.display = 'block';
+          resetButton.style.display = 'inline-block';
+          
+          if (selectedAnswer === correctAnswer) {
+            resultMessage.innerHTML = '🎉 <strong>Benar!</strong> Jawaban kamu tepat!';
+            resultMessage.className = 'result-message correct';
+          } else {
+            resultMessage.innerHTML = '❌ <strong>Kurang tepat.</strong> Coba lagi!';
+            resultMessage.className = 'result-message incorrect';
+          }
+        });
+      });
+      
+      resetButton.addEventListener('click', function() {
+        // Reset all options
+        options.forEach(opt => {
+          opt.disabled = false;
+          opt.classList.remove('correct', 'incorrect');
+        });
+        
+        // Hide result
+        result.style.display = 'none';
+        resetButton.style.display = 'none';
+      });
+    });
+  });
+</script>
+
+<style>
+  .quick-quiz {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+    color: white;
+    box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+  }
+
+  .quiz-header h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .quiz-question {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .quiz-option {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+    font-size: 1rem;
+  }
+
+  .quiz-option:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .quiz-option:disabled {
+    cursor: not-allowed;
+  }
+
+  .option-letter {
+    background: rgba(255, 255, 255, 0.2);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .option-text {
+    flex: 1;
+    line-height: 1.5;
+  }
+
+  .quiz-option.correct {
+    background: rgba(34, 197, 94, 0.3);
+    border-color: #22c55e;
+  }
+
+  .quiz-option.correct .option-letter {
+    background: #22c55e;
+    color: white;
+  }
+
+  .quiz-option.incorrect {
+    background: rgba(239, 68, 68, 0.3);
+    border-color: #ef4444;
+  }
+
+  .quiz-option.incorrect .option-letter {
+    background: #ef4444;
+    color: white;
+  }
+
+  .quiz-result {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .result-message {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .result-message.correct {
+    color: #86efac;
+  }
+
+  .result-message.incorrect {
+    color: #fca5a5;
+  }
+
+  .result-explanation {
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
+  .quiz-actions {
+    text-align: center;
+  }
+
+  .reset-quiz {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+  }
+
+  .reset-quiz:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    .quick-quiz {
+      padding: 1.5rem;
+    }
+
+    .quiz-option {
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .option-letter {
+      width: 28px;
+      height: 28px;
+      font-size: 0.8rem;
+    }
+  }
+</style>

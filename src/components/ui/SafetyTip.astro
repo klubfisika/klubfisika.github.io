@@ -1,0 +1,93 @@
+---
+export interface Props {
+  tips: string[];
+  title?: string;
+}
+
+const { tips, title = "Tips Keselamatan" } = Astro.props;
+---
+
+<div class="safety-tip">
+  <div class="safety-header">
+    <h4 class="safety-title">⚠️ {title}</h4>
+  </div>
+  
+  <div class="safety-content">
+    <ul class="safety-list">
+      {tips.map(tip => (
+        <li class="safety-item">{tip}</li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<style>
+  .safety-tip {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border: 3px solid #d97706;
+    box-shadow: 0 8px 32px rgba(251, 191, 36, 0.3);
+  }
+
+  .safety-header {
+    margin-bottom: 1rem;
+  }
+
+  .safety-title {
+    color: #92400e;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .safety-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid rgba(217, 119, 6, 0.3);
+  }
+
+  .safety-list {
+    margin: 0;
+    padding-left: 1.5rem;
+    list-style: none;
+  }
+
+  .safety-item {
+    color: #92400e;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    position: relative;
+    font-weight: 500;
+  }
+
+  .safety-item:before {
+    content: "🔸";
+    position: absolute;
+    left: -1.5rem;
+    top: 0;
+  }
+
+  .safety-item:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .safety-tip {
+      padding: 1rem;
+    }
+
+    .safety-content {
+      padding: 0.75rem;
+    }
+
+    .safety-title {
+      font-size: 1.1rem;
+    }
+  }
+</style>
