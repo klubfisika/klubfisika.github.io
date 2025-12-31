@@ -1,5 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import BrutalButton from "@ui/BrutalButton.astro";
 import { getCollection, render } from 'astro:content';
 import "@/styles/article.css";
 
@@ -104,14 +105,14 @@ const categoryClass = categoryColors[post.category] || 'bg-pink-100 text-pink-80
     <!-- Article Header -->
     <header class="article-header pt-6 sm:pt-8 lg:pt-10">
       <!-- Breadcrumb -->
-      <nav class="mb-6">
-        <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-          <a href="/" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
-          <span>→</span>
-          <a href="/blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
-          <span>→</span>
-          <span class="text-gray-600 dark:text-gray-400">{post.category}</span>
-        </div>
+      <nav class="mb-6" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 text-sm font-bold">
+          <li><a href="/" class="text-dark dark:text-light hover:text-primary dark:hover:text-primary transition-colors">Home</a></li>
+          <li class="text-dark dark:text-light" aria-hidden="true">→</li>
+          <li><a href="/blog" class="text-dark dark:text-light hover:text-primary dark:hover:text-primary transition-colors">Blog</a></li>
+          <li class="text-dark dark:text-light" aria-hidden="true">→</li>
+          <li class="text-primary font-black" aria-current="page">{post.category}</li>
+        </ol>
       </nav>
 
       <!-- Category Badge -->
@@ -153,15 +154,36 @@ const categoryClass = categoryColors[post.category] || 'bg-pink-100 text-pink-80
       <div class="mb-8">
         <h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">📤 Bagikan Artikel</h3>
         <div class="flex flex-wrap gap-3">
-          <a href={`https://wa.me/?text=Baca artikel fisika menarik: ${post.title} ${Astro.url.href}`}
-             target="_blank" rel="noopener noreferrer"
-             class="share-btn bg-green-700 hover:bg-green-800 hover:text-white">📱 WhatsApp</a>
-          <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${Astro.url.href}`}
-             target="_blank" rel="noopener noreferrer"
-             class="share-btn bg-blue-600 hover:bg-blue-700 hover:text-white">🐦 Twitter</a>
-          <a href={`https://www.facebook.com/sharer/sharer.php?u=${Astro.url.href}`}
-             target="_blank" rel="noopener noreferrer"
-             class="share-btn bg-blue-700 hover:bg-blue-800 hover:text-white">📘 Facebook</a>
+          <BrutalButton
+            variant="accent"
+            size="sm"
+            href={`https://wa.me/?text=Baca artikel fisika menarik: ${post.title} ${Astro.url.href}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            ariaLabel="Bagikan ke WhatsApp"
+          >
+            📱 WhatsApp
+          </BrutalButton>
+          <BrutalButton
+            variant="primary"
+            size="sm"
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${Astro.url.href}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            ariaLabel="Bagikan ke Twitter"
+          >
+            🐦 Twitter
+          </BrutalButton>
+          <BrutalButton
+            variant="primary"
+            size="sm"
+            href={`https://www.facebook.com/sharer/sharer.php?u=${Astro.url.href}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            ariaLabel="Bagikan ke Facebook"
+          >
+            📘 Facebook
+          </BrutalButton>
         </div>
       </div>
 
@@ -183,12 +205,22 @@ const categoryClass = categoryColors[post.category] || 'bg-pink-100 text-pink-80
 
       <!-- Navigation -->
       <div class="flex flex-col sm:flex-row gap-4 justify-between mb-8 sm:mb-10 lg:mb-12">
-        <a href="/blog" class="nav-btn bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+        <BrutalButton
+          variant="surface"
+          size="md"
+          href="/blog"
+          ariaLabel="Kembali ke halaman blog"
+        >
           ← Kembali ke Blog
-        </a>
-        <a href="/events" class="nav-btn bg-blue-600 text-white hover:bg-blue-700">
+        </BrutalButton>
+        <BrutalButton
+          variant="primary"
+          size="md"
+          href="/events"
+          ariaLabel="Lihat events dan kegiatan"
+        >
           Lihat Events →
-        </a>
+        </BrutalButton>
       </div>
     </footer>
   </div>

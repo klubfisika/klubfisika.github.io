@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
 import BrutalCard from "../components/ui/BrutalCard.astro";
+import BrutalButton from "../components/ui/BrutalButton.astro";
 import GradientSection from "../components/ui/GradientSection.astro";
 import Heading from "../components/ui/Heading.astro";
 import Text from "../components/ui/Text.astro";
@@ -96,35 +97,56 @@ import ContactSection from "../components/sections/ContactSection.astro";
                                 bg: "bg-gray-600 text-on-dark",
                                 urgent: false
                             }
-                        ].map((contact, index) => (
+                        ].map((contact, index) => {
+                            // Determine variant and classes
+                            let variant = 'custom';
+                            let classes = '';
+                            
+                            if (contact.bg.includes('bg-primary')) {
+                                variant = 'primary';
+                            } else if (contact.bg.includes('bg-secondary')) {
+                                variant = 'secondary';
+                            } else if (contact.bg.includes('bg-accent')) {
+                                variant = 'accent';
+                            } else {
+                                // For custom backgrounds, use the full bg string
+                                classes = contact.bg;
+                            }
+                            
+                            return (
                             <BrutalCard 
-                                variant={contact.bg === 'bg-primary' ? 'primary' : contact.bg === 'bg-secondary' ? 'secondary' : contact.bg === 'bg-accent' ? 'accent' : 'white'}
+                                variant={variant}
                                 rotation={index % 2 === 0 ? 'right' : 'left'}
                                 urgent={contact.urgent}
+                                className={classes}
                             >
                                 
                                 <div class="text-center mb-4">
                                     <div class="text-4xl mb-3">{contact.icon}</div>
-                                    <h3 class="text-lg font-black uppercase text-on-primary mb-2">
+                                    <h3 class="text-lg font-black uppercase mb-2">
                                         {contact.title}
                                     </h3>
-                                    <p class="text-on-primary opacity-90 font-bold text-sm">{contact.info}</p>
+                                    <p class="opacity-90 font-bold text-sm">{contact.info}</p>
                                 </div>
                                 
-                                <p class="text-on-primary opacity-80 text-sm text-center mb-6 leading-relaxed">
+                                <p class="opacity-80 text-sm text-center mb-6 leading-relaxed">
                                     {contact.description}
                                 </p>
                                 
-                                <a 
+                                <BrutalButton
+                                    variant="surface"
+                                    size="md"
                                     href={contact.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="bg-white text-on-light px-4 py-3 font-black border-2 border-dark hover:scale-105 transition-transform w-full block text-center text-sm"
+                                    className="w-full"
+                                    ariaLabel={`${contact.action} - ${contact.title}`}
                                 >
                                     {contact.action}
-                                </a>
+                                </BrutalButton>
                             </BrutalCard>
-                        ))}
+                            );
+                        })}
                     </div>
             </BrutalSection>
 
@@ -167,24 +189,26 @@ import ContactSection from "../components/sections/ContactSection.astro";
                                 </p>
                                 
                                 <div class="flex flex-col sm:flex-row gap-3">
-                                    <a 
+                                    <BrutalButton
+                                        variant="accent"
+                                        size="md"
                                         href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20ingin%20berkunjung%20ke%20Sanggar%20Fisika.%20Kapan%20waktu%20yang%20tepat?"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        class="bg-accent border-2 border-dark px-4 py-3 font-black text-white hover:scale-105 transition-transform text-center"
-                                        style="color: white !important;"
+                                        ariaLabel="Konfirmasi kunjungan via WhatsApp"
                                     >
                                         📱 KONFIRMASI KUNJUNGAN
-                                    </a>
-                                    <a 
+                                    </BrutalButton>
+                                    <BrutalButton
+                                        variant="primary"
+                                        size="md"
                                         href="https://maps.app.goo.gl/6qKexhinfiqhfZTT7"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        class="bg-primary border-2 border-dark px-4 py-3 font-black text-white hover:scale-105 transition-transform text-center"
-                                        style="color: white !important;"
+                                        ariaLabel="Buka lokasi di Google Maps"
                                     >
                                         🗺️ BUKA MAPS
-                                    </a>
+                                    </BrutalButton>
                                 </div>
                             </div>
                         </div>
@@ -204,14 +228,16 @@ import ContactSection from "../components/sections/ContactSection.astro";
                                 ></iframe>
                             </div>
                             <div class="mt-4 text-center">
-                                <a 
+                                <BrutalButton
+                                    variant="primary"
+                                    size="md"
                                     href="https://maps.app.goo.gl/6qKexhinfiqhfZTT7"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="bg-primary border-2 border-dark dark:border-light px-6 py-2 font-black hover:scale-105 transition-transform inline-block"
+                                    ariaLabel="Lihat lokasi di Google Maps"
                                 >
                                     📍 LIHAT DI GOOGLE MAPS
-                                </a>
+                                </BrutalButton>
                             </div>
                         </div>
                     </div>
@@ -261,14 +287,16 @@ import ContactSection from "../components/sections/ContactSection.astro";
                             <p class="text-dark dark:text-light font-bold mb-4">
                                 Masih ada pertanyaan lain?
                             </p>
-                            <a 
+                            <BrutalButton
+                                variant="primary"
+                                size="md"
                                 href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20punya%20pertanyaan%20tentang%20klub%20fisika"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="bg-primary border-2 border-dark dark:border-light px-6 py-3 font-black hover:scale-105 transition-transform inline-block"
+                                ariaLabel="Tanya langsung via WhatsApp"
                             >
                                 💬 TANYA LANGSUNG
-                            </a>
+                            </BrutalButton>
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
 import BrutalCard from "../components/ui/BrutalCard.astro";
+import BrutalButton from "../components/ui/BrutalButton.astro";
 import GradientSection from "../components/ui/GradientSection.astro";
 import BrutalSection from "../components/ui/BrutalSection.astro";
 import Heading from "../components/ui/Heading.astro";
@@ -136,9 +137,15 @@ import Text from "../components/ui/Text.astro";
                         </div>
                     </div>
                     
-                    <button class="bg-white text-dark px-6 py-3 font-black border-2 border-dark hover:scale-105 transition-transform w-full">
+                    <BrutalButton
+                        variant="surface"
+                        size="md"
+                        className="w-full event-register-btn"
+                        ariaLabel={`Daftar untuk event ${event.title}`}
+                        data-event-title={event.title}
+                    >
                         📝 DAFTAR SEKARANG
-                    </button>
+                    </BrutalButton>
                 </div>
             ))}
         </div>
@@ -188,9 +195,14 @@ import Text from "../components/ui/Text.astro";
                             <div>🎯 {event.success}</div>
                         </div>
                         
-                        <button class="bg-white/20 border-2 border-white text-white px-4 py-2 font-bold text-sm hover:scale-105 transition-transform w-full mt-4">
+                        <BrutalButton
+                            variant="surface"
+                            size="sm"
+                            className="w-full mt-4 opacity-80"
+                            ariaLabel={`Lihat dokumentasi ${event.title}`}
+                        >
                             📸 LIHAT DOKUMENTASI
-                        </button>
+                        </BrutalButton>
                     </div>
                 ))}
             </div>
@@ -209,22 +221,24 @@ import Text from "../components/ui/Text.astro";
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a 
+                    <BrutalButton
+                        variant="primary"
+                        size="lg"
                         href="https://wa.me/6282225009253?text=Halo%20KF13!%20Saya%20ingin%20mengusulkan%20event%20fisika"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="bg-primary border-3 border-dark px-8 py-4 font-black text-white hover:scale-105 transition-transform"
-                        style="color: white !important;"
+                        ariaLabel="Usulkan event via WhatsApp"
                     >
                         💡 USULKAN EVENT
-                    </a>
-                    <a 
+                    </BrutalButton>
+                    <BrutalButton
+                        variant="secondary"
+                        size="lg"
                         href="mailto:events@klubfisika.org"
-                        class="bg-secondary border-3 border-dark px-8 py-4 font-black text-white hover:scale-105 transition-transform"
-                        style="color: white !important;"
+                        ariaLabel="Kirim proposal event via email"
                     >
                         📧 EMAIL PROPOSAL
-                    </a>
+                    </BrutalButton>
                 </div>
                 
                 <p class="text-sm text-dark dark:text-light mt-6 opacity-75">
@@ -237,17 +251,15 @@ import Text from "../components/ui/Text.astro";
 <script>
     // Event registration functionality
     document.addEventListener('DOMContentLoaded', () => {
-        const registerButtons = document.querySelectorAll('button');
+        const registerButtons = document.querySelectorAll('.event-register-btn');
         
         registerButtons.forEach(button => {
-            if (button.textContent?.includes('DAFTAR SEKARANG')) {
-                button.addEventListener('click', () => {
-                    const eventTitle = button.closest('div')?.querySelector('h3')?.textContent || 'Event';
-                    const whatsappMessage = `Halo KF13! Saya ingin mendaftar untuk event: ${eventTitle}`;
-                    const whatsappUrl = `https://wa.me/6282225009253?text=${encodeURIComponent(whatsappMessage)}`;
-                    window.open(whatsappUrl, '_blank');
-                });
-            }
+            button.addEventListener('click', () => {
+                const eventTitle = button.getAttribute('data-event-title') || 'Event';
+                const whatsappMessage = `Halo KF13! Saya ingin mendaftar untuk event: ${eventTitle}`;
+                const whatsappUrl = `https://wa.me/6282225009253?text=${encodeURIComponent(whatsappMessage)}`;
+                window.open(whatsappUrl, '_blank');
+            });
         });
     });
 </script>
