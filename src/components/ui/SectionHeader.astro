@@ -9,6 +9,6 @@ const { title, subtitle, className = "" } = Astro.props;
 ---
 
 <div class={`bg-secondary dark:bg-secondary-dark border-4 border-dark dark:border-light p-4 transform -rotate-1 inline-block shadow-[4px_4px_0px_#1f2937] dark:shadow-[4px_4px_0px_#f9fafb] ${className}`}>
-  <h2 class="text-3xl font-black uppercase text-dark dark:text-light m-0">{title}</h2>
-  {subtitle && <p class="text-dark dark:text-light font-semibold mt-2 mb-0">{subtitle}</p>}
+  <h2 class="text-3xl font-black uppercase text-white m-0">{title}</h2>
+  {subtitle && <p class="text-white font-semibold mt-2 mb-0">{subtitle}</p>}
 </div>

@@ -3,7 +3,7 @@ export interface Props {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
   weight?: 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold';
-  color?: 'primary' | 'secondary' | 'accent' | 'dark' | 'light';
+  color?: 'primary' | 'secondary' | 'accent' | 'dark' | 'light' | 'white' | 'inherit';
   class?: string;
 }
 
@@ -38,7 +38,9 @@ const colorClasses = {
   secondary: 'text-secondary',
   accent: 'text-accent',
   dark: 'text-dark dark:text-light',
-  light: 'text-light dark:text-dark'
+  light: 'text-light dark:text-dark',
+  white: 'text-white',
+  inherit: ''
 };
 
 const baseClasses = `${sizeClasses[size]} ${weightClasses[weight]} ${colorClasses[color]} ${className}`;

@@ -1,7 +1,7 @@
 ---
 export interface Props {
   size?: 'sm' | 'md' | 'lg';
-  color?: 'primary' | 'secondary' | 'accent' | 'muted';
+  color?: 'primary' | 'secondary' | 'accent' | 'muted' | 'white' | 'inherit';
   leading?: 'tight' | 'normal' | 'relaxed';
   class?: string;
 }
@@ -24,7 +24,9 @@ const colorClasses = {
   primary: 'text-on-light dark:text-on-dark',
   secondary: 'text-gray-600 dark:text-gray-300',
   accent: 'text-accent',
-  muted: 'text-gray-600 dark:text-gray-300'
+  muted: 'text-gray-600 dark:text-gray-300',
+  white: 'text-white',
+  inherit: ''
 };
 
 const leadingClasses = {

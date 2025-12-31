@@ -7,6 +7,7 @@ import Heading from "../components/ui/Heading.astro";
 import Text from "../components/ui/Text.astro";
 import BrutalSection from "../components/ui/BrutalSection.astro";
 import StatCard from "../components/ui/StatCard.astro";
+import BrutalButton from "../components/ui/BrutalButton.astro";
 ---
 
 <Layout 
@@ -70,8 +71,8 @@ import StatCard from "../components/ui/StatCard.astro";
             
             <div class="space-y-8">
                 <BrutalCard variant="primary" class="transform rotate-1">
-                    <Heading level={3} size="lg" class="uppercase mb-4 text-white">AWAL MULA (2013)</Heading>
-                    <Text class="text-white leading-relaxed">
+                    <Heading level={3} size="lg" color="white" class="uppercase mb-4">AWAL MULA (2013)</Heading>
+                    <Text color="white" leading="relaxed">
                         KF13 lahir dari semangat sekelompok mahasiswa fisika di Yogyakarta yang ingin 
                         menciptakan ruang belajar yang lebih interaktif dan menyenangkan. Dimulai dengan 
                         diskusi kecil di kampus, kami berkembang menjadi komunitas yang solid.
@@ -79,8 +80,8 @@ import StatCard from "../components/ui/StatCard.astro";
                 </BrutalCard>
 
                 <BrutalCard variant="accent" class="transform -rotate-1">
-                    <Heading level={3} size="lg" class="uppercase mb-4">PERKEMBANGAN (2015-2020)</Heading>
-                    <Text class="leading-relaxed">
+                    <Heading level={3} size="lg" color="white" class="uppercase mb-4">PERKEMBANGAN (2015-2020)</Heading>
+                    <Text color="white" leading="relaxed">
                         Komunitas berkembang dengan berbagai program seperti workshop eksperimen, 
                         seminar fisika, dan kompetisi sains. Anggota mulai tersebar di berbagai 
                         universitas di Yogyakarta, memperkuat jaringan pembelajaran fisika.
@@ -88,8 +89,8 @@ import StatCard from "../components/ui/StatCard.astro";
                 </BrutalCard>
 
                 <BrutalCard variant="secondary" class="transform rotate-1">
-                    <Heading level={3} size="lg" class="uppercase mb-4">ERA DIGITAL (2021-SEKARANG)</Heading>
-                    <Text class="leading-relaxed">
+                    <Heading level={3} size="lg" color="white" class="uppercase mb-4">ERA DIGITAL (2021-SEKARANG)</Heading>
+                    <Text color="white" leading="relaxed">
                         Pandemi mendorong kami untuk berinovasi dengan platform digital. 
                         KF13 kini hadir dengan website, media sosial aktif, dan program 
                         pembelajaran online yang menjangkau seluruh Indonesia.
@@ -106,8 +107,8 @@ import StatCard from "../components/ui/StatCard.astro";
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <BrutalCard variant="primary" class="transform -rotate-1">
-                    <Heading level={3} size="lg" class="uppercase mb-4 text-white">🎯 VISI</Heading>
-                    <Text class="text-white leading-relaxed">
+                    <Heading level={3} size="lg" color="white" class="uppercase mb-4">🎯 VISI</Heading>
+                    <Text color="white" leading="relaxed">
                         Menjadi komunitas fisika terdepan di Indonesia yang menginspirasi 
                         generasi muda untuk mencintai sains dan berkontribusi pada 
                         kemajuan ilmu pengetahuan.
@@ -115,8 +116,8 @@ import StatCard from "../components/ui/StatCard.astro";
                 </BrutalCard>
 
                 <BrutalCard variant="accent" class="transform rotate-1">
-                    <Heading level={3} size="lg" class="uppercase mb-4">🚀 MISI</Heading>
-                    <ul class="space-y-2 text-dark dark:text-light">
+                    <Heading level={3} size="lg" color="white" class="uppercase mb-4">🚀 MISI</Heading>
+                    <ul class="space-y-2 text-white">
                         <li>• Menyediakan platform pembelajaran fisika yang interaktif</li>
                         <li>• Memfasilitasi diskusi dan kolaborasi antar pelajar fisika</li>
                         <li>• Mengadakan workshop dan eksperimen sains berkualitas</li>
@@ -209,29 +210,31 @@ import StatCard from "../components/ui/StatCard.astro";
     <BrutalSection background="surface" padding="lg">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <BrutalCard variant="primary" class="transform -rotate-1">
-                <Heading level={2} size="xl" class="uppercase mb-4 text-white">
+                <Heading level={2} size="xl" color="white" class="uppercase mb-4">
                     BERGABUNG DENGAN KF13
                 </Heading>
-                <Text class="text-white mb-6 leading-relaxed">
+                <Text color="white" class="mb-6" leading="relaxed">
                     Jadilah bagian dari komunitas fisika terbesar di Indonesia. 
                     Belajar, bereksperimen, dan berkembang bersama kami!
                 </Text>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a 
-                        href="/contact" 
-                        class="bg-white text-primary px-6 py-3 font-black border-2 border-dark hover:scale-105 transition-transform inline-block"
+                    <BrutalButton
+                        variant="surface"
+                        size="lg"
+                        href="/contact"
+                        ariaLabel="Hubungi kami"
                     >
                         HUBUNGI KAMI
-                    </a>
-                    <a 
-                        href="https://wa.me/6281234567890" 
-                        class="bg-accent text-white px-6 py-3 font-black border-2 border-dark hover:scale-105 transition-transform inline-block"
-                        style="color: white !important;"
+                    </BrutalButton>
+                    <BrutalButton
+                        variant="accent"
+                        size="lg"
+                        href="https://wa.me/6281234567890"
                         target="_blank"
-                        rel="noopener noreferrer"
+                        ariaLabel="Bergabung via WhatsApp"
                     >
                         JOIN WHATSAPP
-                    </a>
+                    </BrutalButton>
                 </div>
             </BrutalCard>
         </div>
