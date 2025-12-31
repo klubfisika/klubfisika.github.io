@@ -22,22 +22,22 @@ const sizeClasses = {
     icon: 'text-xl'
   },
   md: {
-    value: 'text-2xl font-black',
-    label: 'text-xs font-bold', 
-    icon: 'text-2xl'
+    value: 'text-3xl font-black',
+    label: 'text-sm font-bold', 
+    icon: 'text-3xl'
   },
   lg: {
     value: 'text-4xl font-black',
     label: 'text-sm font-bold',
-    icon: 'text-3xl'
+    icon: 'text-4xl'
   }
 };
 ---
 
-<div class={`text-center ${className}`}>
+<div class={`flex flex-col items-center justify-center text-center ${className}`}>
   {icon && (
-    <div class={`${sizeClasses[size].icon} mb-2`}>{icon}</div>
+    <div class={`${sizeClasses[size].icon} mb-3 leading-none`} aria-hidden="true">{icon}</div>
   )}
-  <div class={`${sizeClasses[size].value} text-blue-600 dark:text-blue-300`}>{value}</div>
+  <div class={`${sizeClasses[size].value} text-primary dark:text-primary-dark mb-1`}>{value}</div>
   <div class={`${sizeClasses[size].label} text-dark dark:text-light`}>{label}</div>
 </div>
