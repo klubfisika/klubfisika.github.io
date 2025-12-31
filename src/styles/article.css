@@ -1,11 +1,6 @@
 /* Article-specific styles - Medium-inspired reading experience */
 
-/* Import KaTeX CSS */
-@import url('https://cdn.jsdelivr.net/npm/katex@0.16.27/dist/katex.min.css');
-
-/* Import Inter font for better readability */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+/* Note: KaTeX CSS and fonts are loaded via <link> in blog/[slug].astro */
 
 /* Article container */
 .article-container {
@@ -79,8 +74,6 @@
   font-weight: 500;
   text-decoration: none;
   transition: background-color 0.2s;
-  min-height: auto;
-  min-width: auto;
 }
 
 .article-tag:hover {
@@ -1874,8 +1867,6 @@ article ul li input[type="checkbox"][disabled] {
 .article-content .task-list-item input[type="checkbox"] {
   width: 16px;
   height: 16px;
-  min-height: 16px;
-  min-width: 16px;
   flex-shrink: 0;
   cursor: pointer;
 }

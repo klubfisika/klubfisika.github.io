@@ -99,6 +99,13 @@ const categoryClass = categoryColors[post.category] || 'bg-pink-100 text-pink-80
       .dark { --color-surface: #111827 !important; }
     </style>
   </Fragment>
+  
+  <!-- Article fonts and KaTeX - in head slot -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" slot="head" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin slot="head" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" slot="head" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" slot="head" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.27/dist/katex.min.css" slot="head" />
 
   <div class="article-page-wrapper" style="background: #ffffff; min-height: 100vh;">
   <div class="article-container">

@@ -197,12 +197,19 @@ html {
   }
 }
 
-/* Ensure minimum touch targets (44px) */
-button,
-a,
-input,
+/* Ensure minimum touch targets (44px) - only for primary interactive elements */
+button:not([class*="copy"]):not([class*="tab-"]):not([class*="toggle"]):not([class*="quiz"]),
+input:not([type="checkbox"]):not([type="radio"]),
 textarea,
 select {
+  min-height: 44px;
+}
+
+/* Links that are buttons need touch targets */
+a.btn-brutal,
+a.btn-primary,
+a.btn-secondary,
+a.btn-accent {
   min-height: 44px;
   min-width: 44px;
 }
