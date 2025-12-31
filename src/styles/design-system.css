@@ -1,8 +1,29 @@
 @import "tailwindcss";
 
 /* ========================================
-   STRETCHED LINK - Full card clickable
+   FOCUS INDICATORS - Enhanced Accessibility
    ======================================== */
+.focus-visible,
+*:focus-visible {
+  outline: 3px solid var(--color-accent) !important;
+  outline-offset: 2px !important;
+}
+
+/* Remove default focus for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none !important;
+}
+
+/* Enhanced focus for interactive elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-accent) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 5px rgba(5, 150, 105, 0.2) !important;
+}
 .stretched-link {
   color: inherit !important;
   text-decoration: none !important;
@@ -28,21 +49,21 @@
      DESIGN TOKENS - Single Source of Truth
      ======================================== */
   
-  /* Primary Colors */
-  --color-primary: #1d4ed8;        /* blue-700 */
-  --color-primary-hover: #1e40af;  /* blue-800 - darker for hover */
+  /* Primary Colors - WCAG AA Compliant */
+  --color-primary: #1e40af;        /* blue-800 - improved contrast */
+  --color-primary-hover: #1e3a8a;  /* blue-900 - darker for hover */
   --color-primary-dark: #3b82f6;   /* blue-500 - for dark mode */
   --color-primary-dark-hover: #2563eb; /* blue-600 - darker for dark hover */
   
-  /* Secondary Colors */
-  --color-secondary: #f59e0b;      /* amber-500 */
-  --color-secondary-hover: #d97706; /* amber-600 - darker for hover */
+  /* Secondary Colors - WCAG AA Compliant */
+  --color-secondary: #d97706;      /* amber-600 - improved contrast */
+  --color-secondary-hover: #b45309; /* amber-700 - darker for hover */
   --color-secondary-dark: #fbbf24; /* amber-400 - for dark mode */
   --color-secondary-dark-hover: #f59e0b; /* amber-500 - darker for dark hover */
   
-  /* Accent Colors */
-  --color-accent: #059669;         /* emerald-600 */
-  --color-accent-hover: #047857;   /* emerald-700 - darker for hover */
+  /* Accent Colors - WCAG AA Compliant */
+  --color-accent: #047857;         /* emerald-700 - improved contrast */
+  --color-accent-hover: #065f46;   /* emerald-800 - darker for hover */
   --color-accent-dark: #10b981;    /* emerald-500 - for dark mode */
   --color-accent-dark-hover: #059669; /* emerald-600 - darker for dark hover */
   
@@ -121,17 +142,78 @@
   50% { transform: translateY(-10px) rotate(1deg); }
 }
 
-/* Accessibility - Reduced Motion */
+/* ========================================
+   ACCESSIBILITY - Motion & Animation
+   ======================================== */
+
+/* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
-  .wobble:hover,
-  .bounce-fun,
-  * {
-    animation: none !important;
-    transition: none !important;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Keep essential animations but make them instant */
+  .modal-overlay,
+  .skip-link {
+    transition-duration: 0.01ms !important;
   }
 }
 
-/* Utility Classes */
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary: #000080;
+    --color-secondary: #8B4513;
+    --color-accent: #006400;
+    --color-dark: #000000;
+    --color-light: #FFFFFF;
+  }
+  
+  .btn-primary,
+  .btn-secondary,
+  .btn-accent {
+    border-width: 3px !important;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY - User Preferences
+   ======================================== */
+
+/* Respect user's font size preferences */
+html {
+  font-size: 1rem; /* Base 16px, but respects user's browser settings */
+}
+
+/* Support for larger text preferences */
+@media (min-resolution: 2dppx) and (prefers-reduced-data: reduce) {
+  img {
+    content-visibility: auto;
+  }
+}
+
+/* Ensure minimum touch targets (44px) */
+button,
+a,
+input,
+textarea,
+select {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Exception for inline links */
+p a,
+li a,
+span a {
+  min-height: auto;
+  min-width: auto;
+}
 .text-dark {
   color: var(--color-dark);
 }
@@ -579,4 +661,41 @@ button.btn-accent:hover,
   overflow: visible !important;
   clip: auto !important;
   white-space: normal !important;
+}
+/* Brutal checkbox styling */
+.brutal-checkbox {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-dark);
+  background: var(--color-surface);
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  min-height: 16px;
+  min-width: 16px;
+}
+
+.brutal-checkbox:checked {
+  background: var(--color-primary);
+}
+
+.brutal-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-light);
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.brutal-checkbox:hover {
+  background: var(--color-accent);
+}
+
+.dark .brutal-checkbox {
+  border-color: var(--color-light);
 }

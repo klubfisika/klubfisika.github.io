@@ -315,7 +315,7 @@ function addMathCopyButtons() {
 
     const btn = document.createElement('button');
     btn.className = 'math-copy-btn';
-    btn.innerHTML = ICONS.copy;
+    btn.innerHTML = `${ICONS.copy}`;
     btn.title = 'Copy LaTeX';
     btn.addEventListener('click', () => copyText(tex, btn, true));
     
