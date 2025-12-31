@@ -27,4 +27,12 @@ pnpm-debug.log*
 # Progress documentation (private development notes)
 progress/
 
+# Test results and reports
+test-results/
+playwright-report/
+
+# Screenshots and temporary files
+*.png
+!public/**/*.png
+
 node_modules
