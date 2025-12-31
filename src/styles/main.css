@@ -1,5 +1,5 @@
 /* Main CSS - Single Source of Truth */
 @import "./design-system.css";
-@import "./global.css";
+@import "./article.css";
 
 /* This file serves as the single entry point for all styles */
