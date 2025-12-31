@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: 'primary' | 'secondary' | 'accent' | 'surface' | 'dark';
+  variant?: 'primary' | 'secondary' | 'accent' | 'surface' | 'dark' | 'white' | 'custom';
   size?: 'sm' | 'md' | 'lg';
   rotation?: 'left' | 'right' | 'none';
   urgent?: boolean;
@@ -16,11 +16,13 @@ const {
 } = Astro.props;
 
 const variantClasses = {
-  primary: 'btn-primary',
-  secondary: 'btn-secondary', 
-  accent: 'btn-accent',
+  primary: 'bg-primary dark:bg-primary-dark text-white',
+  secondary: 'bg-secondary dark:bg-secondary-dark text-white', 
+  accent: 'bg-accent dark:bg-accent-dark text-white',
   surface: 'bg-surface dark:bg-surface-dark text-dark dark:text-light',
-  dark: 'bg-dark dark:bg-light text-on-dark dark:text-on-light'
+  dark: 'bg-gray-800 dark:bg-gray-700 text-white',
+  white: 'bg-white dark:bg-gray-100 text-gray-900',
+  custom: '' // No default classes for custom variant
 };
 
 const sizeClasses = {
