@@ -1,5 +1,6 @@
 ---
 import ArticleCard from "@blog/ArticleCard.astro";
+import BrutalButton from "@ui/BrutalButton.astro";
 import type { ArticleGridProps } from "@types/blog";
 
 const { articles, visibleCount = 3 }: ArticleGridProps = Astro.props;
@@ -21,12 +22,12 @@ const hiddenArticles = articles.slice(visibleCount);
 
 <!-- Load More -->
 <div class="text-center mt-16">
-  <button 
-    type="button" 
-    class="font-black border-2 hover:scale-105 transition-transform inline-block text-center btn-accent px-6 py-3 text-base transform rotate-1 hover:rotate-0"
+  <BrutalButton
+    variant="accent"
+    size="lg"
     id="loadMoreBtn"
-    aria-label="Muat lebih banyak artikel blog"
+    ariaLabel="Muat lebih banyak artikel blog"
   >
     📚 MUAT ARTIKEL LAINNYA
-  </button>
+  </BrutalButton>
 </div>

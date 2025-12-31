@@ -14,17 +14,19 @@ const getCardVariant = (category: string) => {
 const getRotation = () => Math.random() > 0.5 ? 'rotate-1' : '-rotate-1';
 ---
 
-<article data-article={post.category} data-tags={post.tags.join(',')} tabindex="0" role="article" aria-labelledby={`article-title-${index}`} class="relative">
-  <div class={`btn-${getCardVariant(post.category)} p-6 transform ${getRotation()} hover:rotate-0 border-4 border-dark dark:border-light shadow-brutal-sm transition-transform hover:scale-105 focus-within:scale-105`}>
+<article data-article={post.category} data-tags={post.tags.join(',')}>
+  <a 
+    href={`/blog/${post.slug}`} 
+    class={`block btn-${getCardVariant(post.category)} p-6 transform ${getRotation()} hover:rotate-0 border-4 border-dark dark:border-light shadow-brutal-sm transition-transform hover:scale-105 focus:scale-105 focus:outline-none focus:ring-4 focus:ring-primary/50`}
+    aria-labelledby={`article-title-${index}`}
+  >
     <div class="mb-4">
       <span class="bg-white text-dark px-3 py-1 text-xs font-bold border-2 border-dark">
         {post.category?.toUpperCase() || 'ARTIKEL'}
       </span>
     </div>
     <h3 id={`article-title-${index}`} class="text-lg font-black uppercase text-white mb-3 leading-tight">
-      <a href={`/blog/${post.slug}`} class="stretched-link" aria-label={`Baca artikel: ${post.title}`}>
-        {post.title}
-      </a>
+      {post.title}
     </h3>
     <p class="text-white text-sm leading-relaxed mb-4">
       {post.excerpt}
@@ -34,5 +36,5 @@ const getRotation = () => Math.random() > 0.5 ? 'rotate-1' : '-rotate-1';
       <span>📅 {post.date}</span>
       <span>⏱️ {post.readTime}</span>
     </div>
-  </div>
+  </a>
 </article>

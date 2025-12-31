@@ -1,15 +1,17 @@
 ---
+import BrutalButton from '../ui/BrutalButton.astro';
 ---
 
 <div class="text-center mt-16">
-  <button 
-    type="button" 
-    class="font-black border-2 hover:scale-105 transition-transform inline-block text-center btn-accent px-6 py-3 text-base transform rotate-1 hover:rotate-0"
+  <BrutalButton
+    variant="accent"
+    size="md"
+    className="transform rotate-1 hover:rotate-0"
     id="loadMoreBtn"
-    aria-label="Muat lebih banyak artikel blog"
+    ariaLabel="Muat lebih banyak artikel blog"
   >
     📚 MUAT ARTIKEL LAINNYA
-  </button>
+  </BrutalButton>
 </div>
 
 <script>
