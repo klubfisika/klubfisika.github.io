@@ -10,7 +10,7 @@ const navigationItems = [
   { label: "Blog", href: "/blog" },
   { label: "Events", href: "/events" },
   { label: "Kontak", href: "/contact" },
-  { label: "Gabung", href: "/#gabung", highlight: true }
+  { label: "Gabung", href: "/mulai", highlight: true }
 ];
 ---
 
@@ -44,6 +44,7 @@ const navigationItems = [
               href={item.href}
               className="transform hover:rotate-1"
               ariaLabel={item.label}
+              data-auth-btn
             >
               {item.label}
             </BrutalButton>
@@ -86,6 +87,7 @@ const navigationItems = [
               href={item.href}
               className="w-full text-center"
               ariaLabel={item.label}
+              data-auth-btn
             >
               {item.label}
             </BrutalButton>
@@ -104,7 +106,22 @@ const navigationItems = [
 </nav>
 
 <script>
+import { hasSession, ROUTES } from '../lib/router';
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Update auth button based on session
+  const updateAuthButtons = () => {
+    const isLoggedIn = hasSession();
+    document.querySelectorAll('[data-auth-btn]').forEach(btn => {
+      const link = btn as HTMLAnchorElement;
+      if (isLoggedIn) {
+        link.href = ROUTES.MEMBER_HOME;
+        link.textContent = 'Dashboard';
+      }
+    });
+  };
+  updateAuthButtons();
+
   // Mobile menu toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');

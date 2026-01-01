@@ -1,0 +1,102 @@
+---
+import { Image } from 'astro:assets';
+import kf13Logo from '@assets/images/kf13-logo.png';
+import ProfileDropdown from '@components/qwik/ProfileDropdown.tsx';
+import SearchBar from '@components/qwik/SearchBar.tsx';
+import MobileNav from '@components/qwik/MobileNav.tsx';
+import LeftSidebar from '@components/platform/LeftSidebar.astro';
+import RightSidebar from '@components/platform/RightSidebar.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  activeNav?: string;
+  hideRightSidebar?: boolean;
+}
+
+const { title, description = 'KF13 Member Platform', activeNav, hideRightSidebar = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title} | KF13 Platform</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/platform-manifest.json" />
+    <meta name="theme-color" content="#16a34a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="KF13 Platform" />
+    
+    <style>
+      @import "tailwindcss";
+    </style>
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <!-- Top Nav -->
+    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex items-center justify-between h-14">
+          <!-- Logo -->
+          <a href="/platform" class="flex items-center gap-2 font-bold text-green-600">
+            <Image src={kf13Logo} alt="KF13" width={36} height={36} class="rounded-lg" />
+            <span class="hidden sm:block text-xl">KF13</span>
+          </a>
+          
+          <!-- Search Bar -->
+          <div class="hidden md:flex flex-1 max-w-md mx-8">
+            <SearchBar client:load />
+          </div>
+          
+          <!-- Actions -->
+          <div class="flex items-center gap-2">
+            <button class="p-2 hover:bg-gray-100 rounded-full relative" title="Notifikasi">
+              <span class="text-xl">🔔</span>
+              <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            </button>
+            <button class="p-2 hover:bg-gray-100 rounded-full" title="Pesan">
+              <span class="text-xl">💬</span>
+            </button>
+            <a href="/platform/projects/new" class="hidden sm:flex items-center gap-1 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-green-700 transition">
+              ✨ Buat
+            </a>
+            <ProfileDropdown client:load />
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto flex">
+      <!-- Left Sidebar -->
+      <LeftSidebar activeNav={activeNav} />
+
+      <!-- Main Content -->
+      <main class={`flex-1 min-w-0 px-4 py-6 ${hideRightSidebar ? 'xl:pr-4' : ''}`}>
+        <slot />
+      </main>
+
+      <!-- Right Sidebar -->
+      {!hideRightSidebar && (
+        <RightSidebar>
+          <slot name="sidebar" />
+        </RightSidebar>
+      )}
+    </div>
+
+    <!-- Mobile Navigation -->
+    <MobileNav client:load activeNav={activeNav} />
+    
+    <!-- Spacer for mobile bottom nav -->
+    <div class="lg:hidden h-16"></div>
+  </body>
+</html>

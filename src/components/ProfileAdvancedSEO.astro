@@ -1,0 +1,34 @@
+---
+interface Props {
+  user: any;
+}
+
+const { user } = Astro.props;
+
+// Generate dynamic Open Graph image URL
+const ogImageUrl = `https://og.klubfisika.github.io/profile?name=${encodeURIComponent(user.name)}&username=${user.username}&level=${user.level}&posts=${user.posts}&cendol=${user.cendol}`;
+---
+
+<!-- Dynamic OG Image -->
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/png" />
+
+<!-- Twitter Card with dynamic image -->
+<meta name="twitter:image" content={ogImageUrl} />
+
+<!-- Preconnect to external services -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://api.github.com" />
+
+<!-- Prefetch related profiles -->
+<link rel="prefetch" href="/siti_quantum" />
+<link rel="prefetch" href="/ahmad_osn" />
+
+<!-- Service Worker registration -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
+</script>

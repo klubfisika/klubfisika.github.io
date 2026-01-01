@@ -1,0 +1,36 @@
+name: Profile Page CI/CD
+
+on:
+  push:
+    paths:
+      - 'src/pages/[username].astro'
+      - 'src/components/Profile*'
+      - 'src/components/qwik/*'
+  pull_request:
+    paths:
+      - 'src/pages/[username].astro'
+      - 'src/components/Profile*'
+
+jobs:
+  test-profile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'pnpm'
+      
+      - run: pnpm install
+      - run: pnpm build
+      - run: pnpm test:profile
+      
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: profile-test-results
+          path: test-results/

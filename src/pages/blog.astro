@@ -31,7 +31,7 @@ try {
     readTime: '5 menit',
     category: post.data.category || 'Uncategorized',
     tags: post.data.tags || [],
-    image: post.data.heroImage || '/blog-placeholder-1.jpg',
+    image: post.data.heroImage?.src || '/images/blog/physics-general.png',
     views: Math.floor(Math.random() * 3000) + 500
   }));
   

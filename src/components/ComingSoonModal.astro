@@ -1,0 +1,71 @@
+---
+interface Props {
+  feature: string;
+}
+
+const { feature } = Astro.props;
+---
+
+<div id="coming-soon-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+  <div class="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl transform scale-95 transition-transform">
+    <div class="text-center">
+      <div class="text-4xl mb-3">🚧</div>
+      <h3 class="text-lg font-bold text-gray-800 mb-2">Sedang Dikerjakan</h3>
+      <p class="text-gray-600 text-sm mb-4">
+        Fitur <span class="font-medium text-green-600">{feature}</span> sedang dalam tahap pengembangan dan akan segera hadir!
+      </p>
+      <div class="flex gap-2">
+        <button id="close-modal" class="flex-1 bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition">
+          Tutup
+        </button>
+        <button id="notify-me" class="flex-1 bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition">
+          Beri Tahu Saya
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  function showComingSoon() {
+    const modal = document.getElementById('coming-soon-modal');
+    modal.classList.remove('hidden');
+    setTimeout(() => {
+      modal.querySelector('.transform').classList.remove('scale-95');
+      modal.querySelector('.transform').classList.add('scale-100');
+    }, 10);
+  }
+
+  function hideComingSoon() {
+    const modal = document.getElementById('coming-soon-modal');
+    modal.querySelector('.transform').classList.remove('scale-100');
+    modal.querySelector('.transform').classList.add('scale-95');
+    setTimeout(() => {
+      modal.classList.add('hidden');
+    }, 150);
+  }
+
+  document.getElementById('close-modal')?.addEventListener('click', hideComingSoon);
+  document.getElementById('notify-me')?.addEventListener('click', () => {
+    // Store notification preference
+    const notifications = JSON.parse(localStorage.getItem('kf13-notifications') || '[]');
+    notifications.push({
+      feature: document.querySelector('.text-green-600').textContent,
+      timestamp: Date.now()
+    });
+    localStorage.setItem('kf13-notifications', JSON.stringify(notifications));
+    
+    // Show success
+    document.getElementById('notify-me').innerHTML = '✓ Tersimpan';
+    document.getElementById('notify-me').classList.add('bg-green-700');
+    setTimeout(hideComingSoon, 1000);
+  });
+
+  // Close on backdrop click
+  document.getElementById('coming-soon-modal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'coming-soon-modal') hideComingSoon();
+  });
+
+  // Expose function globally
+  window.showComingSoon = showComingSoon;
+</script>

@@ -1,0 +1,235 @@
+---
+import ComingSoonModal from '../components/ComingSoonModal.astro';
+---
+
+<script>
+  import { redirectIfLoggedIn } from '../lib/router';
+  redirectIfLoggedIn();
+</script>
+
+<ComingSoonModal feature="Login Sosial Media" />
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Masuk atau daftar ke KF13 Platform" />
+    <title>Mulai | KF13</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <style>
+      @import "tailwindcss";
+    </style>
+  </head>
+  <body class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div class="min-h-screen flex">
+      <!-- Left Side - Branding -->
+      <div class="hidden lg:flex lg:w-[55%] bg-gradient-to-br from-green-600 via-teal-600 to-cyan-700 p-10 flex-col justify-between relative overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0">
+          <div class="absolute top-10 left-10 text-[180px] opacity-10 animate-pulse">⚛️</div>
+          <div class="absolute bottom-10 right-10 text-[140px] opacity-10">🔬</div>
+          <div class="absolute top-1/3 right-1/4 text-[80px] opacity-10">🚀</div>
+          <div class="absolute bottom-1/3 left-1/4 text-[60px] opacity-10">💡</div>
+        </div>
+        
+        <a href="/" class="relative inline-flex items-center gap-3 text-white group">
+          <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition">
+            <img src="/kf13-logo.png" alt="KF13" class="w-9 h-9" />
+          </div>
+          <span class="text-2xl font-bold">KF13</span>
+        </a>
+        
+        <div class="relative text-white flex-1 flex flex-col justify-center">
+          <h1 class="text-4xl font-bold mb-3 leading-tight">Platform untuk<br/>Komunitas Fisika Indonesia</h1>
+          <p class="text-xl opacity-90 mb-8">Tempat berkumpul kreator, DIY enthusiast, saintis, dan peneliti.</p>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 hover:bg-white/20 transition cursor-default">
+              <div class="text-3xl mb-2">💬</div>
+              <div class="font-semibold">Forum Diskusi</div>
+              <div class="text-sm opacity-80">Tanya jawab & berbagi ilmu</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 hover:bg-white/20 transition cursor-default">
+              <div class="text-3xl mb-2">🔬</div>
+              <div class="font-semibold">Proyek Riset</div>
+              <div class="text-sm opacity-80">Kolaborasi & dokumentasi</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 hover:bg-white/20 transition cursor-default">
+              <div class="text-3xl mb-2">👥</div>
+              <div class="font-semibold">Komunitas</div>
+              <div class="text-sm opacity-80">Networking & mentoring</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 hover:bg-white/20 transition cursor-default">
+              <div class="text-3xl mb-2">🏆</div>
+              <div class="font-semibold">Portfolio</div>
+              <div class="text-sm opacity-80">Showcase karya riset</div>
+            </div>
+          </div>
+          
+          <!-- Stats -->
+          <div class="flex gap-8 mt-8 pt-6 border-t border-white/20">
+            <div>
+              <div class="text-3xl font-bold">1.2K+</div>
+              <div class="text-sm opacity-80">Member</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold">500+</div>
+              <div class="text-sm opacity-80">Proyek</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold">10K+</div>
+              <div class="text-sm opacity-80">Diskusi</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="relative text-white/60 text-sm">
+          © 2026 KF13 - Klub Fisika Indonesia · Yayasan Keluarga Fisika
+        </div>
+      </div>
+
+      <!-- Right Side - Form -->
+      <div class="w-full lg:w-[45%] flex items-center justify-center p-6 lg:p-10">
+        <div class="w-full max-w-md">
+          <!-- Mobile Header -->
+          <div class="lg:hidden text-center mb-8">
+            <a href="/" class="inline-flex items-center gap-2 mb-4">
+              <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow">
+                <img src="/kf13-logo.png" alt="KF13" class="w-7 h-7" />
+              </div>
+              <span class="text-xl font-bold text-gray-800">KF13</span>
+            </a>
+            <h1 class="text-2xl font-bold text-gray-800">Platform Komunitas Fisika</h1>
+          </div>
+
+          <!-- Form Card -->
+          <div class="bg-white rounded-3xl shadow-2xl p-8">
+            <div class="text-center mb-6">
+              <h2 class="text-2xl font-bold text-gray-800">Selamat Datang! 👋</h2>
+              <p class="text-gray-500 mt-1">Masuk untuk melanjutkan ke platform</p>
+            </div>
+
+            <!-- Tab Switcher -->
+            <div class="flex bg-gray-100 rounded-2xl p-1.5 mb-6">
+              <button id="tab-login" class="flex-1 py-3 text-center font-semibold rounded-xl bg-white text-green-600 shadow-sm transition">
+                Masuk
+              </button>
+              <button id="tab-daftar" class="flex-1 py-3 text-center font-semibold rounded-xl text-gray-500 hover:text-gray-700 transition">
+                Daftar Baru
+              </button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="form-login" class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                <input type="email" name="email" required 
+                  class="w-full px-4 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition text-gray-800"
+                  placeholder="nama@email.com" />
+              </div>
+              <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-teal-600 text-white py-3.5 rounded-xl font-semibold hover:from-green-700 hover:to-teal-700 transition shadow-lg shadow-green-600/25">
+                Masuk →
+              </button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="form-daftar" class="space-y-4 hidden">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
+                <input type="text" name="name" required 
+                  class="w-full px-4 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition"
+                  placeholder="Nama kamu" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                <input type="email" name="email" required 
+                  class="w-full px-4 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition"
+                  placeholder="nama@email.com" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Institusi <span class="text-gray-400 font-normal">(opsional)</span></label>
+                <input type="text" name="university" 
+                  class="w-full px-4 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition"
+                  placeholder="Sekolah atau universitas" />
+              </div>
+              <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-teal-600 text-white py-3.5 rounded-xl font-semibold hover:from-green-700 hover:to-teal-700 transition shadow-lg shadow-green-600/25">
+                Daftar & Mulai →
+              </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="flex items-center gap-4 my-6">
+              <div class="flex-1 h-px bg-gray-200"></div>
+              <span class="text-sm text-gray-400">atau lanjutkan dengan</span>
+              <div class="flex-1 h-px bg-gray-200"></div>
+            </div>
+
+            <!-- Social Login -->
+            <div class="flex gap-3">
+              <button onclick="showComingSoon()" class="flex-1 flex items-center justify-center gap-2 py-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition">
+                <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                <span class="font-medium text-gray-700">Google</span>
+              </button>
+              <button onclick="showComingSoon()" class="flex-1 flex items-center justify-center gap-2 py-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span class="font-medium text-gray-700">GitHub</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="text-center mt-6 space-y-2">
+            <a href="/" class="text-sm text-gray-500 hover:text-green-600 transition">← Kembali ke Website</a>
+            <div class="text-xs text-gray-400">
+              Dengan mendaftar, kamu menyetujui <a href="#" class="underline">Ketentuan</a> dan <a href="#" class="underline">Privasi</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script is:inline>
+      const tabLogin = document.getElementById('tab-login');
+      const tabDaftar = document.getElementById('tab-daftar');
+      const formLogin = document.getElementById('form-login');
+      const formDaftar = document.getElementById('form-daftar');
+
+      tabLogin.addEventListener('click', () => {
+        tabLogin.classList.add('bg-white', 'text-green-600', 'shadow-sm');
+        tabLogin.classList.remove('text-gray-500');
+        tabDaftar.classList.remove('bg-white', 'text-green-600', 'shadow-sm');
+        tabDaftar.classList.add('text-gray-500');
+        formLogin.classList.remove('hidden');
+        formDaftar.classList.add('hidden');
+      });
+
+      tabDaftar.addEventListener('click', () => {
+        tabDaftar.classList.add('bg-white', 'text-green-600', 'shadow-sm');
+        tabDaftar.classList.remove('text-gray-500');
+        tabLogin.classList.remove('bg-white', 'text-green-600', 'shadow-sm');
+        tabLogin.classList.add('text-gray-500');
+        formDaftar.classList.remove('hidden');
+        formLogin.classList.add('hidden');
+      });
+
+      formLogin.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        localStorage.setItem('kf13-member', JSON.stringify({ email, name: email.split('@')[0], created_at: new Date().toISOString() }));
+        window.location.href = '/platform/overview';
+      });
+
+      formDaftar.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        sessionStorage.setItem('kf13-onboarding', JSON.stringify({
+          name: fd.get('name'),
+          email: fd.get('email'),
+          university: fd.get('university')
+        }));
+        window.location.href = '/onboarding';
+      });
+    </script>
+  </body>
+</html>

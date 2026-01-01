@@ -1,8 +1,8 @@
 ---
 title: 'Test Syntax Highlighting & Typography Features'
 description: 'Testing code syntax highlighting, Fira Code ligatures, Mermaid diagrams, and LaTeX math rendering'
+heroImage: "./_images/physics-general.png"
 pubDate: 2024-12-26T10:30:00.000Z
-heroImage: '/blog-placeholder-4.jpg'
 author: 'KF13 Dev Team'
 category: 'Tutorial'
 tags: ['syntax-highlighting', 'typography', 'mermaid', 'latex', 'fira-code']

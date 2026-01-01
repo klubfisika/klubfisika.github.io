@@ -11,15 +11,19 @@
     "astro": "astro",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
-    "test:report": "playwright show-report"
+    "test:report": "playwright show-report",
+    "test:profile": "./scripts/test-profile.sh",
+    "deploy:profile": "./scripts/deploy-profile.sh",
+    "launch:profile": "./scripts/launch-profile.sh"
   },
   "dependencies": {
-    "@astrojs/image": "^0.18.0",
     "@astrojs/mdx": "^4.3.0",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.4.0",
-    "@builder.io/qwik": "^1.14.1",
-    "@qwikdev/astro": "^0.8.0",
+    "@builder.io/qwik": "^1.18.0",
+    "@builder.io/qwik-city": "^1.18.0",
+    "@libsql/client": "^0.15.15",
+    "@qwikdev/astro": "^0.8.2",
     "@tailwindcss/vite": "^4.1.8",
     "astro": "^5.8.1",
     "katex": "^0.16.27",

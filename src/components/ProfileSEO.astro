@@ -1,0 +1,45 @@
+---
+interface Props {
+  user: any;
+}
+
+const { user } = Astro.props;
+
+// Generate structured data for SEO
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": user.name,
+  "alternateName": user.username,
+  "description": user.bio,
+  "affiliation": {
+    "@type": "Organization",
+    "name": user.institution
+  },
+  "address": {
+    "@type": "Place",
+    "name": user.location
+  },
+  "sameAs": [
+    user.socials.github && `https://github.com/${user.socials.github}`,
+    user.socials.twitter && `https://twitter.com/${user.socials.twitter}`,
+    user.socials.linkedin && `https://linkedin.com/in/${user.socials.linkedin}`
+  ].filter(Boolean)
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+<meta name="description" content={user.bio} />
+<meta name="keywords" content={`${user.name}, ${user.username}, ${user.interests.join(', ')}, fisika, physics, research`} />
+
+<!-- Open Graph -->
+<meta property="og:title" content={`${user.name} (@${user.username}) - KF13`} />
+<meta property="og:description" content={user.bio} />
+<meta property="og:type" content="profile" />
+<meta property="og:url" content={`https://klubfisika.github.io/${user.username}`} />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content={`${user.name} (@${user.username})`} />
+<meta name="twitter:description" content={user.bio} />

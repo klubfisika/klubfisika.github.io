@@ -1,0 +1,31 @@
+---
+import ProfileLayout from '@layouts/ProfileLayout.astro';
+---
+
+<ProfileLayout title="Offline - KF13" description="You're currently offline">
+  <div class="max-w-2xl mx-auto px-4 py-16 text-center">
+    <div class="mb-8">
+      <div class="w-32 h-32 mx-auto bg-gray-100 rounded-2xl flex items-center justify-center text-6xl text-gray-400 mb-6">
+        📱
+      </div>
+      <h1 class="text-3xl font-bold text-gray-900 mb-4">You're Offline</h1>
+      <p class="text-gray-600 mb-8">
+        Check your internet connection to view the latest profile updates.
+      </p>
+    </div>
+    
+    <div class="space-y-4">
+      <button 
+        onclick="window.location.reload()" 
+        class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition"
+      >
+        Try Again
+      </button>
+      <div>
+        <a href="/platform" class="text-green-600 hover:text-green-700 font-medium">
+          Browse Cached Profiles
+        </a>
+      </div>
+    </div>
+  </div>
+</ProfileLayout>

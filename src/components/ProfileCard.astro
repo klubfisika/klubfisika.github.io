@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  icon: string;
+  class?: string;
+  lazy?: boolean;
+}
+const { title, icon, class: className = "", lazy = false } = Astro.props;
+---
+
+<div class={`bg-white rounded-2xl shadow-sm p-4 pt-0 ${className}`}>
+  <h2 class="font-bold text-lg py-4 flex items-center gap-2">
+    <span class="text-xl">{icon}</span> {title}
+  </h2>
+  <div class={lazy ? "lazy-content" : ""}>
+    <slot />
+  </div>
+</div>
+
+<style>
+  .lazy-content {
+    min-height: 100px;
+    content-visibility: auto;
+    contain-intrinsic-size: 0 100px;
+  }
+</style>

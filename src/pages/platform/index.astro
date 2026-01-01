@@ -1,0 +1,17 @@
+---
+import PlatformLayout from '@layouts/PlatformLayout.astro';
+---
+
+<script>
+  import { redirectAfterDelay, ROUTES } from '../../lib/router';
+  redirectAfterDelay(ROUTES.MEMBER_HOME, 800);
+</script>
+
+<PlatformLayout title="Platform" description="KF13 Member Platform">
+  <div id="splash" class="flex items-center justify-center min-h-[60vh]">
+    <div class="text-center">
+      <div class="animate-pulse text-6xl mb-4">🚀</div>
+      <p class="text-lg text-gray-600">Memuat platform...</p>
+    </div>
+  </div>
+</PlatformLayout>

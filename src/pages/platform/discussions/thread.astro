@@ -1,0 +1,247 @@
+---
+import PlatformLayout from '@layouts/PlatformLayout.astro';
+import { EMOTICONS } from '@lib/kaskus';
+---
+
+<script>
+  import { redirectIfGuest } from '../../../lib/router';
+  redirectIfGuest();
+</script>
+
+<PlatformLayout title="Thread Diskusi" activeNav="/platform/discussions">
+  <!-- Breadcrumb -->
+  <div class="text-sm text-gray-500 mb-4">
+    <a href="/platform/discussions" class="hover:text-blue-600">Forum</a> › 
+    <a href="#" class="hover:text-blue-600">Eksperimen</a> › 
+    <span class="text-gray-700">Berhasil bikin interferometer...</span>
+  </div>
+
+  <!-- Thread Header -->
+  <div class="bg-gradient-to-r from-green-600 to-teal-600 text-white rounded-t-xl p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="bg-white/20 text-xs px-2 py-0.5 rounded">SHARE</span>
+      <span class="bg-yellow-400 text-yellow-900 text-xs px-2 py-0.5 rounded font-bold">🔥 HOT THREAD</span>
+    </div>
+    <h1 class="text-xl font-bold">[SHARE] Berhasil bikin interferometer Michelson dari cermin bekas! (Pic Inside)</h1>
+  </div>
+
+  <!-- Thread Stats Bar -->
+  <div class="bg-gray-100 border-x px-4 py-2 flex items-center justify-between text-sm">
+    <div class="flex items-center gap-4">
+      <span>👁️ 2,341 views</span>
+      <span>💬 67 replies</span>
+      <span class="text-green-600">🥒 +89 cendol</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button class="px-3 py-1 bg-white border rounded hover:bg-gray-50">⭐ Bookmark</button>
+      <button class="px-3 py-1 bg-white border rounded hover:bg-gray-50">🔗 Share</button>
+    </div>
+  </div>
+
+  <!-- Posts Container -->
+  <div class="border-x border-b rounded-b-xl bg-white">
+    
+    <!-- OP Post -->
+    <article class="border-b">
+      <div class="flex">
+        <!-- User Sidebar -->
+        <div class="w-48 bg-gray-50 p-4 text-center border-r flex-shrink-0 hidden md:block">
+          <div class="w-20 h-20 bg-blue-500 rounded mx-auto mb-2 flex items-center justify-center text-white text-2xl font-bold">B</div>
+          <div class="font-bold text-blue-600">budi_fisika</div>
+          <div class="text-xs text-purple-600 font-medium">★ Kaskus Holic ★</div>
+          <div class="text-xs text-gray-500 mt-2">
+            <div>Posts: 156</div>
+            <div class="text-green-600">🥒 Cendol: 234</div>
+            <div class="text-red-600">🧱 Bata: 12</div>
+          </div>
+          <div class="mt-3 text-xs">
+            <div class="text-gray-400">Bergabung:</div>
+            <div>Mar 2024</div>
+          </div>
+        </div>
+        
+        <!-- Post Content -->
+        <div class="flex-1 p-4">
+          <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold">TS</span>
+              <span>📅 01-01-2026, 08:30</span>
+              <span class="text-gray-400">#1</span>
+            </div>
+            <button class="text-gray-400 hover:text-gray-600">⋮</button>
+          </div>
+
+          <div class="prose max-w-none">
+            <p>Assalamualaikum agan-agan sekalian! 🙏</p>
+            
+            <p>Ane mau share nih hasil eksperimen ane bikin <strong>interferometer Michelson</strong> dari barang-barang bekas. Awalnya iseng aja, eh ternyata berhasil! 😎</p>
+
+            <p><strong>Bahan-bahan yang ane pake:</strong></p>
+            <ul>
+              <li>Laser pointer merah (beli di toko mainan, 15rb)</li>
+              <li>Cermin bekas dari kompak bedak (2 buah)</li>
+              <li>Beam splitter dari kaca CD bekas</li>
+              <li>Tripod HP buat holder</li>
+              <li>Kardus bekas buat base</li>
+            </ul>
+
+            <p><strong>Hasilnya:</strong></p>
+            <div class="bg-gray-100 p-4 rounded-lg text-center my-4">
+              <div class="text-6xl mb-2">📸</div>
+              <p class="text-sm text-gray-500">[Gambar pola interferensi]</p>
+              <p class="text-xs text-gray-400 mt-1">Klik untuk perbesar</p>
+            </div>
+
+            <p>Keliatan kan pola gelap-terangnya? Itu bukti interferensi konstruktif dan destruktif! 🔥</p>
+
+            <p>Kalo ada yang mau tutorial lengkapnya, ane buatin thread terpisah ya. Atau langsung tanya aja di sini.</p>
+
+            <p>Semoga bermanfaat gan! :cendol :cendol :cendol</p>
+          </div>
+
+          <!-- Signature -->
+          <div class="mt-6 pt-4 border-t border-dashed text-sm text-gray-500 italic">
+            <p>---</p>
+            <p>"Physics is like sex: sure, it may give some practical results, but that's not why we do it." - Richard Feynman</p>
+            <p class="text-xs mt-1">🔬 Eksperimen adalah guru terbaik</p>
+          </div>
+
+          <!-- Post Actions -->
+          <div class="mt-4 pt-4 border-t flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <button class="flex items-center gap-1 px-3 py-1.5 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 font-medium">
+                🥒 Cendol
+              </button>
+              <button class="flex items-center gap-1 px-3 py-1.5 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 font-medium">
+                🧱 Bata
+              </button>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="px-3 py-1.5 border rounded-lg hover:bg-gray-50 text-sm">💬 Quote</button>
+              <button class="px-3 py-1.5 border rounded-lg hover:bg-gray-50 text-sm">↩️ Reply</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Reply 1 - PERTAMAX -->
+    <article class="border-b bg-yellow-50">
+      <div class="flex">
+        <div class="w-48 bg-yellow-100/50 p-4 text-center border-r flex-shrink-0 hidden md:block">
+          <div class="w-16 h-16 bg-green-500 rounded mx-auto mb-2 flex items-center justify-center text-white text-xl font-bold">A</div>
+          <div class="font-bold text-blue-600">ahmad_fisika</div>
+          <div class="text-xs text-red-600 font-medium">★ Kaskus Geek ★</div>
+          <div class="text-xs text-gray-500 mt-2">Posts: 1,234</div>
+        </div>
+        <div class="flex-1 p-4">
+          <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="bg-yellow-400 text-yellow-900 px-2 py-0.5 rounded text-xs font-bold">🏆 PERTAMAX</span>
+              <span>📅 01-01-2026, 08:32</span>
+              <span class="text-gray-400">#2</span>
+            </div>
+          </div>
+          <div class="prose max-w-none">
+            <p class="text-2xl font-bold text-yellow-600">PERTAMAX GAN! 🏆</p>
+            <p>Wih keren banget gan hasilnya! Ane juga pengen coba bikin. Boleh minta detail ukuran jarak antar cerminnya?</p>
+            <p>:jempol :jempol :mantap</p>
+          </div>
+          <div class="mt-4 pt-4 border-t flex items-center gap-2">
+            <button class="flex items-center gap-1 px-3 py-1.5 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 text-sm">🥒 +12</button>
+            <button class="px-3 py-1.5 border rounded-lg hover:bg-gray-50 text-sm">💬 Quote</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Reply 2 - Quote -->
+    <article class="border-b">
+      <div class="flex">
+        <div class="w-48 bg-gray-50 p-4 text-center border-r flex-shrink-0 hidden md:block">
+          <div class="w-16 h-16 bg-purple-500 rounded mx-auto mb-2 flex items-center justify-center text-white text-xl font-bold">S</div>
+          <div class="font-bold text-blue-600">siti_quantum</div>
+          <div class="text-xs text-orange-600 font-medium">★ Kaskus Addict ★</div>
+          <div class="text-xs text-gray-500 mt-2">Posts: 312</div>
+        </div>
+        <div class="flex-1 p-4">
+          <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+            <span>📅 01-01-2026, 09:15</span>
+            <span class="text-gray-400">#3</span>
+          </div>
+          
+          <!-- Quote Box Kaskus Style -->
+          <div class="bg-gray-100 border-l-4 border-blue-500 p-3 mb-4 text-sm">
+            <div class="text-blue-600 font-medium mb-1">Quote: Originally Posted by budi_fisika</div>
+            <p class="text-gray-600 italic">Beam splitter dari kaca CD bekas</p>
+          </div>
+
+          <div class="prose max-w-none">
+            <p>Gan, ini pake CD yang mana? Yang bagian label atau yang bening?</p>
+            <p>Ane pernah coba pake yang bening tapi refleksinya kurang bagus :bingung</p>
+          </div>
+          <div class="mt-4 pt-4 border-t flex items-center gap-2">
+            <button class="flex items-center gap-1 px-3 py-1.5 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 text-sm">🥒 +5</button>
+            <button class="px-3 py-1.5 border rounded-lg hover:bg-gray-50 text-sm">💬 Quote</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Reply 3 - TS Reply -->
+    <article class="border-b">
+      <div class="flex">
+        <div class="w-48 bg-blue-50 p-4 text-center border-r flex-shrink-0 hidden md:block">
+          <div class="w-16 h-16 bg-blue-500 rounded mx-auto mb-2 flex items-center justify-center text-white text-xl font-bold">B</div>
+          <div class="font-bold text-blue-600">budi_fisika</div>
+          <div class="text-xs text-purple-600 font-medium">★ Kaskus Holic ★</div>
+        </div>
+        <div class="flex-1 p-4">
+          <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold">TS</span>
+              <span>📅 01-01-2026, 09:30</span>
+              <span class="text-gray-400">#4</span>
+            </div>
+          </div>
+          
+          <div class="bg-gray-100 border-l-4 border-blue-500 p-3 mb-4 text-sm">
+            <div class="text-blue-600 font-medium mb-1">Quote: Originally Posted by siti_quantum</div>
+            <p class="text-gray-600 italic">Gan, ini pake CD yang mana?</p>
+          </div>
+
+          <div class="prose max-w-none">
+            <p>Pake yang bagian bening gan, tapi harus dilapisin dulu pake selotip bening biar lebih rata permukaannya.</p>
+            <p>Kuncinya di sudut 45 derajat. Kalo kurang presisi, pola interferensinya gak keliatan :jempol</p>
+          </div>
+          <div class="mt-4 pt-4 border-t flex items-center gap-2">
+            <button class="flex items-center gap-1 px-3 py-1.5 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 text-sm">🥒 +8</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Load More -->
+    <div class="p-4 text-center">
+      <button class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+        Muat 63 balasan lainnya...
+      </button>
+    </div>
+  </div>
+
+  <!-- Quick Reply -->
+  <div class="mt-4 bg-white rounded-xl border p-4">
+    <h3 class="font-bold mb-3">💬 Quick Reply</h3>
+    <textarea rows="4" placeholder="Ketik balasan... (support emoticon :cendol :bata :ngakak)" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500"></textarea>
+    <div class="flex items-center justify-between mt-3">
+      <div class="flex gap-2">
+        {Object.entries(EMOTICONS).slice(0, 8).map(([code, emoji]) => (
+          <button class="text-xl hover:scale-125 transition" title={code}>{emoji}</button>
+        ))}
+      </div>
+      <button class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium">
+        Kirim Balasan
+      </button>
+    </div>
+  </div>
+</PlatformLayout>

@@ -1,12 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [
-    ".astro/types.d.ts",
-    "**/*"
-  ],
-  "exclude": [
-    "dist"
-  ],
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
     "strictNullChecks": true,
     "jsx": "react-jsx",
@@ -22,6 +17,7 @@
       "@scripts/*": ["src/scripts/*"],
       "@types/*": ["src/types/*"],
       "@data/*": ["src/data/*"],
+      "@lib/*": ["src/lib/*"],
       "@ui/*": ["src/components/ui/*"],
       "@blog/*": ["src/components/blog/*"],
       "@sections/*": ["src/components/sections/*"]

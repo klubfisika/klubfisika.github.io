@@ -1,0 +1,220 @@
+---
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setup Profil | KF13</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <style>
+      @import "tailwindcss";
+    </style>
+  </head>
+  <body class="min-h-screen bg-gradient-to-br from-green-50 to-teal-50">
+    <div class="min-h-screen flex items-center justify-center p-4">
+      <div class="w-full max-w-lg">
+        <!-- Progress -->
+        <div class="flex justify-center mb-8">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white text-sm font-bold">1</div>
+            <div class="w-12 h-1 bg-green-600 rounded"></div>
+            <div id="step2" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 text-sm font-bold">2</div>
+            <div class="w-12 h-1 bg-gray-200 rounded"></div>
+            <div id="step3" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 text-sm font-bold">3</div>
+          </div>
+        </div>
+
+        <!-- Card -->
+        <div class="bg-white rounded-3xl shadow-xl p-8">
+          <!-- Step 1: Level -->
+          <div id="form-step1">
+            <h2 class="text-2xl font-bold text-center mb-2">Kamu sekarang di mana? 🎓</h2>
+            <p class="text-gray-500 text-center mb-6">Pilih yang paling sesuai</p>
+            
+            <div class="space-y-3">
+              <button class="level-btn w-full p-4 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-left" data-level="SMP">
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl">📚</span>
+                  <div>
+                    <div class="font-semibold">SMP</div>
+                    <div class="text-sm text-gray-500">Baru mulai belajar fisika</div>
+                  </div>
+                </div>
+              </button>
+              <button class="level-btn w-full p-4 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-left" data-level="SMA">
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl">🏆</span>
+                  <div>
+                    <div class="font-semibold">SMA</div>
+                    <div class="text-sm text-gray-500">Persiapan OSN, eksperimen</div>
+                  </div>
+                </div>
+              </button>
+              <button class="level-btn w-full p-4 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-left" data-level="Universitas">
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl">🔬</span>
+                  <div>
+                    <div class="font-semibold">Kuliah</div>
+                    <div class="text-sm text-gray-500">S1 Fisika atau jurusan terkait</div>
+                  </div>
+                </div>
+              </button>
+              <button class="level-btn w-full p-4 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-left" data-level="S2/S3">
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl">🎯</span>
+                  <div>
+                    <div class="font-semibold">Pascasarjana</div>
+                    <div class="text-sm text-gray-500">S2, S3, atau peneliti</div>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Interests -->
+          <div id="form-step2" class="hidden">
+            <h2 class="text-2xl font-bold text-center mb-2">Apa yang menarik buatmu? ✨</h2>
+            <p class="text-gray-500 text-center mb-6">Pilih beberapa yang kamu suka</p>
+            
+            <div class="grid grid-cols-2 gap-3">
+              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-center" data-interest="Mekanika">
+                <div class="text-2xl mb-1">⚙️</div>
+                <div class="text-sm font-medium">Mekanika</div>
+              </button>
+              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-center" data-interest="Kuantum">
+                <div class="text-2xl mb-1">⚛️</div>
+                <div class="text-sm font-medium">Kuantum</div>
+              </button>
+              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-center" data-interest="Astrofisika">
+                <div class="text-2xl mb-1">🌌</div>
+                <div class="text-sm font-medium">Astrofisika</div>
+              </button>
+              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-center" data-interest="Eksperimen">
+                <div class="text-2xl mb-1">🔬</div>
+                <div class="text-sm font-medium">Eksperimen</div>
+              </button>
+              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-center" data-interest="Olimpiade">
+                <div class="text-2xl mb-1">🏆</div>
+                <div class="text-sm font-medium">Olimpiade</div>
+              </button>
+              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-center" data-interest="Komputasi">
+                <div class="text-2xl mb-1">💻</div>
+                <div class="text-sm font-medium">Komputasi</div>
+              </button>
+            </div>
+            
+            <button id="next-step2" class="w-full mt-6 bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition disabled:opacity-50" disabled>
+              Lanjut
+            </button>
+          </div>
+
+          <!-- Step 3: Bio -->
+          <div id="form-step3" class="hidden">
+            <h2 class="text-2xl font-bold text-center mb-2">Ceritain dikit tentang kamu 😊</h2>
+            <p class="text-gray-500 text-center mb-6">Biar teman-teman bisa kenal</p>
+            
+            <div class="space-y-4">
+              <div>
+                <textarea id="bio" rows="4" placeholder="Contoh: Suka eksperimen fisika, lagi persiapan OSN, pengen jadi peneliti..." 
+                  class="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 resize-none"></textarea>
+              </div>
+              
+              <button id="finish" class="w-full bg-gradient-to-r from-green-600 to-teal-600 text-white py-3 rounded-xl font-semibold hover:from-green-700 hover:to-teal-700 transition">
+                Mulai Eksplorasi! 🚀
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-6">
+          <a href="/mulai" class="text-sm text-gray-500 hover:text-green-600">← Kembali</a>
+        </div>
+      </div>
+    </div>
+
+    <script is:inline>
+      let userData = JSON.parse(sessionStorage.getItem('kf13-onboarding') || '{}');
+      let selectedLevel = '';
+      let selectedInterests = [];
+
+      // Step 1: Level selection
+      document.querySelectorAll('.level-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.level-btn').forEach(b => {
+            b.classList.remove('border-green-500', 'bg-green-50');
+            b.classList.add('border-gray-200');
+          });
+          btn.classList.add('border-green-500', 'bg-green-50');
+          btn.classList.remove('border-gray-200');
+          
+          selectedLevel = btn.dataset.level;
+          
+          setTimeout(() => {
+            document.getElementById('form-step1').classList.add('hidden');
+            document.getElementById('form-step2').classList.remove('hidden');
+            document.getElementById('step2').classList.remove('bg-gray-200', 'text-gray-500');
+            document.getElementById('step2').classList.add('bg-green-600', 'text-white');
+            document.querySelector('.w-12.h-1.bg-gray-200').classList.remove('bg-gray-200');
+            document.querySelector('.w-12.h-1').classList.add('bg-green-600');
+          }, 300);
+        });
+      });
+
+      // Step 2: Interests selection
+      document.querySelectorAll('.interest-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const interest = btn.dataset.interest;
+          if (selectedInterests.includes(interest)) {
+            selectedInterests = selectedInterests.filter(i => i !== interest);
+            btn.classList.remove('border-green-500', 'bg-green-50');
+            btn.classList.add('border-gray-200');
+          } else {
+            selectedInterests.push(interest);
+            btn.classList.add('border-green-500', 'bg-green-50');
+            btn.classList.remove('border-gray-200');
+          }
+          
+          document.getElementById('next-step2').disabled = selectedInterests.length === 0;
+        });
+      });
+
+      document.getElementById('next-step2').addEventListener('click', () => {
+        document.getElementById('form-step2').classList.add('hidden');
+        document.getElementById('form-step3').classList.remove('hidden');
+        document.getElementById('step3').classList.remove('bg-gray-200', 'text-gray-500');
+        document.getElementById('step3').classList.add('bg-green-600', 'text-white');
+        document.querySelectorAll('.w-12.h-1')[1].classList.remove('bg-gray-200');
+        document.querySelectorAll('.w-12.h-1')[1].classList.add('bg-green-600');
+      });
+
+      // Step 3: Finish
+      document.getElementById('finish').addEventListener('click', () => {
+        const bio = document.getElementById('bio').value;
+        
+        // Create complete user profile
+        const member = {
+          ...userData,
+          level: selectedLevel,
+          interests: selectedInterests,
+          bio: bio || `${selectedLevel} yang tertarik dengan ${selectedInterests.join(', ')}`,
+          username: userData.name?.toLowerCase().replace(/\s+/g, '_') || 'member',
+          created_at: new Date().toISOString()
+        };
+        
+        // Save to localStorage
+        localStorage.setItem('kf13-member', JSON.stringify(member));
+        sessionStorage.removeItem('kf13-onboarding');
+        
+        // Redirect to platform
+        window.location.href = '/platform/overview';
+      });
+
+      // Redirect if no onboarding data
+      if (!userData.name) {
+        window.location.href = '/mulai';
+      }
+    </script>
+  </body>
+</html>

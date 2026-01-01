@@ -1,0 +1,15 @@
+---
+import PlatformLayout from '@layouts/PlatformLayout.astro';
+import ScienceShorts from '@components/qwik/ScienceShorts.tsx';
+---
+
+<script>
+  import { redirectIfGuest } from '../../../lib/router';
+  redirectIfGuest();
+</script>
+
+<PlatformLayout title="Science Shorts" activeNav="/platform/shorts" hideRightSidebar={true}>
+  <div class="flex justify-center">
+    <ScienceShorts client:load />
+  </div>
+</PlatformLayout>

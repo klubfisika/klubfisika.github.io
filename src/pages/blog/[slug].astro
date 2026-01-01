@@ -27,7 +27,7 @@ const post = {
   readTime: Math.ceil(entry.body.length / 200) + ' menit',
   category: entry.data.category || 'Artikel',
   tags: entry.data.tags || [],
-  image: entry.data.heroImage || '/blog-placeholder-1.jpg'
+  image: entry.data.heroImage?.src || '/images/blog/physics-general.png'
 };
 
 // Indonesian date formatter

@@ -1,0 +1,18 @@
+---
+import PlatformLayout from '../layouts/PlatformLayout.astro';
+import MemberProfile from '../components/qwik/MemberProfile.tsx';
+import CommunityFeed from '../components/qwik/CommunityFeed.tsx';
+---
+
+<PlatformLayout title="Member Portal" description="KF13 Member Dashboard">
+  <div class="grid lg:grid-cols-3 gap-8">
+    <div class="lg:col-span-1">
+      <MemberProfile client:load />
+    </div>
+    
+    <div class="lg:col-span-2">
+      <h2 class="text-2xl font-bold mb-6">Community Feed</h2>
+      <CommunityFeed client:load />
+    </div>
+  </div>
+</PlatformLayout>

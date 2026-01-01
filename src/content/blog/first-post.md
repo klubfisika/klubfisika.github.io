@@ -1,8 +1,8 @@
 ---
 title: 'Fisika Kuantum untuk Pemula'
 description: 'Pengenalan konsep dasar fisika kuantum dengan pendekatan yang mudah dipahami untuk pemula'
+heroImage: "./_images/physics-general.png"
 pubDate: 2024-12-25T10:00:00.000Z
-heroImage: '/blog-placeholder-3.jpg'
 author: 'Dr. Fisika KF13'
 category: Teori
 tags: 
