@@ -9,7 +9,7 @@ import { chromium } from 'playwright';
   
   try {
     // Navigate to the profile page
-    await page.goto('http://localhost:4321/u/budi_fisika', { waitUntil: 'networkidle' });
+    await page.goto('http://localhost:4321/budi_fisika', { waitUntil: 'networkidle' });
     
     // Take screenshot
     await page.screenshot({ 

@@ -9,7 +9,7 @@ const { title, icon, class: className = "", lazy = false } = Astro.props;
 ---
 
 <div class={`bg-white rounded-2xl shadow-sm p-4 pt-0 ${className}`}>
-  <h2 class="font-bold text-lg py-4 flex items-center gap-2">
+  <h2 class="font-bold text-lg py-4 mb-0 flex items-center gap-2">
     <span class="text-xl">{icon}</span> {title}
   </h2>
   <div class={lazy ? "lazy-content" : ""}>
