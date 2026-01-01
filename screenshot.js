@@ -11,6 +11,9 @@ import { chromium } from 'playwright';
     // Navigate to the profile page
     await page.goto('http://localhost:4321/budi_fisika', { waitUntil: 'networkidle' });
     
+    // Wait for Qwik hydration
+    await page.waitForTimeout(5000);
+    
     // Take screenshot
     await page.screenshot({ 
       path: 'profile-screenshot.png', 
