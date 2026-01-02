@@ -41,6 +41,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       
+      - name: Debug - Check assets folder
+        run: |
+          echo "=== Checking src/assets/images folder ==="
+          ls -la src/assets/images/ || echo "src/assets/images not found"
+          echo "=== Checking if files exist ==="
+          find . -name "sound-wave-experiment.png" -type f
+          find . -name "physics-general.png" -type f
+          find . -name "einstein-relativity.png" -type f
+      
       - name: Build site
         run: pnpm build
         env:
