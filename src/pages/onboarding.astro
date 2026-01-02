@@ -90,19 +90,26 @@ import AuthLayout from '../layouts/AuthLayout.astro';
             <div class="space-y-4">
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">Nama Institusi</label>
-                <input 
-                  type="text" 
-                  id="institution-name" 
-                  placeholder="Contoh: SMA Negeri 1 Jakarta / Universitas Indonesia"
-                  class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all duration-200 focus:shadow-lg focus:scale-[1.01]"
-                  required
-                />
+                <div class="relative">
+                  <input 
+                    type="text" 
+                    id="institution-name" 
+                    placeholder="Ketik nama sekolah/universitas..."
+                    class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all duration-200 focus:shadow-lg focus:scale-[1.01]"
+                    autocomplete="off"
+                    required
+                  />
+                  <div id="institution-suggestions" class="absolute z-10 w-full bg-white border border-gray-200 rounded-xl shadow-lg mt-1 max-h-60 overflow-y-auto hidden">
+                    <!-- Suggestions will be populated here -->
+                  </div>
+                </div>
               </div>
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2" id="year-label">Tahun Masuk</label>
                 <select 
                   id="year-select"
                   class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all duration-200 focus:shadow-lg focus:scale-[1.01]"
+                  onchange="checkStep2Completion()"
                   required
                 >
                   <option value="">Pilih tahun</option>
@@ -121,6 +128,7 @@ import AuthLayout from '../layouts/AuthLayout.astro';
                   id="major-input"
                   placeholder="Contoh: Fisika / Teknik Fisika / IPA"
                   class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all duration-200 focus:shadow-lg focus:scale-[1.01]"
+                  oninput="checkStep2Completion()"
                 />
               </div>
             </div>
@@ -195,6 +203,76 @@ import AuthLayout from '../layouts/AuthLayout.astro';
       let userData = JSON.parse(sessionStorage.getItem('kf13-onboarding') || '{}');
       let selectedLevel = '';
       let selectedInterests = [];
+      let institutionsData = {};
+
+      // Load institutions database
+      fetch('/src/data/institutions-yogyakarta.json')
+        .then(response => response.json())
+        .then(data => {
+          institutionsData = data;
+        })
+        .catch(error => console.log('Could not load institutions data'));
+
+      // Institution autocomplete
+      function setupInstitutionAutocomplete() {
+        const input = document.getElementById('institution-name');
+        const suggestions = document.getElementById('institution-suggestions');
+        
+        input.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase().trim();
+          
+          if (query.length < 2) {
+            suggestions.classList.add('hidden');
+            return;
+          }
+          
+          const matches = [];
+          const currentLevel = selectedLevel.toLowerCase();
+          
+          // Get relevant institutions based on level
+          Object.keys(institutionsData).forEach(city => {
+            const cityData = institutionsData[city];
+            let categories = [];
+            
+            if (currentLevel === 'smp') categories = ['smp'];
+            else if (currentLevel === 'sma') categories = ['sma', 'smk'];
+            else if (currentLevel === 'universitas' || currentLevel === 's2/s3') categories = ['universitas'];
+            
+            categories.forEach(category => {
+              if (cityData[category]) {
+                cityData[category].forEach(institution => {
+                  if (institution.toLowerCase().includes(query)) {
+                    matches.push(institution);
+                  }
+                });
+              }
+            });
+          });
+          
+          // Display suggestions
+          if (matches.length > 0) {
+            suggestions.innerHTML = matches.slice(0, 8).map(match => 
+              `<div class="p-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0" onclick="selectInstitution('${match}')">${match}</div>`
+            ).join('');
+            suggestions.classList.remove('hidden');
+          } else {
+            suggestions.classList.add('hidden');
+          }
+        });
+        
+        // Hide suggestions when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!input.contains(e.target) && !suggestions.contains(e.target)) {
+            suggestions.classList.add('hidden');
+          }
+        });
+      }
+      
+      function selectInstitution(institutionName) {
+        document.getElementById('institution-name').value = institutionName;
+        document.getElementById('institution-suggestions').classList.add('hidden');
+        checkStep2Completion();
+      }
 
       // Email validation function
       function validateEmail(email) {
@@ -306,6 +384,27 @@ import AuthLayout from '../layouts/AuthLayout.astro';
           yearLabel.textContent = 'Tahun Mulai Program';
           majorField.classList.remove('hidden');
         }
+        
+        // Setup autocomplete after level is selected
+        setTimeout(() => {
+          setupInstitutionAutocomplete();
+        }, 100);
+      }
+
+      // Check step 2 completion
+      function checkStep2Completion() {
+        const institutionName = document.getElementById('institution-name').value.trim();
+        const yearSelect = document.getElementById('year-select').value;
+        const majorInput = document.getElementById('major-input');
+        
+        let isComplete = institutionName && yearSelect;
+        
+        // Check major field if visible
+        if (!majorInput.parentElement.classList.contains('hidden')) {
+          isComplete = isComplete && majorInput.value.trim();
+        }
+        
+        document.getElementById('next-step2').disabled = !isComplete;
       }
 
       // Progress bar helper
