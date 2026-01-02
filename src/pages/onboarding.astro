@@ -115,10 +115,6 @@ import AuthLayout from '../layouts/AuthLayout.astro';
             <button id="next-step2" class="w-full mt-6 bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100" disabled>
               Lanjut
             </button>
-            
-            <button id="back-step2" class="w-full mt-3 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]">
-              ← Kembali
-            </button>
           </div>
 
           <!-- Step 3: Bio -->
@@ -135,16 +131,12 @@ import AuthLayout from '../layouts/AuthLayout.astro';
               <button id="finish" class="w-full bg-gradient-to-r from-green-600 to-teal-600 text-white py-3 rounded-xl font-semibold hover:from-green-700 hover:to-teal-700 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]">
                 Mulai Eksplorasi! 🚀
               </button>
-              
-              <button id="back-step3" class="w-full mt-3 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]">
-                ← Kembali
-              </button>
             </div>
           </div>
         </div>
 
         <div class="text-center mt-6">
-          <a href="/mulai" class="text-sm text-gray-500 hover:text-green-600">← Kembali</a>
+          <a href="#" id="back-link" class="text-sm text-gray-500 hover:text-green-600 transition-colors">← Kembali</a>
         </div>
       </div>
     </div>
@@ -191,6 +183,9 @@ import AuthLayout from '../layouts/AuthLayout.astro';
           userNameEl.textContent = 'Data tidak ditemukan';
           userEmailEl.textContent = 'Silakan mulai dari halaman login';
         }
+        
+        // Initialize back link
+        updateBackLink();
       });
 
       // Step 1: Level selection
@@ -214,7 +209,9 @@ import AuthLayout from '../layouts/AuthLayout.astro';
           setTimeout(() => {
             document.getElementById('form-step1').classList.add('hidden');
             document.getElementById('form-step2').classList.remove('hidden');
+            currentStepNum = 2;
             updateProgressBar(2);
+            updateBackLink();
           }, 300);
         });
       });
@@ -239,44 +236,83 @@ import AuthLayout from '../layouts/AuthLayout.astro';
 
       // Progress bar helper
       function updateProgressBar(step) {
-        document.getElementById('step2').classList.remove('bg-gray-200', 'text-gray-500');
-        document.getElementById('step2').classList.add('bg-green-600', 'text-white');
-        document.querySelector('.w-12.h-1.bg-gray-200').classList.remove('bg-gray-200');
-        document.querySelector('.w-12.h-1').classList.add('bg-green-600');
+        if (step >= 2) {
+          document.getElementById('step2').classList.remove('bg-gray-200', 'text-gray-500');
+          document.getElementById('step2').classList.add('bg-green-600', 'text-white');
+          const firstLine = document.querySelector('.w-12.h-1');
+          if (firstLine) {
+            firstLine.classList.remove('bg-gray-200');
+            firstLine.classList.add('bg-green-600');
+          }
+        }
         
         if (step >= 3) {
           document.getElementById('step3').classList.remove('bg-gray-200', 'text-gray-500');
           document.getElementById('step3').classList.add('bg-green-600', 'text-white');
-          document.querySelectorAll('.w-12.h-1')[1].classList.remove('bg-gray-200');
-          document.querySelectorAll('.w-12.h-1')[1].classList.add('bg-green-600');
+          const secondLine = document.querySelectorAll('.w-12.h-1')[1];
+          if (secondLine) {
+            secondLine.classList.remove('bg-gray-200');
+            secondLine.classList.add('bg-green-600');
+          }
         }
       }
 
       // Back button handlers
-      document.getElementById('back-step2').addEventListener('click', () => {
-        document.getElementById('form-step2').classList.add('hidden');
-        document.getElementById('form-step1').classList.remove('hidden');
-        // Reset progress bar
-        document.getElementById('step2').classList.add('bg-gray-200', 'text-gray-500');
-        document.getElementById('step2').classList.remove('bg-green-600', 'text-white');
-        document.querySelector('.w-12.h-1').classList.add('bg-gray-200');
-        document.querySelector('.w-12.h-1').classList.remove('bg-green-600');
-      });
-
-      document.getElementById('back-step3').addEventListener('click', () => {
-        document.getElementById('form-step3').classList.add('hidden');
-        document.getElementById('form-step2').classList.remove('hidden');
-        // Reset progress bar
-        document.getElementById('step3').classList.add('bg-gray-200', 'text-gray-500');
-        document.getElementById('step3').classList.remove('bg-green-600', 'text-white');
-        document.querySelectorAll('.w-12.h-1')[1].classList.add('bg-gray-200');
-        document.querySelectorAll('.w-12.h-1')[1].classList.remove('bg-green-600');
+      let currentStepNum = 1;
+      
+      // Update back link based on current step
+      function updateBackLink() {
+        const backLink = document.getElementById('back-link');
+        if (currentStepNum === 1) {
+          backLink.href = '/mulai';
+          backLink.textContent = '← Kembali ke Login';
+        } else {
+          backLink.href = '#';
+          backLink.textContent = '← Kembali';
+        }
+      }
+      
+      // Back link click handler
+      document.getElementById('back-link').addEventListener('click', (e) => {
+        if (currentStepNum > 1) {
+          e.preventDefault();
+          if (currentStepNum === 2) {
+            // Go back to step 1
+            document.getElementById('form-step2').classList.add('hidden');
+            document.getElementById('form-step1').classList.remove('hidden');
+            currentStepNum = 1;
+            // Reset progress bar to step 1
+            document.getElementById('step2').classList.add('bg-gray-200', 'text-gray-500');
+            document.getElementById('step2').classList.remove('bg-green-600', 'text-white');
+            const firstLine = document.querySelector('.w-12.h-1');
+            if (firstLine) {
+              firstLine.classList.add('bg-gray-200');
+              firstLine.classList.remove('bg-green-600');
+            }
+          } else if (currentStepNum === 3) {
+            // Go back to step 2
+            document.getElementById('form-step3').classList.add('hidden');
+            document.getElementById('form-step2').classList.remove('hidden');
+            currentStepNum = 2;
+            // Reset progress bar to step 2
+            document.getElementById('step3').classList.add('bg-gray-200', 'text-gray-500');
+            document.getElementById('step3').classList.remove('bg-green-600', 'text-white');
+            const secondLine = document.querySelectorAll('.w-12.h-1')[1];
+            if (secondLine) {
+              secondLine.classList.add('bg-gray-200');
+              secondLine.classList.remove('bg-green-600');
+            }
+          }
+          updateBackLink();
+        }
       });
 
       document.getElementById('next-step2').addEventListener('click', () => {
         document.getElementById('form-step2').classList.add('hidden');
         document.getElementById('form-step3').classList.remove('hidden');
+        currentStepNum = 3;
         updateProgressBar(3);
+        updateBackLink();
       });
 
       // Step 3: Finish
