@@ -206,12 +206,20 @@ import AuthLayout from '../layouts/AuthLayout.astro';
       let institutionsData = {};
 
       // Load institutions database
-      fetch('/src/data/institutions-yogyakarta.json')
-        .then(response => response.json())
+      fetch('/institutions-diy.json')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
         .then(data => {
           institutionsData = data;
+          console.log('Institutions data loaded successfully');
         })
-        .catch(error => console.log('Could not load institutions data'));
+        .catch(error => {
+          console.error('Failed to load institutions data:', error);
+        });
 
       // Institution autocomplete
       function setupInstitutionAutocomplete() {
