@@ -1,0 +1,26 @@
+---
+import AuthLayout from '../layouts/AuthLayout.astro';
+import OnboardingForm from '../components/qwik/OnboardingForm';
+---
+
+<AuthLayout 
+  title="Registrasi Member" 
+  description="Bergabung dengan komunitas fisika Indonesia"
+  bgClass="bg-gradient-to-br from-blue-50 to-indigo-50"
+>
+  <div class="min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-2xl">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">Bergabung dengan KF13</h1>
+        <p class="text-gray-600">Registrasi lengkap untuk akses penuh platform</p>
+      </div>
+      
+      <OnboardingForm client:load />
+      
+      <div class="text-center mt-6">
+        <a href="/onboarding" class="text-sm text-blue-600 hover:text-blue-800 mr-4">← Onboarding Cepat</a>
+        <a href="/mulai" class="text-sm text-gray-500 hover:text-gray-700">Kembali ke Login</a>
+      </div>
+    </div>
+  </div>
+</AuthLayout>

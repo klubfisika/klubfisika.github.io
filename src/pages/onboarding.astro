@@ -21,14 +21,38 @@ import AuthLayout from '../layouts/AuthLayout.astro';
         </div>
 
         <!-- Card -->
-        <div class="bg-white rounded-3xl shadow-xl p-8">
+        <div class="bg-white rounded-3xl shadow-xl p-8 animate-in fade-in duration-300">
           <!-- Step 1: Level -->
-          <div id="form-step1">
+          <div id="form-step1" class="animate-in slide-in-from-right duration-300">
             <h2 class="text-2xl font-bold text-center mb-2">Kamu sekarang di mana? 🎓</h2>
             <p class="text-gray-500 text-center mb-6">Pilih yang paling sesuai</p>
             
+            <!-- Basic Info Form -->
+            <div class="space-y-4 mb-6">
+              <div>
+                <input 
+                  type="text" 
+                  id="name" 
+                  placeholder="Nama lengkap" 
+                  class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all duration-200 focus:shadow-lg focus:scale-[1.01]"
+                  required
+                  autofocus
+                />
+              </div>
+              <div>
+                <input 
+                  type="email" 
+                  id="email" 
+                  placeholder="Email" 
+                  class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all duration-200 focus:shadow-lg focus:scale-[1.01]"
+                  required
+                />
+                <div id="email-error" class="text-red-500 text-sm mt-1 hidden">Format email tidak valid</div>
+              </div>
+            </div>
+            
             <div class="space-y-3">
-              <button class="level-btn w-full p-4 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-left" data-level="SMP">
+              <button class="level-btn w-full p-4 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-left" data-level="SMP">
                 <div class="flex items-center gap-3">
                   <span class="text-2xl">📚</span>
                   <div>
@@ -37,7 +61,7 @@ import AuthLayout from '../layouts/AuthLayout.astro';
                   </div>
                 </div>
               </button>
-              <button class="level-btn w-full p-4 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-left" data-level="SMA">
+              <button class="level-btn w-full p-4 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-left" data-level="SMA">
                 <div class="flex items-center gap-3">
                   <span class="text-2xl">🏆</span>
                   <div>
@@ -46,7 +70,7 @@ import AuthLayout from '../layouts/AuthLayout.astro';
                   </div>
                 </div>
               </button>
-              <button class="level-btn w-full p-4 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-left" data-level="Universitas">
+              <button class="level-btn w-full p-4 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-left" data-level="Universitas">
                 <div class="flex items-center gap-3">
                   <span class="text-2xl">🔬</span>
                   <div>
@@ -55,7 +79,7 @@ import AuthLayout from '../layouts/AuthLayout.astro';
                   </div>
                 </div>
               </button>
-              <button class="level-btn w-full p-4 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-left" data-level="S2/S3">
+              <button class="level-btn w-full p-4 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-left" data-level="S2/S3">
                 <div class="flex items-center gap-3">
                   <span class="text-2xl">🎯</span>
                   <div>
@@ -68,54 +92,54 @@ import AuthLayout from '../layouts/AuthLayout.astro';
           </div>
 
           <!-- Step 2: Interests -->
-          <div id="form-step2" class="hidden">
+          <div id="form-step2" class="hidden animate-in slide-in-from-right duration-300">
             <h2 class="text-2xl font-bold text-center mb-2">Apa yang menarik buatmu? ✨</h2>
             <p class="text-gray-500 text-center mb-6">Pilih beberapa yang kamu suka</p>
             
             <div class="grid grid-cols-2 gap-3">
-              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-center" data-interest="Mekanika">
+              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-center" data-interest="Mekanika">
                 <div class="text-2xl mb-1">⚙️</div>
                 <div class="text-sm font-medium">Mekanika</div>
               </button>
-              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-center" data-interest="Kuantum">
+              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-center" data-interest="Kuantum">
                 <div class="text-2xl mb-1">⚛️</div>
                 <div class="text-sm font-medium">Kuantum</div>
               </button>
-              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-center" data-interest="Astrofisika">
+              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-center" data-interest="Astrofisika">
                 <div class="text-2xl mb-1">🌌</div>
                 <div class="text-sm font-medium">Astrofisika</div>
               </button>
-              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-center" data-interest="Eksperimen">
+              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-center" data-interest="Eksperimen">
                 <div class="text-2xl mb-1">🔬</div>
                 <div class="text-sm font-medium">Eksperimen</div>
               </button>
-              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-center" data-interest="Olimpiade">
+              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-center" data-interest="Olimpiade">
                 <div class="text-2xl mb-1">🏆</div>
                 <div class="text-sm font-medium">Olimpiade</div>
               </button>
-              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition text-center" data-interest="Komputasi">
+              <button class="interest-btn p-3 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-center" data-interest="Komputasi">
                 <div class="text-2xl mb-1">💻</div>
                 <div class="text-sm font-medium">Komputasi</div>
               </button>
             </div>
             
-            <button id="next-step2" class="w-full mt-6 bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition disabled:opacity-50" disabled>
+            <button id="next-step2" class="w-full mt-6 bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100" disabled>
               Lanjut
             </button>
           </div>
 
           <!-- Step 3: Bio -->
-          <div id="form-step3" class="hidden">
+          <div id="form-step3" class="hidden animate-in slide-in-from-right duration-300">
             <h2 class="text-2xl font-bold text-center mb-2">Ceritain dikit tentang kamu 😊</h2>
             <p class="text-gray-500 text-center mb-6">Biar teman-teman bisa kenal</p>
             
             <div class="space-y-4">
               <div>
                 <textarea id="bio" rows="4" placeholder="Contoh: Suka eksperimen fisika, lagi persiapan OSN, pengen jadi peneliti..." 
-                  class="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 resize-none"></textarea>
+                  class="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 resize-none transition-all duration-200 focus:shadow-lg focus:scale-[1.01]"></textarea>
               </div>
               
-              <button id="finish" class="w-full bg-gradient-to-r from-green-600 to-teal-600 text-white py-3 rounded-xl font-semibold hover:from-green-700 hover:to-teal-700 transition">
+              <button id="finish" class="w-full bg-gradient-to-r from-green-600 to-teal-600 text-white py-3 rounded-xl font-semibold hover:from-green-700 hover:to-teal-700 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]">
                 Mulai Eksplorasi! 🚀
               </button>
             </div>
@@ -133,9 +157,69 @@ import AuthLayout from '../layouts/AuthLayout.astro';
       let selectedLevel = '';
       let selectedInterests = [];
 
+      // Email validation function
+      function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      // Save email to localStorage
+      function saveEmail(email) {
+        if (validateEmail(email)) {
+          localStorage.setItem('kf13-email', email);
+        }
+      }
+
+      // Load saved email
+      function loadSavedEmail() {
+        const savedEmail = localStorage.getItem('kf13-email');
+        const emailInput = document.getElementById('email');
+        if (savedEmail && emailInput) {
+          emailInput.value = savedEmail;
+        }
+      }
+
+      // Load saved email on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        loadSavedEmail();
+        
+        // Email validation
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+        
+        emailInput.addEventListener('input', (e) => {
+          const email = e.target.value;
+          if (email && !validateEmail(email)) {
+            emailError.classList.remove('hidden');
+            emailInput.classList.add('border-red-300', 'focus:ring-red-500');
+            emailInput.classList.remove('border-gray-200', 'focus:ring-green-500');
+          } else {
+            emailError.classList.add('hidden');
+            emailInput.classList.remove('border-red-300', 'focus:ring-red-500');
+            emailInput.classList.add('border-gray-200', 'focus:ring-green-500');
+            if (email) saveEmail(email);
+          }
+        });
+      });
+
       // Step 1: Level selection
       document.querySelectorAll('.level-btn').forEach(btn => {
         btn.addEventListener('click', () => {
+          const nameInput = document.getElementById('name');
+          const emailInput = document.getElementById('email');
+          
+          // Validate required fields
+          if (!nameInput.value.trim() || !emailInput.value.trim() || !validateEmail(emailInput.value)) {
+            if (!nameInput.value.trim()) nameInput.focus();
+            else if (!emailInput.value.trim() || !validateEmail(emailInput.value)) emailInput.focus();
+            return;
+          }
+          
+          // Save user data
+          userData.name = nameInput.value.trim();
+          userData.email = emailInput.value.trim();
+          sessionStorage.setItem('kf13-onboarding', JSON.stringify(userData));
+          
           document.querySelectorAll('.level-btn').forEach(b => {
             b.classList.remove('border-green-500', 'bg-green-50');
             b.classList.add('border-gray-200');
