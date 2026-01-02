@@ -1,0 +1,49 @@
+---
+import { EMOTICONS } from '@lib/kaskus';
+
+interface Props {
+  limit?: number;
+}
+
+const { limit = 8 } = Astro.props;
+const emoticons = Object.entries(EMOTICONS).slice(0, limit);
+---
+
+<div id="emoticon-legend" class="grid grid-cols-2 gap-2 text-sm">
+  {emoticons.map(([code, emoji]) => (
+    <button 
+      type="button"
+      class="emoticon-btn flex items-center gap-2 p-1 rounded hover:bg-gray-100 transition text-left"
+      data-code={code}
+    >
+      <span>{emoji}</span>
+      <code class="text-xs text-gray-500">{code}</code>
+    </button>
+  ))}
+</div>
+
+<script>
+  document.querySelectorAll('.emoticon-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const code = btn.getAttribute('data-code');
+      if (!code) return;
+      
+      // Find active textarea or last focused one
+      const textarea = document.querySelector('textarea:focus') as HTMLTextAreaElement 
+        || document.querySelector('#reply-input') as HTMLTextAreaElement;
+      
+      if (textarea) {
+        // Insert at cursor position
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const text = textarea.value;
+        textarea.value = text.substring(0, start) + code + ' ' + text.substring(end);
+        textarea.selectionStart = textarea.selectionEnd = start + code.length + 1;
+        textarea.focus();
+      } else {
+        // Fallback: copy to clipboard
+        navigator.clipboard.writeText(code);
+      }
+    });
+  });
+</script>

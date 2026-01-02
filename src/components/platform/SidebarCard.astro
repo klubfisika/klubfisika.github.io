@@ -1,0 +1,23 @@
+---
+interface Props {
+  title?: string;
+  variant?: 'default' | 'gradient';
+  class?: string;
+}
+
+const { title, variant = 'default', class: className = '' } = Astro.props;
+
+const baseClass = 'rounded-2xl p-4 shadow-sm';
+const variantClass = variant === 'gradient' 
+  ? 'bg-gradient-to-br from-green-500 to-teal-600 text-white' 
+  : 'bg-white';
+---
+
+<div class:list={[baseClass, variantClass, className]}>
+  {title && (
+    <h3 class="text-xs font-semibold uppercase tracking-wide mb-3" class:list={[variant === 'gradient' ? 'text-white/80' : 'text-gray-400']}>
+      {title}
+    </h3>
+  )}
+  <slot />
+</div>
