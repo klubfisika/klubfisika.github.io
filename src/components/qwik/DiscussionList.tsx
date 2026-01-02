@@ -1,4 +1,4 @@
-import { component$, useSignal, useComputed$ } from '@builder.io/qwik';
+import { component$, useSignal, useComputed$, useVisibleTask$, $ } from '@builder.io/qwik';
 import ThreadRow, { type Thread } from './ThreadRow';
 import { mockThreads } from '../../data/mockThreads';
 import { mockThreadDetails } from '../../data/mockThreadDetails';
@@ -69,7 +69,43 @@ export default component$(() => {
   const currentPage = useSignal(1);
   const activeTag = useSignal('');
   const searchQuery = useSignal('');
+  const sortBy = useSignal('latest');
   const itemsPerPage = 5;
+
+  // Initialize from URL params
+  useVisibleTask$(() => {
+    const url = new URL(window.location.href);
+    const params = url.searchParams;
+    
+    activeTab.value = params.get('tab') || 'all';
+    currentPage.value = parseInt(params.get('page') || '1');
+    activeTag.value = params.get('tag') || '';
+    searchQuery.value = params.get('search') || '';
+    sortBy.value = params.get('sort') || 'latest';
+  });
+
+  // Update URL when filters change
+  const updateURL = $(() => {
+    const url = new URL(window.location.href);
+    const params = url.searchParams;
+    
+    if (activeTab.value !== 'all') params.set('tab', activeTab.value);
+    else params.delete('tab');
+    
+    if (currentPage.value > 1) params.set('page', currentPage.value.toString());
+    else params.delete('page');
+    
+    if (activeTag.value) params.set('tag', activeTag.value);
+    else params.delete('tag');
+    
+    if (searchQuery.value) params.set('search', searchQuery.value);
+    else params.delete('search');
+    
+    if (sortBy.value !== 'latest') params.set('sort', sortBy.value);
+    else params.delete('sort');
+    
+    window.history.replaceState({}, '', url.toString());
+  });
 
   // Sync all threads with dynamic data
   const syncedThreads = useComputed$(() => {
@@ -107,20 +143,41 @@ export default component$(() => {
 
   // Sort by last activity (most recent first)
   const sortedThreads = useComputed$(() => {
-    return filteredThreads.value.sort((a, b) => {
-      // Sticky threads first
+    let threads = [...filteredThreads.value];
+    
+    // Sticky threads first
+    threads.sort((a, b) => {
       if (a.isSticky && !b.isSticky) return -1;
       if (!a.isSticky && b.isSticky) return 1;
-      
-      // Then by activity time (rough sort)
-      const timeA = a.lastActivity.includes('menit') ? 1 : 
-                   a.lastActivity.includes('jam') ? parseInt(a.lastActivity) * 60 :
-                   parseInt(a.lastActivity) * 1440;
-      const timeB = b.lastActivity.includes('menit') ? 1 : 
-                   b.lastActivity.includes('jam') ? parseInt(b.lastActivity) * 60 :
-                   parseInt(b.lastActivity) * 1440;
-      return timeA - timeB;
+      return 0;
     });
+    
+    // Then sort by selected criteria
+    const nonSticky = threads.filter(t => !t.isSticky);
+    const sticky = threads.filter(t => t.isSticky);
+    
+    switch (sortBy.value) {
+      case 'popular':
+        nonSticky.sort((a, b) => (b.cendol + b.replyCount) - (a.cendol + a.replyCount));
+        break;
+      case 'replies':
+        nonSticky.sort((a, b) => b.replyCount - a.replyCount);
+        break;
+      case 'latest':
+      default:
+        nonSticky.sort((a, b) => {
+          const timeA = a.lastActivity.includes('menit') ? 1 : 
+                       a.lastActivity.includes('jam') ? parseInt(a.lastActivity) * 60 :
+                       parseInt(a.lastActivity) * 1440;
+          const timeB = b.lastActivity.includes('menit') ? 1 : 
+                       b.lastActivity.includes('jam') ? parseInt(b.lastActivity) * 60 :
+                       parseInt(b.lastActivity) * 1440;
+          return timeA - timeB;
+        });
+        break;
+    }
+    
+    return [...sticky, ...nonSticky];
   });
 
   const totalPages = useComputed$(() => Math.ceil(sortedThreads.value.length / itemsPerPage));
@@ -157,7 +214,11 @@ export default component$(() => {
             </span>
           </div>
           <button 
-            onClick$={() => { activeTag.value = ''; currentPage.value = 1; }}
+            onClick$={() => { 
+              activeTag.value = ''; 
+              currentPage.value = 1; 
+              updateURL();
+            }}
             class="text-blue-600 hover:text-blue-800 text-sm font-medium"
           >
             Hapus Filter
@@ -171,7 +232,11 @@ export default component$(() => {
           {subforums.map((tab) => (
             <button
               key={tab.id}
-              onClick$={() => { activeTab.value = tab.id; currentPage.value = 1; }}
+              onClick$={() => { 
+                activeTab.value = tab.id; 
+                currentPage.value = 1; 
+                updateURL();
+              }}
               class={`px-4 py-2 rounded-xl font-medium text-sm transition whitespace-nowrap ${
                 activeTab.value === tab.id
                   ? 'bg-green-600 text-white'
@@ -185,7 +250,7 @@ export default component$(() => {
       </div>
 
       {/* Stats Bar */}
-      <div class="ml-2 flex items-center justify-between mb-3 text-sm">
+      <div class="ml-2 flex items-center justify-between mb-2 text-sm">
         <div class="flex items-center gap-4 text-gray-500">
           <span class="flex items-center gap-1.5">
             <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
@@ -197,10 +262,18 @@ export default component$(() => {
         <div class="flex items-center gap-3">
           <div class="flex items-center gap-2">
             <span class="text-gray-400 text-xs">Urutkan:</span>
-            <select class="text-sm bg-white border border-gray-200 rounded-lg px-2 py-1 text-gray-600">
-              <option>Terbaru</option>
-              <option>Terpopuler</option>
-              <option>Paling Dibalas</option>
+            <select 
+              value={sortBy.value}
+              onChange$={(e) => { 
+                sortBy.value = (e.target as HTMLSelectElement).value; 
+                currentPage.value = 1;
+                updateURL();
+              }}
+              class="text-sm bg-white border border-gray-200 rounded-lg px-2 py-1 text-gray-600"
+            >
+              <option value="latest">Terbaru</option>
+              <option value="popular">Terpopuler</option>
+              <option value="replies">Paling Dibalas</option>
             </select>
           </div>
           <div class="relative">
@@ -208,7 +281,11 @@ export default component$(() => {
               type="text"
               placeholder="Cari thread..."
               value={searchQuery.value}
-              onInput$={(e) => { searchQuery.value = (e.target as HTMLInputElement).value; currentPage.value = 1; }}
+              onInput$={(e) => { 
+                searchQuery.value = (e.target as HTMLInputElement).value; 
+                currentPage.value = 1; 
+                updateURL();
+              }}
               class="text-sm bg-white border border-gray-200 rounded-lg px-3 py-1.5 pr-8 text-gray-600 w-48 focus:ring-2 focus:ring-green-500 focus:border-green-500"
             />
             <span class="absolute right-2.5 top-1.5 text-gray-400 text-sm">🔍</span>
@@ -242,21 +319,10 @@ export default component$(() => {
       <script dangerouslySetInnerHTML={{
         __html: `
           document.addEventListener('tag-filter', function(e) {
-            // This will be handled by Qwik's reactivity
-            window.dispatchEvent(new CustomEvent('qwik-tag-filter', { detail: e.detail }));
-          });
-        `
-      }} />
-
-      <script dangerouslySetInnerHTML={{
-        __html: `
-          window.addEventListener('qwik-tag-filter', function(e) {
-            // Update URL with tag parameter
             const url = new URL(window.location);
             url.searchParams.set('tag', e.detail);
+            url.searchParams.delete('page');
             window.history.pushState({}, '', url);
-            
-            // Trigger page reload to apply filter
             window.location.reload();
           });
         `
@@ -272,7 +338,10 @@ export default component$(() => {
             {Array.from({ length: totalPages.value }, (_, i) => i + 1).map(page => (
               <button
                 key={page}
-                onClick$={() => currentPage.value = page}
+                onClick$={() => { 
+                  currentPage.value = page; 
+                  updateURL();
+                }}
                 class={`px-3 py-1.5 rounded-lg text-sm font-medium transition ${
                   currentPage.value === page
                     ? 'bg-green-600 text-white'
