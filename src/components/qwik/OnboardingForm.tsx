@@ -122,7 +122,7 @@ export default component$(() => {
   }
 
   return (
-    <div class="bg-white p-8 rounded-lg shadow-lg">
+    <div class="bg-white p-8 rounded-lg shadow-lg animate-in fade-in duration-300">
       <div class="mb-6">
         <div class="flex justify-between items-center mb-2">
           <span class="text-sm text-gray-500">Langkah {currentStep.value} dari 3</span>
@@ -130,7 +130,7 @@ export default component$(() => {
         </div>
         <div class="w-full bg-gray-200 rounded-full h-2">
           <div 
-            class="bg-blue-600 h-2 rounded-full transition-all duration-300"
+            class="bg-blue-600 h-2 rounded-full transition-all duration-500 ease-out"
             style={`width: ${(currentStep.value / 3) * 100}%`}
           ></div>
         </div>
@@ -142,7 +142,7 @@ export default component$(() => {
 
       <form preventdefault:submit onSubmit$={submitForm}>
         {currentStep.value === 1 && (
-          <div class="space-y-4">
+          <div class="space-y-4 animate-in slide-in-from-right duration-300">
             <h2 class="text-2xl font-bold mb-4">Informasi Dasar</h2>
             <input
               type="text"
@@ -184,7 +184,7 @@ export default component$(() => {
               type="button"
               onClick$={nextStep}
               disabled={!!emailError.value || !formData.name || !formData.email || !formData.phone}
-              class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
             >
               Lanjut
             </button>
@@ -192,7 +192,7 @@ export default component$(() => {
         )}
 
         {currentStep.value === 2 && (
-          <div class="space-y-4">
+          <div class="space-y-4 animate-in slide-in-from-right duration-300">
             <h2 class="text-2xl font-bold mb-4">Informasi Akademik</h2>
             <select
               value={formData.year}
@@ -226,14 +226,14 @@ export default component$(() => {
               <button
                 type="button"
                 onClick$={prevStep}
-                class="flex-1 bg-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-400"
+                class="flex-1 bg-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-400 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
               >
                 Kembali
               </button>
               <button
                 type="button"
                 onClick$={nextStep}
-                class="flex-1 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700"
+                class="flex-1 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
               >
                 Lanjut
               </button>
@@ -242,7 +242,7 @@ export default component$(() => {
         )}
 
         {currentStep.value === 3 && (
-          <div class="space-y-4">
+          <div class="space-y-4 animate-in slide-in-from-right duration-300">
             <h2 class="text-2xl font-bold mb-4">Minat & Motivasi</h2>
             <div>
               <label class="block text-sm font-medium mb-2">Bidang Fisika yang Diminati:</label>
@@ -274,14 +274,14 @@ export default component$(() => {
               <button
                 type="button"
                 onClick$={prevStep}
-                class="flex-1 bg-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-400"
+                class="flex-1 bg-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-400 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
               >
                 Kembali
               </button>
               <button
                 type="submit"
                 disabled={isSubmitting.value}
-                class="flex-1 bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 disabled:opacity-50"
+                class="flex-1 bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 disabled:opacity-50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:hover:scale-100"
               >
                 {isSubmitting.value ? 'Mendaftar...' : 'Gabung KF13!'}
               </button>
