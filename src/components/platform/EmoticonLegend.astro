@@ -24,7 +24,7 @@ const emoticons = Object.entries(EMOTICONS).slice(0, limit);
 
 <script>
   document.querySelectorAll('.emoticon-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', async () => {
       const code = btn.getAttribute('data-code');
       if (!code) return;
       
@@ -41,8 +41,23 @@ const emoticons = Object.entries(EMOTICONS).slice(0, limit);
         textarea.selectionStart = textarea.selectionEnd = start + code.length + 1;
         textarea.focus();
       } else {
-        // Fallback: copy to clipboard
-        navigator.clipboard.writeText(code);
+        // Fallback: copy to clipboard with visual feedback
+        try {
+          await navigator.clipboard.writeText(code);
+          
+          const originalText = btn.innerHTML;
+          btn.innerHTML = '<span class="w-full text-center text-green-600 font-medium">✓ Copied!</span>';
+          btn.classList.add('bg-green-50', 'border-green-200');
+          btn.style.transform = 'scale(0.95)';
+          
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.classList.remove('bg-green-50', 'border-green-200');
+            btn.style.transform = '';
+          }, 1200);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
       }
     });
   });

@@ -316,17 +316,22 @@ export default component$(() => {
         )}
       </div>
 
-      <script dangerouslySetInnerHTML={{
-        __html: `
-          document.addEventListener('tag-filter', function(e) {
-            const url = new URL(window.location);
-            url.searchParams.set('tag', e.detail);
-            url.searchParams.delete('page');
-            window.history.pushState({}, '', url);
-            window.location.reload();
-          });
-        `
-      }} />
+      {/* Tag filter event listener */}
+      {useVisibleTask$(() => {
+        const handleTagFilter = (e: CustomEvent) => {
+          const url = new URL(window.location.href);
+          url.searchParams.set('tag', e.detail);
+          url.searchParams.delete('page');
+          window.history.pushState({}, '', url.toString());
+          window.location.reload();
+        };
+        
+        document.addEventListener('tag-filter', handleTagFilter as EventListener);
+        
+        return () => {
+          document.removeEventListener('tag-filter', handleTagFilter as EventListener);
+        };
+      })}
 
       {/* Pagination */}
       {totalPages.value > 1 && (

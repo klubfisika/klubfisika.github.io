@@ -129,7 +129,7 @@ export default component$<Props>(({ thread }) => {
         </div>
         <div class="text-sm font-medium text-gray-700 truncate max-w-full">{thread.author.name}</div>
         {thread.author.rank && (
-          <div class={`text-xs font-medium ${rankColor}`}>{thread.author.rank}</div>
+          <div class={`text-xs ${rankColor}`}>{thread.author.rank}</div>
         )}
       </div>
       
