@@ -17,6 +17,8 @@ import AuthLayout from '../layouts/AuthLayout.astro';
             <div id="step2" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 text-sm font-bold">2</div>
             <div class="w-12 h-1 bg-gray-200 rounded"></div>
             <div id="step3" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 text-sm font-bold">3</div>
+            <div class="w-12 h-1 bg-gray-200 rounded"></div>
+            <div id="step4" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 text-sm font-bold">4</div>
           </div>
         </div>
 
@@ -35,7 +37,7 @@ import AuthLayout from '../layouts/AuthLayout.astro';
                 </div>
                 <div>
                   <div class="font-semibold" id="user-name">Loading...</div>
-                  <div class="text-sm text-gray-600" id="user-email">Loading...</div>
+                  <div class="text-sm text-gray-600" id="user-phone">Loading...</div>
                 </div>
               </div>
             </div>
@@ -80,8 +82,56 @@ import AuthLayout from '../layouts/AuthLayout.astro';
             </div>
           </div>
 
-          <!-- Step 2: Interests -->
+          <!-- Step 2: Institution Details -->
           <div id="form-step2" class="hidden animate-in slide-in-from-right duration-300">
+            <h2 class="text-2xl font-bold text-center mb-2">Detail Institusi 🏫</h2>
+            <p class="text-gray-500 text-center mb-6" id="institution-subtitle">Ceritakan tentang tempat belajar kamu</p>
+            
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Nama Institusi</label>
+                <input 
+                  type="text" 
+                  id="institution-name" 
+                  placeholder="Contoh: SMA Negeri 1 Jakarta / Universitas Indonesia"
+                  class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all duration-200 focus:shadow-lg focus:scale-[1.01]"
+                  required
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2" id="year-label">Tahun Masuk</label>
+                <select 
+                  id="year-select"
+                  class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all duration-200 focus:shadow-lg focus:scale-[1.01]"
+                  required
+                >
+                  <option value="">Pilih tahun</option>
+                  <option value="2024">2024</option>
+                  <option value="2023">2023</option>
+                  <option value="2022">2022</option>
+                  <option value="2021">2021</option>
+                  <option value="2020">2020</option>
+                  <option value="2019">2019</option>
+                </select>
+              </div>
+              <div id="major-field" class="hidden">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Jurusan/Program Studi</label>
+                <input 
+                  type="text" 
+                  id="major-input"
+                  placeholder="Contoh: Fisika / Teknik Fisika / IPA"
+                  class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all duration-200 focus:shadow-lg focus:scale-[1.01]"
+                />
+              </div>
+            </div>
+            
+            <button id="next-step2" class="w-full mt-6 bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100" disabled>
+              Lanjut
+            </button>
+          </div>
+
+          <!-- Step 3: Interests -->
+          <div id="form-step3" class="hidden animate-in slide-in-from-right duration-300">
             <h2 class="text-2xl font-bold text-center mb-2">Apa yang menarik buatmu? ✨</h2>
             <p class="text-gray-500 text-center mb-6">Pilih beberapa yang kamu suka</p>
             
@@ -112,13 +162,13 @@ import AuthLayout from '../layouts/AuthLayout.astro';
               </button>
             </div>
             
-            <button id="next-step2" class="w-full mt-6 bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100" disabled>
+            <button id="next-step3" class="w-full mt-6 bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100" disabled>
               Lanjut
             </button>
           </div>
 
-          <!-- Step 3: Bio -->
-          <div id="form-step3" class="hidden animate-in slide-in-from-right duration-300">
+          <!-- Step 4: Bio -->
+          <div id="form-step4" class="hidden animate-in slide-in-from-right duration-300">
             <h2 class="text-2xl font-bold text-center mb-2">Ceritain dikit tentang kamu 😊</h2>
             <p class="text-gray-500 text-center mb-6">Biar teman-teman bisa kenal</p>
             
@@ -172,16 +222,16 @@ import AuthLayout from '../layouts/AuthLayout.astro';
       document.addEventListener('DOMContentLoaded', () => {
         // Display user info
         const userNameEl = document.getElementById('user-name');
-        const userEmailEl = document.getElementById('user-email');
+        const userPhoneEl = document.getElementById('user-phone');
         const userInitialEl = document.getElementById('user-initial');
         
-        if (userData.name && userData.email) {
+        if (userData.name && userData.phone) {
           userNameEl.textContent = userData.name;
-          userEmailEl.textContent = userData.email;
+          userPhoneEl.textContent = userData.phone;
           userInitialEl.textContent = userData.name.charAt(0).toUpperCase();
         } else {
           userNameEl.textContent = 'Data tidak ditemukan';
-          userEmailEl.textContent = 'Silakan mulai dari halaman login';
+          userPhoneEl.textContent = 'Silakan mulai dari halaman login';
         }
         
         // Initialize back link
@@ -192,7 +242,7 @@ import AuthLayout from '../layouts/AuthLayout.astro';
       document.querySelectorAll('.level-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           // No need to validate inputs - data comes from /mulai
-          if (!userData.name || !userData.email) {
+          if (!userData.name || !userData.phone) {
             alert('Data tidak lengkap. Silakan mulai dari halaman login.');
             return;
           }
@@ -205,6 +255,9 @@ import AuthLayout from '../layouts/AuthLayout.astro';
           btn.classList.remove('border-gray-200');
           
           selectedLevel = btn.dataset.level;
+          
+          // Update institution step based on level
+          updateInstitutionStep(selectedLevel);
           
           setTimeout(() => {
             document.getElementById('form-step1').classList.add('hidden');
@@ -234,25 +287,40 @@ import AuthLayout from '../layouts/AuthLayout.astro';
         });
       });
 
+      // Update institution step based on selected level
+      function updateInstitutionStep(level) {
+        const subtitle = document.getElementById('institution-subtitle');
+        const yearLabel = document.getElementById('year-label');
+        const majorField = document.getElementById('major-field');
+        
+        if (level === 'SMP' || level === 'SMA') {
+          subtitle.textContent = 'Ceritakan tentang sekolah kamu';
+          yearLabel.textContent = 'Tahun Masuk';
+          majorField.classList.add('hidden');
+        } else if (level === 'Universitas') {
+          subtitle.textContent = 'Ceritakan tentang universitas kamu';
+          yearLabel.textContent = 'Tahun Masuk';
+          majorField.classList.remove('hidden');
+        } else if (level === 'S2/S3') {
+          subtitle.textContent = 'Ceritakan tentang institusi penelitian kamu';
+          yearLabel.textContent = 'Tahun Mulai Program';
+          majorField.classList.remove('hidden');
+        }
+      }
+
       // Progress bar helper
       function updateProgressBar(step) {
-        if (step >= 2) {
-          document.getElementById('step2').classList.remove('bg-gray-200', 'text-gray-500');
-          document.getElementById('step2').classList.add('bg-green-600', 'text-white');
-          const firstLine = document.querySelector('.w-12.h-1');
-          if (firstLine) {
-            firstLine.classList.remove('bg-gray-200');
-            firstLine.classList.add('bg-green-600');
-          }
-        }
+        const steps = ['step2', 'step3', 'step4'];
+        const lines = document.querySelectorAll('.w-12.h-1');
         
-        if (step >= 3) {
-          document.getElementById('step3').classList.remove('bg-gray-200', 'text-gray-500');
-          document.getElementById('step3').classList.add('bg-green-600', 'text-white');
-          const secondLine = document.querySelectorAll('.w-12.h-1')[1];
-          if (secondLine) {
-            secondLine.classList.remove('bg-gray-200');
-            secondLine.classList.add('bg-green-600');
+        for (let i = 0; i < step - 1; i++) {
+          if (steps[i]) {
+            document.getElementById(steps[i]).classList.remove('bg-gray-200', 'text-gray-500');
+            document.getElementById(steps[i]).classList.add('bg-green-600', 'text-white');
+          }
+          if (lines[i + 1]) {
+            lines[i + 1].classList.remove('bg-gray-200');
+            lines[i + 1].classList.add('bg-green-600');
           }
         }
       }
