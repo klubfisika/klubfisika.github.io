@@ -1,4 +1,4 @@
-import { component$, useSignal, useStore, $ } from '@builder.io/qwik';
+import { component$, useSignal, useStore, $, useTask$ } from '@builder.io/qwik';
 import { turso, initDB } from '../../lib/turso';
 
 interface OnboardingData {
@@ -28,6 +28,17 @@ export default component$(() => {
   const isSuccess = useSignal(false);
   const errorMsg = useSignal('');
   const currentStep = useSignal(1);
+  const emailError = useSignal('');
+  
+  // Load saved email on component mount
+  useTask$(() => {
+    if (typeof window !== 'undefined') {
+      const savedEmail = localStorage.getItem('kf13-email');
+      if (savedEmail) {
+        formData.email = savedEmail;
+      }
+    }
+  });
 
   const interests = [
     'Mekanika', 'Termodinamika', 'Elektromagnetisme', 'Fisika Modern',
@@ -40,6 +51,21 @@ export default component$(() => {
       formData.interests.splice(index, 1);
     } else {
       formData.interests.push(interest);
+    }
+  });
+
+  const validateEmail = $((email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email) {
+      emailError.value = '';
+    } else if (!emailRegex.test(email)) {
+      emailError.value = 'Format email tidak valid';
+    } else {
+      emailError.value = '';
+      // Save valid email to localStorage
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('kf13-email', email);
+      }
     }
   });
 
@@ -124,16 +150,28 @@ export default component$(() => {
               value={formData.name}
               onInput$={(e) => formData.name = (e.target as HTMLInputElement).value}
               class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition"
+              autoFocus
               required
             />
             <input
               type="email"
               placeholder="Email"
               value={formData.email}
-              onInput$={(e) => formData.email = (e.target as HTMLInputElement).value}
-              class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition"
+              onInput$={(e) => {
+                const email = (e.target as HTMLInputElement).value;
+                formData.email = email;
+                validateEmail(email);
+              }}
+              class={`w-full p-3 border rounded-xl focus:ring-2 focus:border-transparent outline-none transition ${
+                emailError.value 
+                  ? 'border-red-300 focus:ring-red-500' 
+                  : 'border-gray-200 focus:ring-green-500'
+              }`}
               required
             />
+            {emailError.value && (
+              <p class="text-red-500 text-sm mt-1">{emailError.value}</p>
+            )}
             <input
               type="tel"
               placeholder="Nomor WhatsApp"
@@ -145,7 +183,8 @@ export default component$(() => {
             <button
               type="button"
               onClick$={nextStep}
-              class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700"
+              disabled={!!emailError.value || !formData.name || !formData.email || !formData.phone}
+              class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Lanjut
             </button>
