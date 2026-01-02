@@ -208,8 +208,7 @@ import ComingSoonModal from '../components/ComingSoonModal.astro';
         const fd = new FormData(e.target);
         sessionStorage.setItem('kf13-onboarding', JSON.stringify({
           name: fd.get('name'),
-          email: fd.get('email'),
-          university: fd.get('university')
+          phone: fd.get('phone')
         }));
         window.location.href = '/onboarding';
       });
