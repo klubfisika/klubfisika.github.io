@@ -21,6 +21,8 @@ export interface Thread {
   isHot?: boolean;
   isSolved?: boolean;
   isLocked?: boolean;
+  lockReason?: string;
+  lockedAt?: string;
   category?: string;
 }
 

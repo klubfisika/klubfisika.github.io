@@ -430,14 +430,14 @@ Ask me anything! :jempol`,
     cendol: 5,
     bata: 20,
     isLocked: true,
+    lockReason: 'Diskusi menyimpang dari topik utama',
+    lockedAt: '3 jam lalu',
     category: 'lounge',
     content: `Ane penasaran aja gan... :bingung
 
 Kan banyak yang bilang bumi itu datar. Tapi di sekolah diajarnya bulat.
 
-Yang mana yang bener nih? Ada yang bisa jelasin pake bukti ilmiah?
-
-**[THREAD LOCKED BY MODERATOR]**`,
+Yang mana yang bener nih? Ada yang bisa jelasin pake bukti ilmiah?`,
     signature: 'Newbie yang penasaran',
     replies: [
       {
