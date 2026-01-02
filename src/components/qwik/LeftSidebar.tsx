@@ -1,63 +1,50 @@
 import { component$, useSignal, useVisibleTask$, $ } from '@builder.io/qwik';
+import {
+  LEFT_SIDEBAR_CONFIG,
+  LEFT_SIDEBAR_NAV_ITEMS,
+  LEFT_SIDEBAR_TRENDING_TOPICS,
+  LEFT_SIDEBAR_LABELS,
+  LEFT_SIDEBAR_STYLES,
+  getSidebarState,
+  setSidebarState,
+  getNavItemClass
+} from '../../data/leftSidebarConfig';
 
 interface Props {
   activeNav?: string;
 }
 
-const navItems = [
-  { href: '/platform/feed', label: 'Home', icon: '🏠' },
-  { href: '/platform/discussions', label: 'Forum', icon: '💬' },
-  { href: '/platform/projects', label: 'Projects', icon: '🔬' },
-  { href: '/platform/shorts', label: 'Shorts', icon: '🎬' },
-  { href: '/platform/explore', label: 'Explore', icon: '🔍' },
-];
-
-const trendingTopics = [
-  '#osn-fisika-2026',
-  '#diy-eksperimen', 
-  '#quantum-computing',
-  '#arduino-physics',
-];
-
 export default component$<Props>(({ activeNav }) => {
   const isMinimized = useSignal(false);
 
   useVisibleTask$(() => {
-    const saved = localStorage.getItem('sidebar-minimized');
-    if (saved === 'true') {
-      isMinimized.value = true;
-    }
+    isMinimized.value = getSidebarState();
   });
 
   const toggleSidebar = $(() => {
     isMinimized.value = !isMinimized.value;
-    localStorage.setItem('sidebar-minimized', String(isMinimized.value));
-    window.dispatchEvent(new CustomEvent('sidebar-toggle', { detail: isMinimized.value }));
+    setSidebarState(isMinimized.value);
   });
 
   return (
     <aside 
-      class={`hidden lg:flex flex-col fixed left-0 top-14 h-[calc(100vh-3.5rem)] bg-gray-50 border-r border-gray-100 z-10 transition-all duration-300 ${
-        isMinimized.value ? 'w-16' : 'w-64'
+      class={`${LEFT_SIDEBAR_CONFIG.position} ${LEFT_SIDEBAR_CONFIG.styling} ${
+        isMinimized.value ? LEFT_SIDEBAR_CONFIG.width.minimized : LEFT_SIDEBAR_CONFIG.width.expanded
       }`}
     >
       {/* Main Nav */}
-      <div class={`flex-1 p-3 ${isMinimized.value ? 'px-2' : ''}`}>
-        <nav class="space-y-1">
-          {navItems.map(item => (
+      <div class={`${LEFT_SIDEBAR_STYLES.container} ${isMinimized.value ? LEFT_SIDEBAR_STYLES.containerMinimized : ''}`}>
+        <nav class={LEFT_SIDEBAR_STYLES.nav}>
+          {LEFT_SIDEBAR_NAV_ITEMS.map(item => (
             <a 
               key={item.href}
               href={item.href} 
-              class={`flex items-center gap-3 py-2.5 rounded-lg text-sm font-medium transition ${
-                isMinimized.value ? 'justify-center px-0' : 'px-3'
-              } ${
-                activeNav === item.href 
-                  ? 'bg-green-100 text-green-700' 
-                  : 'text-gray-700 hover:bg-gray-200'
-              }`}
+              class={getNavItemClass(activeNav === item.href, isMinimized.value)}
               title={isMinimized.value ? item.label : undefined}
             >
-              <span class={`${isMinimized.value ? 'text-xl' : 'text-lg'}`}>{item.icon}</span>
+              <span class={isMinimized.value ? LEFT_SIDEBAR_STYLES.iconMinimized : LEFT_SIDEBAR_STYLES.iconExpanded}>
+                {item.icon}
+              </span>
               {!isMinimized.value && <span>{item.label}</span>}
             </a>
           ))}
@@ -65,12 +52,12 @@ export default component$<Props>(({ activeNav }) => {
         
         {!isMinimized.value && (
           <>
-            <hr class="my-4 border-gray-100" />
+            <hr class={LEFT_SIDEBAR_STYLES.separator} />
             
-            <div class="px-3 text-xs font-semibold text-gray-400 uppercase mb-2">Trending</div>
-            <div class="space-y-0.5">
-              {trendingTopics.map(topic => (
-                <a key={topic} href="#" class="block px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-200 rounded-lg truncate">
+            <div class={LEFT_SIDEBAR_STYLES.trendingHeader}>{LEFT_SIDEBAR_LABELS.trending}</div>
+            <div class={LEFT_SIDEBAR_STYLES.trendingContainer}>
+              {LEFT_SIDEBAR_TRENDING_TOPICS.map(topic => (
+                <a key={topic} href="#" class={LEFT_SIDEBAR_STYLES.trendingItem}>
                   {topic}
                 </a>
               ))}
@@ -80,15 +67,15 @@ export default component$<Props>(({ activeNav }) => {
       </div>
 
       {/* Bottom Section */}
-      <div class={`border-t border-gray-100 p-3 ${isMinimized.value ? 'px-2' : ''}`}>
+      <div class={`${LEFT_SIDEBAR_STYLES.bottomSection} ${isMinimized.value ? LEFT_SIDEBAR_STYLES.bottomSectionMinimized : ''}`}>
         {!isMinimized.value && (
-          <a href="/" class="flex items-center gap-2 px-3 py-2 text-sm text-gray-500 hover:bg-gray-200 rounded-lg transition">
-            <span>🌐</span> Kembali ke Website
+          <a href="/" class={LEFT_SIDEBAR_STYLES.backLink}>
+            <span>🌐</span> {LEFT_SIDEBAR_LABELS.backToWebsite}
           </a>
         )}
         
         {isMinimized.value && (
-          <a href="/" class="flex justify-center py-2 text-gray-500 hover:bg-gray-200 rounded-lg transition" title="Kembali ke Website">
+          <a href="/" class={LEFT_SIDEBAR_STYLES.backLinkMinimized} title={LEFT_SIDEBAR_LABELS.backToWebsite}>
             <span>🌐</span>
           </a>
         )}
@@ -96,15 +83,15 @@ export default component$<Props>(({ activeNav }) => {
         {/* Toggle Button */}
         <button
           onClick$={toggleSidebar}
-          class={`mt-2 w-full flex items-center gap-2 py-2 text-sm text-gray-500 hover:bg-gray-200 rounded-lg transition ${
-            isMinimized.value ? 'justify-center' : 'px-3'
+          class={`${LEFT_SIDEBAR_STYLES.toggleButton} ${
+            isMinimized.value ? LEFT_SIDEBAR_STYLES.toggleButtonMinimized : LEFT_SIDEBAR_STYLES.toggleButtonExpanded
           }`}
-          title={isMinimized.value ? 'Expand sidebar' : 'Minimize sidebar'}
+          title={isMinimized.value ? LEFT_SIDEBAR_LABELS.expandTitle : LEFT_SIDEBAR_LABELS.minimizeTitle}
         >
-          <span class={`transition-transform duration-300 ${isMinimized.value ? 'rotate-180' : ''}`}>
+          <span class={`${LEFT_SIDEBAR_STYLES.toggleIcon} ${isMinimized.value ? LEFT_SIDEBAR_STYLES.toggleIconRotated : ''}`}>
             «
           </span>
-          {!isMinimized.value && <span>Minimize</span>}
+          {!isMinimized.value && <span>{LEFT_SIDEBAR_LABELS.minimize}</span>}
         </button>
       </div>
     </aside>
