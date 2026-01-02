@@ -1,0 +1,390 @@
+---
+import PlatformLayout from '@layouts/PlatformLayout.astro';
+---
+
+<PlatformLayout title="Design System" activeNav="/platform/design-system" hideRightSidebar={true}>
+  <div class="space-y-8">
+    <!-- Header -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">Design System</h1>
+      <p class="text-gray-600">Komponen UI dan elemen desain platform KF13</p>
+    </div>
+
+    <!-- Colors -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <h2 class="text-xl font-bold mb-4">Colors</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="space-y-2">
+          <div class="w-full h-16 bg-green-500 rounded-lg"></div>
+          <p class="text-sm font-medium">Primary Green</p>
+          <code class="text-xs text-gray-500">bg-green-500</code>
+        </div>
+        <div class="space-y-2">
+          <div class="w-full h-16 bg-teal-500 rounded-lg"></div>
+          <p class="text-sm font-medium">Secondary Teal</p>
+          <code class="text-xs text-gray-500">bg-teal-500</code>
+        </div>
+        <div class="space-y-2">
+          <div class="w-full h-16 bg-gray-100 rounded-lg border border-gray-100"></div>
+          <p class="text-sm font-medium">Background</p>
+          <code class="text-xs text-gray-500">bg-gray-100</code>
+        </div>
+        <div class="space-y-2">
+          <div class="w-full h-16 bg-white rounded-lg border border-gray-100"></div>
+          <p class="text-sm font-medium">Card White</p>
+          <code class="text-xs text-gray-500">bg-white</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <h2 class="text-xl font-bold mb-4">Typography</h2>
+      <div class="space-y-4">
+        <div>
+          <h1 class="text-3xl font-bold text-gray-900">Heading 1 - 3xl Bold</h1>
+          <code class="text-xs text-gray-500">text-3xl font-bold</code>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900">Heading 2 - 2xl Bold</h2>
+          <code class="text-xs text-gray-500">text-2xl font-bold</code>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-gray-900">Heading 3 - xl Bold</h3>
+          <code class="text-xs text-gray-500">text-xl font-bold</code>
+        </div>
+        <div>
+          <h4 class="text-lg font-bold text-gray-900">Heading 4 - lg Bold</h4>
+          <code class="text-xs text-gray-500">text-lg font-bold</code>
+        </div>
+        <div>
+          <p class="text-base text-gray-700">Body Text - Base Regular</p>
+          <code class="text-xs text-gray-500">text-base text-gray-700</code>
+        </div>
+        <div>
+          <p class="text-sm text-gray-600">Small Text - sm Regular</p>
+          <code class="text-xs text-gray-500">text-sm text-gray-600</code>
+        </div>
+        <div>
+          <p class="text-xs text-gray-500">Extra Small - xs Regular</p>
+          <code class="text-xs text-gray-500">text-xs text-gray-500</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <h2 class="text-xl font-bold mb-4">Buttons</h2>
+      <div class="space-y-6">
+        <!-- Primary Buttons -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3">Primary Buttons</h3>
+          <div class="flex flex-wrap gap-3">
+            <button class="bg-green-600 text-white px-6 py-3 rounded-full font-medium hover:bg-green-700 transition">
+              Primary Large
+            </button>
+            <button class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-green-700 transition">
+              Primary Medium
+            </button>
+            <button class="bg-green-600 text-white px-3 py-1.5 rounded-full text-xs font-medium hover:bg-green-700 transition">
+              Primary Small
+            </button>
+          </div>
+        </div>
+
+        <!-- Secondary Buttons -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3">Secondary Buttons</h3>
+          <div class="flex flex-wrap gap-3">
+            <button class="border border-green-600 text-green-600 px-6 py-3 rounded-full font-medium hover:bg-green-50 transition">
+              Secondary Large
+            </button>
+            <button class="border border-green-600 text-green-600 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-50 transition">
+              Secondary Medium
+            </button>
+            <button class="border border-green-600 text-green-600 px-3 py-1.5 rounded-full text-xs font-medium hover:bg-green-50 transition">
+              Secondary Small
+            </button>
+          </div>
+        </div>
+
+        <!-- Ghost Buttons -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3">Ghost Buttons</h3>
+          <div class="flex flex-wrap gap-3">
+            <button class="text-gray-700 px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition">
+              Ghost Large
+            </button>
+            <button class="text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition">
+              Ghost Medium
+            </button>
+            <button class="text-gray-700 px-3 py-1.5 rounded-full text-xs font-medium hover:bg-gray-100 transition">
+              Ghost Small
+            </button>
+          </div>
+        </div>
+
+        <!-- Icon Buttons -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3">Icon Buttons</h3>
+          <div class="flex flex-wrap gap-3">
+            <button class="p-3 hover:bg-gray-100 rounded-full transition">
+              <span class="text-xl">🔔</span>
+            </button>
+            <button class="p-2 hover:bg-gray-100 rounded-full transition">
+              <span class="text-lg">💬</span>
+            </button>
+            <button class="p-1.5 hover:bg-gray-100 rounded-full transition">
+              <span class="text-base">⚙️</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <h2 class="text-xl font-bold mb-4">Cards</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <!-- Basic Card -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <h3 class="font-bold text-lg mb-2">Basic Card</h3>
+          <p class="text-gray-600 text-sm">Standard card dengan shadow-sm dan rounded-2xl</p>
+          <code class="text-xs text-gray-500 block mt-2">bg-white rounded-2xl p-6 shadow-sm</code>
+        </div>
+
+        <!-- Gradient Card -->
+        <div class="bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl p-6 text-white">
+          <h3 class="font-bold text-lg mb-2">Gradient Card</h3>
+          <p class="text-green-100 text-sm">Card dengan gradient background</p>
+          <code class="text-xs text-green-200 block mt-2">bg-gradient-to-br from-green-500 to-teal-600</code>
+        </div>
+
+        <!-- Hover Card -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition cursor-pointer border border-gray-100">
+          <h3 class="font-bold text-lg mb-2">Hover Card</h3>
+          <p class="text-gray-600 text-sm">Card dengan hover effect</p>
+          <code class="text-xs text-gray-500 block mt-2">hover:shadow-md transition</code>
+        </div>
+
+        <!-- Stats Card -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+          <div class="text-3xl mb-3">📊</div>
+          <div class="text-2xl font-bold text-gray-900 mb-1">1,234</div>
+          <div class="text-xs text-gray-500">Stats Card</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Elements -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <h2 class="text-xl font-bold mb-4">Form Elements</h2>
+      <div class="space-y-4 max-w-md">
+        <!-- Input -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Text Input</label>
+          <input type="text" placeholder="Masukkan teks..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition">
+        </div>
+
+        <!-- Textarea -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Textarea</label>
+          <textarea placeholder="Tulis pesan..." rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition resize-none"></textarea>
+        </div>
+
+        <!-- Select -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Select</label>
+          <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition">
+            <option>Pilih opsi...</option>
+            <option>Opsi 1</option>
+            <option>Opsi 2</option>
+          </select>
+        </div>
+
+        <!-- Checkbox -->
+        <div class="flex items-center gap-3">
+          <input type="checkbox" id="checkbox" class="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500">
+          <label for="checkbox" class="text-sm text-gray-700">Checkbox Label</label>
+        </div>
+
+        <!-- Radio -->
+        <div class="space-y-2">
+          <div class="flex items-center gap-3">
+            <input type="radio" id="radio1" name="radio" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
+            <label for="radio1" class="text-sm text-gray-700">Radio Option 1</label>
+          </div>
+          <div class="flex items-center gap-3">
+            <input type="radio" id="radio2" name="radio" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
+            <label for="radio2" class="text-sm text-gray-700">Radio Option 2</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dividers -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <h2 class="text-xl font-bold mb-4">Dividers</h2>
+      <div class="space-y-6">
+        <div>
+          <p class="text-sm text-gray-600 mb-2">Horizontal Rule (hr)</p>
+          <hr class="border-gray-200">
+          <code class="text-xs text-gray-500">hr class="border-gray-200"</code>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-600 mb-2">Thick Divider</p>
+          <hr class="border-2 border-gray-300">
+          <code class="text-xs text-gray-500">hr class="border-2 border-gray-300"</code>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-600 mb-2">Colored Divider</p>
+          <hr class="border-green-200">
+          <code class="text-xs text-gray-500">hr class="border-green-200"</code>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-600 mb-2">Margin Divider</p>
+          <hr class="my-4 border-gray-200">
+          <code class="text-xs text-gray-500">hr class="my-4 border-gray-200"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spacing -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <h2 class="text-xl font-bold mb-4">Spacing & Breaks</h2>
+      <div class="space-y-4">
+        <div>
+          <p class="text-sm text-gray-600 mb-2">Line Break (br)</p>
+          <p class="text-gray-700">
+            Baris pertama<br>
+            Baris kedua setelah br
+          </p>
+          <code class="text-xs text-gray-500">Teks&lt;br&gt;Teks</code>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-600 mb-2">Margin Bottom Classes</p>
+          <div class="space-y-1">
+            <div class="bg-green-100 p-2 rounded mb-1">mb-1 (4px)</div>
+            <div class="bg-green-100 p-2 rounded mb-2">mb-2 (8px)</div>
+            <div class="bg-green-100 p-2 rounded mb-3">mb-3 (12px)</div>
+            <div class="bg-green-100 p-2 rounded mb-4">mb-4 (16px)</div>
+            <div class="bg-green-100 p-2 rounded mb-6">mb-6 (24px)</div>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-600 mb-2">Gap Classes (Flexbox)</p>
+          <div class="flex gap-1">
+            <div class="bg-blue-100 p-2 rounded text-xs">gap-1</div>
+            <div class="bg-blue-100 p-2 rounded text-xs">4px</div>
+          </div>
+          <div class="flex gap-2 mt-2">
+            <div class="bg-blue-100 p-2 rounded text-xs">gap-2</div>
+            <div class="bg-blue-100 p-2 rounded text-xs">8px</div>
+          </div>
+          <div class="flex gap-4 mt-2">
+            <div class="bg-blue-100 p-2 rounded text-xs">gap-4</div>
+            <div class="bg-blue-100 p-2 rounded text-xs">16px</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Badges & Tags -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <h2 class="text-xl font-bold mb-4">Badges & Tags</h2>
+      <div class="space-y-4">
+        <div>
+          <p class="text-sm text-gray-600 mb-2">Status Badges</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">Active</span>
+            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">Pending</span>
+            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-medium">Inactive</span>
+            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">Info</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-600 mb-2">Topic Tags</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-lg text-sm hover:bg-gray-200 cursor-pointer transition">#fisika</span>
+            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-lg text-sm hover:bg-gray-200 cursor-pointer transition">#eksperimen</span>
+            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-lg text-sm hover:bg-gray-200 cursor-pointer transition">#quantum</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-600 mb-2">Notification Dots</p>
+          <div class="flex items-center gap-4">
+            <div class="relative">
+              <span class="text-2xl">🔔</span>
+              <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
+            </div>
+            <div class="relative">
+              <span class="text-2xl">💬</span>
+              <span class="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading States -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <h2 class="text-xl font-bold mb-4">Loading States</h2>
+      <div class="space-y-4">
+        <div>
+          <p class="text-sm text-gray-600 mb-2">Skeleton Loading</p>
+          <div class="space-y-3">
+            <div class="h-4 bg-gray-200 rounded animate-pulse"></div>
+            <div class="h-4 bg-gray-200 rounded animate-pulse w-3/4"></div>
+            <div class="h-4 bg-gray-200 rounded animate-pulse w-1/2"></div>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-600 mb-2">Spinner</p>
+          <div class="w-6 h-6 border-2 border-gray-300 border-t-green-600 rounded-full animate-spin"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alerts -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <h2 class="text-xl font-bold mb-4">Alerts</h2>
+      <div class="space-y-4">
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+          <div class="flex items-center gap-3">
+            <span class="text-green-600">✅</span>
+            <p class="text-green-800 text-sm">Success alert message</p>
+          </div>
+        </div>
+
+        <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
+          <div class="flex items-center gap-3">
+            <span class="text-yellow-600">⚠️</span>
+            <p class="text-yellow-800 text-sm">Warning alert message</p>
+          </div>
+        </div>
+
+        <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+          <div class="flex items-center gap-3">
+            <span class="text-red-600">❌</span>
+            <p class="text-red-800 text-sm">Error alert message</p>
+          </div>
+        </div>
+
+        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+          <div class="flex items-center gap-3">
+            <span class="text-blue-600">ℹ️</span>
+            <p class="text-blue-800 text-sm">Info alert message</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</PlatformLayout>

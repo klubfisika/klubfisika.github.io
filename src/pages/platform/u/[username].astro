@@ -1,0 +1,252 @@
+---
+import PlatformLayout from '@layouts/PlatformLayout.astro';
+import SidebarCard from '@components/platform/SidebarCard.astro';
+import { mockThreadDetails } from '@data/mockThreadDetails';
+import { getRank } from '@lib/kaskus';
+
+// Static paths for known users
+export function getStaticPaths() {
+  const mockUsers = ['budi_fisika', 'quantum_master', 'newbie_phy'];
+  return mockUsers.map(username => ({ params: { username } }));
+}
+
+// Mock user data
+const mockUsers: Record<string, any> = {
+  'budi_fisika': {
+    username: 'budi_fisika',
+    displayName: 'Budi Santoso',
+    rank: 'Kaskus Holic',
+    posts: 156,
+    cendol: 234,
+    bata: 12,
+    joinDate: 'Januari 2023',
+    location: 'Jakarta',
+    bio: 'Mahasiswa Fisika UI. Suka eksperimen DIY dan sharing ilmu. "Physics is fun!" 🔬',
+    avatar: 'B',
+    badges: ['🏆 OSN Finalist', '🔬 DIY Master', '📚 Tutorial King'],
+    stats: {
+      threads: 23,
+      replies: 133,
+      likes: 234,
+      views: 12500
+    }
+  },
+  'quantum_master': {
+    username: 'quantum_master',
+    displayName: 'Dr. Ahmad Quantum',
+    rank: 'Kaskus Geek',
+    posts: 890,
+    cendol: 567,
+    bata: 8,
+    joinDate: 'Maret 2021',
+    location: 'Bandung',
+    bio: 'Dosen Fisika Kuantum ITB. Peneliti di bidang quantum computing. Always happy to help! ⚛️',
+    avatar: 'Q',
+    badges: ['🎓 PhD Physics', '⚛️ Quantum Expert', '👨‍🏫 Educator'],
+    stats: {
+      threads: 67,
+      replies: 823,
+      likes: 567,
+      views: 45600
+    }
+  },
+  'newbie_phy': {
+    username: 'newbie_phy',
+    displayName: 'Sari Fisika',
+    rank: 'Newbie',
+    posts: 3,
+    cendol: 8,
+    bata: 0,
+    joinDate: 'Desember 2025',
+    location: 'Surabaya',
+    bio: 'Mahasiswa baru Fisika. Masih belajar banyak hal. Mohon bimbingannya! 🙏',
+    avatar: 'S',
+    badges: ['🌱 New Member'],
+    stats: {
+      threads: 2,
+      replies: 1,
+      likes: 8,
+      views: 156
+    }
+  }
+};
+
+// Get username from URL
+const { username } = Astro.params;
+const user = mockUsers[username!];
+
+if (!user) {
+  return Astro.redirect('/platform/discussions');
+}
+
+// Get user's threads
+const userThreads = Object.values(mockThreadDetails).filter(thread => 
+  thread.author.name === username
+).slice(0, 5);
+
+// Rank info
+const rankInfo = getRank(user.posts);
+---
+
+<PlatformLayout title={`${user.displayName} (@${user.username})`} activeNav="">
+  <!-- Profile Header -->
+  <div class="bg-white rounded-2xl shadow-sm overflow-hidden mb-6">
+    <!-- Cover -->
+    <div class="h-32 bg-gradient-to-r from-blue-500 to-purple-600"></div>
+    
+    <!-- Profile Info -->
+    <div class="px-6 pb-6">
+      <!-- Avatar & Basic Info -->
+      <div class="flex items-start gap-4 -mt-12">
+        <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-3xl font-bold border-4 border-white shadow-lg">
+          {user.avatar}
+        </div>
+        <div class="flex-1 mt-12">
+          <div class="flex items-center gap-3 flex-wrap">
+            <h1 class="text-2xl font-bold text-gray-900">{user.displayName}</h1>
+            <span class={`text-sm font-medium px-2 py-1 rounded-full ${rankInfo.color === '#6b7280' ? 'bg-gray-100 text-gray-600' : 'bg-blue-100 text-blue-600'}`}>
+              {user.rank}
+            </span>
+          </div>
+          <p class="text-gray-500 mt-1">@{user.username}</p>
+          <p class="text-gray-700 mt-2">{user.bio}</p>
+          
+          <!-- Badges -->
+          <div class="flex flex-wrap gap-2 mt-3">
+            {user.badges.map((badge: string) => (
+              <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full font-medium">
+                {badge}
+              </span>
+            ))}
+          </div>
+        </div>
+        
+        <!-- Actions -->
+        <div class="flex gap-2 mt-12">
+          <button class="px-4 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition">
+            Follow
+          </button>
+          <button class="px-4 py-2 border border-gray-200 text-gray-600 rounded-lg hover:bg-gray-50 transition">
+            Message
+          </button>
+        </div>
+      </div>
+      
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pt-6 border-t border-gray-100">
+        <div class="text-center">
+          <div class="text-2xl font-bold text-gray-900">{user.stats.threads}</div>
+          <div class="text-sm text-gray-500">Threads</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-gray-900">{user.stats.replies}</div>
+          <div class="text-sm text-gray-500">Replies</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-green-600">{user.cendol}</div>
+          <div class="text-sm text-gray-500">🍵 Cendol</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-gray-900">{user.stats.views.toLocaleString()}</div>
+          <div class="text-sm text-gray-500">Views</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Tabs -->
+  <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+    <!-- Tab Navigation -->
+    <div class="border-b border-gray-200">
+      <nav class="flex">
+        <button class="px-6 py-4 text-sm font-medium text-green-600 border-b-2 border-green-600">
+          Threads ({user.stats.threads})
+        </button>
+        <button class="px-6 py-4 text-sm font-medium text-gray-500 hover:text-gray-700">
+          Replies ({user.stats.replies})
+        </button>
+        <button class="px-6 py-4 text-sm font-medium text-gray-500 hover:text-gray-700">
+          About
+        </button>
+      </nav>
+    </div>
+    
+    <!-- Tab Content -->
+    <div class="p-6">
+      {userThreads.length > 0 ? (
+        <div class="space-y-4">
+          {userThreads.map(thread => (
+            <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition">
+              <div class="flex items-start gap-3">
+                <span class={`text-xs px-2 py-1 rounded-full font-medium ${
+                  thread.type === 'ask' ? 'bg-blue-100 text-blue-700' :
+                  thread.type === 'share' ? 'bg-green-100 text-green-700' :
+                  thread.type === 'tutorial' ? 'bg-purple-100 text-purple-700' :
+                  'bg-gray-100 text-gray-700'
+                }`}>
+                  {thread.type?.toUpperCase()}
+                </span>
+                <div class="flex-1">
+                  <a href={`/platform/discussions/${thread.id}`} class="font-medium text-gray-900 hover:text-green-600 transition">
+                    {thread.title}
+                  </a>
+                  <div class="flex items-center gap-4 mt-2 text-sm text-gray-500">
+                    <span>🍵 {thread.cendol}</span>
+                    <span>💬 {thread.replies.length}</span>
+                    <span>{thread.lastActivity}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12 text-gray-500">
+          <div class="text-4xl mb-4">📝</div>
+          <p>Belum ada thread yang dibuat</p>
+        </div>
+      )}
+    </div>
+  </div>
+
+  <!-- Right Sidebar -->
+  <Fragment slot="sidebar">
+    <SidebarCard title="Info Member">
+      <div class="space-y-3 text-sm">
+        <div class="flex justify-between">
+          <span class="text-gray-500">Bergabung:</span>
+          <span class="font-medium">{user.joinDate}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-500">Lokasi:</span>
+          <span class="font-medium">{user.location}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-500">Total Posts:</span>
+          <span class="font-medium">{user.posts}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-500">Reputation:</span>
+          <span class="font-medium text-green-600">+{user.cendol - user.bata}</span>
+        </div>
+      </div>
+    </SidebarCard>
+
+    <SidebarCard title="Aktivitas Terbaru">
+      <div class="space-y-3 text-sm">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+          <span class="text-gray-600">Membalas thread "Momentum Angular"</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+          <span class="text-gray-600">Membuat thread baru</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+          <span class="text-gray-600">Mendapat 5 cendol</span>
+        </div>
+      </div>
+    </SidebarCard>
+  </Fragment>
+</PlatformLayout>

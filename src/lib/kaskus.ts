@@ -15,7 +15,7 @@ export const getRank = (posts: number) => {
 
 // Kaskus emoticons
 export const EMOTICONS: Record<string, string> = {
-  ':cendol': '🥒',
+  ':cendol': '🍵',
   ':bata': '🧱', 
   ':ngakak': '🤣',
   ':malu': '😳',

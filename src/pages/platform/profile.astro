@@ -11,7 +11,7 @@ import { getRank, RANKS } from '@lib/kaskus';
 <PlatformLayout title="Profile" activeNav="/platform/profile">
   <div class="max-w-4xl mx-auto">
     <!-- Profile Card Kaskus Style -->
-    <div class="bg-white rounded-xl border overflow-hidden mb-6">
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden mb-6">
       <!-- Banner -->
       <div class="h-32 bg-gradient-to-r from-green-600 via-teal-500 to-blue-600"></div>
       
@@ -26,10 +26,10 @@ import { getRank, RANKS } from '@lib/kaskus';
                 <h1 id="profile-name" class="text-2xl font-bold">Member</h1>
                 <p id="profile-username" class="text-gray-500">@member</p>
                 <div class="flex items-center gap-2 mt-1">
-                  <span id="rank-badge" class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded text-sm font-medium">★ Newbie ★</span>
+                  <span id="rank-badge" class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded text-sm font-medium">Newbie</span>
                 </div>
               </div>
-              <button class="px-4 py-2 border rounded-lg text-sm hover:bg-gray-50">✏️ Edit Profile</button>
+              <button class="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:bg-gray-50">✏️ Edit Profile</button>
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@ import { getRank, RANKS } from '@lib/kaskus';
       <!-- Main Content -->
       <div class="lg:col-span-2 space-y-6">
         <!-- Contribution Graph -->
-        <div class="bg-white rounded-xl border p-6">
+        <div class="bg-white rounded-xl border border-gray-100 p-6">
           <h2 class="font-bold mb-4">📊 Aktivitas Posting</h2>
           <div class="grid grid-cols-12 gap-1">
             {Array.from({length: 48}).map((_, i) => (
@@ -79,8 +79,8 @@ import { getRank, RANKS } from '@lib/kaskus';
         </div>
 
         <!-- Recent Posts -->
-        <div class="bg-white rounded-xl border overflow-hidden">
-          <div class="bg-gray-100 px-4 py-3 font-bold border-b">📝 Thread Terbaru</div>
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <div class="bg-gray-100 px-4 py-3 font-bold border-b border-gray-100">📝 Thread Terbaru</div>
           <div class="divide-y">
             <a href="#" class="block p-4 hover:bg-gray-50">
               <div class="flex items-center gap-2 mb-1">
@@ -110,8 +110,8 @@ import { getRank, RANKS } from '@lib/kaskus';
         </div>
 
         <!-- Recent Replies -->
-        <div class="bg-white rounded-xl border overflow-hidden">
-          <div class="bg-gray-100 px-4 py-3 font-bold border-b">💬 Balasan Terbaru</div>
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <div class="bg-gray-100 px-4 py-3 font-bold border-b border-gray-100">💬 Balasan Terbaru</div>
           <div class="divide-y">
             <div class="p-4">
               <div class="text-sm text-gray-500 mb-2">
@@ -134,7 +134,7 @@ import { getRank, RANKS } from '@lib/kaskus';
       <!-- Sidebar -->
       <div class="space-y-6">
         <!-- Info Box -->
-        <div class="bg-white rounded-xl border p-4">
+        <div class="bg-white rounded-xl border border-gray-100 p-4">
           <h3 class="font-bold mb-3">ℹ️ Info</h3>
           <div class="space-y-2 text-sm">
             <div class="flex justify-between">
@@ -153,7 +153,7 @@ import { getRank, RANKS } from '@lib/kaskus';
         </div>
 
         <!-- Rank Progress -->
-        <div class="bg-white rounded-xl border p-4">
+        <div class="bg-white rounded-xl border border-gray-100 p-4">
           <h3 class="font-bold mb-3">🏆 Rank Progress</h3>
           <div class="space-y-2">
             {RANKS.map((rank, i) => (
@@ -167,7 +167,7 @@ import { getRank, RANKS } from '@lib/kaskus';
         </div>
 
         <!-- Badges -->
-        <div class="bg-white rounded-xl border p-4">
+        <div class="bg-white rounded-xl border border-gray-100 p-4">
           <h3 class="font-bold mb-3">🏅 Badges</h3>
           <div class="flex flex-wrap gap-2">
             <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">🌟 Early Member</span>
@@ -178,7 +178,7 @@ import { getRank, RANKS } from '@lib/kaskus';
         </div>
 
         <!-- Signature -->
-        <div class="bg-white rounded-xl border p-4">
+        <div class="bg-white rounded-xl border border-gray-100 p-4">
           <h3 class="font-bold mb-3">✍️ Signature</h3>
           <div class="text-sm text-gray-600 italic border-l-2 border-gray-300 pl-3">
             "Physics is like sex: sure, it may give some practical results, but that's not why we do it."

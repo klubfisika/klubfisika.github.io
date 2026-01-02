@@ -22,6 +22,10 @@ export function setSession(user: any) {
   }));
 }
 
+export function getUser() {
+  return getSession();
+}
+
 export function clearSession() {
   if (typeof localStorage === 'undefined') return;
   localStorage.removeItem(SESSION_KEY);

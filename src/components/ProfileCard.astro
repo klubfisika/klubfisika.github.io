@@ -4,12 +4,23 @@ interface Props {
   icon: string;
   class?: string;
   lazy?: boolean;
+  variant?: 'default' | 'gradient';
 }
-const { title, icon, class: className = "", lazy = false } = Astro.props;
+const { title, icon, class: className = "", lazy = false, variant = 'default' } = Astro.props;
+
+const variantStyles = {
+  default: 'bg-white text-gray-900',
+  gradient: 'bg-gradient-to-br from-green-500 to-teal-600 text-white'
+};
+
+const titleStyles = {
+  default: 'text-gray-900',
+  gradient: 'text-white'
+};
 ---
 
-<div class={`bg-white rounded-2xl shadow-sm p-4 pt-0 ${className}`}>
-  <h2 class="font-bold text-lg py-4 mb-0 flex items-center gap-2">
+<div class={`rounded-2xl shadow-sm p-4 pt-0 ${variantStyles[variant]} ${className}`}>
+  <h2 class={`font-bold text-lg py-4 mb-0 flex items-center gap-2 ${titleStyles[variant]}`}>
     <span class="text-xl">{icon}</span> {title}
   </h2>
   <div class={lazy ? "lazy-content" : ""}>

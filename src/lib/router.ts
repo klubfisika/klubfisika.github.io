@@ -4,7 +4,9 @@ const SESSION_KEY = 'kf13-member';
 // Route constants - single source of truth
 export const ROUTES = {
   GUEST_HOME: '/mulai',
-  MEMBER_HOME: '/platform/overview',
+  MEMBER_HOME: '/platform/feed',
+  OVERVIEW: '/platform/overview',
+  FEED: '/platform/feed',
   DISCUSSIONS: '/platform/discussions',
   PROJECTS: '/platform/projects',
   SHORTS: '/platform/shorts',

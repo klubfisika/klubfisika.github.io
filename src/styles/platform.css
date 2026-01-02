@@ -1,0 +1,13 @@
+/* Platform CSS - Clean/Modern Theme */
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ========================================
+   PLATFORM BUTTON RESET
+   ======================================== */
+/* ========================================
+   PROSE THEME (untuk konten artikel)
+   ======================================== */
+.prose-platform {
+   @apply prose prose-green max-w-none;
+}

@@ -15,23 +15,23 @@ import PlatformLayout from '@layouts/PlatformLayout.astro';
     <form class="space-y-6">
       <div>
         <label class="block font-medium mb-2">Nama Proyek *</label>
-        <input type="text" placeholder="contoh: Simulasi Gerak Planet" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" required />
+        <input type="text" placeholder="contoh: Simulasi Gerak Planet" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500" required />
       </div>
 
       <div>
         <label class="block font-medium mb-2">Deskripsi Singkat *</label>
-        <textarea rows="3" placeholder="Jelaskan proyek kamu dalam 1-2 kalimat..." class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" required></textarea>
+        <textarea rows="3" placeholder="Jelaskan proyek kamu dalam 1-2 kalimat..." class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500" required></textarea>
       </div>
 
       <div>
         <label class="block font-medium mb-2">Deskripsi Lengkap</label>
-        <textarea rows="6" placeholder="Jelaskan detail proyek: tujuan, metodologi, hasil yang diharapkan..." class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
+        <textarea rows="6" placeholder="Jelaskan detail proyek: tujuan, metodologi, hasil yang diharapkan..." class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
         <p class="text-sm text-gray-500 mt-1">Mendukung Markdown</p>
       </div>
 
       <div>
         <label class="block font-medium mb-2">Kategori *</label>
-        <select class="w-full px-4 py-2 border rounded-lg bg-white focus:ring-2 focus:ring-blue-500" required>
+        <select class="w-full px-4 py-2 border border-gray-200 rounded-lg bg-white focus:ring-2 focus:ring-blue-500" required>
           <option value="">Pilih kategori...</option>
           <option>🔬 Eksperimen</option>
           <option>💻 Simulasi/Komputasi</option>
@@ -44,7 +44,7 @@ import PlatformLayout from '@layouts/PlatformLayout.astro';
 
       <div>
         <label class="block font-medium mb-2">Tags</label>
-        <input type="text" placeholder="python, simulasi, mekanika (pisahkan dengan koma)" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" />
+        <input type="text" placeholder="python, simulasi, mekanika (pisahkan dengan koma)" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500" />
       </div>
 
       <div>
@@ -63,7 +63,7 @@ import PlatformLayout from '@layouts/PlatformLayout.astro';
 
       <div>
         <label class="block font-medium mb-2">Link Repository (opsional)</label>
-        <input type="url" placeholder="https://github.com/username/repo" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" />
+        <input type="url" placeholder="https://github.com/username/repo" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500" />
       </div>
 
       <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -80,7 +80,7 @@ import PlatformLayout from '@layouts/PlatformLayout.astro';
         <button type="submit" class="flex-1 bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700">
           🚀 Buat Proyek
         </button>
-        <a href="/platform/projects" class="px-6 py-3 border rounded-lg text-gray-600 hover:bg-gray-50">
+        <a href="/platform/projects" class="px-6 py-3 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50">
           Batal
         </a>
       </div>

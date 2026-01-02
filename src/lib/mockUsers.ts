@@ -21,6 +21,14 @@ export const MOCK_USERS = [
       { title: 'Interferometer Michelson DIY', stars: 24, status: 'completed', tags: ['Optik', 'DIY'] },
       { title: 'Simulasi Gerak Planet', stars: 18, status: 'open', tags: ['Python', 'Astro'] },
     ],
+    articles: [
+      { id: 1, title: 'Memahami Hukum Newton dengan Eksperimen Sederhana', excerpt: 'Pelajari cara membuktikan hukum Newton menggunakan benda-benda di sekitar rumah.', readTime: '5 min', likes: 234, color: 'green', bookmarked: true, published: true },
+      { id: 2, title: 'Fisika Kuantum untuk Pemula: Panduan Lengkap', excerpt: 'Dunia kuantum mungkin terdengar rumit, tapi konsep dasarnya bisa dipahami dengan analogi sederhana.', readTime: '12 min', likes: 567, color: 'purple', bookmarked: false, published: true },
+      { id: 3, title: 'Cara Membuat Interferometer Michelson DIY', excerpt: 'Tutorial lengkap membuat interferometer dengan budget terbatas untuk eksperimen optik.', readTime: '8 min', likes: 189, color: 'orange', bookmarked: true, published: false },
+      { id: 4, title: 'Optik Geometri: Lensa dan Cermin', excerpt: 'Memahami pembentukan bayangan pada lensa cembung, cekung, dan cermin.', readTime: '6 min', likes: 145, color: 'blue', bookmarked: false, published: false },
+      { id: 5, title: 'Eksperimen Difraksi Cahaya di Rumah', excerpt: 'Buat pola difraksi menakjubkan hanya dengan laser pointer dan CD bekas.', readTime: '7 min', likes: 203, color: 'pink', bookmarked: false, published: true },
+      { id: 6, title: 'Simulasi Python untuk Fisika Dasar', excerpt: 'Belajar coding sambil memvisualisasikan konsep fisika dengan matplotlib.', readTime: '10 min', likes: 312, color: 'teal', bookmarked: true, published: false },
+    ],
     timeline: [
       { year: '2022', event: '🏆 Medali Perak OSN Fisika Tingkat Nasional', type: 'achievement' },
       { year: '2023', event: '🎓 Masuk Fisika ITB', type: 'education' },
@@ -49,6 +57,16 @@ export const MOCK_USERS = [
       { title: 'Quantum Circuit Simulator', stars: 45, status: 'open', tags: ['Qiskit', 'Python'] },
       { title: 'Catatan Fisika Kuantum', stars: 32, status: 'completed', tags: ['Edukasi', 'LaTeX'] },
     ],
+    articles: [
+      { id: 1, title: 'Pengantar Quantum Computing untuk Pemula', excerpt: 'Memahami dasar-dasar komputasi kuantum tanpa perlu background fisika tingkat lanjut.', readTime: '15 min', likes: 892, color: 'purple', bookmarked: true, published: true },
+      { id: 2, title: 'Memahami Qubit dan Superposisi', excerpt: 'Apa bedanya bit klasik dengan qubit? Kenapa kucing Schrödinger bisa hidup dan mati?', readTime: '10 min', likes: 654, color: 'blue', bookmarked: false, published: true },
+      { id: 3, title: 'Tutorial Qiskit: Circuit Pertamamu', excerpt: 'Step-by-step membuat quantum circuit sederhana dengan IBM Qiskit.', readTime: '12 min', likes: 423, color: 'teal', bookmarked: true, published: true },
+      { id: 4, title: 'Entanglement: Fenomena Aneh Kuantum', excerpt: 'Einstein menyebutnya "spooky action at a distance". Apa sebenarnya entanglement?', readTime: '8 min', likes: 567, color: 'pink', bookmarked: false, published: false },
+      { id: 5, title: 'Machine Learning meets Quantum', excerpt: 'Bagaimana quantum computing bisa mempercepat algoritma machine learning.', readTime: '14 min', likes: 345, color: 'orange', bookmarked: false, published: false },
+      { id: 6, title: 'Persiapan Karir di Quantum Computing', excerpt: 'Roadmap belajar dan peluang karir di bidang quantum computing.', readTime: '7 min', likes: 234, color: 'green', bookmarked: true, published: true },
+      { id: 7, title: 'Review Paper: Quantum Supremacy', excerpt: 'Analisis klaim Google tentang quantum supremacy dan implikasinya.', readTime: '20 min', likes: 189, color: 'purple', bookmarked: false, published: false },
+      { id: 8, title: 'Quantum Error Correction Basics', excerpt: 'Mengapa koreksi error sangat penting dalam quantum computing.', readTime: '11 min', likes: 276, color: 'blue', bookmarked: false, published: false },
+    ],
     timeline: [
       { year: '2020', event: '🏆 Juara 1 ONMIPA Fisika', type: 'achievement' },
       { year: '2021', event: '🎓 Lulus S1 Fisika UI Cumlaude', type: 'education' },
@@ -75,6 +93,18 @@ export const MOCK_USERS = [
     socials: {},
     featured_projects: [
       { title: 'Catatan Persiapan OSN', stars: 5, status: 'open', tags: ['OSN', 'Catatan'] },
+    ],
+    articles: [
+      { id: 1, title: 'Tips Persiapan OSN Fisika dari Nol', excerpt: 'Panduan lengkap untuk pemula yang ingin memulai persiapan OSN Fisika.', readTime: '5 min', likes: 87, color: 'green', bookmarked: false, published: true },
+      { id: 2, title: 'Rangkuman Mekanika untuk OSN', excerpt: 'Ringkasan materi mekanika yang sering keluar di OSN Fisika.', readTime: '8 min', likes: 65, color: 'blue', bookmarked: true, published: true },
+      { id: 3, title: 'Soal-Soal Kinematika yang Sering Keluar', excerpt: 'Kumpulan tipe soal kinematika beserta strategi penyelesaiannya.', readTime: '6 min', likes: 92, color: 'purple', bookmarked: false, published: false },
+      { id: 4, title: 'Trik Cepat Hitung Vektor', excerpt: 'Cara mudah menyelesaikan soal vektor tanpa ribet.', readTime: '4 min', likes: 78, color: 'orange', bookmarked: true, published: false },
+      { id: 5, title: 'Dinamika Rotasi: Konsep Dasar', excerpt: 'Memahami momen inersia, torsi, dan momentum sudut.', readTime: '10 min', likes: 54, color: 'teal', bookmarked: false, published: false },
+      { id: 6, title: 'Latihan Soal Usaha dan Energi', excerpt: 'Bank soal usaha-energi dengan pembahasan lengkap.', readTime: '7 min', likes: 103, color: 'pink', bookmarked: false, published: false },
+      { id: 7, title: 'Momentum dan Impuls Explained', excerpt: 'Penjelasan intuitif tentang momentum dan hukum kekekalan.', readTime: '6 min', likes: 67, color: 'blue', bookmarked: false, published: false },
+      { id: 8, title: 'Gelombang Mekanik untuk Pemula', excerpt: 'Dasar-dasar gelombang transversal dan longitudinal.', readTime: '9 min', likes: 45, color: 'green', bookmarked: false, published: false },
+      { id: 9, title: 'Termodinamika: Hukum 1 dan 2', excerpt: 'Memahami kekekalan energi dan entropi dengan contoh sehari-hari.', readTime: '11 min', likes: 58, color: 'orange', bookmarked: true, published: false },
+      { id: 10, title: 'Strategi Mengerjakan Soal OSN', excerpt: 'Tips manajemen waktu dan prioritas saat ujian OSN.', readTime: '5 min', likes: 124, color: 'purple', bookmarked: false, published: false },
     ],
     timeline: [
       { year: '2025', event: '🏆 Lolos OSN Fisika Tingkat Kota', type: 'achievement' },

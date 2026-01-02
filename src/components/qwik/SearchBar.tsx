@@ -31,7 +31,7 @@ export default component$<Props>(({ placeholder = "Cari diskusi, proyek, atau me
         onInput$={handleInput}
         class="w-full pl-10 pr-4 py-2 bg-gray-100 rounded-full text-sm focus:bg-white focus:ring-2 focus:ring-green-500 border-0 transition" 
       />
-      <span class="absolute left-3 top-2.5 text-gray-400">🔍</span>
+      <span class="absolute left-2.5 top-1.5 text-gray-400">🔍</span>
     </form>
   );
 });

@@ -1,0 +1,729 @@
+@import "./base.css";
+
+/* ========================================
+   BRUTALIST THEME - Website
+   ======================================== */
+
+/* Dynamic scroll offset using data attributes */
+[data-scroll-offset="small"] {
+  --scroll-offset: 0.5rem;
+}
+
+[data-scroll-offset="medium"] {
+  --scroll-offset: 2rem;
+}
+
+[data-scroll-offset="large"] {
+  --scroll-offset: 3rem;
+}
+
+[data-scroll-offset="xlarge"] {
+  --scroll-offset: 5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :root {
+    --scroll-offset: 1.5rem;
+  }
+  
+  [data-scroll-offset="xlarge"] {
+    --scroll-offset: 3rem;
+  }
+}
+
+/* ========================================
+   FOCUS INDICATORS - Enhanced for Brutalist
+   ======================================== */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-accent) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 5px rgba(5, 150, 105, 0.2) !important;
+}
+
+.stretched-link {
+  color: inherit !important;
+  text-decoration: none !important;
+  opacity: 1 !important;
+}
+.stretched-link:hover,
+.stretched-link:focus {
+  color: inherit !important;
+  opacity: 1 !important;
+}
+.stretched-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Define dark mode variant */
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* ========================================
+     DESIGN TOKENS - Single Source of Truth
+     ======================================== */
+  
+  /* Primary Colors - WCAG AA Compliant */
+  --color-primary: #1e40af;        /* blue-800 - improved contrast */
+  --color-primary-hover: #1e3a8a;  /* blue-900 - darker for hover */
+  --color-primary-dark: #3b82f6;   /* blue-500 - for dark mode */
+  --color-primary-dark-hover: #2563eb; /* blue-600 - darker for dark hover */
+  
+  /* Secondary Colors - WCAG AA Compliant */
+  --color-secondary: #d97706;      /* amber-600 - improved contrast */
+  --color-secondary-hover: #b45309; /* amber-700 - darker for hover */
+  --color-secondary-dark: #fbbf24; /* amber-400 - for dark mode */
+  --color-secondary-dark-hover: #f59e0b; /* amber-500 - darker for dark hover */
+  
+  /* Accent Colors - WCAG AA Compliant */
+  --color-accent: #047857;         /* emerald-700 - improved contrast */
+  --color-accent-hover: #065f46;   /* emerald-800 - darker for hover */
+  --color-accent-dark: #10b981;    /* emerald-500 - for dark mode */
+  --color-accent-dark-hover: #059669; /* emerald-600 - darker for dark hover */
+  
+  /* Hover Text Colors */
+  --color-hover-text-primary: #1d4ed8;   /* blue - for light bg buttons */
+  --color-hover-text-orange: #ea580c;    /* orange-600 - for colored bg buttons */
+  --color-hover-text-primary-dark: #3b82f6; /* blue - for dark mode light bg */
+  --color-hover-text-orange-dark: #fb923c;  /* orange-400 - for dark mode colored bg */
+  
+  /* Surface Colors */
+  --color-surface: #fef3c7;
+  --color-surface-dark: #0f172a;
+  
+  /* Neutral Colors */
+  --color-dark: #111827;           /* gray-900 */
+  --color-light: #ffffff;          /* pure white */
+  --color-pink: #ec4899;           /* pink-500 */
+  --color-blue: #2563eb;           /* blue-600 */
+  --color-pink-dark: #ec4899;
+  --color-blue-dark: #3b82f6;
+  
+  /* Dark mode backgrounds */
+  --color-bg-dark-1: #1e293b;
+  --color-bg-dark-2: #334155;
+  --color-bg-dark-3: #475569;
+  
+  /* Typography */
+  --font-sans: "Space Grotesk", "Inter", system-ui, sans-serif;
+  
+  /* Shadows */
+  --shadow-brutal: 8px 8px 0px var(--color-dark);
+  --shadow-brutal-sm: 4px 4px 0px var(--color-dark);
+  --shadow-brutal-hover: 2px 2px 0px var(--color-dark);
+  --shadow-brutal-dark: 8px 8px 0px var(--color-light);
+  --shadow-brutal-sm-dark: 4px 4px 0px var(--color-light);
+  --shadow-brutal-hover-dark: 2px 2px 0px var(--color-light);
+}
+
+/* Dark mode root styles */
+.dark {
+  --color-bg: var(--color-surface-dark);
+  --color-text: var(--color-light);
+  --color-border: var(--color-light);
+}
+
+/* Dark mode specific overrides */
+.dark body {
+  background-color: var(--color-surface-dark);
+  color: var(--color-light);
+}
+
+.dark .bg-white {
+  background-color: var(--color-bg-dark-1) !important;
+}
+
+.dark .bg-gray-800 {
+  background-color: var(--color-bg-dark-2) !important;
+}
+
+.dark .bg-gray-700 {
+  background-color: var(--color-bg-dark-3) !important;
+}
+
+.dark .bg-gray-600 {
+  background-color: var(--color-bg-dark-2) !important;
+}
+
+/* Custom Animations */
+@keyframes wobble {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@keyframes bounce-fun {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+/* ========================================
+   ACCESSIBILITY - Motion & Animation
+   ======================================== */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Keep essential animations but make them instant */
+  .modal-overlay,
+  .skip-link {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary: #000080;
+    --color-secondary: #8B4513;
+    --color-accent: #006400;
+    --color-dark: #000000;
+    --color-light: #FFFFFF;
+  }
+  
+  .btn-primary,
+  .btn-secondary,
+  .btn-accent {
+    border-width: 3px !important;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY - User Preferences
+   ======================================== */
+
+/* Respect user's font size preferences */
+html {
+  font-size: 1rem; /* Base 16px, but respects user's browser settings */
+}
+
+/* Support for larger text preferences */
+@media (min-resolution: 2dppx) and (prefers-reduced-data: reduce) {
+  img {
+    content-visibility: auto;
+  }
+}
+
+/* Ensure minimum touch targets (44px) - only for primary interactive elements */
+button:not([class*="copy"]):not([class*="tab-"]):not([class*="toggle"]):not([class*="quiz"]),
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+  min-height: 44px;
+}
+
+/* Links that are buttons need touch targets */
+a.btn-brutal,
+a.btn-primary,
+a.btn-secondary,
+a.btn-accent {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Exception for inline links */
+p a,
+li a,
+span a {
+  min-height: auto;
+  min-width: auto;
+}
+.text-dark {
+  color: var(--color-dark);
+}
+
+.text-light {
+  color: var(--color-light);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.bg-dark {
+  background-color: var(--color-dark);
+}
+
+.bg-light {
+  background-color: var(--color-light);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+}
+
+.bg-surface {
+  background-color: var(--color-surface);
+}
+
+.bg-pink {
+  background-color: var(--color-pink);
+}
+
+.bg-blue {
+  background-color: var(--color-blue);
+}
+
+.border-dark {
+  border-color: var(--color-dark);
+}
+
+.border-light {
+  border-color: var(--color-light);
+}
+
+/* Dark mode variants */
+.dark .text-dark {
+  color: var(--color-light);
+}
+
+.dark .text-light {
+  color: var(--color-dark);
+}
+
+.dark .text-primary {
+  color: var(--color-primary-dark);
+}
+
+.dark .text-secondary {
+  color: var(--color-secondary-dark);
+}
+
+.dark .text-accent {
+  color: var(--color-accent-dark);
+}
+
+.dark .bg-primary {
+  background-color: var(--color-primary-dark);
+}
+
+.dark .bg-secondary {
+  background-color: var(--color-secondary-dark);
+}
+
+.dark .bg-accent {
+  background-color: var(--color-accent-dark);
+}
+
+.dark .bg-surface {
+  background-color: var(--color-surface-dark);
+}
+
+.dark .border-dark {
+  border-color: var(--color-light);
+}
+
+.dark .border-light {
+  border-color: var(--color-dark);
+}
+
+/* Hover states with better contrast */
+.hover-contrast:hover {
+  color: #2563eb; /* blue-600 */
+}
+
+.dark .hover-contrast:hover {
+  color: #fbbf24; /* yellow-400 */
+}
+
+/* Link hover states */
+a:hover {
+  color: #2563eb !important;
+}
+
+.dark a:hover {
+  color: #fbbf24 !important;
+}
+
+/* WCAG Compliant Text-Background Combinations */
+.text-on-primary {
+  color: #ffffff !important; /* White on primary blue - 4.5:1+ contrast */
+}
+
+.text-on-secondary {
+  color: #111827 !important; /* Dark on amber - 4.5:1+ contrast */
+}
+
+.text-on-accent {
+  color: #ffffff !important; /* White on emerald - 4.5:1+ contrast */
+}
+
+.text-on-surface {
+  color: #111827 !important; /* Dark on light surface - 4.5:1+ contrast */
+}
+
+.text-on-dark {
+  color: #ffffff !important; /* White on dark - 4.5:1+ contrast */
+}
+
+.text-on-light {
+  color: #1f2937 !important; /* Dark on light - 4.5:1+ contrast */
+}
+
+/* Dark mode overrides */
+.dark .text-on-primary {
+  color: #ffffff !important;
+}
+
+.dark .text-on-secondary {
+  color: #111827 !important;
+}
+
+.dark .text-on-accent {
+  color: #ffffff !important;
+}
+
+.dark .text-on-surface {
+  color: #ffffff !important; /* White on dark surface */
+}
+
+.dark .text-on-dark {
+  color: #ffffff !important;
+}
+
+.dark .text-on-light {
+  color: #111827 !important;
+}
+
+/* ========================================
+   BUTTON SYSTEM - Using Design Tokens
+   ========================================
+   
+   Hover Rules:
+   1. Buttons WITH colored background → text changes to orange on hover
+   2. Buttons WITHOUT background (white/gray) → text changes to primary blue on hover
+   3. Special buttons (nav highlight) → background darkens on hover
+   ======================================== */
+
+/* Base Button Styles */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-dark);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: white;
+  border-color: var(--color-dark);
+  transition: color 0.15s ease;
+}
+
+.btn-secondary:hover,
+a.btn-secondary:hover,
+button.btn-secondary:hover,
+.btn-brutal.btn-secondary:hover {
+  color: white !important;
+}
+
+.btn-accent {
+  background-color: var(--color-accent);
+  color: var(--color-light);
+  border-color: var(--color-dark);
+}
+
+.btn-accent:hover,
+a.btn-accent:hover,
+button.btn-accent:hover,
+.btn-brutal.btn-accent:hover {
+  color: white !important;
+}
+
+/* Dark Mode Button Styles */
+.dark .btn-primary {
+  background-color: var(--color-primary-dark);
+  color: var(--color-light);
+  border-color: var(--color-light);
+}
+
+.dark .btn-primary:hover {
+  color: white;
+}
+
+.dark .btn-secondary {
+  background-color: var(--color-secondary-dark);
+  color: var(--color-dark);
+  border-color: var(--color-light);
+}
+
+.dark .btn-secondary:hover {
+  color: white;
+}
+
+.dark .btn-accent {
+  background-color: var(--color-accent-dark);
+  color: var(--color-light);
+  border-color: var(--color-light);
+}
+
+.dark .btn-accent:hover {
+  color: white;
+}
+
+/* Navigation Highlight Button - Special Case: darken background */
+.btn-nav-highlight {
+  background-color: var(--color-primary);
+  color: var(--color-light);
+  transition: background-color 0.15s ease;
+}
+
+.btn-nav-highlight:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-light) !important; /* Keep white text */
+}
+
+.dark .btn-nav-highlight {
+  background-color: var(--color-primary-dark);
+}
+
+.dark .btn-nav-highlight:hover {
+  background-color: var(--color-primary-dark-hover);
+  color: var(--color-light) !important; /* Keep white text in dark mode */
+}
+
+/* Light Background Buttons - hover text to primary blue */
+.btn-light {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  border-color: var(--color-dark);
+  transition: color 0.15s ease;
+}
+
+.btn-light:hover {
+  color: var(--color-hover-text-primary);
+}
+
+.dark .btn-light {
+  background-color: var(--color-bg-dark-2);
+  color: var(--color-light);
+  border-color: var(--color-light);
+}
+
+.dark .btn-light:hover {
+  color: var(--color-hover-text-primary-dark);
+}
+
+.wobble:hover {
+  animation: wobble 0.5s ease-in-out;
+}
+
+.bounce-fun {
+  animation: bounce-fun 2s ease-in-out infinite;
+}
+
+/* Brutalist Button Base */
+.btn-brutal {
+  @apply border-4 border-dark font-black uppercase transition-all;
+  min-height: 44px; /* WCAG touch target */
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-brutal p,
+.article-content .btn-brutal p {
+  margin: 0 !important;
+  padding: 0;
+  color: inherit;
+}
+
+.btn-brutal:hover {
+  @apply translate-x-1 translate-y-1;
+  box-shadow: var(--shadow-brutal-hover);
+}
+
+.btn-brutal:focus {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.btn-brutal:active {
+  @apply scale-95 translate-x-2 translate-y-2;
+  box-shadow: var(--shadow-brutal-hover);
+}
+
+/* Card Base */
+.card-brutal {
+  @apply border-4 border-dark transition-transform;
+  box-shadow: var(--shadow-brutal-sm);
+}
+
+.card-brutal:hover {
+  @apply rotate-0;
+  box-shadow: var(--shadow-brutal);
+}
+
+/* Dark mode hover effects */
+@media (hover: hover) {
+  .btn-brutal:hover {
+    @apply dark:border-light;
+  }
+  
+  .card-brutal:hover {
+    @apply dark:border-light;
+  }
+}
+
+/* Text Styles */
+.text-brutal {
+  @apply font-black uppercase tracking-tight;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--color-surface-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-primary-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+/* ========================================
+   FINAL OVERRIDES - Ensure hover states work
+   ======================================== */
+
+/* Force button hover colors - highest specificity */
+a.btn-primary:hover,
+button.btn-primary:hover,
+.btn-brutal.btn-primary:hover,
+.btn-primary:hover {
+  color: white !important;
+}
+
+a.btn-secondary:hover,
+button.btn-secondary:hover,
+.btn-brutal.btn-secondary:hover,
+.btn-secondary:hover {
+  color: white !important;
+}
+
+a.btn-accent:hover,
+button.btn-accent:hover,
+.btn-brutal.btn-accent:hover,
+.btn-accent:hover {
+  color: white !important;
+}
+
+/* ========================================
+   ACCESSIBILITY UTILITIES
+   ======================================== */
+
+/* Screen reader only - visually hidden but accessible to screen readers */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Show when focused - for skip links */
+.focus\:not-sr-only:focus {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  padding: revert !important;
+  margin: revert !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+}
+/* Brutal checkbox styling */
+.brutal-checkbox {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-dark);
+  background: var(--color-surface);
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  min-height: 16px;
+  min-width: 16px;
+}
+
+.brutal-checkbox:checked {
+  background: var(--color-primary);
+}
+
+.brutal-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-light);
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.brutal-checkbox:hover {
+  background: var(--color-accent);
+}
+
+.dark .brutal-checkbox {
+  border-color: var(--color-light);
+}

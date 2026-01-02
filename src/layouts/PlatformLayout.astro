@@ -1,11 +1,9 @@
 ---
-import { Image } from 'astro:assets';
-import kf13Logo from '@assets/images/kf13-logo.png';
-import ProfileDropdown from '@components/qwik/ProfileDropdown.tsx';
-import SearchBar from '@components/qwik/SearchBar.tsx';
-import MobileNav from '@components/qwik/MobileNav.tsx';
-import LeftSidebar from '@components/platform/LeftSidebar.astro';
+import Header from '@components/platform/Header.astro';
+import LeftSidebar from '@components/qwik/LeftSidebar.tsx';
 import RightSidebar from '@components/platform/RightSidebar.astro';
+import MobileNav from '@components/qwik/MobileNav.tsx';
+import '@styles/platform.css';
 
 interface Props {
   title: string;
@@ -34,52 +32,18 @@ const { title, description = 'KF13 Member Platform', activeNav, hideRightSidebar
     <!-- PWA -->
     <link rel="manifest" href="/platform-manifest.json" />
     <meta name="theme-color" content="#16a34a" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="KF13 Platform" />
-    
-    <style>
-      @import "tailwindcss";
-    </style>
   </head>
   <body class="bg-gray-100 min-h-screen">
-    <!-- Top Nav -->
-    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="flex items-center justify-between h-14">
-          <!-- Logo -->
-          <a href="/platform" class="flex items-center gap-2 font-bold text-green-600">
-            <Image src={kf13Logo} alt="KF13" width={36} height={36} class="rounded-lg" />
-            <span class="hidden sm:block text-xl">KF13</span>
-          </a>
-          
-          <!-- Search Bar -->
-          <div class="hidden md:flex flex-1 max-w-md mx-8">
-            <SearchBar client:load />
-          </div>
-          
-          <!-- Actions -->
-          <div class="flex items-center gap-2">
-            <button class="p-2 hover:bg-gray-100 rounded-full relative" title="Notifikasi">
-              <span class="text-xl">🔔</span>
-              <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-            </button>
-            <button class="p-2 hover:bg-gray-100 rounded-full" title="Pesan">
-              <span class="text-xl">💬</span>
-            </button>
-            <a href="/platform/projects/new" class="hidden sm:flex items-center gap-1 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-green-700 transition">
-              ✨ Buat
-            </a>
-            <ProfileDropdown client:load />
-          </div>
-        </div>
-      </div>
-    </nav>
+    <Header />
 
-    <div class="max-w-7xl mx-auto flex">
-      <!-- Left Sidebar -->
-      <LeftSidebar activeNav={activeNav} />
+    <!-- Left Sidebar -->
+    <LeftSidebar activeNav={activeNav} client:load />
 
+    <div id="main-wrapper" class="lg:ml-64 flex transition-all duration-300">
       <!-- Main Content -->
       <main class={`flex-1 min-w-0 px-4 py-6 ${hideRightSidebar ? 'xl:pr-4' : ''}`}>
         <slot />
@@ -98,5 +62,29 @@ const { title, description = 'KF13 Member Platform', activeNav, hideRightSidebar
     
     <!-- Spacer for mobile bottom nav -->
     <div class="lg:hidden h-16"></div>
+
+    <script>
+      // Sync main content margin with sidebar state
+      const updateMainMargin = (isMinimized: boolean) => {
+        const mainWrapper = document.getElementById('main-wrapper');
+        if (mainWrapper) {
+          if (isMinimized) {
+            mainWrapper.classList.remove('lg:ml-64');
+            mainWrapper.classList.add('lg:ml-16');
+          } else {
+            mainWrapper.classList.remove('lg:ml-16');
+            mainWrapper.classList.add('lg:ml-64');
+          }
+        }
+      };
+      
+      // Initial state
+      updateMainMargin(localStorage.getItem('sidebar-minimized') === 'true');
+      
+      // Listen for sidebar toggle
+      window.addEventListener('sidebar-toggle', (e: any) => {
+        updateMainMargin(e.detail);
+      });
+    </script>
   </body>
 </html>

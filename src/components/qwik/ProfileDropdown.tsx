@@ -43,7 +43,7 @@ export default component$(() => {
     <div class="relative">
       <button 
         onClick$={toggleDropdown}
-        class="flex items-center gap-2 hover:bg-gray-100 p-1 rounded-full transition"
+        class="flex items-center gap-2 p-1 rounded-full transition hover:ring-2 hover:ring-gray-200"
         aria-label="Profile menu"
       >
         <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center text-white text-sm font-bold shadow">
@@ -60,7 +60,7 @@ export default component$(() => {
           />
           
           {/* Dropdown */}
-          <div class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
             <div class="px-4 py-2 border-b border-gray-100">
               <div class="font-medium text-gray-900 truncate">{user.value.name}</div>
               <div class="text-sm text-gray-500">@{user.value.username}</div>
@@ -75,14 +75,22 @@ export default component$(() => {
             </a>
             
             <a 
-              href={`/u/${user.value.username}`}
+              href={`/${user.value.username}`}
               class="flex items-center gap-3 px-4 py-2 hover:bg-gray-50 text-gray-700 transition"
               onClick$={closeDropdown}
             >
               <span>🔗</span> Profil Publik
             </a>
             
-            <hr class="my-2" />
+            <a 
+              href="/platform/overview"
+              class="flex items-center gap-3 px-4 py-2 hover:bg-gray-50 text-gray-700 transition"
+              onClick$={closeDropdown}
+            >
+              <span>📊</span> Overview
+            </a>
+            
+            <hr class="my-2 border-gray-100" />
             
             <button 
               onClick$={logout}

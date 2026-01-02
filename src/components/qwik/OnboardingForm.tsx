@@ -123,7 +123,7 @@ export default component$(() => {
               placeholder="Nama Lengkap"
               value={formData.name}
               onInput$={(e) => formData.name = (e.target as HTMLInputElement).value}
-              class="w-full p-3 border rounded-lg"
+              class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition"
               required
             />
             <input
@@ -131,7 +131,7 @@ export default component$(() => {
               placeholder="Email"
               value={formData.email}
               onInput$={(e) => formData.email = (e.target as HTMLInputElement).value}
-              class="w-full p-3 border rounded-lg"
+              class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition"
               required
             />
             <input
@@ -139,7 +139,7 @@ export default component$(() => {
               placeholder="Nomor WhatsApp"
               value={formData.phone}
               onInput$={(e) => formData.phone = (e.target as HTMLInputElement).value}
-              class="w-full p-3 border rounded-lg"
+              class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition"
               required
             />
             <button
@@ -158,7 +158,7 @@ export default component$(() => {
             <select
               value={formData.year}
               onChange$={(e) => formData.year = (e.target as HTMLSelectElement).value}
-              class="w-full p-3 border rounded-lg"
+              class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition"
               required
             >
               <option value="">Pilih Tahun</option>
@@ -172,7 +172,7 @@ export default component$(() => {
               placeholder="Jurusan"
               value={formData.major}
               onInput$={(e) => formData.major = (e.target as HTMLInputElement).value}
-              class="w-full p-3 border rounded-lg"
+              class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition"
               required
             />
             <input
@@ -180,7 +180,7 @@ export default component$(() => {
               placeholder="Universitas/Sekolah"
               value={formData.university}
               onInput$={(e) => formData.university = (e.target as HTMLInputElement).value}
-              class="w-full p-3 border rounded-lg"
+              class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition"
               required
             />
             <div class="flex space-x-4">
@@ -228,7 +228,7 @@ export default component$(() => {
               placeholder="Ceritakan motivasi kamu bergabung dengan KF13..."
               value={formData.motivation}
               onInput$={(e) => formData.motivation = (e.target as HTMLTextAreaElement).value}
-              class="w-full p-3 border rounded-lg h-24 resize-none"
+              class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition h-24 resize-none"
               required
             />
             <div class="flex space-x-4">

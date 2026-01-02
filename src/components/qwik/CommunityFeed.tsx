@@ -74,7 +74,7 @@ export default component$(() => {
         <textarea value={newPost.value}
           onInput$={(e) => newPost.value = (e.target as HTMLTextAreaElement).value}
           placeholder="Share something with the KF13 community..."
-          class="w-full p-3 border rounded resize-none" rows={3} />
+          class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition resize-none" rows={3} />
         <button onClick$={addPost} class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
           Post
         </button>

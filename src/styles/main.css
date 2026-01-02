@@ -1,4 +1,5 @@
 /* Main CSS - Single Source of Truth */
+@import "tailwindcss";
 @import "./design-system.css";
 @import "./article.css";
 
