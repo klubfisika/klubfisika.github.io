@@ -17,6 +17,7 @@ export interface Reply {
   isPertamax?: boolean;
   quote?: { author: string; text: string };
   nested?: Reply[];
+  signature?: string;
 }
 
 // Slug generator
