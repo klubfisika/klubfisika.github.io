@@ -25,13 +25,6 @@ export default component$<Props>(({ activeNav }) => {
             <span class="text-xs mt-0.5">{item.label}</span>
           </a>
         ))}
-        <a 
-          href={MOBILE_NAV_PROFILE.href} 
-          class={getMobileNavItemClass(activeNav === MOBILE_NAV_PROFILE.href)}
-        >
-          <span class="text-xl">{MOBILE_NAV_PROFILE.icon}</span>
-          <span class="text-xs mt-0.5">{MOBILE_NAV_PROFILE.label}</span>
-        </a>
       </div>
     </nav>
   );

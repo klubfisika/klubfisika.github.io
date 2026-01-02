@@ -6,18 +6,14 @@ export const MOBILE_NAV_CONFIG = {
 };
 
 export const MOBILE_NAV_ITEMS = [
-  { href: '/platform/overview', label: 'Home', icon: '🏠' },
+  { href: '/platform/feed', label: 'Home', icon: '🏠' },
   { href: '/platform/discussions', label: 'Forum', icon: '💬' },
-  { href: '/platform/projects', label: 'Projects', icon: '🔬' },
   { href: '/platform/shorts', label: 'Shorts', icon: '🎬' },
+  { href: '/platform/projects', label: 'Projects', icon: '🔬' },
   { href: '/platform/explore', label: 'Explore', icon: '🔍' },
 ];
 
-export const MOBILE_NAV_PROFILE = {
-  href: '/platform/profile',
-  label: 'Profil',
-  icon: '👤'
-};
+export const MOBILE_NAV_PROFILE = null; // Profile removed - accessible via ProfileDropdown
 
 export const MOBILE_NAV_LABELS = {
   ariaLabel: 'Mobile Navigation'
