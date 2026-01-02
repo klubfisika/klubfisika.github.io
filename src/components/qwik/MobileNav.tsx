@@ -1,36 +1,36 @@
 import { component$ } from '@builder.io/qwik';
+import { 
+  MOBILE_NAV_CONFIG,
+  MOBILE_NAV_ITEMS,
+  MOBILE_NAV_PROFILE,
+  MOBILE_NAV_LABELS,
+  getMobileNavItemClass
+} from '../../data/mobileNavConfig';
 
 interface Props {
   activeNav?: string;
 }
 
 export default component$<Props>(({ activeNav }) => {
-  const navItems = [
-    { href: '/platform/overview', label: 'Home', icon: '🏠' },
-    { href: '/platform/discussions', label: 'Forum', icon: '💬' },
-    { href: '/platform/projects', label: 'Projects', icon: '🔬' },
-    { href: '/platform/shorts', label: 'Shorts', icon: '🎬' },
-    { href: '/platform/explore', label: 'Explore', icon: '🔍' },
-  ];
-
   return (
-    <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-50">
+    <nav class={`lg:hidden ${MOBILE_NAV_CONFIG.position} ${MOBILE_NAV_CONFIG.styling}`} aria-label={MOBILE_NAV_LABELS.ariaLabel}>
       <div class="flex justify-around py-2">
-        {navItems.map(item => (
+        {MOBILE_NAV_ITEMS.map(item => (
           <a 
             key={item.href}
             href={item.href} 
-            class={`flex flex-col items-center py-1 px-3 rounded-lg transition ${
-              activeNav === item.href ? "text-green-600" : "text-gray-500"
-            }`}
+            class={getMobileNavItemClass(activeNav === item.href)}
           >
             <span class="text-xl">{item.icon}</span>
             <span class="text-xs mt-0.5">{item.label}</span>
           </a>
         ))}
-        <a href="/platform/profile" class="flex flex-col items-center py-1 px-3 text-gray-500">
-          <span class="text-xl">👤</span>
-          <span class="text-xs mt-0.5">Profil</span>
+        <a 
+          href={MOBILE_NAV_PROFILE.href} 
+          class={getMobileNavItemClass(activeNav === MOBILE_NAV_PROFILE.href)}
+        >
+          <span class="text-xl">{MOBILE_NAV_PROFILE.icon}</span>
+          <span class="text-xs mt-0.5">{MOBILE_NAV_PROFILE.label}</span>
         </a>
       </div>
     </nav>
