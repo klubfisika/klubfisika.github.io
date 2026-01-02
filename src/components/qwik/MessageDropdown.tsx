@@ -1,11 +1,20 @@
 import { component$, useSignal, $ } from '@builder.io/qwik';
 import { mockMessages, markAllMessagesAsRead } from '@data/mockMessages';
+import {
+  MESSAGE_DROPDOWN_CONFIG,
+  MESSAGE_DROPDOWN_LABELS,
+  MESSAGE_DROPDOWN_STYLES,
+  getUnreadMessageCount,
+  formatUnreadMessageCount,
+  truncateText,
+  getMessageItemClass
+} from '../../data/messageDropdownConfig';
 
 export default component$(() => {
   const isOpen = useSignal(false);
   const messages = useSignal([...mockMessages]);
 
-  const unreadCount = messages.value.filter(m => !m.read).length;
+  const unreadCount = getUnreadMessageCount(messages.value);
 
   const toggleDropdown = $(() => {
     isOpen.value = !isOpen.value;
@@ -31,97 +40,91 @@ export default component$(() => {
     closeDropdown();
   });
 
-  const truncateMessage = (text: string, maxLength: number = 50): string => {
-    return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
-  };
-
   return (
     <div class="relative">
       <button 
         onClick$={toggleDropdown}
-        class="p-2 hover:bg-gray-200 rounded-full relative transition"
-        title="Pesan"
+        class={MESSAGE_DROPDOWN_STYLES.button}
+        title={MESSAGE_DROPDOWN_LABELS.buttonTitle}
       >
-        <span class="text-xl">💬</span>
+        <span class={MESSAGE_DROPDOWN_STYLES.icon}>💬</span>
         {unreadCount > 0 && (
-          <span class="absolute -top-1 -right-1 w-5 h-5 bg-green-500 text-white text-xs rounded-full flex items-center justify-center font-bold">
-            {unreadCount > 9 ? '9+' : unreadCount}
+          <span class={MESSAGE_DROPDOWN_STYLES.badge}>
+            {formatUnreadMessageCount(unreadCount)}
           </span>
         )}
       </button>
 
       {isOpen.value && (
         <>
-          <div class="fixed inset-0 z-40" onClick$={closeDropdown}></div>
-          <div class="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-lg border border-gray-200 z-50 max-h-96 overflow-hidden">
+          <div class={MESSAGE_DROPDOWN_STYLES.backdrop} onClick$={closeDropdown}></div>
+          <div class={`${MESSAGE_DROPDOWN_STYLES.dropdown} ${MESSAGE_DROPDOWN_CONFIG.width} ${MESSAGE_DROPDOWN_CONFIG.maxHeight}`}>
             {/* Header */}
-            <div class="p-4 border-b border-gray-100 flex items-center justify-between">
-              <h3 class="font-semibold text-gray-900">Pesan</h3>
-              <div class="flex gap-2">
+            <div class={MESSAGE_DROPDOWN_STYLES.header}>
+              <h3 class={MESSAGE_DROPDOWN_STYLES.headerTitle}>{MESSAGE_DROPDOWN_LABELS.title}</h3>
+              <div class={MESSAGE_DROPDOWN_STYLES.headerActions}>
                 {unreadCount > 0 && (
                   <button 
                     onClick$={markAllRead}
-                    class="text-sm text-green-600 hover:text-green-700 font-medium"
+                    class={MESSAGE_DROPDOWN_STYLES.markAllButton}
                   >
-                    Tandai Dibaca
+                    {MESSAGE_DROPDOWN_LABELS.markAllRead}
                   </button>
                 )}
                 <a 
-                  href="/platform/messages/new"
-                  class="text-sm text-blue-600 hover:text-blue-700 font-medium"
+                  href={MESSAGE_DROPDOWN_LABELS.writeNewHref}
+                  class={MESSAGE_DROPDOWN_STYLES.writeNewButton}
                   onClick$={closeDropdown}
                 >
-                  Tulis Baru
+                  {MESSAGE_DROPDOWN_LABELS.writeNew}
                 </a>
               </div>
             </div>
 
             {/* Messages List */}
-            <div class="max-h-80 overflow-y-auto">
+            <div class={`${MESSAGE_DROPDOWN_STYLES.scrollContainer} ${MESSAGE_DROPDOWN_CONFIG.scrollHeight}`}>
               {messages.value.length === 0 ? (
-                <div class="p-8 text-center text-gray-500">
-                  <span class="text-4xl mb-2 block">💬</span>
-                  <p>Belum ada pesan</p>
+                <div class={MESSAGE_DROPDOWN_STYLES.emptyState}>
+                  <span class={MESSAGE_DROPDOWN_STYLES.emptyIcon}>💬</span>
+                  <p>{MESSAGE_DROPDOWN_LABELS.emptyState}</p>
                 </div>
               ) : (
-                messages.value.slice(0, 5).map((message) => (
+                messages.value.slice(0, MESSAGE_DROPDOWN_CONFIG.maxDisplayMessages).map((message) => (
                   <div
                     key={message.id}
                     onClick$={() => handleMessageClick(message)}
-                    class={`p-4 border-b border-gray-50 hover:bg-gray-50 cursor-pointer transition ${
-                      !message.read ? 'bg-green-50' : ''
-                    }`}
+                    class={getMessageItemClass(message.read)}
                   >
-                    <div class="flex gap-3">
+                    <div class={MESSAGE_DROPDOWN_STYLES.messageContent}>
                       {/* Avatar */}
-                      <div class="flex-shrink-0">
-                        <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                      <div class={MESSAGE_DROPDOWN_STYLES.avatar}>
+                        <div class={MESSAGE_DROPDOWN_STYLES.avatarCircle}>
                           {message.from.avatar}
                         </div>
                       </div>
 
                       {/* Content */}
-                      <div class="flex-1 min-w-0">
-                        <div class="flex items-center justify-between">
-                          <p class="text-sm font-medium text-gray-900">
+                      <div class={MESSAGE_DROPDOWN_STYLES.contentContainer}>
+                        <div class={MESSAGE_DROPDOWN_STYLES.contentHeader}>
+                          <p class={MESSAGE_DROPDOWN_STYLES.senderName}>
                             {message.from.displayName}
                           </p>
-                          <div class="flex items-center gap-2">
-                            <p class="text-xs text-gray-400">{message.time}</p>
+                          <div class={MESSAGE_DROPDOWN_STYLES.timeAndStatus}>
+                            <p class={MESSAGE_DROPDOWN_STYLES.time}>{message.time}</p>
                             {!message.read && (
-                              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                              <div class={MESSAGE_DROPDOWN_STYLES.unreadDot}></div>
                             )}
                           </div>
                         </div>
                         
                         {message.subject && (
-                          <p class="text-sm font-medium text-gray-700 mt-1">
-                            {truncateMessage(message.subject, 35)}
+                          <p class={MESSAGE_DROPDOWN_STYLES.subject}>
+                            {truncateText(message.subject, MESSAGE_DROPDOWN_CONFIG.truncateLength.subject)}
                           </p>
                         )}
                         
-                        <p class="text-sm text-gray-600 mt-1">
-                          {truncateMessage(message.message)}
+                        <p class={MESSAGE_DROPDOWN_STYLES.message}>
+                          {truncateText(message.message, MESSAGE_DROPDOWN_CONFIG.truncateLength.message)}
                         </p>
                       </div>
                     </div>
@@ -131,13 +134,13 @@ export default component$(() => {
             </div>
 
             {/* Footer */}
-            <div class="p-3 border-t border-gray-100 text-center">
+            <div class={MESSAGE_DROPDOWN_STYLES.footer}>
               <a 
-                href="/platform/messages" 
-                class="text-sm text-green-600 hover:text-green-700 font-medium"
+                href={MESSAGE_DROPDOWN_LABELS.viewAllHref}
+                class={MESSAGE_DROPDOWN_STYLES.viewAllLink}
                 onClick$={closeDropdown}
               >
-                Lihat Semua Pesan
+                {MESSAGE_DROPDOWN_LABELS.viewAll}
               </a>
             </div>
           </div>
