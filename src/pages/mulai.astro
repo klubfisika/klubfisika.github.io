@@ -10,7 +10,7 @@ import ComingSoonModal from '../components/ComingSoonModal.astro';
 
 <AuthLayout title="Mulai" description="Masuk atau daftar ke KF13 Platform">
   <ComingSoonModal feature="Login Sosial Media" />
-  <div class="min-h-screen flex">
+  <div class="h-screen flex overflow-hidden">
       <!-- Left Side - Branding -->
       <div class="hidden lg:flex lg:w-[55%] bg-gradient-to-br from-green-600 via-teal-600 to-cyan-700 p-10 flex-col justify-between relative overflow-hidden">
         <!-- Animated Background -->
@@ -77,9 +77,17 @@ import ComingSoonModal from '../components/ComingSoonModal.astro';
         </div>
       </div>
 
-      <!-- Right Side - Form -->
-      <div class="w-full lg:w-[45%] flex items-center justify-center p-6 lg:p-10">
-        <div class="w-full max-w-md">
+      <!-- Right Side - Form (Scrollable) -->
+      <div class="w-full lg:w-[45%] overflow-y-auto relative">
+        <!-- Back Button -->
+        <div class="absolute top-6 left-6 z-10">
+          <a href="/" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-green-600 transition">
+            ← Kembali ke Website
+          </a>
+        </div>
+        
+        <div class="min-h-full flex items-center justify-center p-6 lg:p-10">
+          <div class="w-full max-w-md py-8">
           <!-- Mobile Header -->
           <div class="lg:hidden text-center mb-8">
             <a href="/" class="inline-flex items-center gap-2 mb-4">
@@ -163,9 +171,8 @@ import ComingSoonModal from '../components/ComingSoonModal.astro';
 
           <!-- Footer -->
           <div class="text-center mt-6 space-y-2">
-            <a href="/" class="text-sm text-gray-500 hover:text-green-600 transition">← Kembali ke Website</a>
             <div class="text-xs text-gray-400">
-              Dengan mendaftar, kamu menyetujui <a href="#" class="underline">Ketentuan</a> dan <a href="#" class="underline">Privasi</a>
+              Dengan mendaftar, kamu menyetujui <a href="/terms#syarat-layanan" class="underline">Ketentuan</a> dan <a href="/terms#kebijakan-privasi" class="underline">Privasi</a>
             </div>
           </div>
         </div>
