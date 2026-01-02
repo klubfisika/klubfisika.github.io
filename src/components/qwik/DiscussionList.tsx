@@ -2,15 +2,16 @@ import { component$, useSignal, useComputed$, useVisibleTask$, $ } from '@builde
 import ThreadRow, { type Thread } from './ThreadRow';
 import { mockThreads } from '../../data/mockThreads';
 import { mockThreadDetails } from '../../data/mockThreadDetails';
+import { FORUM_CONFIG, SUBFORUMS, FORUM_LABELS, getForumStats } from '../../data/forumConfig';
 
-const subforums = [
-  { id: 'all', label: 'Semua', icon: '🏠' },
-  { id: 'modern', label: 'Fisika Modern', icon: '⚛️' },
-  { id: 'mechanics', label: 'Mekanika', icon: '🔧' },
-  { id: 'olympiad', label: 'Olimpiade', icon: '🏆' },
-  { id: 'career', label: 'Karir & Kuliah', icon: '💼' },
-  { id: 'lounge', label: 'Lounge', icon: '🎮' },
-];
+// Optimized time parsing utility
+const parseTimeToMinutes = (timeStr: string): number => {
+  const { timeMultipliers } = FORUM_CONFIG;
+  
+  if (timeStr.includes('menit')) return timeMultipliers.menit;
+  if (timeStr.includes('jam')) return parseInt(timeStr) * timeMultipliers.jam;
+  return parseInt(timeStr) * timeMultipliers.hari;
+};
 
 // Dynamic thread data sync
 const syncThreadData = (thread: Thread) => {
@@ -33,24 +34,19 @@ const syncThreadData = (thread: Thread) => {
       if (reply.nested) allReplies.push(...reply.nested);
     });
     
-    // Sort by time (rough approximation)
-    const latest = allReplies.sort((a, b) => {
-      const timeA = a.createdAt.includes('menit') ? 1 : 
-                   a.createdAt.includes('jam') ? parseInt(a.createdAt) * 60 :
-                   parseInt(a.createdAt) * 1440;
-      const timeB = b.createdAt.includes('menit') ? 1 : 
-                   b.createdAt.includes('jam') ? parseInt(b.createdAt) * 60 :
-                   parseInt(b.createdAt) * 1440;
-      return timeA - timeB;
-    })[0];
+    // Sort by time (optimized)
+    const latest = allReplies.sort((a, b) => 
+      parseTimeToMinutes(a.createdAt) - parseTimeToMinutes(b.createdAt)
+    )[0];
     
     lastActivity = latest.createdAt;
     lastReplyBy = latest.author.name;
   }
 
-  // Calculate hot status
+  // Calculate hot status (configurable thresholds)
   const recentActivity = lastActivity.includes('jam') || lastActivity.includes('menit');
-  const highEngagement = detail.cendol > 50 || replyCount > 20;
+  const { hotThreadThresholds } = FORUM_CONFIG;
+  const highEngagement = detail.cendol > hotThreadThresholds.cendol || replyCount > hotThreadThresholds.replies;
   const isHot = recentActivity && highEngagement;
 
   return {
@@ -70,7 +66,8 @@ export default component$(() => {
   const activeTag = useSignal('');
   const searchQuery = useSignal('');
   const sortBy = useSignal('latest');
-  const itemsPerPage = 5;
+  const itemsPerPage = FORUM_CONFIG.itemsPerPage;
+  const forumStats = getForumStats();
 
   // Initialize from URL params
   useVisibleTask$(() => {
@@ -165,15 +162,9 @@ export default component$(() => {
         break;
       case 'latest':
       default:
-        nonSticky.sort((a, b) => {
-          const timeA = a.lastActivity.includes('menit') ? 1 : 
-                       a.lastActivity.includes('jam') ? parseInt(a.lastActivity) * 60 :
-                       parseInt(a.lastActivity) * 1440;
-          const timeB = b.lastActivity.includes('menit') ? 1 : 
-                       b.lastActivity.includes('jam') ? parseInt(b.lastActivity) * 60 :
-                       parseInt(b.lastActivity) * 1440;
-          return timeA - timeB;
-        });
+        nonSticky.sort((a, b) => 
+          parseTimeToMinutes(a.lastActivity) - parseTimeToMinutes(b.lastActivity)
+        );
         break;
     }
     
@@ -195,12 +186,12 @@ export default component$(() => {
         <div class="flex items-center gap-3">
           <span class="text-3xl">💬</span>
           <div>
-            <h1 class="text-xl font-bold">Forum Diskusi Fisika</h1>
-            <p class="text-sm opacity-90">Pair of Minds, Pair of Hands</p>
+            <h1 class="text-xl font-bold">{FORUM_CONFIG.title}</h1>
+            <p class="text-sm opacity-90">{FORUM_CONFIG.subtitle}</p>
           </div>
         </div>
         <a href="/platform/discussions/new" class="bg-white text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-50 transition shadow-sm">
-          + Buat Thread
+          {FORUM_LABELS.createThread}
         </a>
       </div>
 
@@ -208,7 +199,7 @@ export default component$(() => {
       {activeTag.value && (
         <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4 flex items-center justify-between">
           <div class="flex items-center gap-2">
-            <span class="text-blue-600 font-medium">Filter aktif:</span>
+            <span class="text-blue-600 font-medium">{FORUM_LABELS.activeFilter}</span>
             <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-medium">
               #{activeTag.value}
             </span>
@@ -221,7 +212,7 @@ export default component$(() => {
             }}
             class="text-blue-600 hover:text-blue-800 text-sm font-medium"
           >
-            Hapus Filter
+            {FORUM_LABELS.removeFilter}
           </button>
         </div>
       )}
@@ -229,7 +220,7 @@ export default component$(() => {
       {/* Tabs */}
       <div class="bg-white rounded-b-2xl shadow-sm p-2 mb-4 overflow-x-auto">
         <div class="flex gap-1">
-          {subforums.map((tab) => (
+          {SUBFORUMS.map((tab) => (
             <button
               key={tab.id}
               onClick$={() => { 
@@ -254,14 +245,14 @@ export default component$(() => {
         <div class="flex items-center gap-4 text-gray-500">
           <span class="flex items-center gap-1.5">
             <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-            23 online
+            {forumStats.onlineUsers} online
           </span>
-          <span>1,234 thread</span>
-          <span>5,678 balasan</span>
+          <span>{forumStats.totalThreads} thread</span>
+          <span>{forumStats.totalReplies} balasan</span>
         </div>
         <div class="flex items-center gap-3">
           <div class="flex items-center gap-2">
-            <span class="text-gray-400 text-xs">Urutkan:</span>
+            <span class="text-gray-400 text-xs">{FORUM_LABELS.sortBy}</span>
             <select 
               value={sortBy.value}
               onChange$={(e) => { 
@@ -271,15 +262,15 @@ export default component$(() => {
               }}
               class="text-sm bg-white border border-gray-200 rounded-lg px-2 py-1 text-gray-600"
             >
-              <option value="latest">Terbaru</option>
-              <option value="popular">Terpopuler</option>
-              <option value="replies">Paling Dibalas</option>
+              <option value="latest">{FORUM_LABELS.sortOptions.latest}</option>
+              <option value="popular">{FORUM_LABELS.sortOptions.popular}</option>
+              <option value="replies">{FORUM_LABELS.sortOptions.replies}</option>
             </select>
           </div>
           <div class="relative">
             <input 
               type="text"
-              placeholder="Cari thread..."
+              placeholder={FORUM_LABELS.searchPlaceholder}
               value={searchQuery.value}
               onInput$={(e) => { 
                 searchQuery.value = (e.target as HTMLInputElement).value; 
@@ -297,17 +288,17 @@ export default component$(() => {
       <div class="bg-white rounded-2xl shadow-sm overflow-hidden" id="thread-list">
         {/* Table Header */}
         <div class="px-4 py-3 grid grid-cols-12 gap-4 text-xs font-semibold text-gray-400 uppercase tracking-wide border-b border-gray-100">
-          <div class="col-span-6">Topik</div>
-          <div class="col-span-2 text-center">Penulis</div>
-          <div class="col-span-2 text-center">🥒 / 💬</div>
-          <div class="col-span-2 text-center">Aktivitas</div>
+          <div class="col-span-6">{FORUM_LABELS.tableHeaders.topic}</div>
+          <div class="col-span-2 text-center">{FORUM_LABELS.tableHeaders.author}</div>
+          <div class="col-span-2 text-center">{FORUM_LABELS.tableHeaders.engagement}</div>
+          <div class="col-span-2 text-center">{FORUM_LABELS.tableHeaders.activity}</div>
         </div>
 
         {/* Threads */}
         {paginatedThreads.value.length === 0 ? (
           <div class="p-12 text-center text-gray-400">
             <span class="text-4xl mb-2 block">📭</span>
-            {activeTag.value ? `Tidak ada thread dengan tag "${activeTag.value}"` : 'Belum ada thread di kategori ini'}
+            {activeTag.value ? FORUM_LABELS.emptyStates.noThreadsWithTag(activeTag.value) : FORUM_LABELS.emptyStates.noThreadsInCategory}
           </div>
         ) : (
           paginatedThreads.value.map(thread => (
@@ -337,7 +328,11 @@ export default component$(() => {
       {totalPages.value > 1 && (
         <div class="flex items-center justify-between mt-4 text-sm">
           <div class="text-gray-500">
-            Menampilkan {((currentPage.value - 1) * itemsPerPage) + 1}-{Math.min(currentPage.value * itemsPerPage, sortedThreads.value.length)} dari {sortedThreads.value.length} thread
+            {FORUM_LABELS.pagination.showing(
+              ((currentPage.value - 1) * itemsPerPage) + 1,
+              Math.min(currentPage.value * itemsPerPage, sortedThreads.value.length),
+              sortedThreads.value.length
+            )}
           </div>
           <div class="flex gap-1">
             {Array.from({ length: totalPages.value }, (_, i) => i + 1).map(page => (
