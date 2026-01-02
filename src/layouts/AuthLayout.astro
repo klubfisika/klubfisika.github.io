@@ -1,0 +1,25 @@
+---
+import '@styles/platform.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  bgClass?: string;
+}
+
+const { title, description = 'KF13 Platform', bgClass = 'bg-gradient-to-br from-gray-50 to-gray-100' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title} | KF13</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  </head>
+  <body class={`min-h-screen ${bgClass}`}>
+    <slot />
+  </body>
+</html>

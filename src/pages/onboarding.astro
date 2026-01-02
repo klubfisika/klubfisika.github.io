@@ -1,19 +1,13 @@
 ---
+import AuthLayout from '../layouts/AuthLayout.astro';
 ---
 
-<!doctype html>
-<html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Setup Profil | KF13</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <style>
-      @import "tailwindcss";
-    </style>
-  </head>
-  <body class="min-h-screen bg-gradient-to-br from-green-50 to-teal-50">
-    <div class="min-h-screen flex items-center justify-center p-4">
+<AuthLayout 
+  title="Setup Profil" 
+  description="Lengkapi profil untuk pengalaman yang lebih personal"
+  bgClass="bg-gradient-to-br from-green-50 to-teal-50"
+>
+  <div class="min-h-screen flex items-center justify-center p-4">
       <div class="w-full max-w-lg">
         <!-- Progress -->
         <div class="flex justify-center mb-8">
@@ -216,5 +210,4 @@
         window.location.href = '/mulai';
       }
     </script>
-  </body>
-</html>
+</AuthLayout>

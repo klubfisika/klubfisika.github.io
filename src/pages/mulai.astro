@@ -1,6 +1,6 @@
 ---
+import AuthLayout from '../layouts/AuthLayout.astro';
 import ComingSoonModal from '../components/ComingSoonModal.astro';
-import '@styles/platform.css';
 ---
 
 <script>
@@ -8,20 +8,9 @@ import '@styles/platform.css';
   redirectIfLoggedIn();
 </script>
 
-<ComingSoonModal feature="Login Sosial Media" />
-
-<!doctype html>
-<html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Masuk atau daftar ke KF13 Platform" />
-    <title>Mulai | KF13</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  </head>
-  </head>
-  <body class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-    <div class="min-h-screen flex">
+<AuthLayout title="Mulai" description="Masuk atau daftar ke KF13 Platform">
+  <ComingSoonModal feature="Login Sosial Media" />
+  <div class="min-h-screen flex">
       <!-- Left Side - Branding -->
       <div class="hidden lg:flex lg:w-[55%] bg-gradient-to-br from-green-600 via-teal-600 to-cyan-700 p-10 flex-col justify-between relative overflow-hidden">
         <!-- Animated Background -->
@@ -231,4 +220,4 @@ import '@styles/platform.css';
       });
     </script>
   </body>
-</html>
+</html></AuthLayout>
