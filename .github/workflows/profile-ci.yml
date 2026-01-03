@@ -1,6 +1,7 @@
 name: Profile Page CI/CD
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'src/pages/[username].astro'
