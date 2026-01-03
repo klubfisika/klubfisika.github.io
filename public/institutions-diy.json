@@ -175,7 +175,14 @@
       "SMP Muhammadiyah Sedayu",
       "SMP IT Bina Anak Sholeh",
       "SMP Bopkri Bantul",
-      "SMP Kanisius Gayam Bantul"
+      "SMP Kanisius Gayam Bantul",
+      "MTs Negeri Bantul",
+      "MTs Muhammadiyah Bantul",
+      "MTs Al-Hikmah Sewon",
+      "MTs Nurul Huda Kasihan",
+      "SMP Kristen Kalam Kudus Bantul",
+      "SMP Katolik Santo Yusup Bantul",
+      "SMP PGRI Bantul"
     ],
     "sma": [
       "SMA Negeri 1 Bantul",
@@ -201,7 +208,14 @@
       "SMA Muhammadiyah Bambanglipuro",
       "SMA Muhammadiyah Sedayu",
       "SMA IT Bina Anak Sholeh",
-      "SMA Bopkri Bantul"
+      "SMA Bopkri Bantul",
+      "MA Negeri Bantul",
+      "MA Muhammadiyah Bantul",
+      "MA Al-Hikmah Sewon",
+      "MA Nurul Huda Kasihan",
+      "SMA Kristen Kalam Kudus Bantul",
+      "SMA Katolik Santo Yusup Bantul",
+      "SMA PGRI Bantul"
     ],
     "smk": [
       "SMK Negeri 1 Bantul",
@@ -224,7 +238,12 @@
       "SMK Piri Bantul",
       "SMK Tamansiswa Bantul",
       "SMK PGRI 1 Bantul",
-      "SMK Diponegoro Bantul"
+      "SMK Diponegoro Bantul",
+      "SMK Kesehatan Bantul",
+      "SMK Pertanian Bantul",
+      "SMK Pariwisata Bantul",
+      "SMK Kristen Bantul",
+      "SMK Katolik Bantul"
     ],
     "universitas": [
       "Universitas Alma Ata Yogyakarta",
@@ -239,7 +258,13 @@
       "STIKES Bethesda Yakkum",
       "AKPER Notokusumo Yogyakarta",
       "STIKES Surya Global Yogyakarta (Kampus Bantul)",
-      "Politeknik Kesehatan Bantul"
+      "Politeknik Kesehatan Bantul",
+      "STAI Al-Hikmah Bantul",
+      "Institut Agama Islam Negeri (IAIN) Bantul",
+      "Politeknik Pertanian Bantul",
+      "Akademi Pariwisata Bantul",
+      "SLB Negeri Bantul",
+      "Pondok Pesantren Al-Munawwir (Pendidikan Formal)"
     ]
   },
   "kulon_progo": {
@@ -396,7 +421,9 @@
       "Politeknik Kesehatan Gunungkidul",
       "Universitas Teknologi Yogyakarta (Kampus Wonosari)",
       "STAI Al-Hikmah Wonosari",
-      "Akademi Pariwisata Gunungkidul"
+      "Akademi Pariwisata Gunungkidul",
+      "Politeknik Pertanian Gunungkidul",
+      "SLB Negeri Wonosari"
     ]
   }
 }
