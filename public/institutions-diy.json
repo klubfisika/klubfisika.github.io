@@ -9,6 +9,8 @@
       "SMP Negeri 8 Yogyakarta",
       "SMP Negeri 9 Yogyakarta",
       "SMP Negeri 15 Yogyakarta",
+      "SMP Negeri 16 Yogyakarta",
+      "SMP Negeri 17 Yogyakarta",
       "SMP Muhammadiyah 1 Yogyakarta",
       "SMP Muhammadiyah 2 Yogyakarta",
       "SMP Muhammadiyah 3 Yogyakarta",
@@ -19,7 +21,15 @@
       "SMP Kanisius Gayam",
       "SMP De Britto Yogyakarta",
       "SMP IT Abu Bakar Yogyakarta",
-      "SMP Piri 1 Yogyakarta"
+      "SMP Piri 1 Yogyakarta",
+      "MTs Negeri Yogyakarta I",
+      "MTs Negeri Yogyakarta II",
+      "MTs Muhammadiyah 1 Yogyakarta",
+      "MTs Ali Maksum Yogyakarta",
+      "SMP Internasional Bina Nusantara Yogyakarta",
+      "SMP Kristen Kalam Kudus Yogyakarta",
+      "SMP Katolik Santo Yusup Yogyakarta",
+      "SMP PGRI 1 Yogyakarta"
     ],
     "sma": [
       "SMA Negeri 1 Yogyakarta",
@@ -45,7 +55,15 @@
       "SMA Piri 1 Yogyakarta",
       "SMA IT Abu Bakar Yogyakarta",
       "SMA Pangudi Luhur",
-      "SMA Tarakanita Yogyakarta"
+      "SMA Tarakanita Yogyakarta",
+      "MA Negeri Yogyakarta I",
+      "MA Negeri Yogyakarta II",
+      "MA Muhammadiyah 1 Yogyakarta",
+      "MA Ali Maksum Yogyakarta",
+      "SMA Internasional Bina Nusantara Yogyakarta",
+      "SMA Kristen Kalam Kudus Yogyakarta",
+      "SMA Katolik Santo Yusup Yogyakarta",
+      "SMA PGRI 1 Yogyakarta"
     ],
     "smk": [
       "SMK Negeri 1 Yogyakarta",
@@ -61,7 +79,12 @@
       "SMK Bopkri Yogyakarta",
       "SMK Piri 1 Yogyakarta",
       "SMK Piri 2 Yogyakarta",
-      "SMK Tamansiswa Yogyakarta"
+      "SMK Tamansiswa Yogyakarta",
+      "SMK Kesehatan Yogyakarta",
+      "SMK Pariwisata Yogyakarta",
+      "SMK Teknologi Informasi Yogyakarta",
+      "SMK Kristen Yogyakarta",
+      "SMK Katolik Yogyakarta"
     ],
     "universitas": [
       "Universitas Gadjah Mada (UGM)",
@@ -76,7 +99,15 @@
       "Institut Teknologi Nasional Yogyakarta (ITNY)",
       "Universitas Kristen Duta Wacana (UKDW)",
       "Universitas Cokroaminoto Yogyakarta",
-      "Institut Seni Budaya Indonesia (ISBI) Yogyakarta"
+      "Institut Seni Budaya Indonesia (ISBI) Yogyakarta",
+      "STAI Ali Maksum Yogyakarta",
+      "Institut Agama Islam Negeri (IAIN) Yogyakarta",
+      "Politeknik Kesehatan Yogyakarta",
+      "Politeknik Teknologi Informasi Yogyakarta",
+      "Akademi Pariwisata Yogyakarta",
+      "Akademi Kesehatan Yogyakarta",
+      "SLB Negeri Yogyakarta",
+      "Universitas Internasional Yogyakarta"
     ]
   },
   "sleman": {
