@@ -322,7 +322,12 @@
       "SMP Muhammadiyah Paliyan",
       "SMP Muhammadiyah Ponjong",
       "SMP IT Al Madinah Wonosari",
-      "SMP PGRI Wonosari"
+      "SMP PGRI Wonosari",
+      "MTs Negeri Wonosari",
+      "MTs Muhammadiyah Wonosari",
+      "MTs Al-Hikmah Playen",
+      "SMP Kristen Wonosari",
+      "SMP PGRI Playen"
     ],
     "sma": [
       "SMA Negeri 1 Wonosari",
@@ -349,7 +354,12 @@
       "SMA Muhammadiyah Playen",
       "SMA Muhammadiyah Patuk",
       "SMA Muhammadiyah Paliyan",
-      "SMA IT Al Madinah Wonosari"
+      "SMA IT Al Madinah Wonosari",
+      "MA Negeri Wonosari",
+      "MA Muhammadiyah Wonosari",
+      "MA Al-Hikmah Playen",
+      "SMA Kristen Wonosari",
+      "SMA PGRI Wonosari"
     ],
     "smk": [
       "SMK Negeri 1 Wonosari",
@@ -371,7 +381,12 @@
       "SMK Muhammadiyah Paliyan",
       "SMK Piri Wonosari",
       "SMK PGRI Wonosari",
-      "SMK Tamansiswa Wonosari"
+      "SMK Tamansiswa Wonosari",
+      "SMK Kesehatan Wonosari",
+      "SMK Pertanian Wonosari",
+      "SMK Teknologi Wonosari",
+      "SMK Pariwisata Wonosari",
+      "SMK Kristen Wonosari"
     ],
     "universitas": [
       "Universitas Proklamasi 45 Yogyakarta (Kampus Wonosari)",
@@ -379,7 +394,9 @@
       "AKPER Pemkab Gunungkidul",
       "STMIK AMIKOM Yogyakarta (Kampus Wonosari)",
       "Politeknik Kesehatan Gunungkidul",
-      "Universitas Teknologi Yogyakarta (Kampus Wonosari)"
+      "Universitas Teknologi Yogyakarta (Kampus Wonosari)",
+      "STAI Al-Hikmah Wonosari",
+      "Akademi Pariwisata Gunungkidul"
     ]
   }
 }
