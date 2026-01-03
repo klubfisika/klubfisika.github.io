@@ -2,15 +2,6 @@ name: Profile Page CI/CD
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - 'src/pages/[username].astro'
-      - 'src/components/Profile*'
-      - 'src/components/qwik/*'
-  pull_request:
-    paths:
-      - 'src/pages/[username].astro'
-      - 'src/components/Profile*'
 
 jobs:
   test-profile:
