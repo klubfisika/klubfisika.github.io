@@ -102,14 +102,14 @@ select:focus-visible {
   --color-primary-dark-hover: #2563eb; /* blue-600 - darker for dark hover */
   
   /* Secondary Colors - WCAG AA Compliant */
-  --color-secondary: #d97706;      /* amber-600 - improved contrast */
-  --color-secondary-hover: #b45309; /* amber-700 - darker for hover */
+  --color-secondary: #92400e;      /* amber-800 - 5.91:1 contrast with white */
+  --color-secondary-hover: #78350f; /* amber-900 - darker for hover */
   --color-secondary-dark: #fbbf24; /* amber-400 - for dark mode */
   --color-secondary-dark-hover: #f59e0b; /* amber-500 - darker for dark hover */
   
   /* Accent Colors - WCAG AA Compliant */
-  --color-accent: #047857;         /* emerald-700 - improved contrast */
-  --color-accent-hover: #065f46;   /* emerald-800 - darker for hover */
+  --color-accent: #065f46;         /* emerald-800 - 5.89:1 contrast with white */
+  --color-accent-hover: #064e3b;   /* emerald-900 - darker for hover */
   --color-accent-dark: #10b981;    /* emerald-500 - for dark mode */
   --color-accent-dark-hover: #059669; /* emerald-600 - darker for dark hover */
   

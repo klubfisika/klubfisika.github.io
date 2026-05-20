@@ -1,7 +1,7 @@
 ---
 title: 'Memahami Gerak Lurus: Panduan Lengkap'
 description: 'Pelajari konsep gerak lurus beraturan (GLB) dan gerak lurus berubah beraturan (GLBB) dengan penjelasan mendalam, rumus, dan contoh soal interaktif.'
-heroImage: "@assets/images/physics-general.png"
+heroImage: "@assets/images/physics-general.webp"
 pubDate: 'Dec 29 2024'
 author: 'Tim Klub Fisika'
 category: 'Mekanika'

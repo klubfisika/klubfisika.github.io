@@ -24,7 +24,7 @@ export const RANK_CONFIG: Record<string, string> = {
 
 export const THREAD_BADGES = {
   sticky: { label: '📌 Sticky', color: 'bg-amber-500 text-white' },
-  hot: { label: '🔥 Hot', color: 'bg-red-500 text-white' },
+  hot: { label: '🔥 Hot', color: 'bg-red-700 text-white' },
   solved: { label: '✓ Solved', color: 'bg-green-100 text-green-700' },
   locked: { label: '🔒 Locked', color: 'bg-gray-200 text-gray-600' }
 };

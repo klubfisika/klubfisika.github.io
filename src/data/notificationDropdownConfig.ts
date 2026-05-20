@@ -18,7 +18,7 @@ export const NOTIFICATION_DROPDOWN_LABELS = {
 export const NOTIFICATION_DROPDOWN_STYLES = {
   button: 'p-2 hover:bg-gray-200 rounded-full relative transition',
   icon: 'text-xl',
-  badge: 'absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-bold',
+  badge: 'absolute -top-1 -right-1 w-5 h-5 bg-red-700 text-white text-xs rounded-full flex items-center justify-center font-bold',
   backdrop: 'fixed inset-0 z-40',
   dropdown: 'absolute right-0 mt-2 bg-white rounded-xl shadow-lg border border-gray-200 z-50 overflow-hidden',
   header: 'p-4 border-b border-gray-100 flex items-center justify-between',
