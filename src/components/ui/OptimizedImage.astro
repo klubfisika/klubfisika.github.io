@@ -18,5 +18,7 @@ const { src, alt, className = '', loading = 'lazy', width, height } = Astro.prop
   loading={loading}
   width={width}
   height={height}
+  decoding="async"
+  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
   onerror="this.src='/placeholder-image.jpg'; this.onerror=null;"
 />

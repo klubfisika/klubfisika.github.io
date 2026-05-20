@@ -6,7 +6,7 @@ import Text from '../ui/Text.astro';
 import GradientSection from '../ui/GradientSection.astro';
 ---
 
-<GradientSection variant="purple-green" class="min-h-screen flex items-center relative overflow-hidden">
+<GradientSection variant="purple-green" class="min-h-[85vh] sm:min-h-screen flex items-center relative overflow-hidden">
   <!-- Background Pattern -->
   <div class="absolute inset-0 opacity-5 dark:opacity-10">
     <div class="absolute top-20 left-20 w-16 h-16 bg-dark dark:bg-light transform rotate-45"></div>
@@ -42,7 +42,7 @@ import GradientSection from '../ui/GradientSection.astro';
     </div>
 
     <!-- Floating Stats -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
       <BrutalCard variant="primary" rotation="left" className="text-center p-6">
         <div class="text-4xl font-black text-white mb-2">500+</div>
         <Text color="white" size="sm" class="font-bold">Anggota Aktif</Text>
