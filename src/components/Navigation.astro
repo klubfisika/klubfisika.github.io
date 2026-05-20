@@ -10,7 +10,7 @@ const navigationItems = [
   { label: "Blog", href: "/blog" },
   { label: "Events", href: "/events" },
   { label: "Kontak", href: "/contact" },
-  { label: "Gabung", href: "/mulai", highlight: true }
+  { label: "Komunitas", href: "https://community.klubfisika.or.id", highlight: true }
 ];
 ---
 
@@ -106,22 +106,7 @@ const navigationItems = [
 </nav>
 
 <script>
-import { hasSession, ROUTES } from '../lib/router';
-
 document.addEventListener('DOMContentLoaded', () => {
-  // Update auth button based on session
-  const updateAuthButtons = () => {
-    const isLoggedIn = hasSession();
-    document.querySelectorAll('[data-auth-btn]').forEach(btn => {
-      const link = btn as HTMLAnchorElement;
-      if (isLoggedIn) {
-        link.href = ROUTES.MEMBER_HOME;
-        link.textContent = 'Dashboard';
-      }
-    });
-  };
-  updateAuthButtons();
-
   // Mobile menu toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');

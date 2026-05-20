@@ -4,10 +4,10 @@ import { createClient } from '@libsql/client';
 export const db = createClient({
   url: import.meta.env.DEV 
     ? 'file:./local.db'  // Local SQLite file for development
-    : 'libsql://klubfisika-konxc.aws-ap-northeast-1.turso.io', // Turso for production
+    : import.meta.env.TURSO_DATABASE_URL, // Turso for production
   authToken: import.meta.env.DEV 
     ? undefined 
-    : 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3NjY2NDU3NjUsImlkIjoiMmM4NjU2MjgtZTBlOC00OTdkLTg0ZjAtZTgyNzU4MzgwYTljIiwicmlkIjoiMmE4YzZiZjctMWI1YS00ZDI4LWEyY2ItZDlmY2NhMTFiYTQzIn0.4ptdU_Muo9NwB5ffrZJO-oRc8ejpokH85Bc_ZoeCC-Eu817_5FL2LvAV5tpa8TCeLkJaj9aq7rBy_QkM4Ri0BA'
+    : import.meta.env.TURSO_AUTH_TOKEN
 });
 
 // Database schema

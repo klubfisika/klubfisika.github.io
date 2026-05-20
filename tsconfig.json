@@ -4,8 +4,6 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "strictNullChecks": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "@builder.io/qwik",
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
@@ -17,7 +15,6 @@
       "@scripts/*": ["src/scripts/*"],
       "@types/*": ["src/types/*"],
       "@data/*": ["src/data/*"],
-      "@lib/*": ["src/lib/*"],
       "@ui/*": ["src/components/ui/*"],
       "@blog/*": ["src/components/blog/*"],
       "@sections/*": ["src/components/sections/*"]

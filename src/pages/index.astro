@@ -8,16 +8,10 @@ import Gallery from "../components/sections/Gallery.astro";
 import FAQ from "../components/sections/FAQ.astro";
 import CTA from "../components/sections/CTA.astro";
 import ContactSection from "../components/sections/ContactSection.astro";
-import TestingChecklist from "../components/ui/TestingChecklist.astro";
-import ResponsiveTest from "../components/ui/ResponsiveTest.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-    <!-- Development Testing Tools -->
-    <TestingChecklist />
-    <ResponsiveTest />
-    
     <Hero />
     <About />
     <VisionMission />

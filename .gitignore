@@ -1,40 +1,61 @@
-# build output
+# Build output
 dist/
-# generated types
+
+# Generated types
 .astro/
 
-# dependencies
+# Dependencies
 node_modules/
 
-# logs
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-
-# environment variables
+# Environment variables (CRITICAL: Never commit secrets!)
 .env
 .env.local
 .env.production
+.env.*
 
 # macOS-specific files
 .DS_Store
 
-# jetbrains setting folder
+# IDE settings
 .idea/
+.vscode/
 
 # Progress documentation (private development notes)
 progress/
 
+# Sisyphus run continuations
+.sisyphus/
+
 # Test results and reports
 test-results/
 playwright-report/
+coverage/
 
 # Screenshots and temporary files
 screenshot*.png
 *-screenshot.png
+*.chat
+*.cjs
+temp.json
+*.zip
+
+# Allow legitimate images
 !src/assets/**/*.png
 !public/**/*.png
 
-node_modules
+# TinaCMS generated files
+tina/__generated__/
+public/admin/assets/
+
+# Astro config variants (keep only main config)
+astro.config.*.mjs
+
+# Development scripts
+*-screenshot.js
+check-*.mjs
