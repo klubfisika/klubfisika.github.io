@@ -36,7 +36,7 @@ test.describe('Platform Layout', () => {
     const sidebarBox = await sidebar.boundingBox();
     const headingBox = await heading.boundingBox();
     
-    expect(headingBox.x).toBeGreaterThan(sidebarBox.x + sidebarBox.width - 10);
+    expect(headingBox?.x ?? 0).toBeGreaterThan((sidebarBox?.x ?? 0) + (sidebarBox?.width ?? 0) - 10);
   });
 
   test('sidebar hidden on mobile', async ({ page }) => {

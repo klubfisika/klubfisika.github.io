@@ -42,6 +42,7 @@
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "@axe-core/playwright": "^4.11.0",
     "@lhci/cli": "^0.15.0",
     "@playwright/test": "^1.57.0",
@@ -53,6 +54,7 @@
     "eslint": "^9.39.2",
     "eslint-plugin-astro": "^1.5.0",
     "lighthouse": "^12.2.1",
-    "playwright": "^1.57.0"
+    "playwright": "^1.57.0",
+    "typescript": "^5.9.3"
   }
 }

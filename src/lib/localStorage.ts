@@ -96,7 +96,7 @@ export function syncToLocalStorage(key: string, data: any) {
 
 export function getPendingSync() {
   if (typeof localStorage === 'undefined') return [];
-  const pending = [];
+  const pending: Array<{ key: string; synced: boolean; [key: string]: unknown }> = [];
   Object.keys(localStorage).forEach(key => {
     if (key.startsWith('sync_')) {
       const item = JSON.parse(localStorage.getItem(key)!);

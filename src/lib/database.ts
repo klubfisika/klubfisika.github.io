@@ -78,7 +78,8 @@ export async function seedDB() {
   
   // Check if already seeded
   const users = await db.execute('SELECT COUNT(*) as count FROM users');
-  if (users.rows[0].count > 0) return;
+  const count = users.rows[0]?.count;
+  if (count !== undefined && Number(count) > 0) return;
 
   // Seed users
   await db.execute(`

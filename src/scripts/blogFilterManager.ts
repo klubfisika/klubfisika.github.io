@@ -1,4 +1,4 @@
-import type { FilterState } from '@types/blog';
+import type { FilterState } from '../types/blog';
 
 export class BlogFilterManager {
     private state: FilterState = {
@@ -89,7 +89,7 @@ export class BlogFilterManager {
 
     private applyFilters(): void {
         let matchCount = 0;
-        const isFiltering = this.state.search || this.state.category !== 'all' || this.state.tag;
+        const isFiltering = Boolean(this.state.search || this.state.category !== 'all' || this.state.tag);
         
         this.allArticles.forEach(article => {
             const element = article as HTMLElement;
@@ -220,8 +220,9 @@ export class BlogFilterManager {
 
     private bindKeyboardEvents(): void {
         document.querySelectorAll('article[tabindex="0"]').forEach(article => {
-            article.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
+            article.addEventListener('keydown', (e: Event) => {
+                const keyEvent = e as KeyboardEvent;
+                if (keyEvent.key === 'Enter' || keyEvent.key === ' ') {
                     e.preventDefault();
                     const link = article.querySelector('a');
                     if (link) link.click();
