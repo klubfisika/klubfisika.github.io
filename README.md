@@ -195,7 +195,7 @@ pnpm test:report       # Lihat laporan test
 - 💬 **WhatsApp**: [Admin KF13](https://wa.me/6282225009253)
 - 🌐 **Website**: [klubfisika.github.io](https://klubfisika.github.io)
 - 🧑‍🤝‍🧑 **Platform**: [community.klubfisika.or.id](https://community.klubfisika.or.id)
-- 📸 **Instagram**: [@kf13_indonesia](https://instagram.com/kf13_indonesia)
+- 📸 **Instagram**: [@klubfisika13](https://instagram.com/klubfisika13)
 
 ---
 
