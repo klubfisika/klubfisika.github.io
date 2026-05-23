@@ -39,18 +39,19 @@ const sizeClasses = {
         size={size}
         className="text-center"
       >
-        <a 
-          href={social.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block"
-        >
-          <div class="text-2xl mb-2">{social.icon}</div>
-          <p class="font-bold text-xs text-on-primary">{social.name}</p>
-          {social.handle && (
-            <p class="text-xs text-on-primary opacity-90">{social.handle}</p>
-          )}
-        </a>
+           <a 
+           href={social.url}
+           target="_blank"
+           rel="noopener noreferrer"
+           class="block"
+         >
+           <div class="text-2xl mb-2">{social.icon}</div>
+           <p class="font-bold text-xs text-text-on-primary">{social.name}</p>
+           {social.handle && (
+             <p class="text-xs text-text-on-primary opacity-90">{social.handle}</p>
+           )}
+         </a>
+
       </BrutalCard>
     </HoverScale>
   ))}

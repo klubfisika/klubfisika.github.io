@@ -14,12 +14,12 @@ const navigationItems = [
 ];
 ---
 
-<nav id="navigation" class="fixed top-0 left-0 right-0 z-50 bg-surface/90 dark:bg-surface-dark/90 backdrop-blur-sm border-b-4 border-dark dark:border-light" aria-label="Main navigation">
+<nav id="navigation" class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-sm border-b-4 border-border-main" aria-label="Main navigation">
   <div class="container mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
       <!-- Logo -->
       <a href="/" class="flex items-center space-x-3 group">
-        <IconContainer size="md" variant="white" class="border-2 border-dark dark:border-light transform rotate-12 group-hover:rotate-0 transition-transform flex-shrink-0">
+        <IconContainer size="md" variant="surface" class="border-2 border-border-main transform rotate-12 group-hover:rotate-0 transition-transform flex-shrink-0">
           <Image 
             src={kf13Logo} 
             alt="KF13 Logo" 
@@ -29,8 +29,8 @@ const navigationItems = [
           />
         </IconContainer>
         <div class="hidden sm:block flex-shrink-0">
-          <h1 class="text-xl font-black text-dark dark:text-light leading-tight">KF13</h1>
-          <p class="text-xs text-dark/70 dark:text-light/70 font-semibold leading-tight">Klub Fisika</p>
+          <h1 class="text-xl font-black text-main leading-tight">KF13</h1>
+          <p class="text-xs text-main/70 font-semibold leading-tight">Klub Fisika</p>
         </div>
       </a>
 
@@ -51,7 +51,7 @@ const navigationItems = [
           ) : (
             <a 
               href={item.href}
-              class={`font-bold transition-all transform hover:scale-105 text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark ${index % 2 === 0 ? 'hover:rotate-1' : 'hover:-rotate-1'}`}
+              class={`font-bold transition-all transform hover:scale-105 text-main hover:text-primary ${index % 2 === 0 ? 'hover:rotate-1' : 'hover:-rotate-1'}`}
             >
               {item.label}
             </a>
@@ -62,7 +62,7 @@ const navigationItems = [
       <!-- Mobile Menu Button -->
       <button 
         id="mobile-menu-btn"
-        class="lg:hidden p-2 text-dark dark:text-light hover:text-primary transition-colors"
+        class="lg:hidden p-2 text-main hover:text-primary transition-colors"
         aria-label="Toggle mobile menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
@@ -76,7 +76,7 @@ const navigationItems = [
     <!-- Mobile Navigation -->
     <div 
       id="mobile-menu"
-      class="lg:hidden mt-4 pb-4 border-t-2 border-dark dark:border-light hidden opacity-0 -translate-y-2 transition-all duration-200 ease-out"
+      class="lg:hidden mt-4 pb-4 border-t-2 border-border-main hidden opacity-0 -translate-y-2 transition-all duration-200 ease-out"
     >
       <div class="space-y-2 pt-4">
         {navigationItems.map((item) => 
@@ -94,7 +94,7 @@ const navigationItems = [
           ) : (
             <a 
               href={item.href}
-              class="block font-bold py-2 text-dark dark:text-light hover:text-primary transition-colors"
+              class="block font-bold py-2 text-main hover:text-primary transition-colors"
             >
               {item.label}
             </a>
@@ -158,11 +158,11 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
     if (window.scrollY > 100) {
-      nav?.classList.add('bg-surface/95', 'dark:bg-surface-dark/95');
-      nav?.classList.remove('bg-surface/90', 'dark:bg-surface-dark/90');
+      nav?.classList.add('bg-surface/95', 'bg-surface/95');
+      nav?.classList.remove('bg-surface/90', 'bg-surface/90');
     } else {
-      nav?.classList.remove('bg-surface/95', 'dark:bg-surface-dark/95');
-      nav?.classList.add('bg-surface/90', 'dark:bg-surface-dark/90');
+      nav?.classList.remove('bg-surface/95', 'bg-surface/95');
+      nav?.classList.add('bg-surface/90', 'bg-surface/90');
     }
   });
 });
