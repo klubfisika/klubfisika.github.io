@@ -17,9 +17,9 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
     <GradientSection variant="blue-purple">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <Heading level={1} size="3xl" class="uppercase tracking-tight transform -rotate-1 mb-8">
-                RESEARCH & <span class="text-secondary dark:text-secondary-dark">RISET</span>
+                RESEARCH & <span class="text-secondary">RISET</span>
             </Heading>
-            <BrutalCard variant="white" class="transform rotate-1 max-w-2xl mx-auto">
+            <BrutalCard variant="surface" class="transform rotate-1 max-w-2xl mx-auto">
                 <Text size="lg" class="font-bold mb-4">
                     🔬 Bergabunglah dalam Revolusi Research Indonesia!
                 </Text>
@@ -31,16 +31,16 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
     </GradientSection>
 
     <!-- Research Platform -->
-    <BrutalSection background="white" padding="lg">
+    <BrutalSection background="surface" padding="lg">
         <SectionHeader title="PLATFORM RISET" subtitle="Akses portal penelitian dan kolaborasi" className="mb-8" />
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div class="space-y-6">
                 <BrutalCard variant="primary" rotation="left">
-                    <Heading level={3} size="lg" color="white" class="uppercase mb-4">
+                    <Heading level={3} size="lg" color="on-primary" class="uppercase mb-4">
                         🚀 MULAI JOURNEY ANDA
                     </Heading>
-                    <Text color="white" class="opacity-90 mb-6">
+                    <Text color="on-primary" class="opacity-90 mb-6">
                         Akses portal penelitian lengkap dengan tools kolaborasi, database jurnal, dan networking dengan peneliti lainnya.
                     </Text>
                     <BrutalButton
@@ -58,10 +58,10 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
             
             <div class="space-y-6">
                 <BrutalCard variant="accent" rotation="right">
-                    <Heading level={3} size="md" color="white" class="uppercase mb-4">
+                    <Heading level={3} size="md" color="on-accent" class="uppercase mb-4">
                         📊 FITUR PLATFORM
                     </Heading>
-                    <ul class="text-white space-y-2 text-sm">
+                    <ul class="text-on-accent space-y-2 text-sm">
                         <li>✅ Database jurnal fisika terlengkap</li>
                         <li>✅ Tools kolaborasi real-time</li>
                         <li>✅ Networking dengan peneliti global</li>
@@ -122,11 +122,11 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
                 >
                     <div class="text-center mb-4">
                         <div class="text-4xl mb-3">{area.icon}</div>
-                        <Heading level={3} size="sm" color="white" class="uppercase mb-2">
+                        <Heading level={3} size="sm" color="on-primary" class="uppercase mb-2">
                             {area.title}
                         </Heading>
                     </div>
-                    <Text color="white" size="sm" class="opacity-90 leading-relaxed text-center">
+                    <Text color="on-primary" size="sm" class="opacity-90 leading-relaxed text-center">
                         {area.description}
                     </Text>
                 </BrutalCard>
@@ -135,13 +135,13 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
     </BrutalSection>
 
     <!-- Join Research -->
-    <BrutalSection background="white" padding="lg">
+    <BrutalSection background="surface" padding="lg">
         <div class="max-w-4xl mx-auto text-center">
             <BrutalCard variant="accent" rotation="left" class="p-8">
-                <Heading level={2} size="xl" color="white" class="uppercase mb-6">
+                <Heading level={2} size="xl" color="on-accent" class="uppercase mb-6">
                     🤝 BERGABUNG DENGAN TIM RISET
                 </Heading>
-                <Text size="lg" color="white" class="font-semibold mb-8">
+                <Text size="lg" color="on-primary" class="font-semibold mb-8">
                     Punya ide penelitian menarik? Ingin berkolaborasi dengan peneliti lain? 
                     Mari bergabung dan wujudkan riset impian Anda!
                 </Text>

@@ -18,9 +18,9 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
     <GradientSection variant="blue-purple">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <Heading level={1} size="3xl" class="uppercase tracking-tight transform -rotate-1 mb-8">
-                TENTANG <span class="text-primary dark:text-primary-dark">KF13</span>
+                TENTANG <span class="text-primary">KF13</span>
             </Heading>
-            <BrutalCard variant="white" class="transform rotate-1 max-w-2xl mx-auto">
+            <BrutalCard variant="surface" class="transform rotate-1 max-w-2xl mx-auto">
                 <Text size="lg" class="font-bold mb-4">
                     🔬 Klub Fisika Indonesia - Sejak 2013
                 </Text>
@@ -33,7 +33,7 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
     </GradientSection>
 
     <!-- Stats Section -->
-    <BrutalSection background="white" padding="lg" id="sejarah">
+    <BrutalSection background="surface" padding="lg" id="sejarah">
         <div class="max-w-6xl mx-auto px-6">
             <SectionHeader title="SEJARAH KF13" subtitle="Perjalanan kami sejak 2013" className="mb-8" />
             
@@ -69,8 +69,8 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
             
             <div class="space-y-8">
                 <BrutalCard variant="primary" class="transform rotate-1">
-                    <Heading level={3} size="lg" color="white" class="uppercase mb-4">AWAL MULA (2013)</Heading>
-                    <Text color="white" leading="relaxed">
+                    <Heading level={3} size="lg" color="on-primary" class="uppercase mb-4">AWAL MULA (2013)</Heading>
+                    <Text color="on-primary" leading="relaxed">
                         KF13 lahir dari semangat sekelompok mahasiswa fisika di Yogyakarta yang ingin 
                         menciptakan ruang belajar yang lebih interaktif dan menyenangkan. Dimulai dengan 
                         diskusi kecil di kampus, kami berkembang menjadi komunitas yang solid.
@@ -78,8 +78,8 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
                 </BrutalCard>
 
                 <BrutalCard variant="accent" class="transform -rotate-1">
-                    <Heading level={3} size="lg" color="white" class="uppercase mb-4">PERKEMBANGAN (2015-2020)</Heading>
-                    <Text color="white" leading="relaxed">
+                    <Heading level={3} size="lg" color="on-accent" class="uppercase mb-4">PERKEMBANGAN (2015-2020)</Heading>
+                    <Text color="on-accent" leading="relaxed">
                         Komunitas berkembang dengan berbagai program seperti workshop eksperimen, 
                         seminar fisika, dan kompetisi sains. Anggota mulai tersebar di berbagai 
                         universitas di Yogyakarta, memperkuat jaringan pembelajaran fisika.
@@ -87,8 +87,8 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
                 </BrutalCard>
 
                 <BrutalCard variant="secondary" class="transform rotate-1">
-                    <Heading level={3} size="lg" color="white" class="uppercase mb-4">ERA DIGITAL (2021-SEKARANG)</Heading>
-                    <Text color="white" leading="relaxed">
+                    <Heading level={3} size="lg" color="on-secondary" class="uppercase mb-4">ERA DIGITAL (2021-SEKARANG)</Heading>
+                    <Text color="on-secondary" leading="relaxed">
                         Pandemi mendorong kami untuk berinovasi dengan platform digital. 
                         KF13 kini hadir dengan website, media sosial aktif, dan program 
                         pembelajaran online yang menjangkau seluruh Indonesia.
@@ -99,15 +99,14 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
     </BrutalSection>
 
     <!-- Vision Mission -->
-    <!-- Vision Mission Section -->
-    <BrutalSection background="white" padding="lg" id="visi-misi">
+    <BrutalSection background="surface" padding="lg" id="visi-misi">
         <div class="max-w-4xl mx-auto px-6">
             <SectionHeader title="VISI & MISI" subtitle="Tujuan dan cita-cita KF13 untuk pendidikan fisika Indonesia" className="mb-8" />
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <BrutalCard variant="primary" class="transform -rotate-1">
-                    <Heading level={3} size="lg" color="white" class="uppercase mb-4">🎯 VISI</Heading>
-                    <Text color="white" leading="relaxed">
+                    <Heading level={3} size="lg" color="on-primary" class="uppercase mb-4">🎯 VISI</Heading>
+                    <Text color="on-primary" leading="relaxed">
                         Menjadi komunitas fisika terdepan di Indonesia yang menginspirasi 
                         generasi muda untuk mencintai sains dan berkontribusi pada 
                         kemajuan ilmu pengetahuan.
@@ -115,8 +114,8 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
                 </BrutalCard>
 
                 <BrutalCard variant="accent" class="transform rotate-1">
-                    <Heading level={3} size="lg" color="white" class="uppercase mb-4">🚀 MISI</Heading>
-                    <ul class="space-y-2 text-white">
+                    <Heading level={3} size="lg" color="on-accent" class="uppercase mb-4">🚀 MISI</Heading>
+                    <ul class="space-y-2 text-on-accent">
                         <li>• Menyediakan platform pembelajaran fisika yang interaktif</li>
                         <li>• Memfasilitasi diskusi dan kolaborasi antar pelajar fisika</li>
                         <li>• Mengadakan workshop dan eksperimen sains berkualitas</li>
@@ -133,7 +132,7 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
             <SectionHeader title="NILAI-NILAI KAMI" subtitle="Prinsip yang menjadi fondasi KF13" className="mb-8" />
             
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <BrutalCard variant="white" class="transform rotate-1 text-center">
+                <BrutalCard variant="surface" class="transform rotate-1 text-center">
                     <div class="text-4xl mb-4">🤝</div>
                     <Heading level={4} size="md" class="uppercase mb-3">KOLABORASI</Heading>
                     <Text class="text-sm">
@@ -142,7 +141,7 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
                     </Text>
                 </BrutalCard>
 
-                <BrutalCard variant="white" class="transform -rotate-1 text-center">
+                <BrutalCard variant="surface" class="transform -rotate-1 text-center">
                     <div class="text-4xl mb-4">🔬</div>
                     <Heading level={4} size="md" class="uppercase mb-3">EKSPERIMEN</Heading>
                     <Text class="text-sm">
@@ -151,7 +150,7 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
                     </Text>
                 </BrutalCard>
 
-                <BrutalCard variant="white" class="transform rotate-1 text-center">
+                <BrutalCard variant="surface" class="transform rotate-1 text-center">
                     <div class="text-4xl mb-4">🌟</div>
                     <Heading level={4} size="md" class="uppercase mb-3">INSPIRASI</Heading>
                     <Text class="text-sm">
@@ -164,13 +163,13 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
     </BrutalSection>
 
     <!-- Team Section -->
-    <BrutalSection background="white" padding="lg" id="tim">
+    <BrutalSection background="surface" padding="lg" id="tim">
         <div class="max-w-6xl mx-auto px-6">
             <SectionHeader title="TIM INTI" subtitle="Orang-orang di balik KF13" className="mb-8" />
             
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <BrutalCard variant="white" class="transform rotate-1 text-center">
-                    <div class="w-24 h-24 bg-primary rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+                <BrutalCard variant="surface" class="transform rotate-1 text-center">
+                    <div class="w-24 h-24 bg-primary rounded-full mx-auto mb-4 flex items-center justify-center text-on-primary text-2xl font-bold">
                         AF
                     </div>
                     <Heading level={4} size="md" class="uppercase mb-2">Dr. Ahmad Fisika</Heading>
@@ -180,8 +179,8 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
                     </Text>
                 </BrutalCard>
                 
-                <BrutalCard variant="white" class="transform -rotate-1 text-center">
-                    <div class="w-24 h-24 bg-accent rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+                <BrutalCard variant="surface" class="transform -rotate-1 text-center">
+                    <div class="w-24 h-24 bg-accent rounded-full mx-auto mb-4 flex items-center justify-center text-on-accent text-2xl font-bold">
                         SQ
                     </div>
                     <Heading level={4} size="md" class="uppercase mb-2">Sarah Quantum</Heading>
@@ -191,8 +190,8 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
                     </Text>
                 </BrutalCard>
                 
-                <BrutalCard variant="white" class="transform rotate-1 text-center">
-                    <div class="w-24 h-24 bg-secondary rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+                <BrutalCard variant="surface" class="transform rotate-1 text-center">
+                    <div class="w-24 h-24 bg-secondary rounded-full mx-auto mb-4 flex items-center justify-center text-on-secondary text-2xl font-bold">
                         BE
                     </div>
                     <Heading level={4} size="md" class="uppercase mb-2">Budi Eksperimen</Heading>
@@ -209,10 +208,10 @@ import BrutalButton from "../components/ui/BrutalButton.astro";
     <BrutalSection background="surface" padding="lg">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <BrutalCard variant="primary" class="transform -rotate-1">
-                <Heading level={2} size="xl" color="white" class="uppercase mb-4">
+                <Heading level={2} size="xl" color="on-primary" class="uppercase mb-4">
                     BERGABUNG DENGAN KF13
                 </Heading>
-                <Text color="white" class="mb-6" leading="relaxed">
+                <Text color="on-primary" class="mb-6" leading="relaxed">
                     Jadilah bagian dari komunitas fisika terbesar di Indonesia. 
                     Belajar, bereksperimen, dan berkembang bersama kami!
                 </Text>

@@ -17,9 +17,9 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
     <GradientSection variant="purple-green">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <Heading level={1} size="3xl" class="uppercase tracking-tight transform -rotate-1 mb-8">
-                MITRA & <span class="text-primary dark:text-primary-dark">KEMITRAAN</span>
+                MITRA & <span class="text-primary">KEMITRAAN</span>
             </Heading>
-            <BrutalCard variant="white" class="transform rotate-1 max-w-2xl mx-auto">
+            <BrutalCard variant="surface" class="transform rotate-1 max-w-2xl mx-auto">
                 <Text size="lg" class="font-bold mb-4">
                     🤝 Membangun Jaringan Pendidikan Fisika Bersama
                 </Text>
@@ -32,7 +32,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
     </GradientSection>
 
     <!-- University Network -->
-    <BrutalSection background="white" padding="lg">
+    <BrutalSection background="surface" padding="lg">
         <SectionHeader title="JARINGAN KAMPUS" subtitle="Anggota dari berbagai perguruan tinggi di Yogyakarta" className="mb-8" />
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -98,16 +98,16 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                 >
                     <div class="text-center mb-4">
                         <div class="text-4xl mb-3">{university.icon}</div>
-                        <Heading level={3} size="sm" color="white" class="uppercase mb-1">
+                        <Heading level={3} size="sm" color={university.variant === 'primary' ? 'on-primary' : university.variant === 'secondary' ? 'on-secondary' : 'on-accent'} class="uppercase mb-1">
                             {university.abbr}
                         </Heading>
-                        <Text color="white" size="sm" class="opacity-80 font-semibold">{university.type}</Text>
+                        <Text color={university.variant === 'primary' ? 'on-primary' : university.variant === 'secondary' ? 'on-secondary' : 'on-accent'} size="sm" class="opacity-80 font-semibold">{university.type}</Text>
                     </div>
                     
-                    <div class="space-y-3 text-white opacity-90 text-sm">
+                    <div class={`space-y-3 opacity-90 text-sm text-${university.variant === 'primary' ? 'on-primary' : university.variant === 'secondary' ? 'on-secondary' : 'on-accent'}`}>
                         <p class="font-semibold">{university.name}</p>
                         <p>{university.connection}</p>
-                        <div class="bg-white/20 border-2 border-white/30 p-2 rounded text-center">
+                        <div class="bg-surface/20 border-2 border-border-main/30 p-2 rounded text-center">
                             <span class="font-bold">👥 {university.members}</span>
                         </div>
                     </div>
@@ -123,10 +123,10 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div class="space-y-8">
                 <BrutalCard variant="primary" rotation="left">
-                    <Heading level={3} size="lg" color="white" class="uppercase mb-4">
+                    <Heading level={3} size="lg" color="on-primary" class="uppercase mb-4">
                         🎯 UNTUK INSTITUSI
                     </Heading>
-                    <ul class="text-white space-y-2 text-sm">
+                    <ul class="text-on-primary space-y-2 text-sm">
                         <li>✅ Akses ke talent pool mahasiswa fisika terbaik</li>
                         <li>✅ Kolaborasi penelitian dan pengembangan</li>
                         <li>✅ Program magang dan praktik kerja</li>
@@ -138,10 +138,10 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
             
             <div class="space-y-8">
                 <BrutalCard variant="accent" rotation="right">
-                    <Heading level={3} size="lg" color="white" class="uppercase mb-4">
+                    <Heading level={3} size="lg" color="on-primary" class="uppercase mb-4">
                         🚀 UNTUK ANGGOTA
                     </Heading>
-                    <ul class="text-white space-y-2 text-sm">
+                    <ul class="text-on-primary space-y-2 text-sm">
                         <li>✅ Kesempatan magang di perusahaan partner</li>
                         <li>✅ Akses ke job opportunities eksklusif</li>
                         <li>✅ Mentoring dari profesional industri</li>
@@ -154,7 +154,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
     </BrutalSection>
 
     <!-- Current Partners -->
-    <BrutalSection background="white" padding="lg">
+    <BrutalSection background="surface" padding="lg">
         <SectionHeader title="MITRA SAAT INI" subtitle="Organisasi dan institusi yang berkolaborasi dengan KF13" className="mb-8" />
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -193,17 +193,17 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                     rotation={index % 2 === 0 ? 'right' : 'left'}
                 >
                     <div class="mb-4">
-                        <span class="bg-white text-dark px-3 py-1 text-xs font-bold border-2 border-dark">
+                        <span class="bg-surface text-main px-3 py-1 text-xs font-bold border-2 border-dark">
                             SEJAK {partner.since}
                         </span>
                     </div>
                     
-                    <Heading level={3} size="md" color="white" class="uppercase mb-2">
+                    <Heading level={3} size="md" color={partner.variant === 'primary' ? 'on-primary' : partner.variant === 'secondary' ? 'on-secondary' : 'on-accent'} class="uppercase mb-2">
                         {partner.name}
                     </Heading>
-                    <Text color="white" size="sm" class="opacity-80 font-semibold mb-4">{partner.type}</Text>
+                    <Text color={partner.variant === 'primary' ? 'on-primary' : partner.variant === 'secondary' ? 'on-secondary' : 'on-accent'} size="sm" class="opacity-80 font-semibold mb-4">{partner.type}</Text>
                     
-                    <Text color="white" size="sm" class="opacity-90 leading-relaxed">
+                    <Text color={partner.variant === 'primary' ? 'on-primary' : partner.variant === 'secondary' ? 'on-secondary' : 'on-accent'} size="sm" class="opacity-90 leading-relaxed">
                         {partner.collaboration}
                     </Text>
                 </BrutalCard>
@@ -215,10 +215,10 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
     <BrutalSection background="surface" padding="lg">
         <div class="max-w-4xl mx-auto text-center">
             <BrutalCard variant="accent" rotation="left" class="p-8">
-                <Heading level={2} size="xl" color="white" class="uppercase mb-6">
+                <Heading level={2} size="xl" color="on-accent" class="uppercase mb-6">
                     🤝 BERGABUNG SEBAGAI MITRA
                 </Heading>
-                <Text size="lg" color="white" class="font-semibold mb-8">
+                <Text size="lg" color="on-accent" class="font-semibold mb-8">
                     Tertarik berkolaborasi dengan KF13? Mari bersama-sama memajukan pendidikan fisika di Indonesia!
                 </Text>
                 
@@ -243,7 +243,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                     </BrutalButton>
                 </div>
                 
-                <Text size="sm" color="white" class="mt-6 opacity-75">
+                <Text size="sm" color="on-accent" class="mt-6 opacity-75">
                     Kami terbuka untuk berbagai bentuk kolaborasi: penelitian, magang, workshop, atau program lainnya
                 </Text>
             </BrutalCard>

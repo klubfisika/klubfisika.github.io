@@ -19,9 +19,9 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
             <GradientSection variant="blue-purple">
                 <div class="max-w-4xl mx-auto px-6 text-center">
                     <Heading level={1} size="3xl" class="uppercase tracking-tight transform -rotate-1 mb-8">
-                        SYARAT & <span class="text-primary dark:text-primary-dark">KETENTUAN</span>
+                        SYARAT & <span class="text-primary">KETENTUAN</span>
                     </Heading>
-                    <BrutalCard variant="white" class="transform rotate-1">
+                    <BrutalCard variant="surface" class="transform rotate-1">
                         <Text size="lg" class="font-bold mb-4">
                             📋 Panduan Resmi KF13 Klub Fisika Indonesia
                         </Text>
@@ -36,7 +36,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
             </GradientSection>
 
             <!-- Main Content with Sidebar -->
-            <BrutalSection background="white" padding="lg">
+            <BrutalSection background="surface" padding="lg">
                 <div class="max-w-7xl mx-auto px-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         <!-- Sidebar Table of Contents -->
@@ -99,7 +99,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                                 Dengan mengakses dan menggunakan layanan KF13 Klub Fisika Indonesia, Anda menyetujui untuk terikat oleh syarat dan ketentuan ini. 
                                 Jika Anda tidak setuju dengan syarat ini, mohon untuk tidak menggunakan layanan kami.
                             </Text>
-                            <ul class="list-disc list-inside space-y-2 text-sm text-dark dark:text-light">
+                            <ul class="list-disc list-inside space-y-2 text-sm text-main">
                                 <li>Layanan tersedia untuk pelajar, mahasiswa, dan pendidik fisika</li>
                                 <li>Pengguna harus berusia minimal 13 tahun atau memiliki izin orang tua</li>
                                 <li>Akun harus menggunakan identitas yang benar dan valid</li>
@@ -107,12 +107,12 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                         </BrutalCard>
 
                         <BrutalCard variant="primary" class="transform -rotate-1" id="layanan-komunitas">
-                            <Heading level={3} size="lg" class="uppercase mb-4 text-white">2. LAYANAN KOMUNITAS</Heading>
-                            <Text class="leading-relaxed mb-4 text-white">
+                            <Heading level={3} size="lg" class="uppercase mb-4 text-on-primary">2. LAYANAN KOMUNITAS</Heading>
+                            <Text class="leading-relaxed mb-4 text-on-primary">
                                 KF13 menyediakan platform pembelajaran fisika, diskusi ilmiah, dan kegiatan edukatif. 
                                 Semua layanan bersifat gratis dan berbasis komunitas.
                             </Text>
-                            <ul class="list-disc list-inside space-y-2 text-sm text-white">
+                            <ul class="list-disc list-inside space-y-2 text-sm text-on-primary">
                                 <li>Diskusi fisika dan sains terbuka untuk semua anggota</li>
                                 <li>Eksperimen dan workshop sesuai kapasitas dan jadwal</li>
                                 <li>Materi pembelajaran dapat digunakan untuk tujuan edukatif</li>
@@ -128,7 +128,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                                 <div>
                                     <Text class="font-bold mb-2">✅ DIPERBOLEHKAN:</Text>
-                                    <ul class="list-disc list-inside space-y-1 text-dark dark:text-light">
+                                    <ul class="list-disc list-inside space-y-1 text-main">
                                         <li>Diskusi ilmiah yang konstruktif</li>
                                         <li>Berbagi pengetahuan dan pengalaman</li>
                                         <li>Bertanya dan meminta bantuan</li>
@@ -137,7 +137,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                                 </div>
                                 <div>
                                     <Text class="font-bold mb-2">❌ TIDAK DIPERBOLEHKAN:</Text>
-                                    <ul class="list-disc list-inside space-y-1 text-dark dark:text-light">
+                                    <ul class="list-disc list-inside space-y-1 text-main">
                                         <li>Konten SARA, politik, atau pornografi</li>
                                         <li>Spam, iklan, atau promosi berlebihan</li>
                                         <li>Plagiarisme atau pelanggaran hak cipta</li>
@@ -152,7 +152,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                             <Text class="leading-relaxed mb-4">
                                 Semua konten, materi pembelajaran, dan desain website adalah milik KF13 atau digunakan dengan izin yang sah.
                             </Text>
-                            <ul class="list-disc list-inside space-y-1 text-sm text-dark dark:text-light">
+                            <ul class="list-disc list-inside space-y-1 text-sm text-main">
                                 <li>Materi pembelajaran dapat digunakan untuk tujuan edukatif non-komersial</li>
                                 <li>Dilarang menyalin atau mendistribusikan tanpa izin tertulis</li>
                                 <li>Kredit harus diberikan kepada KF13 saat menggunakan materi</li>
@@ -172,7 +172,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                                 />
                                 
                                 <div class="space-y-8">
-                                    <BrutalCard variant="white" class="transform -rotate-1" id="data-dikumpulkan">
+                                    <BrutalCard variant="surface" class="transform -rotate-1" id="data-dikumpulkan">
                                         <Heading level={3} size="lg" class="uppercase mb-4">DATA YANG KAMI KUMPULKAN</Heading>
                                         <div class="space-y-4">
                                             <div>
@@ -192,7 +192,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
 
                                     <BrutalCard variant="secondary" class="transform rotate-1" id="penggunaan-data">
                                         <Heading level={3} size="lg" class="uppercase mb-4">PENGGUNAAN DATA</Heading>
-                                        <ul class="list-disc list-inside space-y-2 text-dark dark:text-light">
+                                        <ul class="list-disc list-inside space-y-2 text-main">
                                             <li>Komunikasi terkait kegiatan dan program KF13</li>
                                             <li>Personalisasi pengalaman pembelajaran</li>
                                             <li>Analisis untuk peningkatan layanan</li>
@@ -210,7 +210,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                             <div>
                                                 <Text class="font-bold mb-2">✅ HAK ANDA:</Text>
-                                                <ul class="list-disc list-inside text-sm space-y-1 text-dark dark:text-light">
+                                                <ul class="list-disc list-inside text-sm space-y-1 text-main">
                                                     <li>Mengakses data pribadi Anda</li>
                                                     <li>Memperbarui informasi</li>
                                                     <li>Menghapus akun dan data</li>
@@ -219,7 +219,7 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                                             </div>
                                             <div>
                                                 <Text class="font-bold mb-2">📞 KONTAK PRIVASI:</Text>
-                                                <ul class="text-sm space-y-1 text-dark dark:text-light">
+                                                <ul class="text-sm space-y-1 text-main">
                                                     <li>Email: privacy@klubfisika.org</li>
                                                     <li>WhatsApp: +62 822-2500-9253</li>
                                                     <li>Respon dalam 7 hari kerja</li>
@@ -281,24 +281,24 @@ import BrutalSection from "../components/ui/BrutalSection.astro";
                                     </BrutalCard>
 
                                     <BrutalCard variant="primary" class="transform rotate-1" id="kontak-legal">
-                                        <Heading level={3} size="lg" class="uppercase mb-4 text-white">KONTAK LEGAL</Heading>
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-white">
+                                        <Heading level={3} size="lg" class="uppercase mb-4 text-on-primary">KONTAK LEGAL</Heading>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-on-primary">
                                             <div>
-                                                <Text class="font-bold mb-2 text-white">📧 Email Resmi:</Text>
-                                                <Text size="sm" class="text-white">info@klubfisika.org</Text>
-                                                <Text size="sm" class="text-white">legal@klubfisika.org</Text>
+                                                <Text class="font-bold mb-2 text-on-primary">📧 Email Resmi:</Text>
+                                                <Text size="sm" class="text-on-primary">info@klubfisika.org</Text>
+                                                <Text size="sm" class="text-on-primary">legal@klubfisika.org</Text>
                                             </div>
                                             <div>
-                                                <Text class="font-bold mb-2 text-white">💬 WhatsApp:</Text>
-                                                <Text size="sm" class="text-white">+62 822-2500-9253</Text>
+                                                <Text class="font-bold mb-2 text-on-primary">💬 WhatsApp:</Text>
+                                                <Text size="sm" class="text-on-primary">+62 822-2500-9253</Text>
                                             </div>
                                             <div>
-                                                <Text class="font-bold mb-2 text-white">📍 Alamat:</Text>
-                                                <Text size="sm" class="text-white">Yogyakarta, Indonesia</Text>
+                                                <Text class="font-bold mb-2 text-on-primary">📍 Alamat:</Text>
+                                                <Text size="sm" class="text-on-primary">Yogyakarta, Indonesia</Text>
                                             </div>
                                             <div>
-                                                <Text class="font-bold mb-2 text-white">⏰ Jam Operasional:</Text>
-                                                <Text size="sm" class="text-white">Senin-Jumat, 09:00-17:00 WIB</Text>
+                                                <Text class="font-bold mb-2 text-on-primary">⏰ Jam Operasional:</Text>
+                                                <Text size="sm" class="text-on-primary">Senin-Jumat, 09:00-17:00 WIB</Text>
                                             </div>
                                         </div>
                                     </BrutalCard>
