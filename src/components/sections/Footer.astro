@@ -44,14 +44,14 @@ const footerSections = [
 ];
 ---
 
-<footer class="bg-dark text-light border-t-4 border-primary" role="contentinfo">
+<footer class="bg-slate-900 text-slate-50 border-t-4 border-primary" role="contentinfo">
   <div class="container mx-auto px-4 py-8">
     <!-- Main Footer Content -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 mb-6">
       <!-- Brand Section -->
       <div class="sm:col-span-2 lg:col-span-3 xl:col-span-2">
         <div class="flex items-center space-x-3 mb-4">
-          <div class="w-12 h-12 bg-white rounded-lg border-2 border-light/20 p-0.5 flex items-center justify-center">
+          <div class="w-12 h-12 bg-slate-50 rounded-lg border-2 border-slate-50/20 p-0.5 flex items-center justify-center">
             <Image 
               src={kf13Logo} 
               alt="KF13 Logo" 
@@ -61,11 +61,11 @@ const footerSections = [
             />
           </div>
           <div>
-            <h3 class="text-xl font-black text-light">KF13</h3>
-            <p class="text-sm text-light/70 font-semibold">Klub Fisika</p>
+            <h3 class="text-xl font-black text-slate-50">KF13</h3>
+            <p class="text-sm text-slate-50/70 font-semibold">Klub Fisika</p>
           </div>
         </div>
-        <p class="text-light/80 mb-3 leading-relaxed text-sm">
+        <p class="text-slate-50/80 mb-3 leading-relaxed text-sm">
           Komunitas fisika yang berdedikasi untuk mengembangkan pemahaman dan kecintaan terhadap ilmu fisika melalui pembelajaran, eksperimen, dan kolaborasi.
         </p>
       </div>
@@ -73,13 +73,13 @@ const footerSections = [
       <!-- Navigation Sections -->
       {footerSections.map((section) => (
         <div>
-          <h4 class="font-black text-amber-400 mb-3">{section.title}</h4>
+          <h4 class="font-black text-secondary mb-3">{section.title}</h4>
           <ul class="space-y-1">
             {section.links.map((link) => (
               <li>
                 <a 
                   href={link.href}
-                  class="text-light/80 hover:text-primary transition-colors font-semibold text-sm"
+                  class="text-slate-50/80 hover:text-primary transition-colors font-semibold text-sm"
                 >
                   {link.label}
                 </a>
@@ -91,8 +91,8 @@ const footerSections = [
     </div>
 
     <!-- Bottom Section -->
-    <div class="border-t border-light/20 pt-4 text-center">
-      <p class="text-light/60 text-sm">
+    <div class="border-t border-slate-50/20 pt-4 text-center">
+      <p class="text-slate-50/60 text-sm">
         © {currentYear} KF13 - Klub Fisika. Made with 🥼🔬🧬🧫🧪 for Indonesia
       </p>
     </div>

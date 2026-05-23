@@ -48,37 +48,42 @@ import BrutalSection from '../ui/BrutalSection.astro';
           variant: "accent",
           rotation: "right"
         }
-      ].map((faq, index) => (
-        <BrutalCard variant={faq.variant} rotation={faq.rotation} className="faq-item">
-          <button 
-            class="w-full p-6 text-left focus:outline-none focus:ring-3 focus:ring-accent faq-trigger"
-            aria-expanded="false"
-          >
-            <div class="flex justify-between items-center">
-              <Heading level={3} size="sm" color="white" class="uppercase pr-4">
-                {faq.question}
-              </Heading>
-              <span class="text-2xl font-black text-white faq-icon transition-transform">+</span>
+      ].map((faq, index) => {
+        const textOnVariant = faq.variant === 'primary' ? 'on-primary' : 
+                             faq.variant === 'secondary' ? 'on-secondary' : 
+                             faq.variant === 'accent' ? 'on-accent' : 'on-dark';
+        return (
+          <BrutalCard variant={faq.variant} rotation={faq.rotation} className="faq-item">
+            <button 
+              class="w-full p-6 text-left focus:outline-none focus:ring-3 focus:ring-accent faq-trigger"
+              aria-expanded="false"
+            >
+              <div class="flex justify-between items-center">
+                <Heading level={3} size="sm" color={textOnVariant} class="uppercase pr-4">
+                  {faq.question}
+                </Heading>
+                <span class={`text-2xl font-black faq-icon transition-transform text-${textOnVariant}`}>+</span>
+              </div>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="px-6 pb-6">
+                <Text color={textOnVariant} class="font-semibold leading-relaxed">
+                  {faq.answer}
+                </Text>
+              </div>
             </div>
-          </button>
-          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-            <div class="px-6 pb-6">
-              <Text color="white" class="font-semibold leading-relaxed">
-                {faq.answer}
-              </Text>
-            </div>
-          </div>
-        </BrutalCard>
-      ))}
+          </BrutalCard>
+        );
+      })}
     </div>
 
     <!-- Additional Help -->
     <div class="mt-8 text-center">
-      <BrutalCard variant="white" rotation="right" className="inline-block">
-        <Text class="font-semibold mb-4">
+      <BrutalCard variant="surface" rotation="right" className="inline-block">
+        <Text color="main" class="font-semibold mb-4">
           💡 <strong>Masih ada pertanyaan lain?</strong>
         </Text>
-        <Text size="sm">
+        <Text color="main" size="sm">
           Jangan ragu untuk menghubungi kami melalui email atau media sosial!
         </Text>
       </BrutalCard>

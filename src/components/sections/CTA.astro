@@ -9,17 +9,17 @@ import GradientSection from '../ui/GradientSection.astro';
 <GradientSection variant="accent-primary" class="relative overflow-hidden" id="gabung">
   <!-- Background Elements -->
   <div class="absolute inset-0 opacity-20">
-    <div class="absolute top-10 left-10 w-20 h-20 bg-dark dark:bg-light transform rotate-45"></div>
-    <div class="absolute bottom-10 right-10 w-16 h-16 bg-dark dark:bg-light transform -rotate-12"></div>
-    <div class="absolute top-1/2 left-1/4 w-12 h-12 bg-dark dark:bg-light transform rotate-45"></div>
+    <div class="absolute top-10 left-10 w-20 h-20 bg-dark transform rotate-45"></div>
+    <div class="absolute bottom-10 right-10 w-16 h-16 bg-dark transform -rotate-12"></div>
+    <div class="absolute top-1/2 left-1/4 w-12 h-12 bg-dark transform rotate-45"></div>
   </div>
 
   <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
     <!-- Main CTA Headline -->
-    <BrutalCard variant="white" rotation="left" className="p-8 mb-4">
+    <BrutalCard variant="surface" rotation="left" className="p-8 mb-4">
       <Heading level={2} size="3xl" class="uppercase mb-4">
         MULAI PERJALANAN<br/>
-        <span class="text-primary dark:text-primary-dark">BELAJARMU</span>
+        <span class="text-primary">BELAJARMU</span>
       </Heading>
       <Text size="lg" class="font-semibold">
         Jadilah bagian dari komunitas fisika yang bertumbuh dan berdampak
@@ -47,13 +47,17 @@ import GradientSection from '../ui/GradientSection.astro';
           desc: "Tingkatkan skill dan pengetahuan",
           variant: "accent"
         }
-      ].map((benefit, index) => (
-        <BrutalCard variant={benefit.variant} rotation={index % 2 === 0 ? 'right' : 'left'} className="p-6">
-          <div class="text-3xl mb-3">{benefit.icon}</div>
-          <Heading level={3} size="sm" color="white" class="mb-2">{benefit.title}</Heading>
-          <Text size="sm" color="white" class="font-semibold">{benefit.desc}</Text>
-        </BrutalCard>
-      ))}
+      ].map((benefit, index) => {
+        const textOn = benefit.variant === 'primary' ? 'on-primary' : 
+                       benefit.variant === 'secondary' ? 'on-secondary' : 'on-accent';
+        return (
+          <BrutalCard variant={benefit.variant} rotation={index % 2 === 0 ? 'right' : 'left'} className="p-6">
+            <div class="text-3xl mb-3">{benefit.icon}</div>
+            <Heading level={3} size="sm" color={textOn} class="mb-2">{benefit.title}</Heading>
+            <Text size="sm" color={textOn} class="font-semibold">{benefit.desc}</Text>
+          </BrutalCard>
+        );
+      })}
     </div>
 
     <!-- CTA Buttons -->

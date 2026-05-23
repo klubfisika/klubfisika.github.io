@@ -7,7 +7,7 @@ import BrutalSection from '../ui/BrutalSection.astro';
 import OrbitalElectron from '../ui/OrbitalElectron.astro';
 ---
 
-<BrutalSection background="white" padding="lg">
+<BrutalSection background="surface" padding="lg">
   <div class="max-w-6xl mx-auto px-6">
     <SectionHeader title="VISI & MISI" subtitle="Arah dan prinsip KF13" className="mb-8" />
     
@@ -16,8 +16,8 @@ import OrbitalElectron from '../ui/OrbitalElectron.astro';
       <div class="space-y-8">
         <BrutalCard variant="primary" rotation="left" className="text-center p-8">
           <div class="text-3xl sm:text-4xl md:text-5xl mb-4">🎯</div>
-          <Heading level={3} size="lg" color="white" class="uppercase mb-4">VISI</Heading>
-          <Text size="lg" color="white" class="font-semibold leading-relaxed">
+          <Heading level={3} size="lg" color="on-primary" class="uppercase mb-4">VISI</Heading>
+          <Text size="lg" color="on-primary" class="font-semibold leading-relaxed">
             Menjadi komunitas fisika yang berkontribusi nyata dalam pengembangan generasi muda yang kritis, ilmiah, dan inovatif.
           </Text>
         </BrutalCard>
@@ -26,7 +26,7 @@ import OrbitalElectron from '../ui/OrbitalElectron.astro';
       <!-- Misi -->
       <div class="space-y-6">
         <BrutalCard variant="secondary" rotation="right" className="text-center">
-          <Heading level={3} size="lg" color="white" class="uppercase">MISI</Heading>
+          <Heading level={3} size="lg" color="on-secondary" class="uppercase">MISI</Heading>
         </BrutalCard>
         
         <div class="space-y-4">
@@ -55,14 +55,18 @@ import OrbitalElectron from '../ui/OrbitalElectron.astro';
               variant: "primary",
               rotation: "right"
             }
-          ].map((misi, index) => (
-            <BrutalCard variant={misi.variant} rotation={misi.rotation} className="p-4">
-              <div class="flex items-center gap-4">
-                <div class="text-2xl">{misi.icon}</div>
-                <Text color="white" class="font-semibold">{misi.text}</Text>
-              </div>
-            </BrutalCard>
-          ))}
+          ].map((misi, index) => {
+            const textOn = misi.variant === 'primary' ? 'on-primary' : 
+                           misi.variant === 'secondary' ? 'on-secondary' : 'on-accent';
+            return (
+              <BrutalCard variant={misi.variant} rotation={misi.rotation} className="p-4">
+                <div class="flex items-center gap-4">
+                  <div class="text-2xl">{misi.icon}</div>
+                  <Text color={textOn} class="font-semibold">{misi.text}</Text>
+                </div>
+              </BrutalCard>
+            );
+          })}
         </div>
       </div>
     </div>
@@ -71,36 +75,29 @@ import OrbitalElectron from '../ui/OrbitalElectron.astro';
     <div class="mt-8">
       <div class="text-center mb-8">
         <BrutalCard variant="accent" rotation="right" className="inline-block px-8 py-4">
-          <Heading level={3} size="lg" color="white" class="uppercase m-0">NILAI INTI</Heading>
+          <Heading level={3} size="lg" color="on-accent" class="uppercase m-0">NILAI INTI</Heading>
         </BrutalCard>
       </div>
       
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-        <BrutalCard variant="primary" rotation="right" className="text-center p-6">
-          <div class="text-4xl mb-3">🔬</div>
-          <Text color="white" size="sm" class="font-black">ILMIAH</Text>
-        </BrutalCard>
-        
-        <BrutalCard variant="secondary" rotation="left" className="text-center p-6">
-          <div class="text-4xl mb-3">🚀</div>
-          <Text color="white" size="sm" class="font-black">EKSPLORATIF</Text>
-        </BrutalCard>
-        
-        <BrutalCard variant="accent" rotation="right" className="text-center p-6">
-          <div class="text-4xl mb-3">🤝</div>
-          <Text color="white" size="sm" class="font-black">KOLABORATIF</Text>
-        </BrutalCard>
-        
-        <BrutalCard variant="primary" rotation="left" className="text-center p-6">
-          <div class="text-4xl mb-3">🌈</div>
-          <Text color="white" size="sm" class="font-black">INKLUSIF</Text>
-        </BrutalCard>
-        
-        <BrutalCard variant="secondary" rotation="right" className="text-center p-6">
-          <div class="text-4xl mb-3">⚖️</div>
-          <Text color="white" size="sm" class="font-black">BERINTEGRITAS</Text>
-        </BrutalCard>
-      </div>
+      {[
+        { icon: "🔬", label: "ILMIAH", variant: "primary" },
+        { icon: "🚀", label: "EKSPLORATIF", variant: "secondary" },
+        { icon: "🤝", label: "KOLABORATIF", variant: "accent" },
+        { icon: "🌈", label: "INKLUSIF", variant: "primary" },
+        { icon: "⚖️", label: "BERINTEGRITAS", variant: "secondary" }
+      ].map((nilai, i) => {
+        const textOn = nilai.variant === 'primary' ? 'on-primary' : 
+                       nilai.variant === 'secondary' ? 'on-secondary' : 'on-accent';
+        const rot = i % 2 === 0 ? 'right' : 'left';
+        return (
+          <div class="inline-block mr-4 mb-4">
+            <BrutalCard variant={nilai.variant} rotation={rot} className="text-center p-6">
+              <div class="text-4xl mb-3">{nilai.icon}</div>
+              <Text color={textOn} size="sm" class="font-black">{nilai.label}</Text>
+            </BrutalCard>
+          </div>
+        );
+      })}
     </div>
   </div>
 </BrutalSection>

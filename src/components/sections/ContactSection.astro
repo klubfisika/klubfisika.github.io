@@ -8,7 +8,7 @@ import Text from '../ui/Text.astro';
 import BrutalSection from '../ui/BrutalSection.astro';
 ---
 
-<BrutalSection background="white" padding="lg" id="kontak">
+<BrutalSection background="surface" padding="lg" id="kontak">
   <div class="max-w-6xl mx-auto px-6">
     <SectionHeader title="KONTAK & MEDIA SOSIAL" className="mb-8" />
     
@@ -21,36 +21,36 @@ import BrutalSection from '../ui/BrutalSection.astro';
       <!-- Contact Info & Social Media -->
       <div class="space-y-8">
         <BrutalCard variant="primary" rotation="left" className="p-8">
-          <Heading level={3} size="lg" color="white" class="uppercase mb-6">INFO KONTAK</Heading>
+          <Heading level={3} size="lg" color="on-primary" class="uppercase mb-6">INFO KONTAK</Heading>
           
           <div class="space-y-4">
             <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-secondary dark:bg-secondary-dark border-2 border-dark dark:border-light flex items-center justify-center">
+              <div class="w-12 h-12 bg-secondary border-2 border-border-main flex items-center justify-center">
                 <span class="text-xl">📧</span>
               </div>
               <div>
-                <Text color="white" class="font-bold">Email Resmi</Text>
-                <Text color="white">info@klubfisika.org</Text>
+                <Text color="on-primary" class="font-bold">Email Resmi</Text>
+                <Text color="on-primary">info@klubfisika.org</Text>
               </div>
             </div>
             
             <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-accent dark:bg-accent-dark border-2 border-dark dark:border-light flex items-center justify-center">
+              <div class="w-12 h-12 bg-accent border-2 border-border-main flex items-center justify-center">
                 <span class="text-xl">💬</span>
               </div>
               <div>
-                <Text color="white" class="font-bold">WhatsApp Admin</Text>
-                <Text color="white">+62 822-2500-9253</Text>
+                <Text color="on-primary" class="font-bold">WhatsApp Admin</Text>
+                <Text color="on-primary">+62 822-2500-9253</Text>
               </div>
             </div>
             
             <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-pink dark:bg-purple-600 border-2 border-dark dark:border-light flex items-center justify-center">
+              <div class="w-12 h-12 bg-secondary border-2 border-border-main flex items-center justify-center">
                 <span class="text-xl">🌐</span>
               </div>
               <div>
-                <Text color="white" class="font-bold">Website</Text>
-                <Text color="white">klubfisika.github.io</Text>
+                <Text color="on-primary" class="font-bold">Website</Text>
+                <Text color="on-primary">klubfisika.github.io</Text>
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@ import BrutalSection from '../ui/BrutalSection.astro';
 
         <!-- Social Media Grid -->
         <BrutalCard variant="accent" rotation="right" className="p-8">
-          <Heading level={3} size="lg" color="white" class="uppercase mb-6">MEDIA SOSIAL</Heading>
+          <Heading level={3} size="lg" color="on-accent" class="uppercase mb-6">MEDIA SOSIAL</Heading>
           
           <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
@@ -70,7 +70,7 @@ import BrutalSection from '../ui/BrutalSection.astro';
               { name: "Email", icon: "📧", handle: "info@klubfisika.org", variant: "accent", url: "mailto:info@klubfisika.org" }
             ].map((social, index) => (
               <BrutalButton
-                variant={social.variant}
+                variant={social.variant as any}
                 href={social.url}
                 target={social.name === "Email" ? "_self" : "_blank"}
                 rel={social.name === "Email" ? "" : "noopener noreferrer"}

@@ -2,12 +2,12 @@
 import Button from '../ui/Button.astro';
 ---
 
-<div class="bg-white dark:bg-slate-700 border-4 border-dark dark:border-light p-8 transform rotate-1 shadow-brutal">
-  <h3 class="text-2xl font-black uppercase text-dark dark:text-light mb-6 text-center">HUBUNGI KAMI</h3>
+<div class="bg-surface border-4 border-border-main p-8 transform rotate-1 shadow-brutal">
+  <h3 class="text-2xl font-black uppercase text-main mb-6 text-center">HUBUNGI KAMI</h3>
   
   <form id="contact-form" class="space-y-4">
     <div>
-      <label for="name" class="block font-bold text-dark dark:text-light mb-2">Nama *</label>
+      <label for="name" class="block font-bold text-main mb-2">Nama *</label>
       <input 
         type="text" 
         id="name" 
@@ -15,7 +15,7 @@ import Button from '../ui/Button.astro';
         required
         aria-required="true"
         aria-describedby="name-error"
-        class="w-full p-3 border-4 border-dark dark:border-light bg-surface dark:bg-slate-600 text-dark dark:text-light font-semibold focus:outline-none focus:ring-3 focus:ring-accent"
+        class="w-full p-3 border-4 border-border-main bg-surface text-text-main font-semibold focus:outline-none focus:ring-3 focus:ring-accent"
         placeholder="Nama lengkap Anda"
       />
       <div id="name-error" class="error-message hidden" role="alert" aria-live="polite">
@@ -24,7 +24,7 @@ import Button from '../ui/Button.astro';
     </div>
     
     <div>
-      <label for="email" class="block font-bold text-dark dark:text-light mb-2">Email *</label>
+      <label for="email" class="block font-bold text-main mb-2">Email *</label>
       <input 
         type="email" 
         id="email" 
@@ -32,7 +32,7 @@ import Button from '../ui/Button.astro';
         required
         aria-required="true"
         aria-describedby="email-error"
-        class="w-full p-3 border-4 border-dark dark:border-light bg-surface dark:bg-slate-600 text-dark dark:text-light font-semibold focus:outline-none focus:ring-3 focus:ring-accent"
+        class="w-full p-3 border-4 border-border-main bg-surface text-text-main font-semibold focus:outline-none focus:ring-3 focus:ring-accent"
         placeholder="email@example.com"
       />
       <div id="email-error" class="error-message hidden" role="alert" aria-live="polite">
@@ -41,13 +41,13 @@ import Button from '../ui/Button.astro';
     </div>
     
     <div>
-      <label for="phone" class="block font-bold text-dark dark:text-light mb-2">WhatsApp</label>
+      <label for="phone" class="block font-bold text-main mb-2">WhatsApp</label>
       <input 
         type="tel" 
         id="phone" 
         name="phone"
         aria-describedby="phone-error"
-        class="w-full p-3 border-4 border-dark dark:border-light bg-surface dark:bg-slate-600 text-dark dark:text-light font-semibold focus:outline-none focus:ring-3 focus:ring-accent"
+        class="w-full p-3 border-4 border-border-main bg-surface text-text-main font-semibold focus:outline-none focus:ring-3 focus:ring-accent"
         placeholder="+62 812-3456-7890"
       />
       <div id="phone-error" class="error-message hidden" role="alert" aria-live="polite">
@@ -56,7 +56,7 @@ import Button from '../ui/Button.astro';
     </div>
     
     <div>
-      <label for="message" class="block font-bold text-dark dark:text-light mb-2">Pesan *</label>
+      <label for="message" class="block font-bold text-main mb-2">Pesan *</label>
       <textarea 
         id="message" 
         name="message" 
@@ -64,7 +64,7 @@ import Button from '../ui/Button.astro';
         aria-required="true"
         aria-describedby="message-error"
         rows="4"
-        class="w-full p-3 border-4 border-dark dark:border-light bg-surface dark:bg-slate-600 text-dark dark:text-light font-semibold focus:outline-none focus:ring-3 focus:ring-accent resize-none"
+        class="w-full p-3 border-4 border-border-main bg-surface text-text-main font-semibold focus:outline-none focus:ring-3 focus:ring-accent resize-none"
         placeholder="Ceritakan minat Anda pada fisika atau pertanyaan tentang KF13..."
       ></textarea>
       <div id="message-error" class="error-message hidden" role="alert" aria-live="polite">
@@ -87,10 +87,10 @@ import Button from '../ui/Button.astro';
   </form>
   
   <div id="form-status" class="mt-4 text-center hidden" aria-live="polite" aria-atomic="true">
-    <div id="success-message" class="bg-accent dark:bg-accent-dark border-2 border-dark dark:border-light p-3 text-white font-bold hidden">
+    <div id="success-message" class="bg-accent border-2 border-border-main p-3 text-on-accent font-bold hidden">
       ✅ Pesan berhasil dikirim! Kami akan segera menghubungi Anda.
     </div>
-    <div id="error-message" class="bg-pink dark:bg-pink-dark border-2 border-dark dark:border-light p-3 text-white font-bold hidden">
+    <div id="error-message" class="bg-secondary border-2 border-border-main p-3 text-on-secondary font-bold hidden">
       ❌ Terjadi kesalahan. Silakan coba lagi atau hubungi kami via WhatsApp.
     </div>
   </div>

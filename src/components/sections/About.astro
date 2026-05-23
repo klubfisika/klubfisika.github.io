@@ -15,11 +15,11 @@ import BrutalSection from '../ui/BrutalSection.astro';
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 items-start">
       <!-- Content -->
       <div class="space-y-8">
-        <BrutalCard variant="white" rotation="right" className="relative">
+        <BrutalCard variant="surface" rotation="right" className="relative">
           <Text size="lg" class="font-semibold leading-relaxed mb-6">
             KF13 merupakan bagian dari <strong>Klub Fisika Indonesia</strong>, sebuah komunitas yang berfokus pada pengembangan minat dan kemampuan fisika di kalangan pelajar dan generasi muda.
           </Text>
-          <div class="bg-primary/20 dark:bg-primary-dark/20 border-2 border-primary dark:border-primary-dark p-4 rounded">
+          <div class="bg-primary/20 border-2 border-primary p-4 rounded">
             <Text size="sm" class="font-bold">
               📅 <strong>Didirikan 2013</strong> • 📍 <strong>Berbasis di Yogyakarta</strong> • 🌟 <strong>Komunitas Fisika Terpercaya</strong>
             </Text>
@@ -27,12 +27,12 @@ import BrutalSection from '../ui/BrutalSection.astro';
         </BrutalCard>
         
         <BrutalCard variant="primary" rotation="left">
-          <Text size="lg" color="white" class="font-semibold leading-relaxed mb-6">
+          <Text size="lg" color="on-primary" class="font-semibold leading-relaxed mb-6">
             Kami percaya bahwa fisika tidak hanya tentang rumus, tetapi tentang cara memahami alam, teknologi, dan kehidupan sehari-hari melalui pendekatan ilmiah yang kritis dan logis.
           </Text>
-          <div class="bg-white/20 border-2 border-white p-4 rounded">
-            <Text size="sm" color="white" class="font-bold mb-3">
-              🎓 <strong>Jaringan Kampus:</strong> 5 Universitas • 45+ Anggota Aktif • Berbasis Solidaritas
+          <div class="bg-surface-subtle border-2 border-border-main p-4 rounded">
+            <Text size="sm" color="main" class="font-bold mb-3">
+              🎓 <strong>Jaringan Kampus:</strong> 5 Universitas • 45+ Anggota Aktif • Berbasis Soliditas
             </Text>
             <BrutalButton
               variant="surface"
@@ -48,7 +48,7 @@ import BrutalSection from '../ui/BrutalSection.astro';
         <!-- Values -->
         <div class="flex flex-wrap gap-2 justify-start">
           {['Ilmiah', 'Eksploratif', 'Kolaboratif', 'Inklusif', 'Berintegritas'].map((value, index) => (
-            <span class="bg-accent dark:bg-accent-dark border-2 border-dark dark:border-light px-3 py-1 font-bold text-white text-sm">
+            <span class="bg-accent border-2 border-border-main px-3 py-1 font-bold text-on-accent text-sm">
               {value}
             </span>
           ))}
@@ -60,8 +60,8 @@ import BrutalSection from '../ui/BrutalSection.astro';
         <BrutalCard variant="primary" rotation="right" className="p-8 max-w-sm">
           <div class="text-center">
             <div class="text-5xl sm:text-6xl md:text-7xl mb-4">🧬</div>
-            <Heading level={3} size="lg" color="white" class="uppercase mb-4">KOMUNITAS FISIKA</Heading>
-            <Text color="white" class="font-semibold leading-relaxed">
+            <Heading level={3} size="lg" color="on-primary" class="uppercase mb-4">KOMUNITAS FISIKA</Heading>
+            <Text color="on-primary" class="font-semibold leading-relaxed">
               Ruang aman dan inklusif untuk belajar, berdiskusi, bereksperimen, serta mengembangkan cara berpikir ilmiah.
             </Text>
           </div>
@@ -70,8 +70,8 @@ import BrutalSection from '../ui/BrutalSection.astro';
         <!-- Stats Badge -->
         <div class="absolute -bottom-6 -right-6">
           <BrutalCard variant="secondary" className="p-4 text-center">
-            <div class="text-2xl font-black text-white">2024</div>
-            <div class="text-xs font-bold text-white uppercase">Aktif</div>
+            <div class="text-2xl font-black text-on-secondary">2024</div>
+            <div class="text-xs font-bold text-on-secondary uppercase">Aktif</div>
           </BrutalCard>
         </div>
       </div>
