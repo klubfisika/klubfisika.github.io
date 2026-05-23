@@ -22,10 +22,10 @@ const categoriesWithAll = [
     <div class="space-y-2" role="group" aria-label="Pilihan kategori artikel">
       {categoriesWithAll.map((category) => (
         <button 
-          class={`w-full text-left px-3 py-2 text-sm font-bold border-2 border-dark dark:border-light transition-all hover:scale-105 focus:outline-none focus:ring-4 focus:ring-primary/50 ${
+          class={`w-full text-left px-3 py-2 text-sm font-bold border-2 border-border-main transition-all hover:scale-105 focus:outline-none focus:ring-4 focus:ring-primary/50 ${
             category.active 
               ? 'bg-primary text-on-primary' 
-              : 'bg-surface dark:bg-surface-dark text-dark dark:text-light hover:bg-primary hover:text-on-primary'
+              : 'bg-surface text-main hover:bg-primary hover:text-on-primary'
           }`}
           data-category={category.slug}
           aria-pressed={category.active ? 'true' : 'false'}

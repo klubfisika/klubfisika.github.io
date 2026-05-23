@@ -114,10 +114,10 @@ const categoryClass = categoryColors[post.category] || 'bg-pink-100 text-pink-80
       <!-- Breadcrumb -->
       <nav class="mb-6" aria-label="Breadcrumb">
         <ol class="flex items-center gap-2 text-sm font-bold">
-          <li><a href="/" class="text-dark dark:text-light hover:text-primary dark:hover:text-primary transition-colors">Home</a></li>
-          <li class="text-dark dark:text-light" aria-hidden="true">→</li>
-          <li><a href="/blog" class="text-dark dark:text-light hover:text-primary dark:hover:text-primary transition-colors">Blog</a></li>
-          <li class="text-dark dark:text-light" aria-hidden="true">→</li>
+          <li><a href="/" class="text-main hover:text-primary transition-colors">Home</a></li>
+          <li class="text-main" aria-hidden="true">→</li>
+          <li><a href="/blog" class="text-main hover:text-primary transition-colors">Blog</a></li>
+          <li class="text-main" aria-hidden="true">→</li>
           <li class="text-primary font-black" aria-current="page">{post.category}</li>
         </ol>
       </nav>
@@ -159,7 +159,7 @@ const categoryClass = categoryColors[post.category] || 'bg-pink-100 text-pink-80
     <footer class="article-footer">
       <!-- Share Buttons -->
       <div class="mb-8">
-        <h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">📤 Bagikan Artikel</h3>
+        <h3 class="text-lg font-semibold mb-4 text-main">📤 Bagikan Artikel</h3>
         <div class="flex flex-wrap gap-3">
           <BrutalButton
             variant="accent"
@@ -195,15 +195,15 @@ const categoryClass = categoryColors[post.category] || 'bg-pink-100 text-pink-80
       </div>
 
       <!-- Author Info -->
-      <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
-        <h4 class="text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">✍️ Tentang Penulis</h4>
+      <div class="bg-surface rounded-lg p-6 mb-8">
+        <h4 class="text-lg font-semibold mb-3 text-main">✍️ Tentang Penulis</h4>
         <div class="flex items-start gap-4">
           <div class="w-16 h-16 bg-blue-500 dark:bg-blue-600 rounded-full flex items-center justify-center">
             <span class="text-2xl text-white">👨‍🔬</span>
           </div>
           <div>
-            <h5 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">{post.author}</h5>
-            <p class="text-gray-600 dark:text-gray-400 text-sm">
+            <h5 class="font-semibold text-main mb-2">{post.author}</h5>
+            <p class="text-muted text-sm">
               Kontributor aktif KF13 yang berpengalaman dalam pembelajaran fisika dan eksperimen praktis.
             </p>
           </div>

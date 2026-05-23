@@ -17,11 +17,11 @@ const getRotation = () => Math.random() > 0.5 ? 'rotate-1' : '-rotate-1';
 <article data-article={post.category} data-tags={post.tags.join(',')}>
   <a 
     href={`/blog/${post.slug}`} 
-    class={`block btn-${getCardVariant(post.category)} p-6 transform ${getRotation()} hover:rotate-0 border-4 border-dark dark:border-light shadow-brutal-sm transition-transform hover:scale-105 focus:scale-105 focus:outline-none focus:ring-4 focus:ring-primary/50`}
+    class={`block btn-${getCardVariant(post.category)} p-6 transform ${getRotation()} hover:rotate-0 border-4 border-border-main shadow-brutal-sm transition-transform hover:scale-105 focus:scale-105 focus:outline-none focus:ring-4 focus:ring-primary/50`}
     aria-labelledby={`article-title-${index}`}
   >
     <div class="mb-4">
-      <span class="bg-white text-dark px-3 py-1 text-xs font-bold border-2 border-dark">
+      <span class="bg-surface text-main px-3 py-1 text-xs font-bold border-2 border-border-main">
         {post.category?.toUpperCase() || 'ARTIKEL'}
       </span>
     </div>
