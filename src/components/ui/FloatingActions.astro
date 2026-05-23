@@ -14,7 +14,7 @@ import Modal from "./Modal.astro";
       aria-label="Hubungi Admin WhatsApp"
     >
       <FloatingButton variant="accent">
-        <span class="text-2xl text-on-primary">💬</span>
+        <span class="text-2xl text-text-on-primary">💬</span>
       </FloatingButton>
     </a>
   </Tooltip>
@@ -27,7 +27,7 @@ import Modal from "./Modal.astro";
         id="debug-toggle"
         aria-label="Toggle Debug Panel"
       >
-        <span class="text-2xl text-on-primary">🐛</span>
+        <span class="text-2xl text-text-on-primary">🐛</span>
       </FloatingButton>
     </Tooltip>
   )}
@@ -39,21 +39,16 @@ import Modal from "./Modal.astro";
       id="theme-toggle-btn"
       aria-label="Toggle Dark Mode"
     >
-      <span class="text-2xl">🌙</span>
+      <span id="theme-toggle-icon" class="text-2xl">🌙</span>
     </FloatingButton>
   </Tooltip>
 </aside>
 
-<!-- Dark Mode Coming Soon Modal -->
-<Modal id="darkmode-modal" title="🚧 Coming Soon">
-  <p style="margin:0">Dark mode sedang dikembangkan. Nantikan update selanjutnya!</p>
-</Modal>
-
 <!-- Debug Panel Modal (Development Only) -->
 {import.meta.env.DEV && (
   <div id="debug-panel" class="fixed inset-0 bg-black/50 z-50 hidden">
-    <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 bg-white dark:bg-slate-800 border-4 border-dark dark:border-light shadow-brutal">
-      <div class="p-4 border-b-4 border-dark dark:border-light bg-purple-500 dark:bg-purple-600">
+    <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 bg-surface border-4 border-border-main shadow-brutal">
+      <div class="p-4 border-b-4 border-border-main bg-purple-500">
         <div class="flex justify-between items-center">
           <h3 class="font-black text-white">🐛 DEBUG PANEL (DEV)</h3>
           <button id="close-debug" class="text-2xl text-white hover:scale-110 transition-transform">×</button>
@@ -64,7 +59,7 @@ import Modal from "./Modal.astro";
         <!-- Testing Checklist Toggle -->
         <button 
           id="toggle-testing-checklist"
-          class="w-full bg-accent dark:bg-accent-dark border-2 border-dark dark:border-light p-3 font-bold text-white hover:scale-105 transition-transform text-left"
+          class="w-full bg-accent border-2 border-border-main p-3 font-bold text-on-accent hover:scale-105 transition-transform text-left"
         >
           <div class="flex items-center justify-between">
             <span>🧪 Testing Checklist</span>
@@ -75,7 +70,7 @@ import Modal from "./Modal.astro";
         <!-- Responsive Test Toggle -->
         <button 
           id="toggle-responsive-test"
-          class="w-full bg-blue dark:bg-blue-dark border-2 border-dark dark:border-light p-3 font-bold text-light hover:scale-105 transition-transform text-left"
+          class="w-full bg-primary border-2 border-border-main p-3 font-bold text-on-primary hover:scale-105 transition-transform text-left"
         >
           <div class="flex items-center justify-between">
             <span>📱 Responsive Test</span>
@@ -86,7 +81,7 @@ import Modal from "./Modal.astro";
         <!-- Test Results Toggle -->
         <button 
           id="toggle-test-results"
-          class="w-full bg-green-500 dark:bg-green-600 border-2 border-dark dark:border-light p-3 font-bold text-white hover:scale-105 transition-transform text-left"
+          class="w-full bg-green-500 border-2 border-border-main p-3 font-bold text-white hover:scale-105 transition-transform text-left"
         >
           <div class="flex items-center justify-between">
             <span>📊 Test Results</span>
@@ -95,7 +90,7 @@ import Modal from "./Modal.astro";
         </button>
 
         <!-- Debug Info -->
-        <div class="bg-surface dark:bg-slate-700 border-2 border-dark dark:border-light p-3 text-xs text-dark dark:text-light">
+        <div class="bg-surface-subtle border-2 border-border-main p-3 text-xs text-text-main">
           <div class="font-bold mb-1">Debug Info:</div>
           <div>Mode: <span class="text-purple-600 font-bold">DEVELOPMENT</span></div>
           <div>Viewport: <span id="debug-viewport">Loading...</span></div>
@@ -108,9 +103,37 @@ import Modal from "./Modal.astro";
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Theme toggle shows modal (dark mode coming soon)
-  document.getElementById('theme-toggle-btn')?.addEventListener('click', () => {
-    document.getElementById('darkmode-modal')?.classList.remove('hidden');
+  // Theme toggle functionality
+  const themeToggle = document.getElementById('theme-toggle-btn');
+  const themeIcon = document.getElementById('theme-toggle-icon');
+  
+  function applyTheme(isDark) {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      localStorage.theme = 'dark';
+      if (themeIcon) themeIcon.textContent = '☀️';
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.theme = 'light';
+      if (themeIcon) themeIcon.textContent = '🌙';
+    }
+  }
+  
+  // Initialize from localStorage or system preference
+  function initTheme() {
+    const stored = localStorage.theme;
+    if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      applyTheme(true);
+    } else {
+      applyTheme(false);
+    }
+  }
+  
+  initTheme();
+  
+  themeToggle?.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.contains('dark');
+    applyTheme(!isDark);
   });
 
   // Debug Panel (Development Only)
@@ -128,14 +151,12 @@ document.addEventListener('DOMContentLoaded', () => {
       debugPanel.classList.add('hidden');
     });
     
-    // Close panel when clicking outside
     debugPanel.addEventListener('click', (e) => {
       if (e.target === debugPanel) {
         debugPanel.classList.add('hidden');
       }
     });
     
-    // ESC key to close
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && !debugPanel.classList.contains('hidden')) {
         debugPanel.classList.add('hidden');
@@ -183,7 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
     alert(`🧪 TEST RESULTS SUMMARY\n\n✅ Overall Score: 94/100 (EXCELLENT)\n✅ 31/33 Tests Passed (93.9%)\n⏱️ Load Time: 638-1367ms\n🌐 3 Browsers Tested\n📱 4 Device Sizes\n\n✅ READY FOR PRODUCTION\nTested: 25 Dec 2024, 23:05 WIB`);
   });
 
-  // Update debug info
   function updateDebugInfo() {
     const debugViewport = document.querySelector('#debug-viewport');
     const debugTheme = document.querySelector('#debug-theme');
@@ -198,7 +218,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Update debug info on resize
   window.addEventListener('resize', updateDebugInfo);
 });
 </script>
