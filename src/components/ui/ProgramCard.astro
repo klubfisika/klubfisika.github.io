@@ -26,27 +26,32 @@ const {
   rotation = "left",
   className = ""
 } = Astro.props;
+
+const textColor = variant === 'primary' ? 'on-primary' : 
+                  variant === 'secondary' ? 'on-secondary' : 
+                  variant === 'accent' ? 'on-accent' : 
+                  variant === 'surface' || variant === 'white' ? 'main' : 'on-dark';
 ---
 
 <BrutalCard variant={variant} rotation={rotation} class={`p-6 ${className}`}>
   <div class="text-4xl mb-4">{icon}</div>
-  <Heading level={3} size="lg" color="white" class="uppercase mb-3">{title}</Heading>
-  <Text color="white" class="font-semibold mb-4">{description}</Text>
+  <Heading level={3} size="lg" color={textColor} class="uppercase mb-3">{title}</Heading>
+  <Text color={textColor} class="font-semibold mb-4">{description}</Text>
   
   {(schedule || level || participants) && (
-    <div class="border-t-2 border-white pt-3 mt-3 space-y-2">
+    <div class="border-t-2 border-border-main pt-3 mt-3 space-y-2">
       {schedule && (
-        <Text color="white" size="xs" class="font-bold">
+        <Text color={textColor} size="sm" class="font-bold">
           📅 {schedule}
         </Text>
       )}
       {level && (
-        <Text color="white" size="xs" class="font-bold">
+        <Text color={textColor} size="sm" class="font-bold">
           📊 Level: {level}
         </Text>
       )}
       {participants && (
-        <Text color="white" size="xs" class="font-bold">
+        <Text color={textColor} size="sm" class="font-bold">
           👥 {participants}
         </Text>
       )}

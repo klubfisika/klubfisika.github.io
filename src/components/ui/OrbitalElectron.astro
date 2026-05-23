@@ -9,16 +9,16 @@ interface Props {
 const { icon, label, variant, className = "" } = Astro.props;
 
 const variantClasses = {
-  primary: 'bg-primary dark:bg-primary-dark',
-  secondary: 'bg-secondary dark:bg-secondary-dark',
-  accent: 'bg-accent dark:bg-accent-dark'
+  primary: 'bg-primary text-on-primary',
+  secondary: 'bg-secondary text-on-secondary',
+  accent: 'bg-accent text-on-accent'
 };
 ---
 
 <div class={`orbital-electron ${variantClasses[variant]} ${className}`}>
   <div class="electron-content">
     <div class="text-2xl mb-1">{icon}</div>
-    <div class="text-xs font-black text-white">{label}</div>
+    <div class="text-xs font-black">{label}</div>
   </div>
 </div>
 

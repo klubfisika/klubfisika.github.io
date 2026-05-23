@@ -1,7 +1,7 @@
 ---
 export interface Props {
   size?: 'sm' | 'md' | 'lg';
-  color?: 'primary' | 'secondary' | 'accent' | 'muted' | 'white' | 'inherit';
+  color?: 'primary' | 'secondary' | 'accent' | 'muted' | 'main' | 'on-dark' | 'on-primary' | 'on-secondary' | 'on-accent' | 'white' | 'inherit';
   leading?: 'tight' | 'normal' | 'relaxed';
   class?: string;
 }
@@ -21,10 +21,15 @@ const sizeClasses = {
 };
 
 const colorClasses = {
-  primary: 'text-on-light dark:text-on-dark',
-  secondary: 'text-gray-600 dark:text-gray-300',
+  primary: 'text-primary',
+  secondary: 'text-secondary',
   accent: 'text-accent',
-  muted: 'text-gray-600 dark:text-gray-300',
+  muted: 'text-muted',
+  main: 'text-main',
+  'on-dark': 'text-on-dark',
+  'on-primary': 'text-on-primary',
+  'on-secondary': 'text-on-secondary',
+  'on-accent': 'text-on-accent',
   white: 'text-white',
   inherit: ''
 };

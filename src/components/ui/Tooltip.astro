@@ -19,10 +19,10 @@ const positionClasses = {
 };
 
 const arrowClasses = {
-  top: 'top-full left-1/2 -translate-x-1/2 border-l-4 border-r-4 border-t-4 border-transparent border-t-dark dark:border-t-light',
-  bottom: 'bottom-full left-1/2 -translate-x-1/2 border-l-4 border-r-4 border-b-4 border-transparent border-b-dark dark:border-b-light',
-  left: 'left-full top-1/2 -translate-y-1/2 border-t-4 border-b-4 border-l-4 border-transparent border-l-dark dark:border-l-light',
-  right: 'right-full top-1/2 -translate-y-1/2 border-t-4 border-b-4 border-r-4 border-transparent border-r-dark dark:border-r-light'
+  top: 'top-full left-1/2 -translate-x-1/2 border-l-4 border-r-4 border-t-4 border-transparent border-t-text-main',
+  bottom: 'bottom-full left-1/2 -translate-x-1/2 border-l-4 border-r-4 border-b-4 border-transparent border-b-text-main',
+  left: 'left-full top-1/2 -translate-y-1/2 border-t-4 border-b-4 border-l-4 border-transparent border-l-text-main',
+  right: 'right-full top-1/2 -translate-y-1/2 border-t-4 border-b-4 border-r-4 border-transparent border-r-text-main'
 };
 ---
 
@@ -30,7 +30,7 @@ const arrowClasses = {
   <slot />
   
   <!-- Tooltip -->
-  <div role="tooltip" aria-hidden="true" class={`absolute ${positionClasses[position]} bg-dark dark:bg-light text-on-dark dark:text-on-light px-3 py-2 rounded border-2 border-dark dark:border-light text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-[60]`}>
+  <div role="tooltip" aria-hidden="true" class={`absolute ${positionClasses[position]} bg-text-main text-bg border-border-main px-3 py-2 rounded border-2 text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-[60]`}>
     {content}
     <div class={`absolute w-0 h-0 ${arrowClasses[position]}`}></div>
   </div>

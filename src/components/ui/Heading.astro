@@ -3,7 +3,7 @@ export interface Props {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl';
   weight?: 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold';
-  color?: 'primary' | 'secondary' | 'accent' | 'dark' | 'light' | 'white' | 'inherit';
+  color?: 'primary' | 'secondary' | 'accent' | 'dark' | 'light' | 'white' | 'on-dark' | 'on-primary' | 'on-secondary' | 'on-accent' | 'inherit';
   class?: string;
 }
 
@@ -40,17 +40,23 @@ const colorClasses = {
   primary: 'text-primary',
   secondary: 'text-secondary',
   accent: 'text-accent',
-  dark: 'text-dark dark:text-light',
-  light: 'text-light dark:text-dark',
+  dark: 'text-text-main',
+  light: 'text-text-on-dark',
   white: 'text-white',
+  'on-dark': 'text-on-dark',
+  'on-primary': 'text-on-primary',
+  'on-secondary': 'text-on-secondary',
+  'on-accent': 'text-on-accent',
   inherit: ''
 };
 
 const baseClasses = `${sizeClasses[size]} ${weightClasses[weight]} ${colorClasses[color]} ${className}`;
-
-const Element = `h${level}` as keyof JSX.IntrinsicElements;
 ---
 
-<Element class={baseClasses} {...props}>
-  <slot />
-</Element>
+{level === 1 && <h1 class={baseClasses} {...props}><slot /></h1>}
+{level === 2 && <h2 class={baseClasses} {...props}><slot /></h2>}
+{level === 3 && <h3 class={baseClasses} {...props}><slot /></h3>}
+{level === 4 && <h4 class={baseClasses} {...props}><slot /></h4>}
+{level === 5 && <h5 class={baseClasses} {...props}><slot /></h5>}
+{level === 6 && <h6 class={baseClasses} {...props}><slot /></h6>}
+

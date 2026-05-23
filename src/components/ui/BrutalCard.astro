@@ -16,13 +16,13 @@ const {
 } = Astro.props;
 
 const variantClasses = {
-  primary: 'bg-primary dark:bg-primary-dark text-white',
-  secondary: 'bg-secondary dark:bg-secondary-dark text-white', 
-  accent: 'bg-accent dark:bg-accent-dark text-white',
-  surface: 'bg-surface dark:bg-surface-dark text-dark dark:text-light',
-  dark: 'bg-gray-800 dark:bg-gray-700 text-white',
-  white: 'bg-white dark:bg-gray-800 text-dark dark:text-light',
-  custom: '' // No default classes for custom variant
+  primary: 'bg-primary text-text-on-primary',
+  secondary: 'bg-secondary text-text-on-secondary', 
+  accent: 'bg-accent text-text-on-accent',
+  surface: 'bg-surface text-text-main',
+  dark: 'bg-text-main text-on-dark',
+  white: 'bg-white text-text-main',
+  custom: ''
 };
 
 const sizeClasses = {
@@ -37,12 +37,12 @@ const rotationClasses = {
   none: ''
 };
 
-const cardClasses = `${variantClasses[variant]} ${sizeClasses[size]} ${rotationClasses[rotation]} border-4 border-dark dark:border-light shadow-brutal-sm transition-transform hover:scale-105 relative ${className}`;
+const cardClasses = `${variantClasses[variant]} ${sizeClasses[size]} ${rotationClasses[rotation]} border-4 border-border-main shadow-brutal-sm transition-transform hover:scale-105 relative ${className}`;
 ---
 
 <div class={cardClasses}>
   {urgent && (
-    <div class="absolute -top-3 -right-3 bg-red-700 border-2 border-dark dark:border-light px-2 py-1 transform rotate-12">
+    <div class="absolute -top-3 -right-3 bg-red-700 border-2 border-border-main px-2 py-1 transform rotate-12">
       <span class="text-xs font-black text-white">URGENT!</span>
     </div>
   )}

@@ -2,11 +2,11 @@
 export interface Props {
   href?: string;
   size?: 'sm' | 'md' | 'lg';
-  variant?: 'white' | 'primary' | 'accent';
+  variant?: 'surface' | 'primary' | 'accent';
   class?: string;
 }
 
-const { href, size = 'md', variant = 'white', class: className = '', ...props } = Astro.props;
+const { href, size = 'md', variant = 'surface', class: className = '', ...props } = Astro.props;
 
 const sizeClasses = {
   sm: 'px-6 py-3 text-base',
@@ -15,7 +15,7 @@ const sizeClasses = {
 };
 
 const variantClasses = {
-  white: 'bg-white text-gray-900 hover:bg-gray-100',
+  surface: 'bg-surface text-main hover:bg-surface-subtle',
   primary: 'btn-primary',
   accent: 'btn-accent'
 };

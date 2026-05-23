@@ -12,8 +12,8 @@ const {
 } = Astro.props;
 
 const variantClasses = {
-  light: 'bg-white dark:bg-slate-800 text-on-light dark:text-on-dark',
-  dark: 'bg-dark dark:bg-light text-on-dark dark:text-on-light',
+  light: 'bg-surface text-text-main border-border-main',
+  dark: 'bg-text-main text-bg border-border-main',
   primary: 'btn-primary text-xs',
   secondary: 'btn-secondary text-xs', 
   accent: 'btn-accent text-xs'
@@ -25,7 +25,7 @@ const sizeClasses = {
   md: 'px-4 py-2 text-sm'
 };
 
-const badgeClasses = `${variantClasses[variant]} ${sizeClasses[size]} font-bold border-2 border-dark dark:border-light inline-block ${className}`;
+const badgeClasses = `${variantClasses[variant]} ${sizeClasses[size]} font-bold border-2 inline-block ${className}`;
 ---
 
 <span class={badgeClasses}>
