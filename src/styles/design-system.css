@@ -94,7 +94,7 @@ select:focus-visible {
   /* ========================================
      DESIGN TOKENS - Single Source of Truth
      ======================================== */
-  
+ 
   /* Primary Colors - WCAG AA Compliant */
   --color-primary: #1e40af;        /* blue-800 - improved contrast */
   --color-primary-hover: #1e3a8a;  /* blue-900 - darker for hover */
@@ -119,34 +119,148 @@ select:focus-visible {
   --color-hover-text-primary-dark: #3b82f6; /* blue - for dark mode light bg */
   --color-hover-text-orange-dark: #fb923c;  /* orange-400 - for dark mode colored bg */
   
-  /* Surface Colors */
-  --color-surface: #fef3c7;
-  --color-surface-dark: #0f172a;
+  /* Neutral Colors (Base Palette) */
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
   
-  /* Neutral Colors */
-  --color-dark: #111827;           /* gray-900 */
-  --color-light: #ffffff;          /* pure white */
-  --color-pink: #ec4899;           /* pink-500 */
-  --color-blue: #2563eb;           /* blue-600 */
-  --color-pink-dark: #ec4899;
-  --color-blue-dark: #3b82f6;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* ========================================
+     SEMANTIC TOKENS - The actual design system
+     ======================================== */
+
+  /* Backgrounds */
+  --color-bg: var(--color-slate-50);
+  --color-surface: var(--color-white);
+  --color-surface-subtle: var(--color-slate-100);
+  --color-surface-muted: var(--color-slate-200);
   
-  /* Dark mode backgrounds */
-  --color-bg-dark-1: #1e293b;
-  --color-bg-dark-2: #334155;
-  --color-bg-dark-3: #475569;
+  /* Text */
+  --color-text-main: var(--color-slate-900);
+  --color-text-muted: var(--color-slate-500);
+  --color-text-on-dark: var(--color-white);
+  --color-text-on-primary: var(--color-white);
+  --color-text-on-secondary: var(--color-white);
+  --color-text-on-accent: var(--color-white);
+  
+  /* Borders */
+  --color-border-main: var(--color-slate-800);
+  --color-border-muted: var(--color-slate-400);
+  
+  /* Shadow */
+  --shadow-main: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   
   /* Typography */
   --font-sans: "Space Grotesk", "Inter", system-ui, sans-serif;
-  
+
+  /* Fluid Typography & Spacing */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.3rem + 1vw, 1.875rem);
+  --text-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.25rem);
+  --text-4xl: clamp(2.25rem, 1.8rem + 2.25vw, 3rem);
+  --text-5xl: clamp(3rem, 2.5rem + 2.5vw, 4rem);
+  --text-6xl: clamp(3.75rem, 3rem + 3.75vw, 5rem);
+  --text-7xl: clamp(4.5rem, 3.5rem + 5vw, 6rem);
+  --text-8xl: clamp(5.5rem, 4rem + 7.5vw, 8rem);
+
+  --space-xs: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --space-sm: clamp(0.75rem, 0.6rem + 0.75vw, 1rem);
+  --space-md: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+  --space-xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+
   /* Shadows */
-  --shadow-brutal: 8px 8px 0px var(--color-dark);
-  --shadow-brutal-sm: 4px 4px 0px var(--color-dark);
-  --shadow-brutal-hover: 2px 2px 0px var(--color-dark);
-  --shadow-brutal-dark: 8px 8px 0px var(--color-light);
-  --shadow-brutal-sm-dark: 4px 4px 0px var(--color-light);
-  --shadow-brutal-hover-dark: 2px 2px 0px var(--color-light);
+  --shadow-brutal: 8px 8px 0px var(--color-slate-900);
+  --shadow-brutal-sm: 4px 4px 0px var(--color-slate-900);
+  --shadow-brutal-hover: 2px 2px 0px var(--color-slate-900);
+  --shadow-brutal-dark: 8px 8px 0px var(--color-white);
+  --shadow-brutal-sm-dark: 4px 4px 0px var(--color-white);
+  --shadow-brutal-hover-dark: 2px 2px 0px var(--color-white);
 }
+
+
+/* Dark mode semantic mapping */
+.dark {
+  /* Primary/Secondary/Accent */
+  --color-primary: var(--color-primary-dark);
+  --color-secondary: var(--color-secondary-dark);
+  --color-accent: var(--color-accent-dark);
+
+  /* Backgrounds */
+  --color-bg: var(--color-slate-950);
+  --color-surface: var(--color-slate-900);
+  --color-surface-subtle: var(--color-slate-800);
+  --color-surface-muted: var(--color-slate-700);
+
+  /* Text */
+  --color-text-main: var(--color-slate-50);
+  --color-text-muted: var(--color-slate-400);
+  --color-text-on-dark: var(--color-slate-50);
+  --color-text-on-primary: var(--color-white);
+  --color-text-on-secondary: #111827;
+  --color-text-on-accent: var(--color-white);
+
+  /* Borders */
+  --color-border-main: var(--color-slate-400);
+  --color-border-muted: var(--color-slate-600);
+
+  /* Shadow */
+  --shadow-main: 0 4px 6px -1px rgb(0 0 0 / 0.5);
+}
+
+/* Redefine old vars to point to semantic ones for transition */
+:root {
+  --color-dark: var(--color-text-main);
+  --color-light: var(--color-bg);
+  --color-bg-dark-1: var(--color-surface);
+  --color-bg-dark-2: var(--color-surface-subtle);
+  --color-bg-dark-3: var(--color-surface-muted);
+}
+
+.dark {
+  --color-dark: var(--color-white);
+  --color-light: var(--color-slate-950);
+  --color-surface-dark: var(--color-slate-950);
+}
+
+ /* Legacy Compatibility Utilities */
+ .text-dark { color: var(--color-text-main); }
+ .text-light { color: var(--color-bg); }
+ .text-primary { color: var(--color-primary); }
+ .text-secondary { color: var(--color-secondary); }
+ .text-accent { color: var(--color-accent); }
+ .text-main { color: var(--color-text-main); }
+ .text-muted { color: var(--color-text-muted); }
+ .text-on-dark { color: var(--color-text-on-dark); }
+ .text-on-primary { color: var(--color-text-on-primary); }
+ .text-on-secondary { color: var(--color-text-on-secondary); }
+ .text-on-accent { color: var(--color-text-on-accent); }
+
+ .bg-dark { background-color: var(--color-dark); }
+ .bg-light { background-color: var(--color-light); }
+ .bg-primary { background-color: var(--color-primary); }
+ .bg-secondary { background-color: var(--color-secondary); }
+ .bg-accent { background-color: var(--color-accent); }
+ .bg-surface { background-color: var(--color-surface); }
+
+ .border-dark { border-color: var(--color-dark); }
+ .border-light { border-color: var(--color-light); }
+
+
 
 /* Dark mode root styles */
 .dark {
@@ -157,8 +271,8 @@ select:focus-visible {
 
 /* Dark mode specific overrides */
 .dark body {
-  background-color: var(--color-surface-dark);
-  color: var(--color-light);
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
 }
 
 .dark .bg-white {
@@ -390,55 +504,9 @@ a:hover {
   color: #fbbf24 !important;
 }
 
-/* WCAG Compliant Text-Background Combinations */
-.text-on-primary {
-  color: #ffffff !important; /* White on primary blue - 4.5:1+ contrast */
-}
-
-.text-on-secondary {
-  color: #111827 !important; /* Dark on amber - 4.5:1+ contrast */
-}
-
-.text-on-accent {
-  color: #ffffff !important; /* White on emerald - 4.5:1+ contrast */
-}
-
-.text-on-surface {
-  color: #111827 !important; /* Dark on light surface - 4.5:1+ contrast */
-}
-
-.text-on-dark {
-  color: #ffffff !important; /* White on dark - 4.5:1+ contrast */
-}
-
-.text-on-light {
-  color: #1f2937 !important; /* Dark on light - 4.5:1+ contrast */
-}
-
-/* Dark mode overrides */
-.dark .text-on-primary {
-  color: #ffffff !important;
-}
-
-.dark .text-on-secondary {
-  color: #111827 !important;
-}
-
-.dark .text-on-accent {
-  color: #ffffff !important;
-}
-
-.dark .text-on-surface {
-  color: #ffffff !important; /* White on dark surface */
-}
-
-.dark .text-on-dark {
-  color: #ffffff !important;
-}
-
-.dark .text-on-light {
-  color: #111827 !important;
-}
+/* WCAG Text-on-X overrides handled via semantic tokens now */
+/* text-on-primary/text-on-secondary/text-on-accent/etc
+   already map to --color-text-on-* variables which switch in dark mode */
 
 /* ========================================
    BUTTON SYSTEM - Using Design Tokens
@@ -572,9 +640,12 @@ button.btn-accent:hover,
 
 /* Brutalist Button Base */
 .btn-brutal {
-  @apply border-4 border-dark font-bold uppercase transition-all;
-  font-weight: 900; /* black weight */
-  min-height: 44px; /* WCAG touch target */
+  border-width: 4px;
+  border-color: var(--color-dark);
+  font-weight: 900;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
+  min-height: 44px;
   min-width: 44px;
   display: inline-flex;
   align-items: center;
@@ -589,7 +660,7 @@ button.btn-accent:hover,
 }
 
 .btn-brutal:hover {
-  @apply translate-x-1 translate-y-1;
+  transform: translateX(0.25rem) translateY(0.25rem);
   box-shadow: var(--shadow-brutal-hover);
 }
 
@@ -599,36 +670,39 @@ button.btn-accent:hover,
 }
 
 .btn-brutal:active {
-  @apply scale-95 translate-x-2 translate-y-2;
+  transform: scale(0.95) translateX(0.5rem) translateY(0.5rem);
   box-shadow: var(--shadow-brutal-hover);
 }
 
 /* Card Base */
 .card-brutal {
-  @apply border-4 border-dark transition-transform;
+  border-width: 4px;
+  border-color: var(--color-dark);
+  transition: transform 0.15s ease;
   box-shadow: var(--shadow-brutal-sm);
 }
 
 .card-brutal:hover {
-  @apply rotate-0;
+  transform: rotate(0);
   box-shadow: var(--shadow-brutal);
 }
 
 /* Dark mode hover effects */
 @media (hover: hover) {
   .btn-brutal:hover {
-    @apply dark:border-light;
+    border-color: var(--color-light);
   }
   
   .card-brutal:hover {
-    @apply dark:border-light;
+    border-color: var(--color-light);
   }
 }
 
 /* Text Styles */
 .text-brutal {
-  @apply font-bold uppercase tracking-tight;
-  font-weight: 900; /* black weight */
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
 }
 
 /* Smooth scroll */
