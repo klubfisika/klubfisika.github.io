@@ -9,13 +9,13 @@ interface Props {
 const { title, icon, class: className = "", lazy = false, variant = 'default' } = Astro.props;
 
 const variantStyles = {
-  default: 'bg-white text-gray-900',
-  gradient: 'bg-gradient-to-br from-green-500 to-teal-600 text-white'
+  default: 'bg-surface text-text-main',
+  gradient: 'bg-gradient-to-r from-primary to-accent text-on-primary'
 };
 
 const titleStyles = {
-  default: 'text-gray-900',
-  gradient: 'text-white'
+  default: 'text-text-main',
+  gradient: 'text-on-primary'
 };
 ---
 
