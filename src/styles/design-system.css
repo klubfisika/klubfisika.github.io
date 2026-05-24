@@ -163,25 +163,25 @@ select:focus-visible {
   /* Typography */
   --font-sans: "Space Grotesk", "Inter", system-ui, sans-serif;
 
-  /* Fluid Typography & Spacing */
-  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
-  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
-  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
-  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
-  --text-2xl: clamp(1.5rem, 1.3rem + 1vw, 1.875rem);
-  --text-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.25rem);
-  --text-4xl: clamp(2.25rem, 1.8rem + 2.25vw, 3rem);
-  --text-5xl: clamp(3rem, 2.5rem + 2.5vw, 4rem);
-  --text-6xl: clamp(3.75rem, 3rem + 3.75vw, 5rem);
-  --text-7xl: clamp(4.5rem, 3.5rem + 5vw, 6rem);
-  --text-8xl: clamp(5.5rem, 4rem + 7.5vw, 8rem);
+  /* Fluid Typography & Spacing - Refined for compact/modern aesthetic */
+  --text-xs: clamp(0.7rem, 0.65rem + 0.1vw, 0.8rem);
+  --text-sm: clamp(0.8rem, 0.75rem + 0.2vw, 0.9rem);
+  --text-base: clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
+  --text-lg: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  --text-xl: clamp(1.125rem, 1.05rem + 0.4vw, 1.25rem);
+  --text-2xl: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --text-3xl: clamp(1.5rem, 1.35rem + 0.75vw, 1.75rem);
+  --text-4xl: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
+  --text-5xl: clamp(2.25rem, 2rem + 1.5vw, 3rem);
+  --text-6xl: clamp(3rem, 2.5rem + 2vw, 4rem);
+  --text-7xl: clamp(3.5rem, 3rem + 2.5vw, 5rem);
+  --text-8xl: clamp(4rem, 3.5rem + 3vw, 6rem);
 
-  --space-xs: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
-  --space-sm: clamp(0.75rem, 0.6rem + 0.75vw, 1rem);
-  --space-md: clamp(1rem, 0.8rem + 1vw, 1.5rem);
-  --space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
-  --space-xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+  --space-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --space-sm: clamp(0.5rem, 0.4rem + 0.4vw, 0.75rem);
+  --space-md: clamp(0.75rem, 0.6rem + 0.6vw, 1.25rem);
+  --space-lg: clamp(1.25rem, 1rem + 1vw, 2rem);
+  --space-xl: clamp(1.75rem, 1.4rem + 1.5vw, 3rem);
 
   /* Shadows */
   --shadow-brutal: 8px 8px 0px var(--color-slate-900);
@@ -291,11 +291,19 @@ select:focus-visible {
   background-color: var(--color-bg-dark-2) !important;
 }
 
-/* Custom Animations */
-@keyframes wobble {
-  0%, 100% { transform: rotate(-2deg); }
-  50% { transform: rotate(2deg); }
+/* Glassmorphism Utility */
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 
 @keyframes bounce-fun {
   0%, 100% { transform: translateY(0px) rotate(-1deg); }

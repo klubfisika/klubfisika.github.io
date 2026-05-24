@@ -60,7 +60,7 @@ import projectPresentation from '@assets/gallery/project-presentation.jpg';
           date: "Juni 2024"
         }
       ].map((item, index) => (
-        <BrutalCard variant="surface" rotation={index % 3 === 0 ? 'right' : index % 3 === 1 ? 'left' : 'right'} className="overflow-hidden">
+        <BrutalCard variant="glass" rotation={index % 3 === 0 ? 'right' : index % 3 === 1 ? 'left' : 'right'} className="overflow-hidden">
           <!-- Image -->
           <div class="h-48 overflow-hidden">
             <Image 
@@ -97,7 +97,7 @@ import projectPresentation from '@assets/gallery/project-presentation.jpg';
 
     <!-- Gallery CTA -->
     <div class="mt-8 text-center">
-      <BrutalCard variant="primary" rotation="left" className="inline-block">
+      <BrutalCard variant="glass" rotation="left" className="inline-block">
         <Text color="on-primary" class="font-bold mb-4">
           📸 <strong>Lihat lebih banyak foto kegiatan kami!</strong>
         </Text>
